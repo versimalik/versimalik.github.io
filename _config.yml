@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 title: Ini Malik
-markdown: gfm
+markdown: kramdown
+kramdown:
+  input: GFM
