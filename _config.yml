@@ -1,5 +1,0 @@
-theme: jekyll-theme-minimal
-title: Ini Malik
-markdown: kramdown
-kramdown:
-  input: GFM
