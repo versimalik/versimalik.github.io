@@ -1242,88 +1242,149 @@ pre[class*="language-"] {
   <style>.markdown-body{}</style>
 </head>
 <body>
-  <article class="markdown-body"><h1 class="atx" id="langkah-pertama---menyiapkan-semua-tools-untuk-memulai-web-programming">Langkah pertama - Menyiapkan semua tools untuk memulai web programming</h1>
+  <article class="markdown-body"><h1 class="atx" id="langkah-kedua---membuat-rancangan-database-untuk-aplikasi">Langkah kedua - Membuat rancangan database untuk aplikasi</h1>
+<p>Sebuah aplikasi, tidak bisa dikerjakan tanpa adanya perencanaan dan perancangan.</p>
+<p>Menurut pengalaman kami, yang menjadi nyawa dari sebuah aplikasi web dinamis adalah <code>database</code>.</p>
+<p><code>Database</code> merupakan kumpulan data yang terorganisir, yang umumnya disimpan dan diakses secara elektronik dari suatu sistem komputer. Sumber: <a href="https://id.wikipedia.org/wiki/Pangkalan_data">Wikipedia</a>.</p>
+<p>Apapun yang kita lihat di dalam sebuah aplikasi, entah itu nama aplikasi, logo, daftar menu, bahkan sampai harga barang pada aplikasi online shop, data tersebut berasal dari <code>database</code>.</p>
 <blockquote>
-<p>Note: Dalam tahap ini, setiap kebutuhan aplikasi yang ada pada <a href="/README.md">penjelasan awal</a> sudah terpenuhi.</p>
+<p>Sederhananya,  <code>database</code> merupakan <code>sumber data</code> dan tempat dimana <code>data</code> harus disimpan.</p>
 </blockquote>
+<p>Oleh karena itu, merancang sebuah <code>database</code> merupakan hal yang penting untuk dilakukan pada tahap - tahap awal membuat sebuah aplikasi.</p>
+<h2 class="atx" id="aplikasi-sekola">Aplikasi sekola</h2>
+<p>📝 Aplikasi ini akan kita beri nama <code>sekola</code>. Aplikasi ini merupakan <code>classroom management</code> sederhana yang dapat digunakan sebagai platform kegiatan belajar mengajar. Berikut merupakan ERD sementara pada aplikasi sekola.</p>
+<p><img alt="ERD sementara aplikasi sekola" src="https://lh3.googleusercontent.com/fFdETZojUnTQC5NVaU-pWrV7lcoSYL51wv1TTMOyxog8685weWejgUMiH8k0Lnlb_Tz7_YyfB-vdUvDM8hdX3b52vwGlr89BH1spDC_KJ7I-f0ZMc2ML6e8Rj1AS8FLH1vwXqv-_GiCNue3tT76gSY8BdqshXajKz2LKUcq3hiblx9z42k0vOkdlGLxUNBmfcGPEI_PJQvktZUIk_53xACltJIiybONNwEOUjG6CrpCb7CNqEOZiCKbi2zKV7_JwxwrvQJzdgepqh-AMW4tnJTOp9OVOPvtwYQQswMAB58nZ64rnNky-8TYoXXsyn0wtPqkUfzhZh5UcVdXWyBP8gC_k0de4Fi8Wf2wBT0v4NAFjJ7OCX4MjDEC5cse680QLjngFb5kVjghShH4lebtwSPougAS8Ckl4Pdfn747DVw2ptjNr0fNWhViGpsP-wuknvggzFbWtny3IIlX3OjeRlFWbrJGTisUqPGXBxMSVuaLIphuo1Szshru96R8Ja-CaxjFXO3p9qhDXvFySIuqeCDa95oOZKR92qS2PNhNmGZ0d7W1SO1X6yaaQGo6WcG-qknJARvYIINeDEOHndig7ov_JqOf_iPWwGbUGdivgiawIGUuChFwJ8MbTsds8HmLIBrl4tZ49FEOmyoRUL9H0rqs3alqZrKqjv2fc64dtGbS7nLYYG8vitCSXjiVUYbGeh2WC0fEE2nRvId8ooadYH1gi=w671-h644-no?authuser=0"></p>
+<p>Agar dapat merancang sebuah <code>database</code>, kita harus menentukan:</p>
 <ol>
-<li><p>Nyalakan module / service apache pada komputer anda</p>
+<li><p>Apa/Siapa saja yang akan terlibat dalam aplikasi ini?</p>
 <ul>
-<li>jika menggunakan <code>XAMPP</code> pada OS Windows, nyalakan module <code>apache</code> dan <code>mysql</code> pada aplikasi <code>XAMPP Control Panel</code>, seperti pada gambar:</li>
-</ul>
-<p><img alt="&quot;Start Module apache dan MySQL pada XAMPP&quot;" src="https://lh3.googleusercontent.com/tRUeZP5On1r9zsPg53RR8c93-UNp2xA-RHciiTj6WDUhOtX_j70GHT_sjhXXLnsVcqymZP63piPO1J0MOEsC8EygUH3Rv1PrpuOeXPUTkMHg3ijHOS4FI1AVjSP_hQ1849OZDQzlUEHkq8cXi02BLg_lapnS8yARfwTA21Mdps2TJr6hntIEG2buK35uLNYBxxUYRFSOCH5nWyMMmbpag9ndoEeqbijHEUwIKyBVU6FvOXKcoFMpGPFEth6uvkkfxru3OTrEHciR6MfY1X7TfmXjRY7X7YpPRY7xpw3XydOMkF_R-wN27Sr5-sP6mbWbHxnWR0QGgzG7PDWsVeZtj2rMq7T50xfBcaTuhZhUFD2kdxwsyDqDRFFPhKQobyn3l_wH3Afx_iTYLJI0bPaZvC5d6bNEzZZZnc_iNfxmruNFbvaEpbxb5vRrzrzE_220EzsyikmlVi7WcLR3VapPJrUCE9pdhBiA4MW7hzlTfFH9XUHzV5WSgsXmxBIR7itd8DoYVHLpuDveWM6hN6P9DTV360Y-ngAZc6OFfz8UiY-uzl8pOgKiAQqlO6HpPdMISHA0SQSxj_YIbPu9KLwKci_glU3t7g0aznyJ2p1ehpGKUX9aqGGzi80N5wmTO2fvPtGUcUW7AgPSZaX3S9Vf2nfONQnBx2k1owUPRWZedTnMs44REqmiec5nJRRkmeRTysivicRyzOE1dm4AwSN7ffKv=w363-h175-no?authuser=0"></p>
-<ul>
-<li>jika menggunakan <code>apache2</code> pada OS Linux, silahkan nyalakan service <code>apache2</code> dan <code>mysqld</code>, contoh jika menggunakan OS Linux turunan debian:</li>
-</ul>
-<pre><code class="fenced-code-block language-bash"><span class="token function">sudo</span> <span class="token function">service</span> apache2 start <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">service</span> mysqld start</code></pre>
-<p>atau</p>
-<pre><code class="fenced-code-block language-bash"><span class="token function">sudo</span> systemctl start apache2 <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> systemctl start mysql</code></pre>
-</li>
-<li><p>Buka aplikasi web browser dan ketikkan <code>localhost</code> pada address bar dan tekan tombol <code>Enter</code>  untuk memastikan bahwa web server sudah berjalan dengan baik.)</p>
-</li>
-<li><p>Buat folder baru dengan nama <code>sekola</code> di server local yang kita punya</p>
-<ul>
-<li>jika di windows, buat folder sekola di dalam <code>c:\xampp\htdocs\</code> </li>
-</ul>
-<img data-align="inline" alt="folder c xampp htdocs" src="https://premium.wpmudev.org/blog/wp-content/uploads/2016/01/saving-wordpress-2.png" title="">
-
-<ul>
-<li><p>jika di linux, buat folder <code>sekola</code> di dalam <code>/var/www/html/</code>. Contoh seperti pada gambar  ini:</p>
-<p><img alt="var www html di linux" src="https://lh3.googleusercontent.com/23lmCOWIzy5GCPiyVMXgjsBEQcT7tMLMRGTCJspwYzU1RSKmZXfAVi79W-6WMwpph2fDyLMAPWqdkwZ-pFFTBi5vIF_A_fg_xQfEmUq70MspAMiTP1CAPrD6lfM8jGeLX6QD8PkDMhbBlT8qSkbNb0qA0_LHL_2adIuxaYg_ji7vaj0cI-u4WIcST0pAzElEOUQJAxJt7cns16tfvM5xHJhaI5JEGu7-yaBmcKKwtwMUAu2G1rhAH8DckfhEd3ya4KAZmyXSN3JB9buhPqQz1cttRzMYnBu2PfjqL7PGYWzpnN8rtc5xejnoY64CDPjjchlxuU0q5aCWOMje3_6v9VBkAnulaZXSuNIGh9Bec-MB7U05BcwEH2aC54rBWVBkXFCQv0kHKZyoDIJW12SEYDMXArZC8NtvnYbIomvCOiXcg3h9fpy48HUd_-PUvxCROtXqAe2NUEz7qH39zaZeudwl_dUVyHoK5oHuzOz2mai71smavL_92zqTGWcnlYFqzlDoSWWHZlPxdk9zWOTZYvO68ZFDJZsdiGtqxgT16Sr3hXttz8bqfEqhv84qSHWh9iSf8I_la5rW1fyME0EbXUyZCv9bdKCbjJ72VkBY8Z49pRLZZQef2R8-LjsV600Ek8e6EcmIIgC_rg-ERSuUbTIA8NuNFjyDGQqoTwrFTIHkAT-litDzNh8Wl8vRcnJ8YTl1mGxfguFwET_zsbrxgqYT=w599-h367-no?authuser=0"></p>
-<blockquote>
-<p>selanjutnya, lokasi tersebut akan kita sebut sebagai <code>localhost</code></p>
-<blockquote>
-<p><code>c:\xampp\htdocs\</code> = <code>localhost</code> pada windows</p>
-<p><code>/var/www/html/</code> = <code>localhost</code> pada linux</p>
-</blockquote>
-</blockquote>
-</li>
+<li><code>Admin</code>, sebagai pengelola aplikasi sekola</li>
+<li><code>Guru</code>, sebagai pemilik <code>Kelas</code>.</li>
+<li><code>Siswa</code>, sebagai pelajar di <code>Kelas</code>.</li>
+<li><code>Kelas</code>, sebagai tempat KBM(Kegiatan Belajar Mengajar) berlangsung. <code>Guru</code> akan mengajar sesuai <code>Mata Pelajaran</code> ke <code>Siswa</code></li>
+<li><code>Tugas</code>, sebagai tugas yang akan diberikan oleh <code>Guru</code> ke <code>Siswa</code> sesuai dengan <code>Kelas</code> dan <code>Mata Pelajaran</code>.</li>
+<li><code>Jawaban</code>, sebagai jawaban yang diberikan oleh siswa ke dalam <code>Tugas</code> yang diberikan oleh <code>Guru</code>.</li>
+<li><code>Materi</code>, sebagai materi yang akan diberikan oleh <code>Guru</code> ke <code>Siswa</code> sesuai dengan <code>Kelas</code>.</li>
+<li><code>Posting</code>, sebagai pengumuman yang akan diberikan oleh <code>Guru</code> ke <code>Siswa</code> sesuai dengan <code>Kelas</code>.</li>
+<li><code>Komentar</code>, sebagai komentar yang akan diberikan oleh <code>Guru</code> dan <code>Siswa</code> di setiap <code>Tugas</code>, <code>Materi</code>, <code>Posting</code> sesuai dengan <code>Kelas</code> dan <code>Mata Pelajaran</code>.</li>
 </ul>
 </li>
-<li><p>Buka aplikasi text editor. Sebagai contoh, disini saya akan menggunakan aplikasi <code>Sublime Text</code>.</p>
+<li><p>Aktivitas apa saja yang dapat dilakukan dalam aplikasi sekola?</p>
 <ul>
-<li>klik menu <code>File</code> &gt; <code>Open Folder</code></li>
-<li>cari dan pilih folder <code>sekola</code> yang ada di dalam <code>localhost</code> kita.</li>
+<li><p>Ketika login sebagai <code>Admin</code></p>
+<ul>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Kelas</code></li>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Guru</code></li>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Siswa</code></li>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Tugas</code></li>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Materi</code></li>
+<li><code>Admin</code> membuat, melihat, mengedit dan menghapus <code>Posting</code></li>
 </ul>
 </li>
-<li><p>Untuk kemudahan dalam proses "ngoding", silahkan gunakan tips berikut ini</p>
+<li><p>Ketika login sebagai <code>Guru</code>.</p>
 <ul>
-<li><p>Klik menu <code>View</code> &gt; <code>Side Bar</code> &gt; <code>Show Side Bar</code>, maka akan muncul folder project seperti pada gambar.</p>
-<p><img alt="Side bar pada sublime text" src="https://lh3.googleusercontent.com/oX-aCqCHSYCurjLCDag4g7rjYtTnakbF68yBG2fyjiAsmD-ErhVtJF76EhPsd2G7meEUCobnj05dX7VAN_E8p_zDW_oZQeTrZ-9zE6t0CulyHYgBgm_TSlrJsv7d7PWgMAxsWGYrNewy9dHtRqhfKeZnd8hM-hofXhp3Z6kM-iyincFdQNDgBczTmK1ZaBATYl8iSsIoKanKFJXdu945LzuKslFrF03OPoCUaqIihAeWYVLMa5RQ5XbyoLeNU3ziUN0oL2MHHo4Z6jN2PC_lP7pgIrbiCiL17nBZApGWezR_GKUlv_qCW6W-0rSVaBhR_V_Cer3nZ0gPt2JFVHGXYZiBZ7ECnUlY210qFVLLHsMVzlHso5tZd2jD4cTgPGo-ZL3JuIUvb5NNg8U2Pa66S8Q2608gi7YmbA_IkTlop8h9fdfN-ehKQkLi3bmHyTOCY3AVzm3lLmmvQLTPt7aKbssTnG_DjwNhFItdlr0LHwurMfhy4GZ8edAdq1w7wXDvuX37qlpy6D_2pEVIT0rKgzWfiXVug6CO4VqOS7MzVevMVapuBnU2Gt_YeKimfIi9m_KdPj7zJr8kuptKddY3CvwXlQt0lb0BiAG5C5M-PxC9sWSaA-myeo9GD2Oo-2M5tsFRygehA4lA_Jdsy8L0uwtMjq43hzWkY3unVljiqzTjVIaoCxrfB9NoYML1u4bUCoklWjbVtp-67q3m-OBoloEV=w333-h206-no?authuser=0"></p>
-</li>
-<li><p>Bikin file baru langsung dari folder project. Caranya <strong>klik kanan</strong> pada folder <code>sekola</code> yg ada di side bar, pilih <code>New File</code>, akan terbuka file baru yang kosong seperti pada gambar.</p>
-<p><img alt="New file dari folder pada sidebar" src="https://lh3.googleusercontent.com/i1ukMY1OG__UMpPqz-g7WGNJn5z8X0v4dwVVbUANdwjvSdMsD_lEX1Y1v0DRSjZeZYxcRWdYRzJv6sHCflo1ddTDNzmOioznT5I425WRBRhoTujPCfAyTp7YPI7L8OrwK3iQsxsNcZk6XBdE41mBx0jn1_FMiuRH43Mqh8voMBwqMl4WQ3P0sBMrJq4e0TsPz3dDJDv_Fcwhw4A2a-oJUZpsXY5vCfCVHRb0s_Km7adrTpgiIAOCq2K9C8EZJisfPFJFgVks2Zpjl9D_j058Hdfp2_W15R06pg_DEQ-isrARcqqTN8sFA9sRnratzcIlQh4fJzVgoP8iiYQpmC0LWCoQcBZkQPopEC5hH0dq5U5ux1y06CbZdvUZwI_p8UNepaK-DSf3f-Z4V5Wo6zXb9geGHN78Ou3r-2cBnqV1AopCkMDdBbH2lCDKwrUdkqilj2iWbNGGoqCjvj0IpqMjrplASnNyWSTlLbjTXBTrEsETz21RayhxwGRb9wyce17wtAqQvijAHLEeU8sap1qH7S0fuiAFROQnHMLCPDDe99yXVVd2pPUGJjIH8S_SoCUQ1WF5A602GSPtVL0_qq4emVaHnGlKtTyraYJlGhwcAzSgeM-069k_NAauMmtSW_WDyoE8YM61fgRHSFP4JrkEr3LGjb63-MPk0svh2wE4ImFcnb0IxTwTGOFQefl2IXY3pE6gcOYMXZRnZtdUWP0VkwpR=w404-h249-no?authuser=0"></p>
-</li>
-<li><p>Kemudan simpan dengan cara pilih menu <code>File</code> &gt; <code>Save</code>, simpan dengan nama <code>index.php</code>. File tersebut akan otomatis tersimpan di folder <code>sekola</code> dalam <code>localhost</code>. Contoh seperti pada gambar.</p>
-<p><img alt="index.php pada folder project" src="https://lh3.googleusercontent.com/Ou4OLajNv9TEn2utobJfG4t4AeocJrQpMkj1IUxdnt8FVyYS7_BpKNx6_Xxr4qA4jXn5GzV286v-ukDwEH6PPNI_gx3mmuCVB69tahc1fAVf_nUhkiSIC_4li6K6ghDtqNELaPOP7TjNpPpbFuwtZ8p4n4Cw-nhNAaIX1lvxpcunyD65xCkQYU8xlgT2v6vqsHulom7rWBJbCCrmRtiOjz-IFtOCOXrcrKQJPMOJtLDW2EyN68sZ8fmZZ_V9bqN0WGFvVFt2IZ943UbdE0AnFplEC6Gp_dU50yBZdA-hZ0M8tDjgIH_ofNSztLmU_C6nhKCaK8-0bJUJHLFTj868kQRi-pHiZBEuLXFiSOb9mzDwDL7JdvyE9bOOUlD6TQKwFVuz-AMsLUWpND2QcyyxYjEW8ePWshhjy23p0z_7SIQH11aNZ0-zGlxW4EmyTEBejhZT3TquX4MeP0iAtEZA35CPYzckirrpIM1gKjt9xXzktiKgBwdOjEkgxk-S-2GoSjv9XaR9QEjBiknvTakP-VFOSak_O8gS4UtdJVgUnD7Cq9Iy7duJNYFZO-eeGLTOHZq_35-zCau6-6cIKGY2QuiXKqhhRJYr-JXpGIfUNIGbTeCWhxhwz_LAYWF77H9TF9KJCW8BKOMHrVeeABgM55Pxw0-6paH5h6MGTG7mdNwXeBHkCSYV-VmAK7Eb_BdLG5RpJo1q9xeVQCD6-X5lnt4d=w422-h245-no?authuser=0"></p>
-</li>
+<li><code>Guru</code> membuat, melihat, mengedit dan menghapus <code>Kelas</code></li>
+<li><code>Guru</code> membuat, melihat, mengedit dan menghapus <code>Tugas</code></li>
+<li><code>Guru</code> membuat, melihat, mengedit dan menghapus <code>Materi</code></li>
+<li><code>Guru</code> membuat, melihat, mengedit dan menghapus <code>Posting</code></li>
+<li><code>Guru</code> membuat, melihat, dan menghapus <code>Komentar</code></li>
+<li><code>Guru</code> menilai (membuat nilai) untuk <code>Tugas</code> yang dikerjakan oleh <code>Siswa</code></li>
 </ul>
 </li>
-<li><p>Buat syntax php sederhana dalam file <code>index.php</code>, seperti pada script di bawah ini:</p>
-<pre><code class="fenced-code-block language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
- <span class="token keyword">echo</span> <span class="token double-quoted-string string">"Ini adalah bahasa pemrograman PHP"</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?&gt;</span></span></code></pre>
+<li><ul>
+<li><code>Siswa</code> membuat, melihat, mengedit dan menghapus <code>Jawaban</code> untuk <code>Tugas</code> dari <code>Guru</code> di <code>Kelas</code></li>
+<li><code>Siswa</code> membuat, melihat, dan menghapus <code>Komentar</code> untuk <code>Tugas</code> dari <code>Guru</code> di <code>Kelas</code></li>
+<li><code>Siswa</code> membuat, melihat, dan menghapus <code>Komentar</code> untuk <code>Materi</code> dari <code>Guru</code> di <code>Kelas</code></li>
+<li><code>Siswa</code> membuat, melihat, dan menghapus <code>Komentar</code> untuk <code>Posting</code> dari <code>Guru</code> di <code>Kelas</code></li>
+</ul>
 </li>
-<li><p>Akses website pertama kita dari web browser, dengan mengetikkan format <code>localhost/nama_folder_project</code> pada address bar. Dalam kasus ini maka kita akan mengetikkan</p>
-<pre><code class="fenced-code-block language-url">localhost/sekola/</code></pre>
-<p>karena</p>
-<pre><code class="fenced-code-block">nama_folder_project = sekola</code></pre>
+</ul>
 </li>
 </ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seperti pada gambar berikut</p>
-<p><img alt="akses localhost/sekola/ dari web browser" src="https://lh3.googleusercontent.com/VJsX5ckqRznPNaEj_SrRFOlyLuDT42tA6fNX3cu1SzmBqepKF6HRTcPqm0Nj_OGqZZjrwkK5_mS_SHLncMug42OGg86Nfk5blSErusAW2LM6j9sRxo4ZmafN2F9Jac-CXHSs0s1oQTcvmSdknzxeu0z8_Nt2HvkN-LhQVXvz6GJle3mD-c7eqgnZzQ0KwVoF3rGRRKMLVpIOYLy2ZCz92WdoIoG6Yy3v1R-zi97jMgSki4zcXOv_8Op8znPTCz_mNy9acJneOmWZf7axVYSguQ_QvAqhplR0e9G5UpmdGQbfWz4D9bSlt_IjQVFOzOf2Q--308tZ106Slu9jIkOfCu_oADdNzqHzAMVaNANYCX-rhdkWZNJHTOdUaDL27SAav2Sc0gZMKlvJpBG3Pif9Ct9H0tTU-ZUlZcKNXZgaKYaNBSxIbc0tNkCtxImxn8SXMxLi0SnO42-O4U9fy0A5WXzA3F78gY2ZGZOllbVbcDzx9pkmKMcAYsY5Az6uTj2u4g3eWzj-E0rqxHp5uYc0XSru6uC6nw1eI4KTzPqrZKAYUbfJz41iYTIyCPyl9H4XL37Ortc3p-bOfBrb4KNRI7VQlGsqlculUG20iXlrXg1pQ2aF04OmPZQxqPEyWfX46grkLnVWgFjWCMUa2CqSq8rgZPZLnGYOiNrAriPvV9m5ZfSONYifa_Pc6HChWalrVuC8opdOHPodvqMvDASnC3lH=w459-h208-no?authuser=0"></p>
 <blockquote>
-<p>file <code>index.php</code> sudah otomatis akan dipanggil jika mengakses aplikasi web, tidak perlu disebutkan, cukup <code>localhost/sekola/</code> saja.</p>
-<p>Jika kita punya nama file selain nama <code>index.php</code>, maka panggil nama filenya dengan lengkap, contoh : <code>localhost/sekola/admin.php</code></p>
-</blockquote>
-<h2 class="atx" id="kesimpulan">Kesimpulan</h2>
-<p>Untuk mulai "ngoding", aplikasi diatas harus sudah dipersiapkan.</p>
+<p>Note: Sebuah aplikasi harus menerapkan konsep CRUD (CREATE, READ, UPDATE, DELETE)</p>
 <ul>
-<li>Service apache dan mysql harus distart</li>
-<li>Folder project sudah harus terbuka di aplikasi text editor</li>
-<li>Web browser digunakan untuk melihat hasil dari script yang sudah kita buat, dengan mengakses <code>localhost/nama_folder_project</code> </li>
+<li>CREATE = Membuat, menginput, memposting dan aktivitas sejenisnya</li>
+<li>READ = Membaca, menampilkan, memunculkan dan aktivitas sejenisnya</li>
+<li>UPDATE = Memperbarui, mengedit dan aktivitas sejenisnya</li>
+<li>DELETE = Menghapus, membuang dan aktivitas sejenisnya</li>
 </ul>
-<h3 class="atx" id="lanjut-ke-langkah-kedua---membuat-rancangan-database-untuk-aplikasi"><a href="/steps/langkah2.md">Lanjut ke Langkah kedua - Membuat rancangan database untuk aplikasi</a></h3>
+</blockquote>
+<h2 class="atx" id="desain-database">Desain database</h2>
+<p>Dari deskripsi di atas, maka kita bisa menentukan tabel apa saja yang harus kita buat dan harus seperti apa strukrurnya. Berikut adalah gambar dari desain database yang akan kita terapkan.</p>
+<p><img alt="Desain database sekola tanpa relasi" src="https://lh3.googleusercontent.com/xeefVEGhnfZdho6jkkJy3rI0sOXXocSev0hB8FoVnfLyFJLu5Qv92v9Hk5ntEXuVzdOip8Vg7kP28RSraORlhY_G1OBOHesESccql0WW4Y76C06ndXmgPCzYtrXKw0e7hz77J04dv1F3WHAAIGNTdlB-nCCKCh06NMnyeobLLrqigEvAQCpYEYizBZxbvCc_J--CBxJBIGS8zA4Q1yAFbxRUv6sVc3WFQ3tZYiYmxasGglq7f4o2Sh0aOZNKoL09W2zpLCcV0BsdEnEwp9vVIdM4T3sY9gQ8MabINx-1G-Fs7GDLZh-yX51nNqVS3WyH8Q3R4zu4UHYICNbhO0q1q7u3PNoCCVW6S5zIxsslpkVr9c_TLZqjVReJMG1NtCm3Z1JOKiOoUkZJUC8Cb3_GN3j4fPE4-_HMI5fGVCbyUEygQPGvnLyUSonYnf99ZD2Z2WxrWi5Rhjxi4GlHPsHGc10Juv3uI9uoZna41EjREsKyTLCd0b9YckdUAmErhNfuotWnzJ-OE6gzk-zlx_6PMaI5lo4rdkT340Dmgoy8riTY_-BYGPMk6Z6wCw6GXTKGJG-h1ik5SpOE3Z2m8c_4WfiiVVfWeGX7UaQFsgGdWY9A8kkt4KgU6pDeWllAAu151LHkc80PjoaIJZEgkKjOy3N2EfbBlzpZjVEJimp6Ia77v-rtf0pRBOFHW_mvoJv7I6Z_1EuUQpsqwGSWxlACzAhT=w1366-h633-no?authuser=0"></p>
+<h3 class="atx" id="keterangan-table-pada-database-sekola">Keterangan table pada database sekola</h3>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Nama Table</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>siswa</code></td>
+<td>Berisi data siswa</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>kelas</code></td>
+<td>Berisi data kelas</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>distKelas</code></td>
+<td>Berisi data distribusi kelas atau penempatan <code>siswa</code> di dalam <code>kelas</code> masing masing</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>guru</code></td>
+<td>Berisi data guru</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>tugas</code></td>
+<td>Berisi data tugas yang ada dalam <code>kelas</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>materi</code></td>
+<td>Berisi data materi yang ada dalam <code>kelas</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>posting</code></td>
+<td>Berisi data posting / pengumuman yang ada dalam <code>kelas</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>komentar</code></td>
+<td>Berisi data komentar yang ada pada <code>tugas</code>, <code>materi</code> atau <code>posting</code> pada <code>kelas</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>jawaban</code></td>
+<td>Berisi data jawaban <code>siswa</code> yang ada dalam <code>tugas</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>users</code></td>
+<td>Berisi data username dan password untuk login yang disertai role atau peran dari masing masing username untuk membedakan apakah dia <code>admin</code>, <code>siswa</code> atau <code>guru</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>admin</code></td>
+<td>Berisi data admin</td>
+</tr>
+</tbody></table>
+<h2 class="atx" id="kesimpulan">Kesimpulan</h2>
+<p>Pada tahap ini, kita sudah memahami desain database merupakan hal yang penting sebelum membuat proses dan tampilan websitenya. Penentuan desain database bisa diambil dari:</p>
+<ul>
+<li>Siapa dan apa saja yang terlibat dalam aplikasi yang akan kita buat.</li>
+<li>Aktivitas apa saja yang dapat dilakukan dalam aplikasi ini.</li>
+</ul>
+<h3 class="atx" id="lanjut-ke-langkah-ketiga---membuat-database-baru-melalui-cli-command-line-interface"><a href="/steps/langkah3.md">Lanjut ke Langkah ketiga - Membuat database baru melalui CLI (Command Line Interface)</a></h3>
 </article>
 </body>
 </html>
