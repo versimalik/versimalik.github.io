@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Langkah Kesatu</title>
   <style>
   @font-face {
   font-family: octicons-link;
@@ -1252,50 +1252,85 @@ h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." count
 h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none }</style>
 </head>
 <body>
-  <article class="markdown-body"><h1 class="atx" id="tutorial-membuat-aplikasi-sekola">Tutorial Membuat Aplikasi Sekola</h1>
+  <article class="markdown-body"><h1 class="atx" id="langkah-pertama---menyiapkan-semua-tools-untuk-memulai-web-programming">Langkah pertama - Menyiapkan semua tools untuk memulai web programming</h1>
 <blockquote>
-<p>Sekola adalah nama aplikasi classroom management sederhana yang akan kita buat dalam tutorial ini.</p>
+<p>Note: Dalam tahap ini, setiap kebutuhan aplikasi yang ada pada <a href="/README.md">penjelasan awal</a> sudah terpenuhi.</p>
 </blockquote>
-<p>Tutorial ini dibuat dengan tujuan untuk mempelajari pembuatan aplikasi berbasis web sederhana.</p>
-<p>Dalam tutorial ini kita akan menggunakan:</p>
+<ol>
+<li><p>Nyalakan module / service apache pada komputer anda</p>
 <ul>
-<li><p>Bahasa pemrograman <code>PHP</code> versi 7 ke atas dan database <code>MySQL</code> sebagai backend-nya.</p>
-</li>
-<li><p>Untuk frontend, kita akan menggunakan <code>HTML</code>, <code>CSS</code> dan <code>Javascript</code>.</p>
-</li>
+<li>jika menggunakan <code>XAMPP</code> pada OS Windows, nyalakan module <code>apache</code> dan <code>mysql</code> pada aplikasi <code>XAMPP Control Panel</code>, seperti pada gambar:</li>
 </ul>
-<p>Langkah - langkah yang ada merupakan tahapan - tahapan sederhana yang bertujuan agar tutorial ini ringan untuk dibaca serta dapat mempelajari pemrograman sambil praktik membuat aplikasi.</p>
-<h2 class="atx" id="yang-dibutuhkan">Yang dibutuhkan</h2>
-<ol>
-<li>Aplikasi Web Server dan Database Server<ul>
-<li>jika menggunakan windows, silahkan install <a href="https://www.apachefriends.org/download.html">XAMPP</a> versi 7 ke atas. Dalam XAMPP sudah tersedia web server <code>apache</code>, database server <code>mysql</code> dan compiler bahasa pemrograman <code>php</code>.</li>
-<li>jika menggunakan linux, silahkan install package <code>apache2</code>, <code>php7.x</code> dan <code>mariadb-server</code> melalui terminal.</li>
+<p><img alt="&quot;Start Module apache dan MySQL pada XAMPP&quot;" src="https://lh3.googleusercontent.com/tRUeZP5On1r9zsPg53RR8c93-UNp2xA-RHciiTj6WDUhOtX_j70GHT_sjhXXLnsVcqymZP63piPO1J0MOEsC8EygUH3Rv1PrpuOeXPUTkMHg3ijHOS4FI1AVjSP_hQ1849OZDQzlUEHkq8cXi02BLg_lapnS8yARfwTA21Mdps2TJr6hntIEG2buK35uLNYBxxUYRFSOCH5nWyMMmbpag9ndoEeqbijHEUwIKyBVU6FvOXKcoFMpGPFEth6uvkkfxru3OTrEHciR6MfY1X7TfmXjRY7X7YpPRY7xpw3XydOMkF_R-wN27Sr5-sP6mbWbHxnWR0QGgzG7PDWsVeZtj2rMq7T50xfBcaTuhZhUFD2kdxwsyDqDRFFPhKQobyn3l_wH3Afx_iTYLJI0bPaZvC5d6bNEzZZZnc_iNfxmruNFbvaEpbxb5vRrzrzE_220EzsyikmlVi7WcLR3VapPJrUCE9pdhBiA4MW7hzlTfFH9XUHzV5WSgsXmxBIR7itd8DoYVHLpuDveWM6hN6P9DTV360Y-ngAZc6OFfz8UiY-uzl8pOgKiAQqlO6HpPdMISHA0SQSxj_YIbPu9KLwKci_glU3t7g0aznyJ2p1ehpGKUX9aqGGzi80N5wmTO2fvPtGUcUW7AgPSZaX3S9Vf2nfONQnBx2k1owUPRWZedTnMs44REqmiec5nJRRkmeRTysivicRyzOE1dm4AwSN7ffKv=w363-h175-no?authuser=0"></p>
+<ul>
+<li>jika menggunakan <code>apache2</code> pada OS Linux, silahkan nyalakan service <code>apache2</code> dan <code>mysqld</code>, contoh jika menggunakan OS Linux turunan debian:</li>
 </ul>
+<pre><code class="fenced-code-block language-bash"><span class="token function">sudo</span> <span class="token function">service</span> apache2 start <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">service</span> mysqld start</code></pre>
+<p>atau</p>
+<pre><code class="fenced-code-block language-bash"><span class="token function">sudo</span> systemctl start apache2 <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> systemctl start mysql</code></pre>
 </li>
-<li>Aplikasi web browser, seperti <a href="https://www.google.com/chrome/">Google Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla Firefox</a>, dan sejenisnya.</li>
-<li>Aplikasi text editor, seperti <a href="https://www.sublimetext.com/download">Sublime Text</a>, <a href="https://code.visualstudio.com/download">Visual Studio Code</a>, dan sebagainya.</li>
-</ol>
+<li><p>Buka aplikasi web browser dan ketikkan <code>localhost</code> pada address bar dan tekan tombol <code>Enter</code>  untuk memastikan bahwa web server sudah berjalan dengan baik.)</p>
+</li>
+<li><p>Buat folder baru dengan nama <code>sekola</code> di server local yang kita punya</p>
+<ul>
+<li><p><img alt="folder c xampp htdocs" src="https://premium.wpmudev.org/blog/wp-content/uploads/2016/01/saving-wordpress-2.png"></p>
+</li>
+<li><p>jika di linux, buat folder <code>sekola</code> di dalam <code>/var/www/html/</code>. Contoh seperti pada gambar  ini:</p>
+<p><img alt="var www html di linux" src="https://lh3.googleusercontent.com/23lmCOWIzy5GCPiyVMXgjsBEQcT7tMLMRGTCJspwYzU1RSKmZXfAVi79W-6WMwpph2fDyLMAPWqdkwZ-pFFTBi5vIF_A_fg_xQfEmUq70MspAMiTP1CAPrD6lfM8jGeLX6QD8PkDMhbBlT8qSkbNb0qA0_LHL_2adIuxaYg_ji7vaj0cI-u4WIcST0pAzElEOUQJAxJt7cns16tfvM5xHJhaI5JEGu7-yaBmcKKwtwMUAu2G1rhAH8DckfhEd3ya4KAZmyXSN3JB9buhPqQz1cttRzMYnBu2PfjqL7PGYWzpnN8rtc5xejnoY64CDPjjchlxuU0q5aCWOMje3_6v9VBkAnulaZXSuNIGh9Bec-MB7U05BcwEH2aC54rBWVBkXFCQv0kHKZyoDIJW12SEYDMXArZC8NtvnYbIomvCOiXcg3h9fpy48HUd_-PUvxCROtXqAe2NUEz7qH39zaZeudwl_dUVyHoK5oHuzOz2mai71smavL_92zqTGWcnlYFqzlDoSWWHZlPxdk9zWOTZYvO68ZFDJZsdiGtqxgT16Sr3hXttz8bqfEqhv84qSHWh9iSf8I_la5rW1fyME0EbXUyZCv9bdKCbjJ72VkBY8Z49pRLZZQef2R8-LjsV600Ek8e6EcmIIgC_rg-ERSuUbTIA8NuNFjyDGQqoTwrFTIHkAT-litDzNh8Wl8vRcnJ8YTl1mGxfguFwET_zsbrxgqYT=w599-h367-no?authuser=0"></p>
 <blockquote>
-<p>Catatan:  Pastikan setiap kebutuhan aplikasi tersebut sudah <strong>tersedia dan berjalan dengan normal</strong> di komputer / laptop yang kita akan gunakan untuk mengejakan project ini</p>
+<p>selanjutnya, lokasi tersebut akan kita sebut sebagai <code>localhost</code></p>
+<blockquote>
+<p><code>c:\xampp\htdocs\</code> = <code>localhost</code> pada windows</p>
+<p><code>/var/www/html/</code> = <code>localhost</code> pada linux</p>
 </blockquote>
-<hr>
-<h2 class="atx" id="daftar-isi">Daftar isi</h2>
-<ol>
-<li><a href="/steps/langkah1.html">Langkah pertama - Menyiapkan semua tools untuk memulai web programming</a></li>
-<li><a href="/steps/langkah2.html">Langkah kedua - Membuat rancangan database untuk aplikasi</a></li>
-<li><a href="/steps/langkah3.html">Langkah ketiga - Membuat database baru melalui CLI (Command Line Interface)</a></li>
-<li><a href="/steps/langkah4.html">Langkah keempat - Membuat table admin, guru, siswa, kelas dan distKelas</a></li>
-<li><a href="/steps/langkah5.html">Langkah kelima - Membuat table materi, tugas, posting, jawaban dan komentar</a></li>
-<li><a href="/steps/langkah6.html">Langkah keenam - Membuat table users</a></li>
-<li><a href="/steps/langkah7.html">Langkah ketujuh - Relasi antar table dan penerapan foreign key</a></li>
-<li><a href="/steps/langkah8.html">Langkah kedelapan - SQL Constraint untuk mengatur rule pada column</a></li>
-<li><a href="/steps/langkah9.html">Langkah kesembilan - Menambahkan constraint foreign key pada column dalam tabel admin, guru dan siswa</a></li>
-<li><a href="/steps/langkah10.html">Langkah kesepuluh - Menambahkan constraint foreign key pada column dalam tabel kelas dan distKelas</a></li>
-<li><a href="/steps/langkah11.html">Langkah kesebelas - Menambahkan constraint foreign key pada column dalam tabel materi, tugas dan posting</a></li>
-<li><a href="/steps/langkah12.html">Langkah keduabelas - Menambahkan constraint foreign key pada column dalam tabel jawaban dan komentar</a></li>
-<li><a href="/steps/langkah13.html">Langkah ketigabelas - Prinsip dasar cara kerja website</a></li>
-<li><a href="/steps/langkah14.html">Langkah keempatbelas - Membuat aplikasi dengan PHP sebagai backend</a></li>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>Buka aplikasi text editor. Sebagai contoh, disini saya akan menggunakan aplikasi <code>Sublime Text</code>.</p>
+<ul>
+<li>klik menu <code>File</code> &gt; <code>Open Folder</code></li>
+<li>cari dan pilih folder <code>sekola</code> yang ada di dalam <code>localhost</code> kita.</li>
+</ul>
+</li>
+<li><p>Untuk kemudahan dalam proses "ngoding", silahkan gunakan tips berikut ini</p>
+<ul>
+<li><p>Klik menu <code>View</code> &gt; <code>Side Bar</code> &gt; <code>Show Side Bar</code>, maka akan muncul folder project seperti pada gambar.</p>
+<p><img alt="Side bar pada sublime text" src="https://lh3.googleusercontent.com/oX-aCqCHSYCurjLCDag4g7rjYtTnakbF68yBG2fyjiAsmD-ErhVtJF76EhPsd2G7meEUCobnj05dX7VAN_E8p_zDW_oZQeTrZ-9zE6t0CulyHYgBgm_TSlrJsv7d7PWgMAxsWGYrNewy9dHtRqhfKeZnd8hM-hofXhp3Z6kM-iyincFdQNDgBczTmK1ZaBATYl8iSsIoKanKFJXdu945LzuKslFrF03OPoCUaqIihAeWYVLMa5RQ5XbyoLeNU3ziUN0oL2MHHo4Z6jN2PC_lP7pgIrbiCiL17nBZApGWezR_GKUlv_qCW6W-0rSVaBhR_V_Cer3nZ0gPt2JFVHGXYZiBZ7ECnUlY210qFVLLHsMVzlHso5tZd2jD4cTgPGo-ZL3JuIUvb5NNg8U2Pa66S8Q2608gi7YmbA_IkTlop8h9fdfN-ehKQkLi3bmHyTOCY3AVzm3lLmmvQLTPt7aKbssTnG_DjwNhFItdlr0LHwurMfhy4GZ8edAdq1w7wXDvuX37qlpy6D_2pEVIT0rKgzWfiXVug6CO4VqOS7MzVevMVapuBnU2Gt_YeKimfIi9m_KdPj7zJr8kuptKddY3CvwXlQt0lb0BiAG5C5M-PxC9sWSaA-myeo9GD2Oo-2M5tsFRygehA4lA_Jdsy8L0uwtMjq43hzWkY3unVljiqzTjVIaoCxrfB9NoYML1u4bUCoklWjbVtp-67q3m-OBoloEV=w333-h206-no?authuser=0"></p>
+</li>
+<li><p>Bikin file baru langsung dari folder project. Caranya <strong>klik kanan</strong> pada folder <code>sekola</code> yg ada di side bar, pilih <code>New File</code>, akan terbuka file baru yang kosong seperti pada gambar.</p>
+<p><img alt="New file dari folder pada sidebar" src="https://lh3.googleusercontent.com/i1ukMY1OG__UMpPqz-g7WGNJn5z8X0v4dwVVbUANdwjvSdMsD_lEX1Y1v0DRSjZeZYxcRWdYRzJv6sHCflo1ddTDNzmOioznT5I425WRBRhoTujPCfAyTp7YPI7L8OrwK3iQsxsNcZk6XBdE41mBx0jn1_FMiuRH43Mqh8voMBwqMl4WQ3P0sBMrJq4e0TsPz3dDJDv_Fcwhw4A2a-oJUZpsXY5vCfCVHRb0s_Km7adrTpgiIAOCq2K9C8EZJisfPFJFgVks2Zpjl9D_j058Hdfp2_W15R06pg_DEQ-isrARcqqTN8sFA9sRnratzcIlQh4fJzVgoP8iiYQpmC0LWCoQcBZkQPopEC5hH0dq5U5ux1y06CbZdvUZwI_p8UNepaK-DSf3f-Z4V5Wo6zXb9geGHN78Ou3r-2cBnqV1AopCkMDdBbH2lCDKwrUdkqilj2iWbNGGoqCjvj0IpqMjrplASnNyWSTlLbjTXBTrEsETz21RayhxwGRb9wyce17wtAqQvijAHLEeU8sap1qH7S0fuiAFROQnHMLCPDDe99yXVVd2pPUGJjIH8S_SoCUQ1WF5A602GSPtVL0_qq4emVaHnGlKtTyraYJlGhwcAzSgeM-069k_NAauMmtSW_WDyoE8YM61fgRHSFP4JrkEr3LGjb63-MPk0svh2wE4ImFcnb0IxTwTGOFQefl2IXY3pE6gcOYMXZRnZtdUWP0VkwpR=w404-h249-no?authuser=0"></p>
+</li>
+<li><p>Kemudan simpan dengan cara pilih menu <code>File</code> &gt; <code>Save</code>, simpan dengan nama <code>index.php</code>. File tersebut akan otomatis tersimpan di folder <code>sekola</code> dalam <code>localhost</code>. Contoh seperti pada gambar.</p>
+<p><img alt="index.php pada folder project" src="https://lh3.googleusercontent.com/Ou4OLajNv9TEn2utobJfG4t4AeocJrQpMkj1IUxdnt8FVyYS7_BpKNx6_Xxr4qA4jXn5GzV286v-ukDwEH6PPNI_gx3mmuCVB69tahc1fAVf_nUhkiSIC_4li6K6ghDtqNELaPOP7TjNpPpbFuwtZ8p4n4Cw-nhNAaIX1lvxpcunyD65xCkQYU8xlgT2v6vqsHulom7rWBJbCCrmRtiOjz-IFtOCOXrcrKQJPMOJtLDW2EyN68sZ8fmZZ_V9bqN0WGFvVFt2IZ943UbdE0AnFplEC6Gp_dU50yBZdA-hZ0M8tDjgIH_ofNSztLmU_C6nhKCaK8-0bJUJHLFTj868kQRi-pHiZBEuLXFiSOb9mzDwDL7JdvyE9bOOUlD6TQKwFVuz-AMsLUWpND2QcyyxYjEW8ePWshhjy23p0z_7SIQH11aNZ0-zGlxW4EmyTEBejhZT3TquX4MeP0iAtEZA35CPYzckirrpIM1gKjt9xXzktiKgBwdOjEkgxk-S-2GoSjv9XaR9QEjBiknvTakP-VFOSak_O8gS4UtdJVgUnD7Cq9Iy7duJNYFZO-eeGLTOHZq_35-zCau6-6cIKGY2QuiXKqhhRJYr-JXpGIfUNIGbTeCWhxhwz_LAYWF77H9TF9KJCW8BKOMHrVeeABgM55Pxw0-6paH5h6MGTG7mdNwXeBHkCSYV-VmAK7Eb_BdLG5RpJo1q9xeVQCD6-X5lnt4d=w422-h245-no?authuser=0"></p>
+</li>
+</ul>
+</li>
+<li><p>Buat syntax php sederhana dalam file <code>index.php</code>, seperti pada script di bawah ini:</p>
+<pre><code class="fenced-code-block language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+ <span class="token keyword">echo</span> <span class="token double-quoted-string string">"Ini adalah bahasa pemrograman PHP"</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?&gt;</span></span></code></pre>
+</li>
+<li><p>Akses website pertama kita dari web browser, dengan mengetikkan format <code>localhost/nama_folder_project</code> pada address bar. Dalam kasus ini maka kita akan mengetikkan</p>
+<pre><code class="fenced-code-block language-url">localhost/sekola/</code></pre>
+<p>karena</p>
+<pre><code class="fenced-code-block">nama_folder_project = sekola</code></pre>
+</li>
 </ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seperti pada gambar berikut</p>
+<p><img alt="akses localhost/sekola/ dari web browser" src="https://lh3.googleusercontent.com/VJsX5ckqRznPNaEj_SrRFOlyLuDT42tA6fNX3cu1SzmBqepKF6HRTcPqm0Nj_OGqZZjrwkK5_mS_SHLncMug42OGg86Nfk5blSErusAW2LM6j9sRxo4ZmafN2F9Jac-CXHSs0s1oQTcvmSdknzxeu0z8_Nt2HvkN-LhQVXvz6GJle3mD-c7eqgnZzQ0KwVoF3rGRRKMLVpIOYLy2ZCz92WdoIoG6Yy3v1R-zi97jMgSki4zcXOv_8Op8znPTCz_mNy9acJneOmWZf7axVYSguQ_QvAqhplR0e9G5UpmdGQbfWz4D9bSlt_IjQVFOzOf2Q--308tZ106Slu9jIkOfCu_oADdNzqHzAMVaNANYCX-rhdkWZNJHTOdUaDL27SAav2Sc0gZMKlvJpBG3Pif9Ct9H0tTU-ZUlZcKNXZgaKYaNBSxIbc0tNkCtxImxn8SXMxLi0SnO42-O4U9fy0A5WXzA3F78gY2ZGZOllbVbcDzx9pkmKMcAYsY5Az6uTj2u4g3eWzj-E0rqxHp5uYc0XSru6uC6nw1eI4KTzPqrZKAYUbfJz41iYTIyCPyl9H4XL37Ortc3p-bOfBrb4KNRI7VQlGsqlculUG20iXlrXg1pQ2aF04OmPZQxqPEyWfX46grkLnVWgFjWCMUa2CqSq8rgZPZLnGYOiNrAriPvV9m5ZfSONYifa_Pc6HChWalrVuC8opdOHPodvqMvDASnC3lH=w459-h208-no?authuser=0"></p>
+<blockquote>
+<p>file <code>index.php</code> sudah otomatis akan dipanggil jika mengakses aplikasi web, tidak perlu disebutkan, cukup <code>localhost/sekola/</code> saja.</p>
+<p>Jika kita punya nama file selain nama <code>index.php</code>, maka panggil nama filenya dengan lengkap, contoh : <code>localhost/sekola/admin.php</code></p>
+</blockquote>
+<h2 class="atx" id="kesimpulan">Kesimpulan</h2>
+<p>Untuk mulai "ngoding", aplikasi diatas harus sudah dipersiapkan.</p>
+<ul>
+<li>Service apache dan mysql harus distart</li>
+<li>Folder project sudah harus terbuka di aplikasi text editor</li>
+<li>Web browser digunakan untuk melihat hasil dari script yang sudah kita buat, dengan mengakses <code>localhost/[nama_folder_project]</code> </li>
+</ul>
+<h3 class="atx" id="lanjut-ke-langkah-kedua---membuat-rancangan-database-untuk-aplikasi"><a href="/steps/langkah2.html">Lanjut ke Langkah kedua - Membuat rancangan database untuk aplikasi</a></h3>
 </article>
 </body>
 </html>
