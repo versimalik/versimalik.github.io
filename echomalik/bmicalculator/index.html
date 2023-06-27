@@ -23,7 +23,7 @@
         .container{
             margin-left: auto;
             margin-right: auto;
-            width: 350px;
+            width: 320px;
             /* border: 3px solid red;             */
             min-height: 200px;
 
@@ -99,22 +99,26 @@
             const bmi = berat.value / (tinggi.value * tinggi.value)
             result.innerHTML = bmi.toFixed(1)
 
-            if(bmi < 18.5){
-                category.innerHTML = "Underweight"
-                category.style.color = "red"
-                result.style.color = "red"
-            } else if(bmi >= 18.5 && bmi < 25 ){
-                category.innerHTML = "Normal"
-                category.style.color = "green"
-                result.style.color = "green"
-            } else if(bmi >=25 && bmi < 30){
-                category.innerHTML = "Overweight"
-                category.style.color = "#fca510"
-                result.style.color = "#fca510"
+            if(berat.value == "" || tinggi.value==""){
+                result.innerHTML = "Isi terlebih dahulu tinggi dan berat badan Anda"
             } else {
-                category.innerHTML = "Obesity"
-                category.style.color = "red"
-                result.style.color = "red"
+                if(bmi < 18.5){
+                    category.innerHTML = "Underweight"
+                    category.style.color = "red"
+                    result.style.color = "red"
+                } else if(bmi >= 18.5 && bmi < 25 ){
+                    category.innerHTML = "Normal"
+                    category.style.color = "green"
+                    result.style.color = "green"
+                } else if(bmi >=25 && bmi < 30){
+                    category.innerHTML = "Overweight"
+                    category.style.color = "#fca510"
+                    result.style.color = "#fca510"
+                } else {
+                    category.innerHTML = "Obesity"
+                    category.style.color = "red"
+                    result.style.color = "red"
+                }
             }
 
             return false
