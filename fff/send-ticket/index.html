@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="tcode">Ticket / Qr Code</label>
+                        <label class="form-label" for="tcode">Ticket / QR Code</label>
                         <input class="form-control" type="text" id="tcode" placeholder="X12Y34Z56A">
                     </div>
 
@@ -50,6 +50,7 @@
         const wa = "https://wa.me/";
         const number = document.getElementById('phone');
         const text = "text=";
+        const barcode_url = "https://echomalik.github.io/fff/barcode/"
 
         function sendWA(){
             window.open(wa+"62"+number.value);
