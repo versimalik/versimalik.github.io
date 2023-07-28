@@ -49,11 +49,17 @@
 
         const wa = "https://wa.me/";
         const number = document.getElementById('phone');
+        const tcode = document.getElementById('tcode')
         const text = "text=";
-        const barcode_url = "https://echomalik.github.io/fff/barcode/"
+        const barcode_url = "https://echomalik.github.io/fff/barcode/index.html"
 
         function sendWA(){
-            window.open(wa+"62"+number.value);
+            let encoded_text = encodeURIComponent(barcode_url+"?qrcode="+tcode.value+"&qrlink="+encodeURIComponent("https://quickchart.io/qr?text="+tcode.value+"&margin=2&size=200"))
+            let waMe = wa+"62"+number.value+"?"+text+encoded_text
+
+            console.log(waMe)
+            
+            // window.open(waMe)
         }
 
     </script>
