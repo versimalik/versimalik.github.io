@@ -57,9 +57,9 @@
             let encoded_text = encodeURIComponent(barcode_url+"?qrcode="+tcode.value+"&qrlink="+encodeURIComponent("https://quickchart.io/qr?text="+tcode.value+"&margin=2&size=200"))
             let waMe = wa+"62"+number.value+"?"+text+encoded_text
 
-            console.log(waMe)
+            // console.log(waMe)
             
-            // window.open(waMe)
+            window.open(waMe)
         }
 
     </script>
