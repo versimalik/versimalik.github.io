@@ -42,10 +42,15 @@
         arr.forEach((qr) => {
           qr.namaAnak;
           const div = document.createElement("div");
-          div.classList.add("col-4");
+          div.classList.add(
+            "col-3",
+            "border",
+            "border-primary"
+            );
+          div.style.height = '9.1cm';
           div.innerHTML = `
-            <img class="img-fluid" src="${qr.imgSrc}">
-            <div>${qr.code}</div>
+            <img class="d-block mx-auto img-fluid" src="${qr.imgSrc}">
+            <h4 class="text-center">${qr.code}</h>
             <div>${qr.namaAnak}</div>
         `;
           mainEl.appendChild(div);
