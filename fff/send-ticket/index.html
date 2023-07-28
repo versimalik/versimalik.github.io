@@ -13,13 +13,16 @@
 
         <div class="row" style="height: 100vh;">
             <div class="p-5 shadow-lg col-10 col-md-8 col-lg-6 mx-auto my-auto">
-                <h1 class="text-center mb-3">Send FF Ticket to WA</h1>
+                <h1 class="text-center mb-3">Send FFF Ticket to WA</h1>
 
                 <form action="">
 
                     <div class="mb-3">
                         <label class="form-label" for="phone">Phone Number</label>
-                        <input class="form-control" type="text" id="phone" placeholder="08xxxxxxxxx">
+                        <div class="input-group">
+                            <span class="input-group-text">+62</span>
+                            <input class="form-control" type="text" id="phone" placeholder="815xxxxxxx">
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -49,7 +52,7 @@
         const text = "text=";
 
         function sendWA(){
-            window.open(wa+number.value);
+            window.open(wa+"62"+number.value);
         }
 
     </script>
