@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Ticket to WA</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row" style="height: 100vh;">
+            <div class="p-5 shadow-lg col-10 col-md-8 col-lg-6 mx-auto my-auto">
+                <h1 class="text-center mb-3">Send FF Ticket to WA</h1>
+
+                <form action="">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input class="form-control" type="text" id="phone" placeholder="08xxxxxxxxx">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="tcode">Ticket / Qr Code</label>
+                        <input class="form-control" type="text" id="tcode" placeholder="X12Y34Z56A">
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-success col-12" type="submit" onclick="sendWA()">
+                            <i class="bi bi-whatsapp"></i>
+                            Send
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script>
+
+        const wa = "https://web.whatsapp.com/send/";
+        const number = document.getElementById('phone');
+        const text = "text=";
+
+        function sendWA(){
+            window.open(wa+"?"+number.value);
+        }
+
+    </script>
+</body>
+</html>
