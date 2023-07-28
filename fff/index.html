@@ -20,6 +20,7 @@
                 float: none !important;
                 position: static !important;
                 overflow: visible !important;
+                /* border: 0.5px solid red !important; */
             }
 
         }
@@ -45,6 +46,8 @@
 
         const arr = await response.json();
 
+        console.log(arr);
+
         return arr.map((a) => ({
           namaAnak: a["Nama Anak"],
           code: a["QR Code"],
@@ -58,15 +61,13 @@
           const div = document.createElement("div");
           div.classList.add(
             "col-3",
-            "border",
-            "border-primary"
             );
           div.style.height = '3.56666666667in';
           div.innerHTML = `
             <img class="d-block mx-auto img-fluid" src="${qr.imgSrc}">
             <h4 class="text-center">${qr.code}</h4>
-            <h5 class="text-center">FFF 2023</h5>
-            <h6 class="text-center">${qr.namaAnak}</h6>
+            <h3 class="text-center mb-0">${qr.namaAnak}</h3>
+            <img class="d-block mx-auto my-0" height="60" src="images/image1.png">
         `;
           mainEl.appendChild(div);
         });
