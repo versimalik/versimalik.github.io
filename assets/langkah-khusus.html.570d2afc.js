@@ -1,1 +1,0 @@
-const a={key:"v-1f881a82",path:"/tutorial/project-sekola/langkah-khusus.html",title:"Sedang dalam tahap pengembangan",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{},filePathRelative:"tutorial/project-sekola/langkah-khusus.md"};export{a as data};
