@@ -1,1 +1,21 @@
-article.home{ margin:0px; } .padding-20{ padding-top:30px; padding-bottom:30px; } .no-underline{ text-decoration:none; } .logo-link{ text-decoration: none; color: inherit; } .logo:hover{ text-decoration: none; }
+article.home{
+    margin:0px;
+}
+
+.padding-20{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.no-underline{
+    text-decoration:none;
+}
+
+.logo-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo:hover{
+    text-decoration: none;
+}
