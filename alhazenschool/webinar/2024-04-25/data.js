@@ -3344,7 +3344,7 @@ data = [
         "Nomor HP/WA": "082384583181"
     },
     {
-        "Nama": "Priska Analya ",
+        "Nama": "Priska Analya",
         "Nomor HP/WA": "08"
-    }
+    },
 ]
