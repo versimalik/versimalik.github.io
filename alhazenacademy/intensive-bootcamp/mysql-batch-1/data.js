@@ -8,7 +8,8 @@ let namelist = [
     "Aqhbar Habib",
     "Ismail",
     "Rakha Ahmad Sahl Fawwaz",
-    "Ryan Virnanda"
+    "Ryan Virnanda",
+    "Lifia Amalia Rismayanti",
 ];
 
 namelist = [...new Set(namelist)].sort();
