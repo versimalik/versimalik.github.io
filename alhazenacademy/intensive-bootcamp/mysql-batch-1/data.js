@@ -4,12 +4,13 @@ let namelist = [
     "Farhan Muwaffaq Dzaky",
     "Adhia Dinda Sofia Afifah Masyhur",
     "Muhamad Fauzi",
-    "idham kholid",
+    "Idham Kholid",
     "Aqhbar Habib",
     "Ismail",
     "Rakha Ahmad Sahl Fawwaz",
     "Ryan Virnanda",
     "Lifia Amalia Rismayanti",
+    "Hamdan",
 ];
 
 namelist = [...new Set(namelist)].sort();
