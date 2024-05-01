@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Cicilan Motor Beat Deluxe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        div.grid{
+            padding: 0.5rem !important;
+        }
+
+        a[role="button"] {
+            color:white;
+        }
+
+        article#status-bayar{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+
+        <section id="judul">
+            <hgroup>
+                <h1>Catatan Cicilan Motor</h1>
+                <h2>Honda Beat Deluxe</h2>
+            </hgroup>
+
+            <p>
+                Warna: <b>Hitam</b><br>
+                Tahun: <b>2021</b><br>
+                Nomor Plat: <b>B 6751 VVK</b>
+            </p>
+
+            <article id="status-bayar">
+                <header>Status Pembayaran</header>
+                Harga cicilan: <b>Rp 12.000.000</b><br>
+                Pembayaran terakhir:
+                <article id="bayar-terakhir"></article>
+                Sudah dibayar: <span id="telah-bayar"></span><br>
+                Sisa pembayaran: <b><span id="sisa-bayar"></span></b>
+                </table>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="cicilan">
+            <h2 style="text-align: center;">Detail Pembayaran Cicilan</h2>
+        </section>
+    </main>
+
+    <script src="/cicilan-beat-deluxe/data.js"></script>
+    <script>
+        $(document).ready(function(){
+            const totalCicil = 12000000
+            const dataTerakhir = data.slice(-1)[0]
+            const cicilTerakhir = dataTerakhir['nomor'];
+            const tanggalTerakhir = dataTerakhir['tanggal'];
+            const jumlahTerakhir = dataTerakhir['jumlah'];
+            const buktiTerakhir = dataTerakhir['bukti'];
+
+            let jumlah = 0
+            for (let item of data){
+                jumlah += item['jumlah']
+            }
+
+            $('#bayar-terakhir').append("<hgroup><p>Cicilan ke "+cicilTerakhir+"</p><h5>"+tanggalTerakhir+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(jumlahTerakhir)+"</p><br><a target='_blank' href='"+buktiTerakhir+"' role='button' >Bukti pembayaran</a></hgroup>");
+
+            $('#telah-bayar').append('Rp '+Intl.NumberFormat('id-ID').format(jumlah))
+            $('#sisa-bayar').append('Rp '+Intl.NumberFormat('id-ID').format(totalCicil-jumlah))
+
+            for(let i = 1; i < 6+1; i++){
+                $('#cicilan').append("<div class='grid' id='grid"+i+"'></div>");
+            }
+
+            for(let item of data.slice(0, 4)){
+                $('#grid1').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
+            };
+
+            for(let item of data.slice(4, 8)){
+                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+            };
+
+            for(let item of data.slice(8, 12)){
+                $('#grid3').append("<article>"+item['jumlah']+"</article>")
+            };
+
+            for(let item of data.slice(12, 16)){
+                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+            };
+
+            for(let item of data.slice(16, 20)){
+                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+            };
+
+            for(let item of data.slice(20, 24)){
+                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+            };
+            
+        });
+    </script>
+</body>
+</html>
