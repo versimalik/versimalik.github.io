@@ -1,0 +1,3 @@
+let namelist = ["Rafi Naufal","Husen","Muh Asriadi Rani","Alvaro Renzo Firmansjah","Raihan","Anton Leonard Sihombing","Muhamad Bayu Fadayan","Andika C","Imet Tarizal","A. Umar Faris","Anton Leonard Sihombing","Julda Prakasa Dewantara","Muhammad Nur Faiz","Laode Muhammad Fajrin,Cdp,C.Isp,Cnet,Cnlpbp","Majid","Aderaiesya Maharizkyani","Andrea Eugenia Kuswanda","Ziefanya Niara Qanita","Aurick","Khaysar Putra","Muhammad Adithya Ramadhan","Azkha Khairul Imam","Billy","Muhammad Habiby","Aysha Emily","Alfafa","Salma","Zehan Maqil","George Abhimanyu Aruan","Cirino Daanish","I Wayan Christiano Geraldo Emmanuel","Ammar Shiddiq","Svesten Jaska","Muhammad Zhafran Zaidan","Alifya Widya Ashfiya","M Ganim Dzaky Zulfadli"];
+
+namelist = [...new Set(namelist)].sort();

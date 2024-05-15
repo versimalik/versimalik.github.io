@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Hadir Mini Course: Roblox Batch 2 - Ahazen Academy</title>
+    <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://versimalik.com/alhazenacademy/mini-course/roblox-batch-2/daftar-hadir/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Daftar Hadir Mini Course: Roblox Batch 2 - Alhazen Academy">
+    <meta property="og:description" content="Form daftar hadir Mini Course: Roblox Batch 2">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="versimalik.com">
+    <meta property="twitter:url" content="https://versimalik.com/alhazenacademy/mini-course/roblox-batch-2/daftar-hadir/">
+    <meta name="twitter:title" content="Daftar Hadir Mini Course: Roblox Batch 2 - Alhazen Academy">
+    <meta property="og:title" content="Daftar Hadir Mini Course: Roblox Batch 2 - Alhazen Academy">
+    <meta name="twitter:description" content="Form daftar hadir Mini Course: Roblox Batch 2">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row vh-100">
+            <div class="col-11 col-md-8 col-lg-6 m-auto border rounded-3 p-4 shadow">
+                <hgroup class="text-center">
+                    <h1 class="lead">Selamat Datang di kelas<br>Mini Course: Roblox Batch 2</h1>
+                    <h3>By Alhazen Academy</h3>
+
+                    <hr>
+                </hgroup>
+                <p>Silakan pilih nama masing masing di bawah ini untuk melanjutkan ke daftar hadir:</p>
+                <input id="searchBox" type="text" class="form-control col-12 mb-2" placeholder="Cari disini">
+                <div class="overflow-y-auto" style="max-height: 300px;">
+                    <ul id="list" class="list-group"></ul>  
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/alhazenacademy/mini-course/roblox-batch-2/data.js"></script>
+    <script>
+        const date = new Date().toJSON().slice(0, 10);
+        for (let name of namelist) {
+            $("#list").append('<a class="list-group-item list-group-item-action " target="_blank" href=https://docs.google.com/forms/d/e/1FAIpQLSfAXvuWFrFysUQ7RsIIhFeoPjvLpR7LZe3TtvAaX6FLOrRgoA/viewform?usp=pp_url&entry.1174413733='+encodeURI(name)+'>'+name+'</a>');
+        }
+
+        $(document).ready(function(){
+            $('#searchBox').on('keyup', function(){
+                let value = $(this).val().toLowerCase();
+                $('#list a').filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+                }); 
+            });
+        })
+    </script>
+
+</body>
+</html>
