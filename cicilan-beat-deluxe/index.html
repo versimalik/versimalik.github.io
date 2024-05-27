@@ -84,23 +84,23 @@
             };
 
             for(let item of data.slice(4, 8)){
-                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+                $('#grid2').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
             };
 
             for(let item of data.slice(8, 12)){
-                $('#grid3').append("<article>"+item['jumlah']+"</article>")
+                $('#grid3').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
             };
 
             for(let item of data.slice(12, 16)){
-                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+                $('#grid2').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
             };
 
             for(let item of data.slice(16, 20)){
-                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+                $('#grid2').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
             };
 
             for(let item of data.slice(20, 24)){
-                $('#grid2').append("<article>"+item['jumlah']+"</article>")
+                $('#grid2').append("<article><hgroup><p>Cicilan ke "+item['nomor']+"</p><h5>"+item['tanggal']+"</h5><p>Dibayar: Rp "+Intl.NumberFormat('id-ID').format(item['jumlah'])+"</p><br><a target='_blank' href='"+item['bukti']+"' role='button' >Bukti pembayaran</a></hgroup></article>")
             };
             
         });
