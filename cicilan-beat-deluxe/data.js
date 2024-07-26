@@ -27,6 +27,13 @@ data = [
         "nomor" : 5,
         "tanggal" : "27 Mei 2024",
         "jumlah" : 500000,
-        "bukti" : "https://drive.google.com/file/d/14Ka1m85-_MagXsJ2ANrUOCQEnoU5Xslf/v"
+        "bukti" : "https://drive.google.com/file/d/14Ka1m85-_MagXsJ2ANrUOCQEnoU5Xslf/view"
+    },
+    {
+        "nomor" : 6,
+        "tanggal" : "25 Juni 2024",
+        "jumlah" : 500000,
+        "bukti" : "https://drive.google.com/file/d/1aU5V59wvq2tT3_QKP5dTM1AJ0PKGYtPx/view"
     }
+
 ];
