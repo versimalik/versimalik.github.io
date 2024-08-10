@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Hadir Mini Bootcamp: Frontend Batch 3 - Ahazen Academy</title>
+    <link href="/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://versimalik.com/alhazenacademy/mini-bootcamp/frontend-batch2/pengumpulan-tugas/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Form Pengumpulan Tugas Mini Bootcamp: Frontend Batch 3 - Alhazen Academy">
+        <meta property="og:description" content="Form pengumpulan tugas Mini Bootcamp: Frontend Batch 3">
+        <meta property="og:image" content="https://versimalik.com/alhazenacademy/images/banner-link-pengumpulan-tugas.png">
+    
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="versimalik.com">
+        <meta property="twitter:url" content="https://versimalik.com/alhazenacademy/mini-bootcamp/frontend-batch2/pengumpulan-tugas/">
+        <meta name="twitter:title" content="Form Pengumpulan Tugas Mini Bootcamp: Frontend Batch 3 - Alhazen Academy">
+        <meta property="og:title" content="Form Pengumpulan Tugas Mini Bootcamp: Frontend Batch 3 - Alhazen Academy">
+        <meta name="twitter:description" content="Form pengumpulan tugas Mini Bootcamp: Frontend Batch 3">
+        <meta name="twitter:image" content="https://versimalik.com/alhazenacademy/images/banner-link-pengumpulan-tugas.png">
+    
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row vh-100">
+            <div class="col-11 col-md-8 col-lg-6 m-auto border rounded-3 p-4 shadow">
+                <hgroup class="text-center">
+                    <h1 class="lead">Selamat Datang di kelas<br>Mini Bootcamp: Frontend Batch 3</h1>
+                    <h3>By Alhazen Academy</h3>
+
+                    <hr>
+                </hgroup>
+                <p>Silakan pilih nama masing masing di bawah ini untuk melanjutkan ke form pengumpulan tugas:</p>
+                <input id="searchBox" type="text" class="form-control col-12 mb-2" placeholder="Cari disini">
+                <div class="overflow-y-auto" style="max-height: 300px;">
+                    <ul id="list" class="list-group"></ul>  
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/alhazenacademy/mini-bootcamp/frontend-batch-3/data.js"></script>
+    <script>
+        const date = new Date().toJSON().slice(0, 10);
+        for (let name of namelist) {
+            $("#list").append('<a class="list-group-item list-group-item-action " target="_blank" href=https://docs.google.com/forms/d/e/1FAIpQLSfGMlRlBrkahXyMKQBBTfMuAMrYm5srRoZ02tW0DbmKFbHuUw/viewform?usp=pp_url&entry.1952578559='+encodeURI(name)+'>'+name+'</a>');
+        }
+
+        $(document).ready(function(){
+            $('#searchBox').on('keyup', function(){
+                let value = $(this).val().toLowerCase();
+                $('#list a').filter(function(){
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+                }); 
+            });
+        })
+    </script>
+
+</body>
+</html>
