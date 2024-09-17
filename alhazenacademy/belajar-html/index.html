@@ -6,22 +6,37 @@
     <title>Belajar HTML</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
-
-    <main class="container-fluid mt-5">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Menu</button>
-
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<body class="vh-100">
+    <nav class="navbar body-bg-secondary position-fixed">
+        <div class="container-fluid">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Daftar Pelajaran
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Pendahuluan.html" target="frameweb">Pendahuluan</a></li>
+                    <li><a class="dropdown-item" href="sumber/Tentang%20HTML.html" target="frameweb">Tentang HTML</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Elements.html" target="frameweb">HTML - Elements</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Attributes.html" target="frameweb">HTML - Attributes</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Text.html" target="frameweb">HTML - Text</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Entities.html" target="frameweb">HTML - Entities</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Computer%20Code.html" target="frameweb">HTML - Computer Code</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Images.html" target="frameweb">HTML - Images</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Table.html" target="frameweb">HTML - Table</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Form.html" target="frameweb">HTML - Form</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20ID%20&%20Class.html" target="frameweb">HTML - ID & Class</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Block%20&%20Inline.html" target="frameweb">HTML - Block & Inline</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Video.html" target="frameweb">HTML - Video</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Audio.html" target="frameweb">HTML - Audio</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Iframe.html" target="frameweb">HTML - Iframe</a></li>
+                    <li><a class="dropdown-item" href="sumber/HTML%20-%20Semantic.html" target="frameweb">HTML - Semantic</a></li>
+                </ul>
+              </div>
         </div>
-        <div class="offcanvas-body">
-            <p>Try scrolling the rest of the page to see this option in action.</p>
-        </div>
-        </div>
+    </nav>
+    <main class="container-fluid vh-100">
+        <iframe src="sumber/HTML%20-%20Pendahuluan.html" class="w-100 h-100 mt-5" name="frameweb"></iframe>
     </main>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
