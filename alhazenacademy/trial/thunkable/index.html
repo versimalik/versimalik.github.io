@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="csp-nonce" content="4ffb0294-3194-4c57-8bb8-d56a910bc74d">
+        
+        
+        <meta name="description" content="Trial Class Thunkable Translator App - Alhazen Academy">
+        
+        <title>Trial Class Thunkable Translator App - Alhazen Academy - HackMD</title>
+        <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+        <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+        
+<script nonce="4ffb0294-3194-4c57-8bb8-d56a910bc74d">
+  window.domain = 'hackmd.io'
+  window.urlpath = ''
+  window.debug = false || window.localStorage.getItem('HMD_DEBUG_FLAG') === 'true'
+  window.version = '1.3.0'
+  window.brand = 'HackMD'
+
+  
+
+  window.GOOGLE_DRIVE_API_KEY = 'AIzaSyAHmcP5gL_64ZafuAYOvJruFAIaYgHQaY4'
+  window.GOOGLE_DRIVE_CLIENT_ID = '65857506266-76uhhee8se8dgs1i0q8fhtj1prg0ar27.apps.googleusercontent.com'
+  window.DROPBOX_APP_KEY = 'rdoizrlnkuha23r'
+  
+  window.PLANTUML_SERVER = 'https://ptuml.hackmd.io'
+
+  window.ASSET_URL = 'https://assets.hackmd.io'
+
+  window.USER_CAN_CREATE_TEAM = true
+  window.USER_CAN_DELETE_ACCOUNT = true
+  window.USER_DELETE_ACCOUNT_VIA_EMAIL = true
+  window.PAYMENT_ENABLED = true
+  window.PAYMENT_PROMOTION_BANNER_ENABLED = false
+  window.GITHUB_SYNC_ENABLED = true
+  window.GITLAB_SYNC_ENABLED = false
+  window.GITLAB_SYNC_BASE_URL = ''
+  window.VCS_SYNC_MODE = 'github'
+  window.VCS_PROVIDER_NAME = 'GitHub'
+  window.FREE_TEAM_NUM = 20
+  window.FREE_TEAM_MEMBER_NUM = 3
+  window.FREE_PUBLIC_TEAM_NUM = 10
+  
+  window.ALLOW_ANONYMOUS = true
+  window.ALLOW_ANONYMOUS_EDIT = false
+  window.ALLOW_DOWNLOAD_PDF = true
+  window.PUBLIC_OVERVIEW = false
+  window.INTERNAL_PUBLIC_OVERVIEW = false
+  window.FULL_TEXT_SEARCH_ENABLE = false
+  window.ALGOLIA_SEARCH_ENABLE = true
+  window.MARKETING_EMAIL_ENABLE = true
+  window.OFFLINE_ACCESS = true
+  
+  
+  
+    window.WALLET_CONNECT_PROJECT_ID = '91d6fa182b725b5895a17a170a5878c1'
+  
+  window.API_MANAGEMENT_UI_ENABLE = true
+  window.FEEDBACK_UI_ENABLE = true
+  window.PUBLISH_ENABLE = true
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  window.TRASH_NOTE_DELETE_AFTER_FREE = 3
+  window.TRASH_NOTE_DELETE_AFTER_PAID = 30
+
+  
+
+  
+    window.IS_OWNER_UPGRADED = false
+  
+
+  
+    window.IMGUR_FALLBACK_CDN = 'https://imgur-backup.hackmd.io'
+  
+
+  
+    window.CLOUD_META_UI = true
+  
+  
+    window.CLOUD_META_API = true
+  
+  
+    window.CLOUD_META_MIGRATION = false
+  
+  
+    window.YAML_METADATA_ENABLED = false
+  
+
+  
+    window.NOTE_CAPACITY_LIMIT = 50
+  
+
+  
+    window.DOCUMENT_MAX_LENGTH = 100000
+  
+
+  
+    window.SOCIAL_NETWORK_FEATURES_ENABLED = true
+  
+
+  
+    window.PUBLISHMENT_MODERATION_ENABLED = true
+  
+
+  
+
+  window.SUGGEST_EDIT_ENABLED = true
+  
+
+  
+    window.REALTIME_CLIENT_WITH_CREDENTIALS = false
+  
+
+  
+
+  
+    window.DEBUG_DISCONNECT_SOCKET_WHEN_OFFLINE = false
+  
+
+  
+    window.PREFERRED_THEME = "dark"
+  
+
+  
+    window.PREFERRED_EDITOR_THEME = "monokai"
+  
+
+  
+    window.USE_NEW_LOGO = true
+  
+
+  
+    window.ITERABLE_ENABLED = true
+  
+  
+    window.ITERABLE_API_KEY = "c2c36a44c2614fb19aa3b46d660bbce2"
+  
+</script>
+
+
+        
+         <link href="https://assets.hackmd.io/build/font-vendor.ea8218d7d4f468b2c430.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/common-vendor.0a08ae20e14fefe857eb.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/slide-vendor.4f9ce891d775b406c282.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/slide.08db5926a633c59bc576.css" rel="stylesheet">
+
+        <!-- style-loader will insert style before this div in development -->
+        <!-- This prevents overwriting reveal.js theme css -->
+        <meta id="style-tag-insertion">
+
+        <!-- For reveal.js theme -->
+        
+        <link rel="stylesheet" href="https://assets.hackmd.io/build/reveal.js/dist/theme/defaultTheme.css" id="theme">
+        
+
+        <!-- For overwrite reveal.js -->
+        <link rel="stylesheet" href="https://hackmd.io/build/slide.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+<![endif]-->
+
+    </head>
+    <body>
+        <div class="container" data-hard-breaks="true">
+            <div class="reveal">
+                <div class="slides" style="display: none;"># Trial Class
+## &lt;img src=&#34;https://i.ibb.co.com/41z37Yt/logo.png&#34; height=&#34;100&#34;&gt; Alhazen Academy
+Thunkable - Translator App
+
+---
+
+## &lt;img src=&#34;https://i.ibb.co.com/yYyhtkL/pngegg-3.png&#34; height=&#34;100&#34;&gt;Google Translate
+
+Kita akan buat aplikasi seperti ini
+
+![Peek 2024-01-10 23-51](https://hackmd.io/_uploads/rkkVsr2_T.gif)
+
+---
+
+## &lt;img src=&#34;https://i.ibb.co.com/BK3kWL3/631204f1b661e15cdf54ded5.png&#34; height=&#34;100&#34;&gt; Thunkable
+
+Aplikasi untuk membuat *Mobile App* tanpa harus repot &#34;ngoding&#34;
+
+---
+
+## Login ke x.thunkable.com
+&lt;small&gt;Disarankan menggunakan akun gmail&lt;/small&gt;
+
+![image](https://hackmd.io/_uploads/r11YJI2Op.png)
+
+---
+
+## *Survey Questions*
+
+&lt;small&gt;Pertanyaan survey, jawab sesuai dengan kondisi&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/ryc_lLnu6.png&#34; width=&#34;60%&#34;&gt;
+
+---
+
+## Pilih *free account*
+
+&lt;img src=&#34;https://hackmd.io/_uploads/rkNlWLhOa.png&#34; width=&#34;70%&#34;&gt;
+
+---
+
+## Workspace
+
+![image](https://hackmd.io/_uploads/HJKFWUn_p.png)
+
+---
+
+## Ubah nama project
+
+&lt;img src=&#34;https://hackmd.io/_uploads/rJSTbL3OT.png&#34; width=&#34;80%&#34;&gt;
+
+---
+
+## *UI Components*
+
+&lt;small&gt;Kumpulan komponen ada di sebelah kiri&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/BJRjfL3Oa.png&#34; width=&#34;60%&#34;&gt;
+
+
+---
+
+## *Screen*
+
+&lt;small&gt;*Screen*, tempat menyusun komponen&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/rytRf83up.png&#34; width=&#34;50%&#34;&gt;
+
+---
+
+### *Screen / Component Properties*
+
+&lt;small&gt;*Properties*, untuk setting warna, ukuran, content dan lain lain&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/SJfzm82_T.png&#34; width=&#34;50%&#34;&gt;
+
+---
+
+## Tambahkan *Label*
+
+untuk judul aplikasi
+
+![Peek 2024-01-11 00-28](https://hackmd.io/_uploads/HJr078h_T.gif)
+
+---
+
+## Tambahkan *Text Input*
+
+![Peek 2024-01-11 00-30](https://hackmd.io/_uploads/H11E4L3_p.gif)
+
+---
+
+## Tambahkan *Label*
+
+untuk hasil *translate*
+
+![Peek 2024-01-11 00-32](https://hackmd.io/_uploads/rk1n4L2Oa.gif)
+
+---
+
+## Ubah nama komponen
+
+&lt;small&gt;Karena kita punya 2 komponen *Label*, agar tidak tertukar harus kita beri nama&lt;/small&gt;
+
+![Peek 2024-01-11 05-59](https://hackmd.io/_uploads/HkaKZs2u6.gif)
+
+---
+
+## *Logic* Translator App
+
+Alur aplikasinya adalah seperti ini:
+- User mengetikkan kalimat ke dalam *Text Input*
+- Sistem mengecek, apakah terjadi perubahan(ketikan di dalam *Text Input*)
+- Ketika terjadi perubahan pada *Text Input*, maka isi dari komponen *Label*, akan dirubah menjadi hasil terjemah dari Bahasa A ke Bahasa B
+
+---
+
+## Masuk ke mode *Blocks*
+
+&lt;small&gt;Mode *Blocks*, untuk menyusun logika aplikasi&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/BJDtncnuT.png&#34; width=&#34;50%&#34;&gt;
+
+---
+
+### Tambahkan *Event Block* dari *Text Input*
+
+&lt;small&gt;Logika dimulai dari pengecekan perubahan pada *Text Input*&lt;/small&gt;
+![Peek 2024-01-11 05-40](https://hackmd.io/_uploads/H1Pw65nOT.gif)
+
+---
+
+### Tambahkan *Function Block* dari *Label Output*
+
+&lt;small&gt;Ketika terjadi perubahan pada *Text Input*, maka rubahlan isi dari *Label*&lt;/small&gt;
+
+![Peek 2024-01-11 06-01](https://hackmd.io/_uploads/HJlC-ondp.gif)
+
+---
+
+### Thunkable memiliki fitur *Translate*
+
+&lt;small&gt;Kita akan menggunakan fitur *translate* bawaan dari Thunkable&lt;/small&gt;
+
+![Peek 2024-01-11 05-46](https://hackmd.io/_uploads/ryUuCcnO6.gif)
+
+---
+
+### *Translation of . . .*
+
+&lt;small&gt;Block ==Translation of== harus menjadi hasil akhir dari block ==Set Label Output&#39;s Text to==&lt;/small&gt;
+
+![Peek 2024-01-11 06-02](https://hackmd.io/_uploads/BJHVGinOa.gif)
+
+---
+
+### Text apa yang harus ==diterjemahkan==??
+
+&lt;small&gt;Text yang diisi oleh user pada *Text Input*, adalah text yang akan kita terjemahkan &lt;/small&gt;
+
+![Peek 2024-01-11 06-04](https://hackmd.io/_uploads/HJQtGjhu6.gif)
+
+---
+
+## Bahasa terjemahan
+
+&lt;small&gt;Ubah bahasa asal dan bahasa tujuan&lt;/small&gt;
+
+![Peek 2024-01-11 05-54](https://hackmd.io/_uploads/rJRMeihdT.gif)
+
+---
+
+### Mari kita coba
+
+![Peek 2024-01-11 06-06](https://hackmd.io/_uploads/B1TxXjn_T.gif)
+
+---
+
+### Sekarang kita main quiz
+
+Akses web quizizz.com</div>
+            </div>
+
+            <div id="meta" style="display: none;">{&#34;title&#34;:&#34;Trial Class Thunkable Translator App - Alhazen Academy&#34;,&#34;description&#34;:&#34;Trial Class Thunkable Translator App - Alhazen Academy&#34;,&#34;image&#34;:&#34;https://hackmd.io/_uploads/ByATXs2Op.png&#34;,&#34;contributors&#34;:&#34;[{\&#34;id\&#34;:\&#34;709dae86-6935-424e-9862-c09403f0a70c\&#34;,\&#34;add\&#34;:4747,\&#34;del\&#34;:889}]&#34;}</div>
+
+            
+        </div>
+
+        
+         <script src="https://assets.hackmd.io/build/font-vendor.eaa8dd82d4e056021b8c.js" defer="defer"></script><script src="https://assets.hackmd.io/build/common-vendor.04da453a2a68f624f4d4.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide-vendor.860ac3abbcf53e23341c.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide-common.fb0162a2ceea4f101052.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide.056b12ab2f22f37f33c3.js" defer="defer"></script>
+    </body>
+</html>
+
+

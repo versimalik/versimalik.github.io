@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Reveal CDN example</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/simple.css" id="theme">
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <div class="slides">
+
+            <section data-markdown>
+                <textarea data-template>
+                    ## Slide 1
+                    
+                    A paragraph with some text and a [link](https://hakim.se).
+                    ---
+
+                    ## Slide 2
+                    ---
+
+                    ## Slide 3
+                </textarea>
+              </section>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/markdown/markdown.js"></script>
+    <script>
+        Reveal.initialize({
+            plugins: [RevealMarkdown]
+        });
+    </script>
+
+</body>
+
+</html>
