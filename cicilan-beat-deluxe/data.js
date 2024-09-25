@@ -40,6 +40,18 @@ data = [
         "tanggal" : "26 Juli 2024",
         "jumlah" : 500000,
         "bukti" : "https://drive.google.com/file/d/1KfMa-iuFJ0O5l6ja8eG-sh_izdbyvv4Y/view"
+    },
+    {
+        "nomor" : 8,
+        "tanggal" : "23 Agustus 2024",
+        "jumlah" : 500000,
+        "bukti" : "https://drive.google.com/file/d/12eEYS5jvZaq3B6lFG_hn55mTCF15rTUz/view?usp=drive_link"
+    },
+    {
+        "nomor" : 9,
+        "tanggal" : "25 September 2024",
+        "jumlah" : 500000,
+        "bukti" : "https://drive.google.com/file/d/1aVcvNhZ4GUaIoPMBOUF193QpLmygmhtf/view?usp=drive_link"
     }
 
 ];
