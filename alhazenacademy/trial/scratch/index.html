@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="csp-nonce" content="736a32d2-d033-4614-8dfc-a174c84ec321">
+        
+        
+        <meta name="description" content="Scratch - Pokemon Go">
+        
+        <title>Trial Class Scratch Pokemon Go - Alhazen Academy - HackMD</title>
+        <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+        <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+        
+<script nonce="736a32d2-d033-4614-8dfc-a174c84ec321">
+  window.domain = 'hackmd.io'
+  window.urlpath = ''
+  window.debug = false || window.localStorage.getItem('HMD_DEBUG_FLAG') === 'true'
+  window.version = '1.3.0'
+  window.brand = 'HackMD'
+
+  
+
+  window.GOOGLE_DRIVE_API_KEY = 'AIzaSyAHmcP5gL_64ZafuAYOvJruFAIaYgHQaY4'
+  window.GOOGLE_DRIVE_CLIENT_ID = '65857506266-76uhhee8se8dgs1i0q8fhtj1prg0ar27.apps.googleusercontent.com'
+  window.DROPBOX_APP_KEY = 'rdoizrlnkuha23r'
+  
+  window.PLANTUML_SERVER = 'https://ptuml.hackmd.io'
+
+  window.ASSET_URL = 'https://assets.hackmd.io'
+
+  window.USER_CAN_CREATE_TEAM = true
+  window.USER_CAN_DELETE_ACCOUNT = true
+  window.USER_DELETE_ACCOUNT_VIA_EMAIL = true
+  window.PAYMENT_ENABLED = true
+  window.PAYMENT_PROMOTION_BANNER_ENABLED = false
+  window.GITHUB_SYNC_ENABLED = true
+  window.GITLAB_SYNC_ENABLED = false
+  window.GITLAB_SYNC_BASE_URL = ''
+  window.VCS_SYNC_MODE = 'github'
+  window.VCS_PROVIDER_NAME = 'GitHub'
+  window.FREE_TEAM_NUM = 20
+  window.FREE_TEAM_MEMBER_NUM = 3
+  window.FREE_PUBLIC_TEAM_NUM = 10
+  
+  window.ALLOW_ANONYMOUS = true
+  window.ALLOW_ANONYMOUS_EDIT = false
+  window.ALLOW_DOWNLOAD_PDF = true
+  window.PUBLIC_OVERVIEW = false
+  window.INTERNAL_PUBLIC_OVERVIEW = false
+  window.FULL_TEXT_SEARCH_ENABLE = false
+  window.ALGOLIA_SEARCH_ENABLE = true
+  window.MARKETING_EMAIL_ENABLE = true
+  window.OFFLINE_ACCESS = true
+  
+  
+  
+    window.WALLET_CONNECT_PROJECT_ID = '91d6fa182b725b5895a17a170a5878c1'
+  
+  window.API_MANAGEMENT_UI_ENABLE = true
+  window.FEEDBACK_UI_ENABLE = true
+  window.PUBLISH_ENABLE = true
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  window.TRASH_NOTE_DELETE_AFTER_FREE = 3
+  window.TRASH_NOTE_DELETE_AFTER_PAID = 30
+
+  
+
+  
+    window.IS_OWNER_UPGRADED = false
+  
+
+  
+    window.IMGUR_FALLBACK_CDN = 'https://imgur-backup.hackmd.io'
+  
+
+  
+    window.CLOUD_META_UI = true
+  
+  
+    window.CLOUD_META_API = true
+  
+  
+    window.CLOUD_META_MIGRATION = false
+  
+  
+    window.YAML_METADATA_ENABLED = false
+  
+
+  
+    window.NOTE_CAPACITY_LIMIT = 50
+  
+
+  
+    window.DOCUMENT_MAX_LENGTH = 100000
+  
+
+  
+    window.SOCIAL_NETWORK_FEATURES_ENABLED = true
+  
+
+  
+    window.PUBLISHMENT_MODERATION_ENABLED = true
+  
+
+  
+
+  window.SUGGEST_EDIT_ENABLED = true
+  
+
+  
+    window.REALTIME_CLIENT_WITH_CREDENTIALS = false
+  
+
+  
+
+  
+    window.DEBUG_DISCONNECT_SOCKET_WHEN_OFFLINE = false
+  
+
+  
+    window.PREFERRED_THEME = "dark"
+  
+
+  
+    window.PREFERRED_EDITOR_THEME = "monokai"
+  
+
+  
+    window.USE_NEW_LOGO = true
+  
+
+  
+    window.ITERABLE_ENABLED = true
+  
+  
+    window.ITERABLE_API_KEY = "c2c36a44c2614fb19aa3b46d660bbce2"
+  
+</script>
+
+
+        
+         <link href="https://assets.hackmd.io/build/font-vendor.ea8218d7d4f468b2c430.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/common-vendor.0a08ae20e14fefe857eb.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/slide-vendor.4f9ce891d775b406c282.css" rel="stylesheet"><link href="https://assets.hackmd.io/build/slide.08db5926a633c59bc576.css" rel="stylesheet">
+
+        <!-- style-loader will insert style before this div in development -->
+        <!-- This prevents overwriting reveal.js theme css -->
+        <meta id="style-tag-insertion">
+
+        <!-- For reveal.js theme -->
+        
+        <link rel="stylesheet" href="https://assets.hackmd.io/build/reveal.js/dist/theme/defaultTheme.css" id="theme">
+        
+
+        <!-- For overwrite reveal.js -->
+        <link rel="stylesheet" href="https://hackmd.io/build/slide.css">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+<![endif]-->
+
+    </head>
+    <body>
+        <div class="container" data-hard-breaks="true">
+            <div class="reveal">
+                <div class="slides" style="display: none;"># Trial Class
+## &lt;img src=&#34;https:///i.ibb.co.com/41z37Yt/logo.png&#34; height=&#34;100&#34;&gt; Alhazen Academy
+Scratch - Pokemon Go
+
+---
+
+## &lt;img src=&#34;https:///i.ibb.co.com//VNsXSkW/pikachu.png&#34; height=&#34;80&#34;&gt; Pokemon Go
+
+Kita akan buat animasi sederhana seperti ini
+
+&lt;img src=&#34;https:///i.ibb.co.com//jJXCQjR/Peek-2024-01-23-13-59.gif&#34; height=&#34;400&#34;&gt;
+
+---
+
+## &lt;img src=&#34;https:///i.ibb.co.com//HK699gK/scratch-logo.png&#34; height=&#34;100&#34;&gt; Scratch
+
+Aplikasi untuk membuat sebuah games dan simulasi pembelajaran tanpa harus repot &#34;ngoding&#34;
+
+---
+
+## Buka project scratch
+
+Akses link s.id/bikin-pokemon
+
+![image](https://hackmd.io/_uploads/BkdwUJaYT.png)
+
+---
+
+## Klik tombol ==See inside==
+
+![image](https://hackmd.io/_uploads/SJ9hU16KT.png)
+
+---
+
+## Kita sudah ada di ruang kerja
+
+![image](https://hackmd.io/_uploads/H1kUIJaYp.png)
+
+---
+
+## 1. Pilih sprite / karakter
+
+&lt;small&gt;Pilih sprite yang ingin diberikan gerakan&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/SyIWYkTF6.gif&#34; height=400&gt;
+
+---
+
+## 2. Tambahkan event block
+
+&lt;small&gt;Bendera hijau adalah tanda untuk memulai sesuatu&lt;/small&gt;
+
+![Peek 2024-01-23 14-24](https://hackmd.io/_uploads/BJlRYkTFa.gif)
+
+---
+
+## 3. Tambahkan motion block
+
+&lt;small&gt;Tambahkan ==move(10)==, agar sprite bergerak sejauh 10 pixel&lt;/small&gt;
+
+![Peek 2024-01-23 14-26](https://hackmd.io/_uploads/B1oQ5y6Ka.gif)
+
+---
+
+## 4. Klik bendera hijau
+
+&lt;small&gt;Setiap kali bendera diklik, dia akan bergerak&lt;/small&gt;
+
+![Peek 2024-01-23 14-27](https://hackmd.io/_uploads/ry3K9yTFp.gif)
+
+---
+
+## 5. Buat dia bergerak terus menerus
+
+&lt;small&gt;Block ==forever== artinya adalah selamanya&lt;/small&gt;
+
+![Peek 2024-01-23 14-29](https://hackmd.io/_uploads/Hk_1j1ptT.gif)
+
+---
+
+## 6. Coba lagi, klik bendera hijau
+
+&lt;small&gt;Ternyata dia lari keluar dari layar&lt;/small&gt;
+
+&lt;img src=&#34;https://hackmd.io/_uploads/BJrwQxaKa.gif&#34; height=&#34;350&#34;&gt; &lt;img src=&#34;https://hackmd.io/_uploads/HkUknyaF6.png&#34; height=&#34;350&#34;&gt;
+
+---
+
+## 7. Bikin dia bulak balik
+
+&lt;small&gt;Block ==if on edge, bounce== akan bikin dia balik lagi kalau sudah di tepi layar&lt;/small&gt;
+
+![Peek 2024-01-23 14-35](https://hackmd.io/_uploads/Byzd31aYp.gif)
+
+---
+
+## Sudah bisa bulak balik
+
+&lt;small&gt;Seperti biasa, tekan bendera hijau unutk melihar hasilnya&lt;/small&gt;
+
+![Peek 2024-01-23 14-37](https://hackmd.io/_uploads/BkpJpJTFa.gif)
+
+---
+
+## Tapi ada yang aneh
+
+&lt;small&gt;Kakinya tidak seperti orang lari&lt;/small&gt;
+
+![Peek 2024-01-23 14-37](https://hackmd.io/_uploads/BkpJpJTFa.gif)
+
+---
+
+## Sekarang perhatikan
+
+Ternyata sprite memiliki costume (gaya)
+
+&lt;img src=&#34;https://hackmd.io/_uploads/Hk1oaypFT.png&#34; height=&#34;300&#34;&gt;
+
+---
+
+## Costume bisa berubah ubah
+
+![Peek 2024-01-23 14-42](https://hackmd.io/_uploads/r1_MR1ptp.gif)
+
+---
+
+## 8. Ubah gaya sambil berlari
+
+&lt;small&gt;Tambah event block baru. Buat ubah costume secara terus menerus&lt;/small&gt;
+
+![Peek 2024-01-23 14-45](https://hackmd.io/_uploads/S1WTC1pta.gif)
+
+---
+
+## Dia sudah berlari dengan normal
+
+![Peek 2024-01-23 14-47](https://hackmd.io/_uploads/B12E1epY6.gif)
+
+---
+
+## Ngoding itu mudah kan???
+
+&lt;img src=&#34;https://media.giphy.com/media/l0MYtjhrNDLnlKf28/giphy.gif&#34; height=&#34;300&#34;&gt;
+
+---
+
+### Sekarang kita main quiz
+
+Akses web quizizz.com
+
+KLIK ==ENTER CODE==
+
+Masukkan kode . . .</div>
+            </div>
+
+            <div id="meta" style="display: none;">{&#34;contributors&#34;:&#34;[{\&#34;id\&#34;:\&#34;709dae86-6935-424e-9862-c09403f0a70c\&#34;,\&#34;add\&#34;:3300,\&#34;del\&#34;:160}]&#34;,&#34;image&#34;:&#34;https://hackmd.io/_uploads/BJDFZlTtp.png&#34;,&#34;title&#34;:&#34;Trial Class Scratch Pokemon Go - Alhazen Academy&#34;,&#34;description&#34;:&#34;Scratch - Pokemon Go&#34;}</div>
+
+            
+        </div>
+
+        
+         <script src="https://assets.hackmd.io/build/font-vendor.eaa8dd82d4e056021b8c.js" defer="defer"></script><script src="https://assets.hackmd.io/build/common-vendor.04da453a2a68f624f4d4.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide-vendor.860ac3abbcf53e23341c.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide-common.fb0162a2ceea4f101052.js" defer="defer"></script><script src="https://assets.hackmd.io/build/slide.2ec57397af0d609c67e7.js" defer="defer"></script>
+    </body>
+</html>
+
+

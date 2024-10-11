@@ -50,7 +50,7 @@ data = [
     {
         "nomor" : 9,
         "tanggal" : "25 September 2024",
-        "jumlah" : 500000,
+        "jumlah" : 500000, 
         "bukti" : "https://drive.google.com/file/d/1aVcvNhZ4GUaIoPMBOUF193QpLmygmhtf/view?usp=drive_link"
     }
 
