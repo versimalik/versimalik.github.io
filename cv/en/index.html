@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CV - Reza Malik</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.slate.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicon/site.webmanifest">
+        <style>
+            /* Custom Styles for ATS Friendly CV */
+            :root {
+                --pico-font-size: 16px;
+                --pico-line-height: 1.5;
+            }
+            
+            body {
+                padding-bottom: 3rem;
+            }
+
+            .container {
+                max-width: 800px;
+                padding-top: 1rem;
+            }
+
+            header {
+                border-bottom: 2px solid var(--pico-primary);
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+            }
+
+            h1 {
+                margin-bottom: 0.2rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .contact-info {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                font-size: 0.9rem;
+                color: var(--pico-muted-color);
+                margin-bottom: 1rem;
+            }
+
+            .contact-info a {
+                color: var(--pico-muted-color);
+                text-decoration: none;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                color: var(--pico-primary);
+                border-bottom: 1px solid var(--pico-muted-border-color);
+                padding-bottom: 0.2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+            }
+
+            .experience-item, .education-item {
+                margin-bottom: 1.5rem;
+            }
+
+            .job-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                flex-wrap: wrap;
+            }
+
+            .job-title {
+                font-weight: bold;
+                font-size: 1.1rem;
+                color: var(--pico-h1-color);
+            }
+
+            .company {
+                font-style: italic;
+            }
+
+            .date {
+                font-size: 0.85rem;
+                color: var(--pico-muted-color);
+                font-weight: 500;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+            }
+
+            .skill-tag {
+                background-color: var(--pico-card-background-color);
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                border: 1px solid var(--pico-muted-border-color);
+            }
+
+            /* Print specific styling */
+            @media print {
+                body { padding: 0; font-size: 11pt; }
+                .container { max-width: 100%; width: 100%; margin: 0; padding: 1.5cm; }
+                .no-print { display: none; }
+                a { text-decoration: none; color: black; }
+                header { border-bottom-color: #333; }
+                h2 { color: #000; border-bottom-color: #ccc; }
+                .grid { display: block; } /* Stack grid on print */
+            }
+        </style>
+    </head>
+    <body>
+        
+        <main class="container">
+            <header>
+                <hgroup>
+                  <h1>Reza Malik</h1>
+                  <p>Tech Educator | Tech Curriculum Specialist | Business Development</p>
+                </hgroup>
+                
+                <div class="contact-info">
+                    <span><i class="bi bi-envelope-fill"></i> malik@versimalik.com</span>
+                    <span><i class="bi bi-whatsapp"></i> <a href="https://wa.me/6285174151259">0851-7415-1259</a></span>
+                    <span><i class="bi bi-pin-map-fill"></i> Pinang, Tangerang City, Banten</span>
+                    <span><i class="bi bi-globe"></i> <a href="https://versimalik.com">versimalik.com</a></span>
+                    <span><i class="bi bi-linkedin"></i> <a href="https://linkedin.com/in/versimalik">LinkedIn</a></span>
+                </div>
+            </header>
+
+            <section>
+                <h2>Work Experience</h2>
+                
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Curriculum & Business Development</span>
+                        <span class="date">December 2023 - March 2026</span>
+                    </div>
+                    <div class="company">Alhazen Academy</div>
+                    <ul>
+                        <li>Developing curriculum according to client needs.</li>
+                        <li>Providing training for prospective coding instructors.</li>
+                        <li>Educating prospective clients on the importance of technology education.</li>
+                        <li>Developing new teaching methods (e.g., project-based learning or hybrid learning) to increase product value.</li>
+                        <li>Packaging curriculum into attractive products (e.g., holiday programs, intensive classes, extracurriculars) and determining competitive pricing strategies.</li>
+                        <li>Offering extracurricular and curriculum programs to external parties, such as formal schools, companies, or other institutions (B2B partnerships).</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Founder & Owner</span>
+                        <span class="date">2017 - Present</span>
+                    </div>
+                    <div class="company">
+                        Kitee Eat 
+                        <a href="https://instagram.com/kitee.eat" target="_blank" style="font-style: normal; font-size: 0.9em; margin-left: 5px;">
+                            <i class="bi bi-instagram"></i> @kitee.eat
+                        </a>
+                    </div>
+                    <ul>
+                        <li>Founded and managed operations for an F&B business (Kitee Eat).</li>
+                        <li>Designed digital marketing and branding strategies via social media to expand customer reach.</li>
+                        <li>Managed finances, inventory control, and innovative menu development.</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Coding Tutor & Business Development</span>
+                        <span class="date">August 2022 - December 2023</span>
+                    </div>
+                    <div class="company">Alhazen Academy</div>
+                    <ul>
+                        <li>Taught coding and developed learning curriculum.</li>
+                        <li>Responsible for business development and partnerships.</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">IT Staff</span>
+                        <span class="date">January 2018 - August 2022</span>
+                    </div>
+                    <div class="company">YP IPPI Petojo</div>
+                    <ul>
+                        <li>Managed IT infrastructure and networks within the foundation environment.</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Vocational Teacher (Software & Network Engineering)</span>
+                        <span class="date">January 2018 - August 2022</span>
+                    </div>
+                    <div class="company">SMK YP IPPI Petojo</div>
+                    <ul>
+                        <li>Taught vocational subjects in Software Engineering (RPL) and Computer Network Engineering (TKJ).</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Web Programming Instructor</span>
+                        <span class="date">April 2017 - November 2017</span>
+                    </div>
+                    <div class="company">PT. Bhakti Adikarya Buana Abadi (Babastudio)</div>
+                    <ul>
+                        <li>Guided course participants in learning web programming.</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Web Backend Developer (Magento)</span>
+                        <span class="date">October 2016 - April 2017</span>
+                    </div>
+                    <div class="company">PT. Inovasi Informasi Indonesia (Icube.inc)</div>
+                    <ul>
+                        <li>Developed e-commerce backend using the Magento platform.</li>
+                    </ul>
+                </article>
+
+                <article class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Entrepreneurial & Language Education Experience</span>
+                        <span class="date">2011 - 2016</span>
+                    </div>
+                    <ul>
+                        <li><strong>Entrepreneur (@oasecorner):</strong> F&B business at STT PLN cafeteria (2015-2016).</li>
+                        <li><strong>English Teacher:</strong> MTs Ar Rahmaniyah (2014-2015), The PELC (2011-2013), Kumon (2013).</li>
+                    </ul>
+                </article>
+            </section>
+
+            <div class="grid">
+                <div>
+                    <section>
+                        <h2>Education</h2>
+                        <div class="education-item">
+                            <div class="job-title">Bachelor's in Informatics Engineering</div>
+                            <div class="company">Universitas Muhammadiyah Tangerang</div>
+                            <div class="date">2011 - 2015</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Certifications</h2>
+                        <div class="education-item">
+                            <div class="job-title"><a href="https://drive.google.com/file/d/11SExj3KIx-S3R_ltBphudLYMcJiB2O3r/view?usp=sharing">Competency Assessor (KKNI Level II RPL)</a></div>
+                            <div class="company">BNSP</div>
+                            <div class="date">November 2021</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="job-title"><a href="https://drive.google.com/file/d/1P-bvFWoJ7vrvuUbDwaSSzuX69eNndmFK/view?usp=sharing">Advanced Network Administrator</a></div>
+                            <div class="company">BNSP (LSP Komputer)</div>
+                            <div class="date">June 2019</div>
+                        </div>
+                    </section>
+                </div>
+
+                <div>
+                    <section>
+                        <h2>Technical Skills</h2>
+                        <div class="skills-grid">
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">PHP</div>
+                            <div class="skill-tag">Django</div>
+                            <div class="skill-tag">MySQL</div>
+                            <div class="skill-tag">Linux System</div>
+                            <div class="skill-tag">Git / Version Control</div>
+                            <div class="skill-tag">Networking</div>
+                            <div class="skill-tag">English Language</div>
+                            <div class="skill-tag">Coding Teaching</div>
+                            <div class="skill-tag">Public Speaking</div>
+                            <div class="skill-tag">Curriculum Development</div>
+                            <div class="skill-tag">Business Development</div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Portfolio & Publications</h2>
+                        <div class="education-item">
+                            <div class="job-title">Personal Blog</div>
+                            <small>Built using Jekyll (Ruby Static Site Generator) at <a href="https://versimalik.com">versimalik.com</a></small>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </main>
+    </body>
+</html>

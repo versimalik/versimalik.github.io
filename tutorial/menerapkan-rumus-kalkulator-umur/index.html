@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRJPW44RCK"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-YRJPW44RCK")</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=/assets/favicon/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=/assets/favicon/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/assets/favicon/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/assets/favicon/site.webmanifest rel=manifest>
+    <title>Tutorial Kalkulator Umur - Menerapkan Rumus Kalkulator Umur | versimalik</title>
+<meta name="author" content="Malik">
+<meta property="article:author" content="https://versimalik.com/tentang-saya">
+<meta property="article:published_time" content="2025-01-01T15:00:00+07:00">
+<meta name="description" content="Pelajari cara menerapkan rumus kalkulator umur dalam aplikasi sederhana. Artikel ini membahas langkah-langkah untuk menghitung umur berdasarkan tanggal lahir yang dimasukkan oleh pengguna.">
+<meta property="og:url" content="https://versimalik.com/tutorial/menerapkan-rumus-kalkulator-umur/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tutorial Kalkulator Umur - Menerapkan Rumus Kalkulator Umur">
+<meta property="og:description" content="Pelajari cara menerapkan rumus kalkulator umur dalam aplikasi sederhana. Artikel ini membahas langkah-langkah untuk menghitung umur berdasarkan tanggal lahir yang dimasukkan oleh pengguna.">
+<meta property="og:image" content="https://versimalik.com/assets/images/membuat-rumus-kalkulator-umur.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="versimalik.com">
+<meta property="twitter:url" content="https://versimalik.com">
+<meta name="twitter:title" content="Versimalik - Cerita, Edukasi Teknologi & Bisnis">
+<meta name="twitter:description" content="Pelajari cara menerapkan rumus kalkulator umur dalam aplikasi sederhana. Artikel ini membahas langkah-langkah untuk menghitung umur berdasarkan tanggal lahir yang dimasukkan oleh pengguna.">
+<meta name="twitter:image" content="https://versimalik.com/assets/images/membuat-rumus-kalkulator-umur.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Tutorial Kalkulator Umur - Menerapkan Rumus Kalkulator Umur",
+  "description": "Pelajari cara menerapkan rumus kalkulator umur dalam aplikasi sederhana. Artikel ini membahas langkah-langkah untuk menghitung umur berdasarkan tanggal lahir yang dimasukkan oleh pengguna.",
+  "url": "https://versimalik.com/tutorial/menerapkan-rumus-kalkulator-umur/",
+  "author": {
+    "@type": "Person",
+    "name": "Malik",
+    "url": "https://versimalik.com/tentang-saya"
+  },
+  "datePublished": "2025-01-01T15:00:00+07:00",
+  "image": "https://versimalik.com/assets/images/membuat-rumus-kalkulator-umur.webp"
+}
+</script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.slate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai-sublime.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/TRSasasusu/highlightjs-highlight-lines.js@1.1.5/highlightjs-highlight-lines.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+<body>
+    <nav style="position: sticky; top: 0; background-color: var(--pico-background-color); padding: 0.5rem 1rem; border-bottom: 1px solid var(--pico-muted-border-color); z-index: 1000;">
+    <ul>
+        <li>
+            <a href="/">
+                <img id="logo-versimalik" src="/assets/favicon/android-chrome-512x512.png" alt="Logo versimalik">
+                <strong>versimalik</strong>
+            </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <details class="dropdown">
+                <summary>Jelajahi</summary>
+                <ul dir="rtl">
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/cerita">Cerita</a></li>
+                    <li><a href="/playground">Playground</a></li>
+                    <li><a href="/tutorial">Tutorial</a></li>
+                    <li><a href="/kitee.eat"><img src="/assets/images/kitee.eat/logo.png" style="width: 20px;" alt=""> Kitee Eat</a></li>
+                </ul>
+            </details>
+        </li>
+        <li><a href="/tentang-saya">Tentang Saya</a></li>
+    </ul>
+</nav>
+    <main class="container" style="max-width: 775px; padding: 1rem;">
+        <img src="/assets/images/membuat-rumus-kalkulator-umur.webp" alt="Ilustrasi seseorang sedang membuat rumus perhitungan kalkulator umur di papan tulis." style="display:block; width: 100%; height: auto; border-radius: 8px;">
+        <small style="display: block; margin-bottom: 1rem;"><em>Ilustrasi dibuat menggunakan Nano Banana Gemini</em></small>
+        <h1>Tutorial Kalkulator Umur - Menerapkan Rumus Kalkulator Umur</h1>
+        <small class="article_details">
+            <ul>
+                <li>Tutorial</li> |
+                <li>Oleh <a href="/tentang-saya">Malik</a></li> |
+                <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+
+
+
+
+1 Januari 2025</li>
+            </ul>
+        </small>
+        <small>
+            <ul class="tags-container">
+                
+                    <li class="tag">#pemrograman</li>
+                
+                    <li class="tag">#belajar</li>
+                
+                    <li class="tag">#dasar</li>
+                
+                    <li class="tag">#kalkulator-umur</li>
+                
+                    <li class="tag">#tutorial</li>
+                
+                    <li class="tag">#tahap-5</li>
+                
+            </ul>
+        </small>
+        <div style="margin-bottom: 1rem;"></div>
+        <hr>
+        <p>Bagian ini adalah yang utama, dimana kita akan mengetahui bagaimana cara mendapatkan perhitungan umur yang diinginkan</p>
+
+<h2 id="javascript-date-object">JavaScript Date Object</h2>
+
+<p>Setiap bahasa pemrograman memiliki sebuah objek bawaan untuk mengelola tanggal. Begitu juga JavaScript, sebagai salah satu bahasa pemrograman untuk website, dia juga memiliki objek tanggal yang bisa kita gunakan untuk mengelola tanggal.</p>
+
+<p>Mari kita coba terlebih dahulu bagaimana cara kerja dari <em>Date Object</em> di dalam JavaScript. Kita bisa melakukannya di dalam console pada fitur developer tools yang ada pada setiap browser</p>
+
+<p><img src="/assets/images/membuka-console-pada-browser.gif" alt="Membuka Console pada Browser" /></p>
+
+<p><small>Gambar: Membuka Console pada Browser</small></p>
+
+<p>Kita mulai dengan memanggil objek <code>Date()</code> di dalam console.</p>
+
+<pre><code class="language-console">&gt; Date()
+'Wed Jan 01 2025 10:00:00 GMT+0700 (Western Indonesia Time)'
+
+&gt; new Date()
+Wed Jan 01 2025 10:00:00 GMT+0700 (Western Indonesia Time)
+</code></pre>
+
+<p>Objek <code>Date()</code> ketika dipanggil akan menghasilkan keluaran berupa teks tanggal terkini dengan format lengkap seperti pada gambar. Jika ingin menghasilkan keluaran tanggal lain, maka kita harus membuat objek baru dengan kata kunci <code>new</code> diikuti dengan class <code>Date()</code> yang berisi teks tanggal dengan format <code>yyyy-mm-dd</code>.</p>
+
+<h2 id="menghitung-selisih-antara-dua-tanggal">Menghitung Selisih Antara Dua Tanggal</h2>
+
+<p>Jika kita ingin mengetahui umur saat ini, berarti kita harus menemukan selisih antara tanggal saat ini dengan tanggal lahir yang kita masukkan. Berikut adalah simulasinya</p>
+
+<pre><code class="language-javascript">const today = new Date(); // Tanggal saat ini
+const birthDate = new Date('1990-01-01'); // Tanggal lahir
+const age = today - birthDate; // Selisih dalam milidetik
+console.log(age);
+
+// Contoh output: 1104537600000 (contoh output)
+</code></pre>
+
+<p>Hasil keluaran dari selisih dua tanggal tersebut bernilai milidetik (<em>millisecond</em>). Nilai inilah yang akan kita ubah ke dalam bentuk tahun, bulan dan tanggal.</p>
+
+<h2 id="konversi-dari-milidetik-ke-tahun">Konversi dari Milidetik ke Tahun</h2>
+
+<p>Untuk bisa mendapatkan nilai tahun, kita harus memahami dulu perbandingan berikut ini:</p>
+
+<ul>
+  <li>1000 milidetik = 1 detik</li>
+  <li>60 detik = 1 menit</li>
+  <li>60 menit = 1 jam</li>
+  <li>24 jam = 1 hari</li>
+  <li>365.25 hari = 1 tahun</li>
+</ul>
+
+<p>Maka kita akan menemukan rumus untuk mengubah dari milidetik ke tahun sebagai berikut</p>
+
+<pre><code class="language-text">xtahun = xmilidetik / 1000 / 60 / 60 / 24 / 365.25
+</code></pre>
+
+<p>Misalkan kita ingin mengetahui umur tepatnya negara Indonesia semenjak diproklamirkannya kemerdekaan pada tanggal 17 Agustus 1945 (tulisan ini dibuat pada tanggal 1 Januari 2025). Maka hasil perhitungannya kan seperti ini</p>
+
+<pre><code class="language-javascript">const today = new Date('2025-01-01'); // Tanggal saat ini
+const birthDate = new Date('1945-08-17'); // Tanggal kemerdekaan Indonesia
+const age = today - birthDate; // Selisih dalam milidetik
+console.log(age);
+// Output: 2504908800000
+
+xyears = age / 1000 / 60 / 60 / 24 / 365.25;
+console.log(xyears);
+// Output: 79.37577002053388
+</code></pre>
+
+<p>Umur Indonesia saat tutorial ini dibuat (1 Januari 2025) adalah <code>79.37577002053388</code> tahun. Ini artinya tidak genap 79 tahun, melainkan 79 tahun dan <code>0.375xxx</code> tahun yang masih bisa kita dapatkan nilai bulan yang terdapat pada nilai tersebut.</p>
+
+<pre><code class="language-javascript">const today = new Date('2025-01-01'); // Tanggal saat ini
+const birthDate = new Date('1945-08-17'); // Tanggal kemerdekaan Indonesia
+const age = today - birthDate; // Selisih dalam milidetik
+console.log(age);
+// Output: 2504908800000
+
+xyears = age / 1000 / 60 / 60 / 24 / 365.25;
+console.log(xyears);
+// Output: 79.37577002053388
+
+// nilai sisa pecahan tahun dikali 12
+// karena 1 tahun = 12 bulan
+const xmonths = (xyears - Math.floor(xyears)) * 12;
+console.log(xmonths);
+// Output: 4.509240246406534
+</code></pre>
+
+<p class="callout info">Function <code>Math.floor()</code> digunakan untuk membulatkan angka pecahan ke bawah.</p>
+
+<p>Saat ini kita temukan bahwa umur Indonesia adalah 79 tahun dan <code>4.5154210362004505</code> bulan. Nilai bulan yang didapatkan tidak genap, sehingga kita bisa masih mendapatkan jumlah hari dari <code>0.515xxx</code> bulan.</p>
+
+<pre><code class="language-javascript">const today = new Date('2025-01-01'); // Tanggal saat ini
+const birthDate = new Date('1945-08-17'); // Tanggal kemerdekaan Indonesia
+const age = today - birthDate; // Selisih dalam milidetik
+console.log(age);
+// output: 2504908800000
+
+xyears = age / 1000 / 60 / 60 / 24 / 365.25;
+console.log(xyears);
+// output: 79.37577002053388
+
+// nilai sisa pecahan tahun dikali 12
+// karena 1 tahun = 12 bulan
+const xmonths = (xyears - Math.floor(xyears)) * 12;
+console.log(xmonths);
+// output: 4.509240246406534
+
+// nilai sisa pecahan bulan dikali 30.5
+// karena 1 bulan = 30.5 hari (rata-rata) dalam setahun
+
+const xdays = (xmonths - Math.floor(xmonths)) * 30.5;
+// output: 15.5318275153993
+</code></pre>
+
+<p>Sampai dengan tahap ini kita sudah mendapatkan nilai umur Indonesia adalah <strong>79 tahun 4 bulan dan 15 hari</strong>.</p>
+
+<h2 id="menerapkan-rumus-ke-dalam-aplikasi">Menerapkan Rumus ke dalam Aplikasi</h2>
+
+<p>Setelah kita sudah memahami bagaimana cara mendapatkan nilai umurnya, sekarang kita terapkan ke dalam aplikasi yang kalkulator umur.</p>
+
+<p>Pertama kita pastika elemen form memiliki atribut dan nilai berikut</p>
+
+<ul>
+  <li><code>method="post"</code></li>
+  <li><code>onsubmit="return caculateAge()"</code></li>
+</ul>
+
+<pre class="show-linenos" data-start="28"><code class="language-html">. . .
+&lt;article&gt;
+    &lt;form method="post" onsubmit="return calculateAge()"&gt;
+        &lt;label for="date"&gt;Tanggal Lahir
+            &lt;input id="date" type="date" name="date"&gt;
+            &lt;small id="help-text"&gt;&lt;/small&gt;
+        &lt;/label&gt;                
+        &lt;input type="submit" name="submit" value="Hitung"&gt;
+    &lt;/form&gt;
+    &lt;p id="result"&gt;&lt;/p&gt;
+&lt;/article&gt;
+. . .
+</code></pre>
+
+<p>Atribut <code>method</code> bernilai <code>post</code>, berfungsi agar nilai tanggal yang dimasukkan tidak tercatat sebagai parameter pada URL.</p>
+
+<p>Atribut <code>onsubmit</code> bernilai <code>return caculateAge()</code>, agar ketika menekan tombol <em>submit</em>, <em>form</em> akan memproses datanya ke dalam <em>function</em> JavasScript yang kita miliki. Dan <em>function</em> ini juga akan memiliki nilai balikan berupa <code>false</code>, sehingga <em>form</em> atau halaman website tidak memproses data dalam formulir ke tempat lain.</p>
+
+<pre><code class="language-javascript">&lt;script type="text/javascript"&gt;
+    
+    const root = document.querySelector("html");
+    const currentDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const darkModeToggle = document.getElementById("darkmode-toggle");
+
+    const inputDate = document.getElementById("date");
+    const result = document.getElementById("result");
+    const today = new Date();
+
+    // . . .
+
+    function calculateAge(){
+        const age = today - new Date(inputDate.value);
+        const xyears = age/1000/60/60/24/365.25;
+        const xmonths = (xyears - Math.floor(xyears))*12;
+        const xdays = (xmonths - Math.floor(xmonths))*30.5;
+
+        result.innerHTML = "Umur kamu adalah &lt;br&gt;";
+        result.innerHTML += Math.floor(xyears) + " tahun ";
+        result.innerHTML += Math.floor(xmonths) + " bulan ";
+        result.innerHTML += Math.floor(xdays) + " hari";
+
+        return false;
+    }
+
+&lt;/script&gt;
+</code></pre>
+
+<p>Yang dilakukan script tersebut adalah</p>
+<ol>
+  <li>Mengambil elemen input tanggal lahir</li>
+  <li>Mengambil elemen result</li>
+  <li>Membuat objek tanggal hari terkini</li>
+  <li>Menjalankan rumus penghitungan umur di dalam <code>function calculateAge()</code>. Dengan rincian sebagai berikut:
+    <ul>
+      <li>Menerapkan rumus penghitungan umur</li>
+      <li>Menampilkan nilai umur ke dalam elemen result</li>
+      <li>Menghasilkan nilai balikan berupa false, agar form tidak diproses ke tempat lain</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Sampai dengan tahap ini, aplikasi kalkulator umur sudah bisa berjalan dengan baik.</p>
+
+<p><img src="/assets/images/mencoba-kalkulator-umur.gif" alt="Tampilan Kalkulator Umur dengan Rumus" /></p>
+
+<p class="callout info">Kode lengkap dari tahap ini dapat dilihat <a href="https://gist.github.com/versimalik/8d14e8cf3c919646adbcbea9fc151af5">di sini</a>.</p>
+
+<div class="grid">
+    <a href="/tutorial/memahami-alur-kerja-aplikasi-kalkulator-umur/" role="button" class="outline">
+        <i class="bi bi-arrow-left-circle"></i> Tahap 4: Alur Kerja
+    </a>
+    <a href="/tutorial/menerapkan-validasi-form/" role="button">
+        <i class="bi bi-arrow-right-circle"></i> Tahap 6: Validasi Form
+    </a>
+</div>
+
+    </main>
+    <footer style="background-color: var(--pico-card-background-color); padding: 4rem 1rem 2rem; margin-top: 5rem; border-top: 1px solid var(--pico-muted-border-color);">
+    <div class="containers">
+        <div class="grid" style="text-align: left; align-items: start;">
+            
+            <div style="margin-bottom: 2rem;">
+                <h4 style="margin-bottom: 1rem; color: var(--pico-contrast);">versimalik.</h4>
+                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--pico-muted-color);">
+                    Tech Educator yang percaya pada kekuatan pemahaman fundamental. Di waktu luang, saya sibuk bereksperimen dengan resep kue dan roti.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h6 style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--pico-primary); margin-bottom: 1rem;">Direktori</h6>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;">
+                    <a href="/blog" class="secondary" style="text-decoration: none;">Blog</a>
+                    <a href="/cerita" class="secondary" style="text-decoration: none;">Cerita</a>
+                    <a href="/tutorial" class="secondary" style="text-decoration: none;">Tutorial</a>
+                    <a href="/playground" class="secondary" style="text-decoration: none;">Playground</a>
+                    <a href="/kitee.eat" class="secondary" style="text-decoration: none;">Kitee Eat</a>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h6 style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--pico-primary); margin-bottom: 1rem;">Kontak</h6>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;">
+                    <a href="https://linkedin.com/in/versimalik" class="secondary" style="text-decoration: none;"><i class="bi bi-linkedin" style="margin-right: 10px;"></i>LinkedIn</a>
+                    <a href="https://github.com/versimalik" class="secondary" style="text-decoration: none;"><i class="bi bi-github" style="margin-right: 10px;"></i>GitHub</a>
+                    <a href="https://youtube.com/@versimalik" class="secondary" style="text-decoration: none;"><i class="bi bi-youtube" style="margin-right: 10px;"></i>YouTube</a>
+                    <a href="https://instagram.com/versimalik" class="secondary" style="text-decoration: none;"><i class="bi bi-instagram" style="margin-right: 10px;"></i>Instagram Versimalik</a>
+                    <a href="https://instagram.com/kitee.eat" class="secondary" style="text-decoration: none;"><i class="bi bi-instagram" style="margin-right: 10px;"></i>Instagram Kitee Eat</a>
+                    <a href="https://open.spotify.com/user/31yh23mdnlwiwvffwi62lofql3gy" class="secondary" style="text-decoration: none;"><i class="bi bi-spotify" style="margin-right: 10px;"></i>Spotify</a>
+                    <a href="https://open.noice.id/user/09f796b3-56c3-49cb-8409-4c2add21683b" class="secondary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 5px;"><img src="/assets/images/icon/noice-icon.png" style="filter: grayscale(100%) opacity(0.7); height: 1.1rem; width: auto; vertical-align: middle; margin-bottom: 2px;">
+    <span>Noice</span>
+</a>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <h6 style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; color: var(--pico-primary); margin-bottom: 1rem;">Langganan</h6>
+                <p style="font-size: 0.8rem; color: var(--pico-muted-color); margin-bottom: 1rem;">Dapatkan catatan terbaru via email.</p>
+                <form id="subscribe-form" style="display: flex; gap: 5px;" onsubmit="handleSubscribe(event)">
+                    <fieldset role="group">
+                        <input type="email" id="subscriber-email" placeholder="Email Anda" required>
+                        <button type="submit">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+        <hr style="margin: 3rem 0 1.5rem; opacity: 0.1;">
+
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <small class="secondary">© 2026 versimalik. Dibuat dengan sesederhana mungkin.</small>
+            <small class="secondary" style="font-style: italic;">Fundamental over Hype</small>
+        </div>
+    </div>
+</footer>
+<script>
+function handleSubscribe(event) {
+    // 1. Mencegah halaman me-reload secara default saat tombol submit diklik
+    event.preventDefault();
+    
+    // 2. Mengambil nilai email dan menghapus spasi berlebih di awal/akhir
+    const emailInput = document.getElementById('subscriber-email');
+    const email = emailInput.value.trim();
+    
+    // 3. Validasi RegEx tingkat kedua (Berjaga-jaga jika browser lama tidak mendukung HTML5)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!email) {
+        alert("Alamat email tidak boleh kosong.");
+        return;
+    }
+    
+    if (!emailPattern.test(email)) {
+        alert("Silakan masukkan format alamat email yang valid (contoh: nama@email.com).");
+        return;
+    }
+    
+    // 4. Membangun URL Pre-filled Google Form
+    // entry.2077492465 adalah ID field email di form Anda
+    const googleFormBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeYI5y45ltTqFVmh_qelgGnOZ8LQYAgtEwXdyWJVn9TyVV0vg/viewform?usp=pp_url";
+    const entryId = "entry.2077492465";
+    
+    // encodeURIComponent memastikan karakter spesial di email (seperti + atau @) dibaca dengan benar oleh URL
+    const finalUrl = `${googleFormBaseUrl}&${entryId}=${encodeURIComponent(email)}`;
+    
+    // 5. Membuka Google Form di tab baru
+    window.open(finalUrl, '_blank');
+    
+    // 6. (Opsional) Mengosongkan form setelah pengguna dialihkan
+    emailInput.value = '';
+}
+</script>
+    <script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((codeBlock) => {
+        
+        // --- TAMBAHKAN INI: Menghapus baris kosong di awal/akhir ---
+        codeBlock.textContent = codeBlock.textContent.trim();
+
+        // 2. Jalankan highlight.js
+        hljs.highlightElement(codeBlock);
+
+        const parentPre = codeBlock.parentNode;
+
+        // 3. Logika Line Numbers
+        if (parentPre && parentPre.classList.contains('show-linenos')) {
+            const startFrom = parentPre.getAttribute('data-start') || 1;
+            
+            hljs.lineNumbersBlock(codeBlock, {
+                startFrom: parseInt(startFrom),
+                singleLine: true
+            });
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Maker</title>
+  <link rel="icon" href="/assets/images/kitee.eat/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.amber.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    /* ── Minimal overrides ── */
+    :root {
+      --wa: #25d366;
+    }
+
+    body { padding-bottom: 2rem; }
+
+    /* Two-column layout */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .app-grid { grid-template-columns: 1fr; } }
+
+    /* Product list scroll area */
+    .product-list {
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    /* Product card — minimal */
+    .product-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--pico-border-radius);
+      border: 1px solid var(--pico-muted-border-color);
+      margin-bottom: 0.4rem;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .product-card:hover { border-color: var(--pico-primary); }
+    .product-card.selected { border-color: var(--pico-primary); background: var(--pico-primary-background); }
+
+    .prod-name { font-weight: 600; font-size: 0.9rem; margin: 0; }
+    .prod-meta { font-size: 0.75rem; color: var(--pico-muted-color); margin: 0; }
+
+    /* Qty control inside table */
+    .qty-wrap { display: flex; align-items: center; gap: 0.3rem; }
+    .qty-wrap button { padding: 0.15rem 0.5rem; font-size: 0.85rem; margin: 0; }
+    .qty-num { width: 2rem; text-align: center; font-weight: 600; font-size: 0.9rem; }
+
+    /* Totals */
+    .totals-block { text-align: right; }
+    .totals-block p { margin: 0.2rem 0; font-size: 0.9rem; }
+    .grand { font-size: 1.1rem; font-weight: 700; color: var(--pico-primary); border-top: 2px solid var(--pico-primary); padding-top: 0.4rem; margin-top: 0.4rem; }
+
+    /* WA button color */
+    button.wa, a.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+    button.wa:hover { background: #128c4e; border-color: #128c4e; }
+
+    /* ── Overflow fix (root cause: article/card bisa melebar) ── */
+    /* Paksa semua elemen ikut lebar parent, tidak bisa melebar keluar */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    main.container { padding-inline: 1rem; max-width: 100%; overflow: hidden; }
+    .app-grid > article { min-width: 0; overflow: hidden; }
+
+    /* Product list: bungkus dengan overflow-x hidden */
+    .product-list { overflow-x: hidden; }
+
+    /* Product card: tidak boleh lebih lebar dari parent */
+    .product-card {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .prod-right { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .prod-price { font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+
+    /* Search row: stack vertikal */
+    .search-stack { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .search-stack input, .search-stack select { width: 100%; margin: 0; }
+
+    /* Action buttons: bisa wrap */
+    .action-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .action-buttons button { flex: 1 1 auto; min-width: 120px; margin: 0; }
+
+    /* Discount row */
+    .discount-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .discount-row input { flex: 1; min-width: 0; margin: 0; }
+    .discount-row select { width: auto; margin: 0; }
+
+    /* Jasa antar: single col di layar kecil */
+    @media (max-width: 480px) {
+      .grid.jasa-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 24px; height: 24px;
+      border: 3px solid var(--pico-muted-border-color);
+      border-top-color: var(--pico-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 1.5rem auto 0.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Printable invoice (hidden, captured by html2canvas) ── */
+    #invoice-print {
+      position: fixed; left: -9999px; top: 0;
+      width: 794px;
+      background: #fff;
+      font-family: sans-serif;
+      padding: 48px;
+      color: #111;
+    }
+    .inv-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+    .inv-head h2 { margin: 0; font-size: 1.8rem; color: #1a3a2a; }
+    .inv-head small { color: #888; }
+    .inv-badge { background: #ffbb00; color: #fff; padding: 0.4rem 1.2rem; border-radius: 6px; font-size: 1.4rem; letter-spacing: 0.05em; }
+    .inv-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; background: #f5f5f3; border-radius: 8px; margin-bottom: 24px; font-size: 0.82rem; }
+    .inv-info .lbl { color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .inv-info .val { font-weight: 600; }
+    .inv-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 16px; }
+    .inv-table thead tr { background: #1a3a2a; color: #fff; }
+    .inv-table th { padding: 8px 10px; text-align: left; font-size: 0.72rem; text-transform: uppercase; }
+    .inv-table td { padding: 8px 10px; border-bottom: 1px solid #e5e5e5; }
+    .inv-table tr:nth-child(even) td { background: #fafaf8; }
+    .inv-totals { text-align: right; font-size: 0.85rem; margin-bottom: 20px; }
+    .inv-totals p { margin: 4px 0; }
+    .inv-totals .grand { font-size: 1rem; font-weight: 700; color: #1a3a2a; border-top: 2px solid #1a3a2a; padding-top: 8px; margin-top: 6px; }
+    .inv-notes { font-size: 0.78rem; color: #666; border-top: 1px solid #e5e5e5; padding-top: 14px; }
+    .inv-footer { text-align: center; font-size: 0.7rem; color: #aaa; border-top: 1px dashed #e5e5e5; padding-top: 12px; margin-top: 20px; }
+    .inv-qris { display: flex; align-items: flex-start; gap: 20px; border: 1.5px solid #e5e5e5; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    .inv-qris img { width: 300px; border: 1px solid #eee; border-radius: 4px; }
+    .inv-qris-info { flex: 1; }
+    .inv-qris-info .q-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: #888; font-weight: 600; margin-bottom: 4px; }
+    .inv-qris-info .q-name { font-size: 1rem; font-weight: 700; color: #1a3a2a; margin-bottom: 4px; }
+    .inv-qris-info .q-sub { font-size: 0.78rem; color: #555; line-height: 1.5; }
+    .inv-qris-info .q-badge { display: inline-block; background: #ffbb00; color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 20px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<nav class="container-fluid" style="margin-bottom:0">
+  <ul><li><strong>📋 Invoice Maker</strong></li></ul>
+  <ul><li><small>Kitee Eat</small></li></ul>
+</nav>
+<hr style="margin:0" />
+
+<main class="container-fluid" style="margin-top:1.5rem">
+  <div class="app-grid">
+
+    <!-- ── Kiri: Pilih Produk ── -->
+    <article>
+      <header><strong>🛍️ Pilih Produk</strong></header>
+
+      <div class="search-stack">
+        <input type="search" id="searchInput" placeholder="Cari produk..." oninput="filterProducts()" />
+        <select id="categoryFilter" onchange="filterProducts()">
+          <option value="">Semua Kategori</option>
+        </select>
+      </div>
+
+      <div class="product-list" id="productList">
+        <div style="text-align:center">
+          <div class="spinner"></div>
+          <small>Memuat produk...</small>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Kanan: Invoice ── -->
+    <article>
+      <header><strong>📄 Invoice</strong></header>
+
+      <!-- Meta -->
+      <div class="grid">
+        <label>No. Invoice<input type="text" id="invNumber" placeholder="INV-001" /></label>
+        <label>Tanggal<input type="date" id="invDate" /></label>
+      </div>
+      <label>Nama Pelanggan<input type="text" id="invCustomer" placeholder="Nama pelanggan..." /></label>
+      <label>No. WA Pelanggan<input type="text" id="invWA" placeholder="628123456789" /></label>
+      <label>Catatan<input type="text" id="invNotes" placeholder="Catatan tambahan..." /></label>
+      <div class="grid jasa-grid">
+        <label>Jasa Antar
+          <select id="jasaAntar" onchange="toggleOngkir()">
+            <option value="">— Ambil Sendiri —</option>
+            <optgroup label="Instant / Same-day">
+              <option value="GoSend">GoSend</option>
+              <option value="GrabExpress">GrabExpress</option>
+              <option value="Paxel">Paxel</option>
+            </optgroup>
+            <optgroup label="Reguler">
+              <option value="JNE">JNE</option>
+              <option value="J&amp;T">J&amp;T</option>
+              <option value="SiCepat">SiCepat</option>
+              <option value="Anteraja">Anteraja</option>
+              <option value="Ninja Xpress">Ninja Xpress</option>
+              <option value="ShopeeExpress">ShopeeExpress</option>
+              <option value="Lion Parcel">Lion Parcel</option>
+              <option value="TIKI">TIKI</option>
+              <option value="Wahana">Wahana</option>
+              <option value="POS">POS</option>
+            </optgroup>
+            <optgroup label="Lainnya">
+              <option value="Kurir Toko">Kurir Toko</option>
+              <option value="Lainnya">Lainnya</option>
+            </optgroup>
+          </select>
+        </label>
+        <label id="ongkirLabel" style="display:none">Ongkir (Rp)
+          <input type="number" id="ongkirVal" min="0" value="0" placeholder="0" oninput="recalculate()" />
+        </label>
+      </div>
+
+      <!-- Empty state -->
+      <div id="invoiceEmpty" style="text-align:center;padding:2rem 0;color:var(--pico-muted-color)">
+        <p style="font-size:2rem;margin:0">🛒</p>
+        <small>Belum ada produk. Tambahkan dari panel kiri.</small>
+      </div>
+
+      <!-- Invoice content -->
+      <div id="invoiceContent" style="display:none">
+        <figure style="overflow-x:auto;margin-bottom:0.75rem">
+          <table>
+            <thead>
+              <tr>
+                <th>Produk</th>
+                <th style="text-align:center;white-space:nowrap">Qty</th>
+                <th style="text-align:right;white-space:nowrap">Harga</th>
+                <th style="text-align:right;white-space:nowrap">Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="invoiceBody"></tbody>
+          </table>
+        </figure>
+
+        <!-- Diskon -->
+        <div class="discount-row">
+          <input type="number" id="discountVal" min="0" value="0" placeholder="Diskon" oninput="recalculate()" />
+          <select id="discountType" onchange="recalculate()">
+            <option value="persen">%</option>
+            <option value="nominal">Rp</option>
+          </select>
+        </div>
+
+        <div class="totals-block" id="invoiceTotals"></div>
+      </div>
+
+      <hr />
+
+      <!-- Aksi -->
+      <div class="action-buttons">
+        <button class="secondary outline" onclick="clearInvoice()">🗑️ Kosongkan</button>
+        <button onclick="downloadPDF()">📥 PDF</button>
+        <button class="secondary" onclick="downloadImage()">🖼️ Gambar</button>
+        <button class="wa" onclick="kirimWA()">📲 Kirim WA</button>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- Hidden printable -->
+<div id="invoice-print"></div>
+
+<script>
+  let products = [];
+  let invoiceItems = [];
+  let qrisBase64 = '';
+
+  function preloadQris() {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth; c.height = img.naturalHeight;
+        c.getContext('2d').drawImage(img, 0, 0);
+        try { qrisBase64 = c.toDataURL('image/jpeg', 0.9); } catch(e) { qrisBase64 = ''; }
+        resolve();
+      };
+      img.onerror = () => { qrisBase64 = ''; resolve(); };
+      img.src = '/assets/images/kitee.eat/qris-kitee-eat.jpg';
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById('invDate').value = new Date().toISOString().slice(0, 10);
+    document.getElementById('invNumber').value = 'INV-' + Date.now().toString().slice(-5);
+    await preloadQris();
+    loadProducts();
+  });
+
+  async function loadProducts() {
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQNAcg00T3JaqMt8RJkrC6tDemDzUL2n1TtFAhecimzP8lQbD38kyUWCDsX47jMlSm05L8EZob_fa8i/pub?gid=0&single=true&output=csv';
+    try {
+      const res = await fetch(CSV_URL);
+      if (!res.ok) throw new Error('Gagal mengambil data');
+      products = parseCSV(await res.text());
+      // Filter out products where show is 'FALSE'
+      products = products.filter(p => p.show?.toUpperCase() !== 'FALSE');
+      populateCategories();
+      renderProducts(products);
+    } catch (e) {
+      document.getElementById('productList').innerHTML = `<p style="color:red">⚠️ ${e.message}</p>`;
+    }
+  }
+
+  function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toLowerCase());
+    return lines.slice(1).map(line => {
+      const vals = parseCSVLine(line);
+      const obj = {};
+      headers.forEach((h, i) => obj[h] = (vals[i]||'').replace(/"/g,'').trim());
+      return obj;
+    }).filter(p => p.name || p.id);
+  }
+
+  function parseCSVLine(line) {
+    const r = []; let cur = ''; let inQ = false;
+    for (const c of line) {
+      if (c === '"') inQ = !inQ;
+      else if (c === ',' && !inQ) { r.push(cur); cur = ''; }
+      else cur += c;
+    }
+    r.push(cur); return r;
+  }
+
+  function populateCategories() {
+    const cats = [...new Set(products.map(p => p.category).filter(Boolean))];
+    const sel = document.getElementById('categoryFilter');
+    cats.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+  }
+
+  function formatRp(val) {
+    const n = parseFloat(String(val).replace(/[^0-9.]/g,'')) || 0;
+    return 'Rp\u00a0' + n.toLocaleString('id-ID');
+  }
+
+  function getPrice(p) {
+    return parseFloat(String(p.price || p.originalprice || 0).replace(/[^0-9.]/g,'')) || 0;
+  }
+
+  function renderProducts(list) {
+    const el = document.getElementById('productList');
+    if (!list.length) { el.innerHTML = '<small>Produk tidak ditemukan.</small>'; return; }
+    el.innerHTML = list.map(p => `
+      <div class="product-card ${invoiceItems.find(i=>i.product.id===p.id)?'selected':''}" onclick="addProduct('${p.id}')">
+        <div style="flex:1;min-width:0;overflow:hidden;max-width:100%">
+          <p class="prod-name">${p.name}</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-shrink:0">
+          <small><strong>${formatRp(p.price||p.originalprice)}</strong></small>
+          <button style="padding:0.2rem 0.55rem;margin:0;font-size:0.85rem" onclick="event.stopPropagation();addProduct('${p.id}')">+</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function filterProducts() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const cat = document.getElementById('categoryFilter').value;
+    renderProducts(products.filter(p =>
+      (!q || p.name.toLowerCase().includes(q) || (p.desc||'').toLowerCase().includes(q)) &&
+      (!cat || p.category === cat)
+    ));
+  }
+
+  function addProduct(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    const existing = invoiceItems.find(i => i.product.id === id);
+    if (existing) existing.qty++; else invoiceItems.push({ product, qty: 1 });
+    renderInvoice(); filterProducts();
+  }
+
+  function changeQty(id, delta) {
+    const item = invoiceItems.find(i => i.product.id === id);
+    if (item) { item.qty = Math.max(1, item.qty + delta); renderInvoice(); }
+  }
+
+  function removeItem(id) {
+    invoiceItems = invoiceItems.filter(i => i.product.id !== id);
+    renderInvoice(); filterProducts();
+  }
+
+  function clearInvoice() {
+    invoiceItems = []; renderInvoice(); filterProducts();
+  }
+
+  function renderInvoice() {
+    document.getElementById('invoiceEmpty').style.display = invoiceItems.length ? 'none' : '';
+    document.getElementById('invoiceContent').style.display = invoiceItems.length ? '' : 'none';
+    if (!invoiceItems.length) return;
+
+    document.getElementById('invoiceBody').innerHTML = invoiceItems.map(item => {
+      const price = getPrice(item.product);
+      return `<tr>
+        <td>
+          <strong style="font-size:0.85rem">${item.product.name}</strong>
+        </td>
+        <td style="text-align:center">
+          <div class="qty-wrap">
+            <button onclick="changeQty('${item.product.id}',-1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button onclick="changeQty('${item.product.id}',1)">+</button>
+          </div>
+        </td>
+        <td style="text-align:right;font-size:0.82rem">${formatRp(price)}</td>
+        <td style="text-align:right;font-size:0.82rem"><strong>${formatRp(price*item.qty)}</strong></td>
+        <td><button class="secondary" style="padding:0.15rem 0.45rem;margin:0;font-size:0.8rem" onclick="removeItem('${item.product.id}')">✕</button></td>
+      </tr>`;
+    }).join('');
+
+    recalculate();
+  }
+
+  function recalculate() {
+    const subtotal = invoiceItems.reduce((s, i) => s + getPrice(i.product) * i.qty, 0);
+    const discVal = parseFloat(document.getElementById('discountVal').value) || 0;
+    const discType = document.getElementById('discountType').value;
+    const discAmount = discType === 'persen' ? subtotal * discVal / 100 : discVal;
+    const jasa   = document.getElementById('jasaAntar').value;
+    const ongkir = jasa ? (parseFloat(document.getElementById('ongkirVal').value) || 0) : 0;
+    const grand  = Math.max(0, subtotal - discAmount) + ongkir;
+    document.getElementById('invoiceTotals').innerHTML = `
+      <p>Subtotal: <strong>${formatRp(subtotal)}</strong></p>
+      ${discAmount > 0 ? `<p style="color:var(--pico-del-color)">Diskon: −${formatRp(discAmount)}</p>` : ''}
+      ${ongkir > 0 ? `<p>Ongkir (${jasa}): <strong>${formatRp(ongkir)}</strong></p>` : ''}
+      <p class="grand">TOTAL: ${formatRp(grand)}</p>`;
+  }
+
+  function toggleOngkir() {
+    const show = !!document.getElementById('jasaAntar').value;
+    document.getElementById('ongkirLabel').style.display = show ? '' : 'none';
+    if (!show) document.getElementById('ongkirVal').value = 0;
+    recalculate();
+  }
+
+  // ── Build printable invoice ──
+  function buildPrintInvoice() {
+    const num  = document.getElementById('invNumber').value || '-';
+    const date = document.getElementById('invDate').value;
+    const cust = document.getElementById('invCustomer').value || '-';
+    const notes = document.getElementById('invNotes').value;
+    const subtotal = invoiceItems.reduce((s, i) => s + getPrice(i.product) * i.qty, 0);
+    const discVal  = parseFloat(document.getElementById('discountVal').value) || 0;
+    const discType = document.getElementById('discountType').value;
+    const discAmount = discType === 'persen' ? subtotal * discVal / 100 : discVal;
+    const jasa   = document.getElementById('jasaAntar').value;
+    const ongkir = jasa ? (parseFloat(document.getElementById('ongkirVal').value) || 0) : 0;
+    const grand  = Math.max(0, subtotal - discAmount) + ongkir;
+    const dateFmt = date ? new Date(date).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'}) : '-';
+
+    document.getElementById('invoice-print').innerHTML = `
+      <div class="inv-head">
+        <div><h2>Kitee Eat</h2></div>
+        <div class="inv-badge">INVOICE</div>
+      </div>
+      <div class="inv-info">
+        <div><div class="lbl">No. Invoice</div><div class="val">${num}</div></div>
+        <div><div class="lbl">Tanggal</div><div class="val">${dateFmt}</div></div>
+        <div style="grid-column:1/-1"><div class="lbl">Pelanggan</div><div class="val">${cust}</div></div>
+      </div>
+      <table class="inv-table">
+        <thead><tr><th>Produk</th><th style="text-align:center">Qty</th><th style="text-align:right">Harga Satuan</th><th style="text-align:right">Total</th></tr></thead>
+        <tbody>${invoiceItems.map(item => {
+          const price = getPrice(item.product);
+          return `<tr>
+            <td>${item.product.name}</td>
+            <td style="text-align:center">${item.qty}</td>
+            <td style="text-align:right">${formatRp(price)}</td>
+            <td style="text-align:right;font-weight:600">${formatRp(price*item.qty)}</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>
+      <div class="inv-totals">
+        <p>Subtotal: <strong>${formatRp(subtotal)}</strong></p>
+        ${discAmount > 0 ? `<p>Diskon: <span style="color:red">−${formatRp(discAmount)}</span></p>` : ''}
+        ${ongkir > 0 ? `<p>Ongkir (${jasa}): <strong>${formatRp(ongkir)}</strong></p>` : ''}
+        <p class="grand">TOTAL: ${formatRp(grand)}</p>
+      </div>
+      ${notes ? `<div class="inv-notes"><strong>Catatan:</strong> ${notes}</div>` : ''}
+      <div class="inv-qris">
+        ${qrisBase64
+          ? `<img src="${qrisBase64}" alt="QRIS Kitee Eat" />`
+          : `<div style="width:130px;height:130px;border:1px solid #eee;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#aaa;flex-shrink:0">QRIS</div>`
+        }
+        <div class="inv-qris-info">
+          <div class="q-title">Tujuan Pembayaran</div>
+          <div class="q-name">Kitee Eat</div>
+          <div class="q-sub">
+            Mohon lakukan pembayaran sebelum pesanan diproses.<br/>
+            Scan QRIS di samping dan pastikan nominal sesuai total.<br/>
+            Kirimkan bukti pembayaran setelah transfer berhasil.
+          </div>
+          <div class="q-badge">QRIS RESMI KITEE EAT</div>
+        </div>
+      </div>
+      <div class="inv-footer">Terima kasih atas kepercayaan Anda. · Dokumen ini dibuat secara otomatis.</div>`;
+  }
+
+  async function captureInvoice() {
+    buildPrintInvoice();
+    await new Promise(r => setTimeout(r, 300));
+    return html2canvas(document.getElementById('invoice-print'), { scale: 2, useCORS: true, backgroundColor: '#fff' });
+  }
+
+  async function downloadPDF() {
+    if (!invoiceItems.length) { alert('Invoice masih kosong!'); return; }
+    const canvas = await captureInvoice();
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    const pageW  = pdf.internal.pageSize.getWidth();
+    const pageH  = pdf.internal.pageSize.getHeight();
+    const scale  = canvas.width / pageW;
+    const pageHpx = pageH * scale;
+
+    let offsetY = 0;
+    while (offsetY < canvas.height) {
+      const sliceH = Math.min(pageHpx, canvas.height - offsetY);
+      const slice  = document.createElement('canvas');
+      slice.width  = canvas.width;
+      slice.height = sliceH;
+      slice.getContext('2d').drawImage(canvas, 0, offsetY, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+
+      if (offsetY > 0) pdf.addPage();
+      pdf.addImage(slice.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, pageW, sliceH / scale);
+      offsetY += pageHpx;
+    }
+
+    pdf.save((document.getElementById('invNumber').value || 'invoice') + '.pdf');
+  }
+
+  async function downloadImage() {
+    if (!invoiceItems.length) { alert('Invoice masih kosong!'); return; }
+    const canvas = await captureInvoice();
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = (document.getElementById('invNumber').value || 'invoice') + '.png';
+    a.click();
+  }
+
+  async function kirimWA() {
+    if (!invoiceItems.length) { alert('Invoice masih kosong!'); return; }
+    const wa = document.getElementById('invWA').value.trim().replace(/\D/g,'');
+    const num = document.getElementById('invNumber').value || '-';
+    const cust = document.getElementById('invCustomer').value || '-';
+    const subtotal = invoiceItems.reduce((s, i) => s + getPrice(i.product) * i.qty, 0);
+    const discVal  = parseFloat(document.getElementById('discountVal').value) || 0;
+    const discType = document.getElementById('discountType').value;
+    const discAmount = discType === 'persen' ? subtotal * discVal / 100 : discVal;
+    const jasa   = document.getElementById('jasaAntar').value;
+    const ongkir = jasa ? (parseFloat(document.getElementById('ongkirVal').value) || 0) : 0;
+    const grand  = Math.max(0, subtotal - discAmount) + ongkir;
+    const notes = document.getElementById('invNotes').value;
+    const date  = document.getElementById('invDate').value;
+
+    const lines = invoiceItems.map(i => `  • ${i.product.name} x${i.qty} = ${formatRp(getPrice(i.product)*i.qty)}`).join('\n');
+    const msg = `📋 *INVOICE ${num}*\n`
+      + `👤 Pelanggan: *${cust}*\n`
+      + `📅 Tanggal: ${date ? new Date(date).toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}) : '-'}\n\n`
+      + `*Rincian Pesanan:*\n${lines}\n\n`
+      + (discAmount > 0 ? `Subtotal: ${formatRp(subtotal)}\nDiskon: −${formatRp(discAmount)}\n` : '')
+      + (ongkir > 0 ? `🛵 Ongkir (${jasa}): ${formatRp(ongkir)}\n` : '')
+      + `💰 *TOTAL: ${formatRp(grand)}*`
+      + (notes ? `\n\n📝 ${notes}` : '')
+      + `\n\n_Invoice dibuat secara otomatis._`;
+
+    const canvas = await captureInvoice();
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = num + '.png';
+    a.click();
+
+    const url = wa ? `https://wa.me/${wa}?text=${encodeURIComponent(msg)}` : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    setTimeout(() => window.open(url, '_blank'), 800);
+  }
+</script>
+</body>
+</html>

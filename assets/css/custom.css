@@ -1,0 +1,186 @@
+html{
+    scroll-behavior: smooth;
+    scroll-padding: 135px;
+}
+
+main.container {
+    /*max-width: 875px;*/
+    padding-top: 1rem;
+}
+/* Styling khusus untuk daftar artikel */
+.article-preview {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 12px;
+}
+
+h2.article-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+h2.article-title a {
+    text-decoration: none;
+    color: var(--pico-color);
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background-color: var(--pico-card-background-color);
+    border-radius: 8px;
+}
+
+.article_details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    /* font-size: 0.9rem; */
+    color: var(--pico-muted-color);
+}
+
+.text-muted {
+  color: var(--pico-muted-color)
+}
+
+.article_details ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.callout {
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border: 2px solid;
+    border-radius: 4px;
+}
+
+.info {
+    border-color: #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.info :first-child {
+    color: #3b82f6;
+}
+
+.warning {
+    border-color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.warning :first-child {
+    color: #f59e0b;
+}
+
+.danger {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.danger :first-child {
+    color: #ef4444;
+}
+
+.success {
+    border-color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.success :first-child {
+    color: #10b981;
+}
+
+.tags-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background-color: var(--pico-muted-border-color);
+    color: var(--pico-contrast-color);
+    font-weight: 500;
+}
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: var(--pico-muted-color);
+}
+
+pre:has(+ p small) {
+    margin-bottom: 0;
+}
+
+p:has(img):has(+ p small) {
+    margin-bottom: 0;
+}   
+
+/* Container Utama */
+pre code.hljs {
+    padding: 1em;
+    border-radius: var(--pico-border-radius);
+}
+
+/* Fix untuk Plugin Line Numbers agar tidak berantakan karena Pico CSS */
+table.hljs-ln {
+    width: auto !important;
+    border: none !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+.hljs-ln-line {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Gaya Nomor Baris */
+.hljs-ln-numbers {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: right;
+    color: #75715e; /* Warna abu-abu Monokai */
+    vertical-align: top;
+    padding-right: 15px !important;
+}
+
+/* Gaya Area Kode */
+.hljs-ln-code {
+    padding-left: 15px !important;
+    color: #f8f8f2; /* Warna teks Monokai */
+}
+
+img#logo-versimalik{
+    height: 30px;
+}
+
+/* Untuk Tombol Kecil */
+button.btn-sm,
+input[type="submit"].btn-sm,
+[role="button"].btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem; /* Sekitar 14px */
+}
+
+/* Untuk Tombol Besar */
+button.btn-lg,
+input[type="submit"].btn-lg,
+[role="button"].btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem; /* Sekitar 20px */
+}

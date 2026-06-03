@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YRJPW44RCK"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-YRJPW44RCK")</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitee Eat | Berbagi momen manis dengan Kitee Eat</title>
+    <link rel="icon" href="/assets/images/kitee.eat/logo.png" type="image/png">
+
+    <!-- SEO & Meta Tags -->
+
+    <meta name="description" content="Berbagi momen manis dengan aneka brownies, banana bread, dan susu homemade dari Kitee Eat. Pesan sekarang untuk orang tersayang atau nikmati  sendiri di rumah!">
+    <meta name="keywords" content="Kitee Eat, brownies, fudgy brownies, banana bread, susu kedelai, sari kacang hijau, kuliner, dessert, homemade">
+    <meta name="author" content="versimalik">
+    <link rel="canonical" href="https://versimalik.com/kitee.eat/"> <!-- Ganti dengan URL Anda yang sebenarnya -->
+
+    <!-- Open Graph (Facebook, WhatsApp, etc.) -->
+    <meta property="og:title" content="Kitee Eat">
+    <meta property="og:description" content="Berbagi momen manis dengan aneka brownies, banana bread, dan susu homemade dari Kitee Eat. Pesan sekarang untuk orang tersayang atau nikmati  sendiri di rumah!">
+    <meta property="og:image" content="https://versimalik.com/assets/images/kitee.eat/ramadan_og.webp"> <!-- Gambar 대표 untuk dibagikan -->
+    <meta property="og:url" content="https://versimalik.com/kitee.eat/"> <!-- Ganti dengan URL Anda yang sebenarnya -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kitee Eat">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kitee Eat">
+    <meta name="twitter:description" content="Berbagi momen manis dengan aneka brownies, banana bread, dan susu homemade dari Kitee Eat. Pesan sekarang untuk orang tersayang atau nikmati  sendiri di rumah!">
+    <meta name="twitter:image" content="https://versimalik.com/assets/images/kitee.eat/ramadan_og.webp">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.amber.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.1.0">
+</head>
+<body>
+    
+    <div class="container-fluid" style="border-bottom:1px solid var(--pico-muted-border-color); position:sticky; top:0; z-index: 1000; background-color: var(--pico-background-color); padding: 0.5rem 1rem;">
+        <nav class="container">
+            <ul>
+                <li><img src="/assets/images/kitee.eat/logo.png" alt="" style="height:30px;"> <strong>Kitee Eat</strong></li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="http://wa.me/6281293500570?text=Hai%20kitee%20eat%21%0AMau%20tanya%20dong" role="button" style=" background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; font-weight: 500; border: none; cursor: pointer;"><i class="bi bi-whatsapp"></i> Tanya Kitee</a>
+                </li>
+            </ul>
+        </nav>
+    </div>    
+
+    <header class="container">
+        <hgroup>
+            <h1>Menu Spesial Kami</h1>
+            <p>Berbagi momen manis dengan kitee eat.</p>
+            <p>Pre-order hingga H-1</p>
+        </hgroup>
+    </header>
+
+    <main class="container">
+        
+        <div class="filters">
+            <button class="" onclick="filterProducts('all')" id="btn-all">Semua</button>
+            <button class="outline" onclick="filterProducts('Special Edition')" id="btn-special"><i class="bi bi-gift"></i> Special Edition</button>
+            <button class="outline" onclick="filterProducts('Kitee Fudgy')" id="btn-fudgy">Kitee Fudgy</button>
+            <button class="outline" onclick="filterProducts('Kitee Crunchy')" id="btn-crunchy">Kitee Crunchy</button>
+            <button class="outline" onclick="filterProducts('Kitee Bread')" id="btn-bread">Kitee Bread</button>
+            <button class="outline" onclick="filterProducts('Kitee Milk')" id="btn-milk">Kitee Milk</button>
+        </div>
+
+        <div class="product-grid" id="product-list">
+        </div>
+
+    </main>
+
+    <!-- Elemen Keranjang Belanja (Shopping Cart) -->
+    <div id="cart-container" class="container" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 350px; max-width: 90%; background-color: white; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; padding: 0;">
+        <div style="padding: 1rem; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <hgroup>
+                <h5 style="margin: 0;">Pesanan Anda</h5>
+                <p><em>Harga belum termasuk ongkir</em></p>
+            </hgroup>            
+            <button onclick="minimizeCart()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--pico-primary); padding: 0; line-height: 1; min-height: 0;">&times;</button>
+        </div>
+        <div id="cart-items" style="padding: 1rem; max-height: 300px; overflow-y: auto;">
+            <!-- Item cart akan muncul di sini -->
+        </div>
+        <div id="cart-footer" style="padding: 1rem; border-top: 1px solid #eee; background-color: #f9f9f9;">
+            <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 1rem;">
+                <span>Total:</span>
+                <span id="cart-total">Rp 0</span>
+            </div>
+            <button id="whatsapp-btn" style="width: 100%;" onclick="openModal()">Pesan via WhatsApp <i class="bi bi-whatsapp"></i></button>
+        </div>
+    </div>
+    
+    <div id="cart-icon" style="display: none; position: fixed; bottom: 20px; right: 20px; background-color: var(--pico-primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 1001;">
+        <i class="bi bi-cart" style="font-size: 1.5rem;"></i>
+        <span id="cart-count-badge" style="position: absolute; top: -5px; right: -5px; background-color: #db4437; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; font-weight: bold;">0</span>
+    </div>
+
+        <!-- Modal Form Pemesanan -->
+
+        <dialog id="modal-order-form">
+          <article>
+            <header>
+              <a href="#close" aria-label="Close" class="close" onclick="closeModal()"></a>
+              Lengkapi Data Pemesan <i class="bi bi-info-square"></i>
+            </header>          
+
+            <form id="order-form">
+                <label for="customer-name">Nama Pemesan</label>
+                <input type="text" id="customer-name" name="customer-name" placeholder="Masukkan nama Anda" required>
+                <label for="customer-address">Alamat Pengiriman</label>
+                <textarea id="customer-address" name="customer-address" placeholder="Masukkan alamat lengkap pengiriman" required rows="3"></textarea>
+                
+                <label for="product-quantity" id="product-quantity-label" style="display: none;">Jumlah Pesanan</label>
+                <input type="number" id="product-quantity" name="product-quantity" value="1" min="1" style="display: none;">
+                <label for="delivery-date">Tanggal Pengantaran</label>
+                <input type="text" id="delivery-date" name="delivery-date" placeholder="Pilih tanggal" required aria-describedby="date-helper" readonly>
+                <small id="date-helper">
+                    <ul>
+                        <li>Batas pesanan untuk pengantaran besok (H+1) adalah pukul 15.00 WIB.</li>
+                        <li>Pesanan yang masuk setelahnya akan dijadwalkan untuk hari berikutnya (H+2).</li>
+                    </ul>
+                </small>
+            </form>
+
+            <hr>
+
+            <p style="margin:0;">
+                <strong>Melalui WhatsApp, kami akan:</strong>
+                <br><i class="bi bi-check-circle-fill" style="color:var(--pico-primary); vertical-align: -2px; margin-right: 4px;"></i>Konfirmasi ulang pesanan & alamat
+
+                <br><i class="bi bi-check-circle-fill" style="color:var(--pico-primary); vertical-align: -2px; margin-right: 4px;"></i>Memberikan total bayar (termasuk ongkir)
+
+                <br><i class="bi bi-check-circle-fill" style="color:var(--pico-primary); vertical-align: -2px; margin-right: 4px;"></i>Mengirimkan info pembayaran
+            </p>
+
+            <footer>
+                <button class="secondary outline" onclick="closeModal()">Batal</button>
+                <button onclick="generateWhatsAppLink()">Lanjut ke WhatsApp <i class="bi bi-whatsapp"></i></button>
+            </footer>
+
+          </article>
+        </dialog>
+
+    <!-- Info Popup Modal -->
+    <dialog id="info-popup-modal">
+        <article>
+            <header>
+                <a href="#close" aria-label="Close" class="close" id="info-popup-close" onclick="closeModal('info-popup-modal')"></a>
+                Informasi <i class="bi bi-info-square"></i>
+            </header>
+            <hgroup>
+                <h2 id="info-popup-title"></h2>
+                <img id="info-popup-image" src="" alt="Info Image" style="max-width: 100%; height: auto; margin-bottom: 1rem; display: none;">
+            </hgroup>
+            <section>
+                <p id="info-popup-content"></p>
+            </section>
+            <footer id="info-popup-footer">
+                <button class="secondary" onclick="closeModal('info-popup-modal')">Tutup</button>
+            </footer>
+        </article>
+    </dialog>
+
+
+    <footer style="background-color: var(--pico-card-background-color); padding: 4rem 1rem 2rem; margin-top: 5rem; border-top: 1px solid var(--pico-muted-border-color);">
+        <div class="container">
+            <!-- Grid System 4 Kolom -->
+            <div class="grid" style="text-align: left; align-items: start;">
+                
+                <!-- Kolom 1: Profil Brand -->
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--pico-contrast);">Kitee Eat.</h4>
+                    <p style="line-height: 1.6; color: var(--pico-muted-color);">
+                        Jadikan hari ini lebih istimewa. Berbagi momen manis dengan Kitee Eat.
+                    </p>
+                </div>
+
+                <!-- Kolom 2: Legalitas -->
+                <div style="margin-bottom: 2rem;">
+                    <h6 style="text-transform: uppercase; letter-spacing: 1px; color: var(--pico-primary); margin-bottom: 1rem;">Legalitas</h6>
+                    <div style="line-height: 1.5; color: var(--pico-muted-color);">
+                        <p style="margin-bottom: 0.75rem;">
+                            <i class="bi bi-patch-check" style="margin-right: 5px;"></i><strong>Brownies:</strong><br>
+                            P-IRT 3053671011732-31
+                        </p>
+                        <p style="margin-bottom: 0.75rem;">
+                            <i class="bi bi-patch-check" style="margin-right: 5px;"></i><strong>Brownies Kering:</strong><br>
+                            P-IRT 8053671021732-31
+                        </p>
+                        <p style="margin-bottom: 0.75rem;">
+                            <i class="bi bi-patch-check" style="margin-right: 5px;"></i><strong>Kue Basah:</strong><br>
+                            P-IRT 3053671031732-31
+                        </p>
+                        <p><i class="bi bi-file-earmark-check" style="margin-right: 5px;"></i>NIB Terdaftar</p>
+                    </div>
+                </div>
+
+                <!-- Kolom 3: Info Operasional -->
+                <div style="margin-bottom: 2rem;">
+                    <h6 style="text-transform: uppercase; letter-spacing: 1px; color: var(--pico-primary); margin-bottom: 1rem;">Operasional</h6>
+                    <div style="line-height: 1.6; color: var(--pico-muted-color);">
+                        <p style="margin-bottom: 0.5rem;"><i class="bi bi-geo-alt" style="margin-right: 8px;"></i>Tangerang, Banten</p>
+                        <p style="margin-bottom: 0.5rem;"><i class="bi bi-truck" style="margin-right: 8px;"></i>Senin - Sabtu</p>
+                        <p><i class="bi bi-clock" style="margin-right: 8px;"></i>Pre-order H-1</p>
+                    </div>
+                </div>
+
+                <!-- Kolom 4: Media Sosial -->
+                <div style="margin-bottom: 2rem;">
+                    <h6 style="text-transform: uppercase; letter-spacing: 1px; color: var(--pico-primary); margin-bottom: 1rem;">Ikuti Kami</h6>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <a href="https://instagram.com/kitee.eat" class="secondary" style="text-decoration: none;" target="_blank">
+                            <i class="bi bi-instagram" style="margin-right: 10px;"></i>Instagram
+                        </a>
+                        <a href="https://wa.me/6281293500570" class="secondary" style="text-decoration: none;" target="_blank">
+                            <i class="bi bi-whatsapp" style="margin-right: 10px;"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr style="margin: 3rem 0 1.5rem; opacity: 0.1;">
+
+            <!-- Baris Paling Bawah -->
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center;">
+                <div style="display: flex; flex-direction: column;">
+                    <small class="secondary">© 2026 <strong>Kitee Eat</strong>.</small>
+                    <small style="color: var(--pico-muted-color);">
+                        Bagian dari <a href="https://versimalik.com" class="secondary" style="text-decoration: underline;">versimalik.com</a>
+                    </small>
+                </div>
+                <small class="secondary" style="font-style: italic; opacity: 0.7;">Fundamental over Hype</small>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="assets/js/script.js?v=1.10.0"></script>
+</body>
+</html>
