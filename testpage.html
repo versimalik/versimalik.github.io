@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--color-text-primary); }
+  .mock { background: var(--color-background-tertiary); border-radius: var(--border-radius-lg); padding: 0; overflow: hidden; }
+
+  /* NAV */
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .nav-logo { display: flex; align-items: center; gap: 7px; font-weight: 500; font-size: 14px; color: var(--color-text-primary); }
+  .nav-logo-dot { width: 18px; height: 18px; border-radius: 4px; background: var(--color-background-info); display: flex; align-items: center; justify-content: center; }
+  .nav-logo-dot i { font-size: 11px; color: var(--color-text-info); }
+  .nav-links { display: flex; gap: 16px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--color-text-secondary); text-decoration: none; }
+  .nav-links .btn-nav { font-size: 12px; padding: 4px 12px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); color: var(--color-text-primary); text-decoration: none; }
+
+  /* MAIN */
+  .main { padding: 0 20px 32px; background: var(--color-background-primary); }
+
+  /* HERO */
+  .hero { padding: 32px 0 24px; display: flex; flex-direction: column; gap: 24px; }
+  .hero-eyebrow { font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; }
+  .hero-title { font-size: 36px; font-weight: 500; line-height: 1.1; color: var(--color-text-primary); margin-bottom: 10px; }
+  .hero-sub { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px; max-width: 340px; }
+  .hero-cta { display: inline-block; font-size: 13px; padding: 7px 16px; border: 0.5px solid var(--color-border-primary); border-radius: var(--border-radius-md); color: var(--color-text-primary); text-decoration: none; }
+
+  /* FEATURED POST — now a banner bawah hero */
+  .featured { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
+  .featured-img { width: 80px; height: 60px; border-radius: 6px; background: var(--color-background-tertiary); flex-shrink: 0; object-fit: cover; display: flex; align-items: center; justify-content: center; }
+  .featured-img i { font-size: 20px; color: var(--color-text-tertiary); }
+  .featured-meta { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .featured-badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 99px; background: var(--color-background-warning); color: var(--color-text-warning); margin-right: 6px; margin-bottom: 4px; }
+  .featured-title { font-size: 14px; font-weight: 500; line-height: 1.3; color: var(--color-text-primary); margin-bottom: 4px; }
+  .featured-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* SECTION HEADER */
+  .sec-hdr { display: flex; justify-content: space-between; align-items: baseline; padding: 24px 0 10px; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 14px; }
+  .sec-hdr h2 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+  .sec-hdr a { font-size: 12px; color: var(--color-text-tertiary); text-decoration: none; }
+
+  /* BLOG CARDS — 3 col */
+  .cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  .card-img { width: 100%; aspect-ratio: 5/4; background: var(--color-background-tertiary); display: flex; align-items: center; justify-content: center; }
+  .card-img i { font-size: 24px; color: var(--color-text-tertiary); }
+  .card-body { padding: 10px 12px 12px; }
+  .card-date { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 4px; }
+  .card-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; margin-bottom: 4px; }
+  .card-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* TUTORIAL CARDS — 2 col, 16/9 */
+  .cards2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card-img-wide { width: 100%; aspect-ratio: 16/9; background: var(--color-background-tertiary); display: flex; align-items: center; justify-content: center; }
+
+  /* CERITA — horizontal list, NO thumbnail */
+  .cerita-list { display: flex; flex-direction: column; gap: 0; }
+  .cerita-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .cerita-item:last-child { border-bottom: none; }
+  .cerita-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .cerita-date { font-size: 11px; color: var(--color-text-tertiary); }
+  .cerita-arrow { font-size: 14px; color: var(--color-text-tertiary); }
+
+  /* PLAYGROUND CARDS */
+  .playground-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .pg-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px; }
+  .pg-card.dashed { border-style: dashed; opacity: 0.5; }
+  .pg-icon { width: 32px; height: 32px; border-radius: var(--border-radius-md); background: var(--color-background-info); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .pg-icon i { font-size: 16px; color: var(--color-text-info); }
+  .pg-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .pg-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; margin-bottom: 10px; }
+  .pg-btn { font-size: 11px; padding: 4px 10px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); color: var(--color-text-primary); display: inline-block; }
+
+  /* FOOTER */
+  .footer { background: var(--color-background-secondary); border-top: 0.5px solid var(--color-border-tertiary); padding: 24px 20px 16px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1.3fr; gap: 16px; margin-bottom: 20px; }
+  .footer-col h5 { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .footer-col p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+  .footer-col a { display: block; font-size: 12px; color: var(--color-text-secondary); text-decoration: none; margin-bottom: 6px; }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 14px; border-top: 0.5px solid var(--color-border-tertiary); }
+  .footer-bottom span { font-size: 11px; color: var(--color-text-tertiary); }
+  .email-row { display: flex; gap: 6px; margin-top: 8px; }
+  .email-input { flex: 1; font-size: 12px; padding: 5px 8px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-primary); color: var(--color-text-primary); }
+  .email-btn { padding: 5px 10px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-primary); color: var(--color-text-secondary); font-size: 12px; }
+</style>
+</head>
+
+<div class="mock">
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-dot"><i class="ti ti-wave-sine" aria-hidden="true"></i></div>
+      versimalik
+    </div>
+    <div class="nav-links">
+      <a href="#">Jelajahi <i class="ti ti-chevron-down" style="font-size:11px"></i></a>
+      <a href="#" class="btn-nav">Tentang Saya</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <section class="hero">
+      <div>
+        <div class="hero-eyebrow">Versimalik • Fundamental Over Hype</div>
+        <h1 class="hero-title">Mulai Dari Dasar.</h1>
+        <p class="hero-sub">Catatan Malik tentang logika pemrograman, perjalanan karir, dan cerita di balik dapur.</p>
+        <a href="#" class="hero-cta">Tentang Saya</a>
+      </div>
+      <div class="featured">
+        <div class="featured-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+        <div>
+          <div><span class="featured-badge">Terbaru</span><span class="featured-meta">Blog • 4 Mei 2026</span></div>
+          <div class="featured-title">Dua Sisi Teknologi</div>
+          <div class="featured-desc">Teknologi bukan baik atau buruk. Yang menentukan adalah siapa yang memegangnya dan untuk apa menggunakannya.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-hdr"><h2>Blog</h2><a href="#">Lihat semua <i class="ti ti-arrow-right" style="font-size:11px"></i></a></div>
+      <div class="cards3">
+        <div class="card">
+          <div class="card-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="card-body">
+            <div class="card-date">2 Mei 2026</div>
+            <div class="card-title">Teknologi Tidak Lahir dari Iseng</div>
+            <div class="card-desc">Di balik setiap penemuan besar, selalu ada kebutuhan yang mendesak...</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="card-body">
+            <div class="card-date">1 Mei 2026</div>
+            <div class="card-title">Dari Batu ke Komputer Saku</div>
+            <div class="card-desc">Ini adalah cerita tentang manusia, bukan sekadar daftar penemuan...</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="card-body">
+            <div class="card-date">29 April 2026</div>
+            <div class="card-title">Teknologi Itu Bukan Gadget</div>
+            <div class="card-desc">Kita harus pahami dulu makna teknologi sebelum berbicara tentang AI...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-hdr"><h2>Tutorial</h2><a href="#">Lihat semua <i class="ti ti-arrow-right" style="font-size:11px"></i></a></div>
+      <div class="cards2">
+        <div class="card">
+          <div class="card-img-wide"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="card-body">
+            <div class="card-date">14 Januari 2026</div>
+            <div class="card-title">Tutorial Kalkulator Umur — Menerapkan Validasi Formulir</div>
+            <div class="card-desc">Pelajari cara menerapkan validasi formulir dalam JavaScript...</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img-wide"><i class="ti ti-photo" aria-hidden="true"></i></div>
+          <div class="card-body">
+            <div class="card-date">1 Januari 2025</div>
+            <div class="card-title">Tutorial Kalkulator Umur — Menerapkan Rumus Kalkulator Umur</div>
+            <div class="card-desc">Pelajari cara menerapkan rumus kalkulator umur yang akurat...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-hdr"><h2>Cerita</h2><a href="#">Lihat semua <i class="ti ti-arrow-right" style="font-size:11px"></i></a></div>
+      <div class="cerita-list">
+        <div class="cerita-item">
+          <div>
+            <div class="cerita-title">Puluribu</div>
+            <div class="cerita-date">11 Februari 2024</div>
+          </div>
+          <i class="ti ti-arrow-right cerita-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-hdr"><h2>Playground</h2><a href="#">Lihat semua <i class="ti ti-arrow-right" style="font-size:11px"></i></a></div>
+      <div class="playground-grid">
+        <div class="pg-card">
+          <div class="pg-icon"><i class="ti ti-calendar-stats" aria-hidden="true"></i></div>
+          <div class="pg-title">Kalkulator Umur</div>
+          <div class="pg-desc">Hitung umur kamu dalam tahun, bulan, dan hari.</div>
+          <span class="pg-btn">Coba aplikasi</span>
+        </div>
+        <div class="pg-card">
+          <div class="pg-icon"><i class="ti ti-gif" aria-hidden="true"></i></div>
+          <div class="pg-title">Search Random GIF</div>
+          <div class="pg-desc">Cari dan tampilkan GIF acak dari Giphy.</div>
+          <span class="pg-btn">Coba aplikasi</span>
+        </div>
+        <div class="pg-card dashed">
+          <div class="pg-title">Project berikutnya</div>
+          <div class="pg-desc">Sedang dibuat. Nantikan aplikasi eksperimental lainnya di sini.</div>
+          <span class="pg-btn" style="opacity:0.4">Segera</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p style="font-weight:500; margin-bottom:8px; font-size:14px;">versimalik.</p>
+        <p>Tech Educator yang percaya pada kekuatan pemahaman fundamental. Di waktu luang, saya sibuk bereksperimen dengan resep kue dan roti.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Direktori</h5>
+        <a href="#">Blog</a><a href="#">Cerita</a><a href="#">Tutorial</a><a href="#">Playground</a><a href="#">Kitee Eat</a>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <a href="#"><i class="ti ti-brand-linkedin" style="font-size:13px; margin-right:6px" aria-hidden="true"></i>LinkedIn</a>
+        <a href="#"><i class="ti ti-brand-github" style="font-size:13px; margin-right:6px" aria-hidden="true"></i>GitHub</a>
+        <a href="#"><i class="ti ti-brand-youtube" style="font-size:13px; margin-right:6px" aria-hidden="true"></i>YouTube</a>
+        <a href="#"><i class="ti ti-brand-instagram" style="font-size:13px; margin-right:6px" aria-hidden="true"></i>Instagram</a>
+        <a href="#"><i class="ti ti-brand-spotify" style="font-size:13px; margin-right:6px" aria-hidden="true"></i>Spotify</a>
+      </div>
+      <div class="footer-col">
+        <h5>Langganan</h5>
+        <p>Dapatkan catatan terbaru via email.</p>
+        <div class="email-row">
+          <input class="email-input" type="email" placeholder="Email Anda">
+          <button class="email-btn"><i class="ti ti-send" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 versimalik. Dibuat dengan sesederhana mungkin.</span>
+      <span style="font-style:italic">Fundamental over Hype</span>
+    </div>
+  </footer>
+</div>
+</html>
