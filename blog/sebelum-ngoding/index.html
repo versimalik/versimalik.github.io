@@ -266,14 +266,9 @@ Ratusan murid yang ada di kelas, sudah mengikuti tutorial dari nol sampai jadi a
 </footer>
 <script>
 function handleSubscribe(event) {
-    // 1. Mencegah halaman me-reload secara default saat tombol submit diklik
     event.preventDefault();
-    
-    // 2. Mengambil nilai email dan menghapus spasi berlebih di awal/akhir
     const emailInput = document.getElementById('subscriber-email');
     const email = emailInput.value.trim();
-    
-    // 3. Validasi RegEx tingkat kedua (Berjaga-jaga jika browser lama tidak mendukung HTML5)
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     if (!email) {
@@ -285,21 +280,38 @@ function handleSubscribe(event) {
         alert("Silakan masukkan format alamat email yang valid (contoh: nama@email.com).");
         return;
     }
-    
-    // 4. Membangun URL Pre-filled Google Form
-    // entry.2077492465 adalah ID field email di form Anda
     const googleFormBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeYI5y45ltTqFVmh_qelgGnOZ8LQYAgtEwXdyWJVn9TyVV0vg/viewform?usp=pp_url";
     const entryId = "entry.2077492465";
-    
-    // encodeURIComponent memastikan karakter spesial di email (seperti + atau @) dibaca dengan benar oleh URL
     const finalUrl = `${googleFormBaseUrl}&${entryId}=${encodeURIComponent(email)}`;
-    
-    // 5. Membuka Google Form di tab baru
     window.open(finalUrl, '_blank');
-    
-    // 6. (Opsional) Mengosongkan form setelah pengguna dialihkan
     emailInput.value = '';
 }
+</script>
+
+<script>
+    (function() {
+        function applySystemTheme() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const desiredTheme = isDarkMode ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', desiredTheme);
+            try {
+                sessionStorage.setItem('lastAutoTheme', desiredTheme);
+            } catch(e) {}
+        }
+        applySystemTheme();
+        const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+        if (darkModeMedia.addEventListener) {
+            darkModeMedia.addEventListener('change', (event) => {
+                applySystemTheme();
+            });
+        } 
+        else if (darkModeMedia.addListener) {
+            darkModeMedia.addListener((event) => {
+                applySystemTheme();
+            });
+        }
+        console.log('✅ Light/Dark mode otomatis aktif — tema mengikuti preferensi sistem/browser');
+    })();
 </script>
     <script>
 document.addEventListener('DOMContentLoaded', (event) => {
