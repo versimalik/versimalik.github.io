@@ -203,13 +203,16 @@
                 <p>Bergabung sekarang sebagai Angkatan Perintis. Dapatkan akses awal dan semua pembaruan modul berikutnya tanpa biaya tambahan.</p>
             </hgroup>
             
-            <form>
+            <form onsubmit="handleWaitlist(event)">
                 <fieldset role="group">
-                    <input type="email" name="email" placeholder="Alamat email Anda..." required autocomplete="email">
+                    <input type="email" name="email" placeholder="Alamat Gmail Anda..." required autocomplete="email">
                     <input type="submit" value="Amankan Kursi">
                 </fieldset>
-                <small>Hanya satu email. Sesaat sebelum Rilis #1 buka.</small>
+                <small>Gunakan alamat Gmail yang aktif. Akses kelas akan dikirimkan ke akun Google ini.<br> Hanya satu email. Sesaat sebelum Rilis #1 tiba.</small>
             </form>
+            <button class="outline" onclick="handleShare()" style="margin-top: 1rem;">
+                <i class="bi bi-share"></i> Bagikan Kelas Ini
+            </button>
         </section>
 
     </main>
@@ -321,6 +324,45 @@
             }
             console.log('✅ Light/Dark mode otomatis aktif — tema mengikuti preferensi sistem/browser');
         })();
+    </script>
+
+    <script>
+        async function handleWaitlist(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc3Ui4EV6OKbKfOUBAgaTg9eG4NtF6ikBGaCsi_nO1Ty3ra7Q/formResponse";
+
+            const body = new FormData();
+            body.append("entry.940650029", email);
+
+            await fetch(formUrl, {
+                method: "POST",
+                mode: "no-cors",
+                body: body
+            });
+
+            document.querySelector(".waitlist-section form").innerHTML = `
+                <p style="color: var(--pico-ins-color); margin: 0;">
+                    <i class="bi bi-check-square-fill"></i> Email kamu sudah masuk. Sampai ketemu di Rilis #1.
+                </p>
+            `;
+        }
+    </script>
+
+    <script>
+        async function handleShare() {
+            if (navigator.share) {
+                await navigator.share({
+                    title: 'Mulai Ngoding — Kelas Koding Versimalik',
+                    text: 'Kelas pemrograman C yang membangun fondasi logika mesin. Bukan bootcamp kilat, bukan untuk semua orang.',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link berhasil disalin!');
+            }
+        }
     </script>
 
 </body>
