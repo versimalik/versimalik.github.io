@@ -44,7 +44,6 @@
 </head>
 <body>
     <style>
-    /* Penyesuaian khusus untuk kesan misterius & eksklusif di Light Mode */
     :root {
         --pico-font-family-monospace: 'Fira Code', monospace;
         --pico-border-radius: 0.5rem;
@@ -96,22 +95,6 @@
         50% { opacity: 0; }
     }
 
-    article.release-map {
-        /*background-color: #fafafa;*/
-        border: 1px solid var(--pico-muted-border-color);
-        box-shadow: none;
-        margin-bottom: 4rem;
-    }
-
-    article.release-map header {
-        font-family: var(--pico-font-family-monospace);
-        font-size: 0.9rem;
-        color: var(--pico-muted-color);
-        border-bottom: 1px solid var(--pico-muted-border-color);
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
-    }
-
     .waitlist-section {
         border-top: 1px solid var(--pico-muted-border-color);
         padding-top: 3rem;
@@ -135,10 +118,13 @@
 
     <main class="container">
 
-        <section class="hero-section" style="margin-bottom: 4rem;">
+        <img style="height:280px; border-radius: .5rem" src="/assets/images/banner-mulai-ngoding-780-280.webp">
+
+        <section class="hero-section" style="margin-bottom: 2.5rem;">
             <hgroup>
                 <p><strong style="font-family: var(--pico-font-family-monospace); letter-spacing: -0.02em;">Mulai Ngoding</strong></p>
                 <p>Lanjutan Eksklusif Podcast <strong style="font-family: var(--pico-font-family-monospace); letter-spacing: -0.02em;">Sebelum Ngoding</strong></p>
+                <a href="#waitlist-section" role="button" class="btn-sm outline" style="margin-top: .8rem;">Amankan Kursi Saya <i class="bi bi-arrow-right"></i></a>
             </hgroup>
 
             <h1>Bukan Kelas Untuk Semua Orang<span class="cursor"></span></h1>
@@ -147,61 +133,44 @@
             </p>
         </section>
 
-        <section style="margin-bottom: 4rem;">
+        <section style="margin-bottom: 3rem;">
             <h2>Bukan Kelas Instan.</h2>
             <p>Ini bukan <em>bootcamp</em> kilat 3 hari yang menjanjikan Anda tentang keberhasilan dan memaksa menghafal banyak hal. Ini adalah ruang belajar bertahap yang ramah pemula. Hanya bagi Anda yang ingin paham fondasi.</p>
             <ul>
                 <li><strong>Mengenal Mesin:</strong> Kita mulai dengan memahami bagaimana komputer bekerja secara logika, sebelum Anda menulis satu baris kode pertama.</li>
                 <li><strong>Logika Pemrograman:</strong> Menguasai cara menyuruh komputer memproses data dan mengambil keputusan dengan cara yang masuk akal.</li>
-                <li><strong>Mengendalikan Memori:</strong> Membedah rahasia di balik program komputer dengan penjelasan yang sederhana.</li>
-                <li><strong>Proyek Nyata:</strong> Anda akan belajar membangun aplikasi Anda sendiri dari nol untuk membuktikan pemahaman Anda.</li>
             </ul>
         </section>
 
-        <article class="release-map">
-            <header>
-                > eksekusi_skema : "Rolling Release Map"
-            </header>
-            <p style="font-size: 0.95rem;">
-                Kelas ini tidak dirilis sekaligus, melainkan tumbuh secara organik. Kita akan melangkah perlahan. Anda yang bergabung sejak rilis pertama akan menjadi <strong>Angkatan Perintis</strong> yang otomatis mendapatkan seluruh pembaruan modul berikutnya, tanpa tambahan biaya, bahkan saat nilai investasi kelas ini terus meningkat.
-            </p>
-            <table style="font-family: var(--pico-font-family-monospace); font-size: 0.87rem;">
-                <tbody>
-                    <tr style="background-color: #ffffcc; font-weight: bold;"> <!-- highlight style -->
-                        <td>Rilis #1 → Persiapan Awal (Modul 0)</td>
-                        <td>[ Akses Perintis ]</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #2 → Mesin & Kode Pertama (Modul 1 & 2)</td>
-                        <td>+ Pembaruan Otomatis</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #3 → Logika & Data (Modul 3 & 4)</td>
-                        <td>+ Pembaruan Otomatis</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #4 → Fungsi & Array (Modul 5 & 6)</td>
-                        <td>+ Pembaruan Otomatis</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #5 → Menguasai Pointer (Modul 7)</td>
-                        <td>+ Pembaruan Otomatis</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #6 → Manajemen Memori (Modul 8 & 9)</td>
-                        <td>+ Pembaruan Otomatis</td>
-                    </tr>
-                    <tr>
-                        <td>Rilis #7 → Proyek Akhir (Modul 10)</td>
-                        <td>[ Edisi Lengkap ]</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            
-        </article>
+        <section class="learning-phase">
+            <div class="grid">
+                <article>
+                    <p style="color: var(--pico-muted-color);"><strong>Fase 1</strong></p>
+                    <p><strong>Kenali mesinnya</strong></p>
+                    <small style="color: var(--pico-muted-color);">Paham cara komputer berpikir, sebelum nulis satu baris kode.</small>
+                </article>
+                <article>
+                    <p style="color: var(--pico-muted-color);"><strong>Fase 2</strong></p>
+                    <p><strong>Logika dan data</strong></p>
+                    <small style="color: var(--pico-muted-color);">Menyusunkan logika untuk komputer dengan cara yang masuk akal.</small>
+                </article>
+                <article>
+                    <p style="color: var(--pico-muted-color);"><strong>Fase 3</strong></p>
+                    <p><strong>Bangun sesuatu sendiri</strong></p>
+                    <small style="color: var(--pico-muted-color);">Bangun proyek dari nol sebagai bukti kamu benar-benar paham</small>
+                </article>
+            </div>
 
-        <section style="margin-bottom: 4rem;">
+            <div style="border: 1px solid var(--pico-muted-border-color); border-radius: var(--pico-border-radius); padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                <i class="bi bi-arrow-repeat" style="font-size: 1.1rem; color: var(--pico-muted-color); margin-top: 2px; flex-shrink: 0;"></i>
+                <p style="font-size: 0.9rem; color: var(--pico-muted-color); line-height: 1.6; margin: 0;">
+                    <strong>Bergabung sekarang sebagai Angkatan Perintis</strong><br>Setiap materi baru yang rilis otomatis masuk ke akunmu, tanpa biaya tambahan, bahkan saat harga kelas ini terus naik.
+                </p>
+
+            </div>
+        </section>
+
+        <section style="margin-bottom: 2rem;">
           <div style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;">
             <blockquote style="border-left-color: var(--pico-color); font-style: normal; padding-left: 1.5rem;">
               <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Cerita di Balik Kelas Ini</h3>
@@ -222,22 +191,24 @@
                 Perkenalkan, saya Malik. Mari belajar dari dasar, dan sampai ketemu di kelas <strong style="font-family: var(--pico-font-family-monospace); letter-spacing: -0.02em;">Mulai Ngoding</strong>.
               </p>
               
-              <img src="/assets/images/karakter-pose-steve-jobs.webp" alt="Avatar Versimalik" style="width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--pico-muted-border-color); object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+              <img src="/assets/images/karakter-pose-steve-jobs.webp" alt="Avatar Versimalik" style="width: 120px; height: 120px; border-radius: 50%; border: 1px solid var(--pico-muted-border-color); object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+              <p style="margin-top:.8rem;">Malik<br><strong>Tech Educator</strong></p>
             </blockquote>
           </div>
         </section>
 
-        <section class="waitlist-section">
+        <section class="waitlist-section" id="waitlist-section">
             <hgroup>
                 <h2>Amankan Kursi di Baris Pertama</h2>
-                <p>Tinggalkan email Anda untuk masuk ke dalam <em>waitlist</em>. Kami hanya akan mengirimkan undangan eksklusif sesaat sebelum Rilis #1 diluncurkan ke publik.</p>
+                <p>Bergabung sekarang sebagai Angkatan Perintis. Dapatkan akses awal dan semua pembaruan modul berikutnya tanpa biaya tambahan.</p>
             </hgroup>
             
             <form>
                 <fieldset role="group">
                     <input type="email" name="email" placeholder="Alamat email Anda..." required autocomplete="email">
-                    <input type="submit" value="Beritahu Saya">
+                    <input type="submit" value="Amankan Kursi">
                 </fieldset>
+                <small>Hanya satu email. Sesaat sebelum Rilis #1 buka.</small>
             </form>
         </section>
 
@@ -274,9 +245,7 @@
                         <a href="https://instagram.com/versimalik" class="secondary" style="text-decoration: none;"><i class="bi bi-instagram" style="margin-right: 10px;"></i>Instagram Versimalik</a>
                         <a href="https://instagram.com/kitee.eat" class="secondary" style="text-decoration: none;"><i class="bi bi-instagram" style="margin-right: 10px;"></i>Instagram Kitee Eat</a>
                         <a href="https://open.spotify.com/user/31yh23mdnlwiwvffwi62lofql3gy" class="secondary" style="text-decoration: none;"><i class="bi bi-spotify" style="margin-right: 10px;"></i>Spotify</a>
-                        <a href="https://open.noice.id/user/09f796b3-56c3-49cb-8409-4c2add21683b" class="secondary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 5px;"><img src="/assets/images/icon/noice-icon.png" style="filter: grayscale(100%) opacity(0.7); height: 1.1rem; width: auto; vertical-align: middle; margin-bottom: 2px;">
-        <span>Noice</span>
-    </a>
+                        <a href="https://open.noice.id/user/09f796b3-56c3-49cb-8409-4c2add21683b" class="secondary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 5px;"><img src="/assets/images/icon/noice-icon.png" style="filter: grayscale(100%) opacity(0.7); height: 1.1rem; width: auto; vertical-align: middle; margin-bottom: 2px;"> <span>Noice</span></a>
                     </div>
                 </div>
 
@@ -305,14 +274,10 @@
     </footer>
     <script>
     function handleSubscribe(event) {
-        // 1. Mencegah halaman me-reload secara default saat tombol submit diklik
         event.preventDefault();
-        
-        // 2. Mengambil nilai email dan menghapus spasi berlebih di awal/akhir
+
         const emailInput = document.getElementById('subscriber-email');
         const email = emailInput.value.trim();
-        
-        // 3. Validasi RegEx tingkat kedua (Berjaga-jaga jika browser lama tidak mendukung HTML5)
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
         if (!email) {
@@ -324,21 +289,38 @@
             alert("Silakan masukkan format alamat email yang valid (contoh: nama@email.com).");
             return;
         }
-        
-        // 4. Membangun URL Pre-filled Google Form
-        // entry.2077492465 adalah ID field email di form Anda
         const googleFormBaseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeYI5y45ltTqFVmh_qelgGnOZ8LQYAgtEwXdyWJVn9TyVV0vg/viewform?usp=pp_url";
         const entryId = "entry.2077492465";
-        
-        // encodeURIComponent memastikan karakter spesial di email (seperti + atau @) dibaca dengan benar oleh URL
         const finalUrl = `${googleFormBaseUrl}&${entryId}=${encodeURIComponent(email)}`;
         
-        // 5. Membuka Google Form di tab baru
         window.open(finalUrl, '_blank');
-        
-        // 6. (Opsional) Mengosongkan form setelah pengguna dialihkan
         emailInput.value = '';
     }
+    </script>
+    <script>
+        (function() {
+            function applySystemTheme() {
+                const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const desiredTheme = isDarkMode ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', desiredTheme);
+                try {
+                    sessionStorage.setItem('lastAutoTheme', desiredTheme);
+                } catch(e) {}
+            }
+            applySystemTheme();
+            const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+            if (darkModeMedia.addEventListener) {
+                darkModeMedia.addEventListener('change', (event) => {
+                    applySystemTheme();
+                });
+            } 
+            else if (darkModeMedia.addListener) {
+                darkModeMedia.addListener((event) => {
+                    applySystemTheme();
+                });
+            }
+            console.log('✅ Light/Dark mode otomatis aktif — tema mengikuti preferensi sistem/browser');
+        })();
     </script>
 
 </body>
