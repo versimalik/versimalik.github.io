@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akses Perintis | Kelas Mulai Ngoding</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --pico-font-family-monospace: 'Fira Code', monospace;
+            --pico-border-radius: 0.5rem;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5vh 0;
+        }
+
+        .container {
+            max-width: 700px;
+        }
+
+        .hero-section {
+            text-align: left;
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--pico-muted-color);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background-color: var(--pico-h1-color);
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        article.release-map {
+            background-color: #fafafa;
+            border: 1px solid var(--pico-muted-border-color);
+            box-shadow: none;
+            margin-bottom: 4rem;
+        }
+
+        article.release-map header {
+            font-family: var(--pico-font-family-monospace);
+            font-size: 0.9rem;
+            color: var(--pico-muted-color);
+            border-bottom: 1px solid var(--pico-muted-border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .release-step {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed var(--pico-muted-border-color);
+            font-family: var(--pico-font-family-monospace);
+            font-size: 0.9rem;
+        }
+
+        .release-step:last-child {
+            border-bottom: none;
+            font-weight: 600;
+        }
+
+        .release-step span.access-status {
+            color: var(--pico-muted-color);
+            font-size: 0.8rem;
+        }
+
+        /* Highlight untuk rilis yang sedang dijual sekarang */
+        .release-step.highlight {
+            background-color: #f0f8ff; /* Warna biru sangat muda untuk menandakan aktif */
+            margin: 0 -1rem;
+            padding: 1rem;
+            border-radius: var(--pico-border-radius);
+            border-bottom: none;
+        }
+
+        .release-step.highlight span.access-status {
+            color: var(--pico-primary);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Styling Profil & CTA */
+        .authority-section {
+            margin-bottom: 4rem;
+        }
+
+        .cta-section {
+            border-top: 1px solid var(--pico-muted-border-color);
+            padding-top: 3rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            font-family: var(--pico-font-family-monospace);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            display: inline-block;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container" style="padding-top: 2rem; padding-bottom: 0;">
+        <nav>
+            <ul>
+                <li><strong style="font-family: var(--pico-font-family-monospace); letter-spacing: -0.02em;">Mulai Ngoding.</strong></li>
+            </ul>
+            <ul>
+                <li><small style="color: var(--pico-muted-color);">Lanjutan Eksklusif Podcast "Sebelum Ngoding" versimalik</small></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero-section" style="margin-bottom: 4rem;">
+            <h1>Bukan Kelas Untuk Semua Orang<span class="cursor"></span></h1>
+            <p class="subtitle">
+                Sebuah perjalanan memahami fondasi ilmu komputer dan logika pemrograman menggunakan bahasa C. Bukan sekadar menghafal sintaks, tapi memahami bagaimana mesin di balik layar benar-benar bekerja.
+            </p>
+        </section>
+
+        <section class="authority-section">
+            <blockquote style="border-left-color: var(--pico-color); font-style: normal; padding-left: 1.5rem;">
+                <p style="font-family: var(--pico-font-family-monospace); font-size: 0.85rem; color: var(--pico-muted-color); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                    // arsitektur_kurikulum
+                </p>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Mengapa Pendekatan Ini Berbeda?</h3>
+                <p style="font-size: 1rem; color: var(--pico-color); line-height: 1.6; margin-bottom: 1rem;">
+                    Banyak kelas <em>coding</em> fokus pada "cara membuat aplikasi instan", namun mengabaikan fondasi sains komputer. Kelas ini dirancang dengan filosofi teguh: <strong>Fundamentals-First</strong>.
+                </p>
+                <p style="font-size: 1rem; color: var(--pico-color); line-height: 1.6; margin-bottom: 0;">
+                    Disusun berdasarkan pengalaman nyata di garis depan pendidikan teknologi—mulai dari memimpin departemen vokasi Teknik Komputer & Jaringan (TKJ) dan Rekayasa Perangkat Lunak (RPL), hingga manajemen produk <em>EdTech</em>. Materi kompleks dikalibrasi ulang menjadi bahasa yang mudah dicerna, tanpa menghilangkan kedalaman teknisnya.
+                </p>
+            </blockquote>
+        </section>
+
+        <section style="margin-bottom: 4rem;">
+            <h2>Bukan Trend.</h2>
+            <p>Ini bukan <em>bootcamp</em> kilat 3 hari yang menjanjikan Anda tentang keberhasilan instan. Ini adalah ruang belajar bertahap yang ramah bagi pemula. Hanya bagi Anda yang menghargai proses memahami fondasi.</p>
+            <ul>
+                <li><strong>Mengenal Mesin:</strong> Kita mulai dengan memahami bagaimana komputer bekerja secara logika, sebelum Anda menulis satu baris kode pertama.</li>
+                <li><strong>Logika Pemrograman:</strong> Menguasai cara menyuruh komputer memproses data dan mengambil keputusan dengan cara yang masuk akal.</li>
+                <li><strong>Mengendalikan Memori:</strong> Membedah rahasia di balik program komputer dengan penjelasan yang sederhana.</li>
+                <li><strong>Proyek Nyata:</strong> Anda akan belajar membangun aplikasi Anda sendiri dari nol untuk membuktikan pemahaman Anda.</li>
+            </ul>
+        </section>
+
+        <article class="release-map">
+            <header>
+                > status_sistem : "Pendaftaran Perintis Dibuka"
+            </header>
+            <p style="font-size: 0.95rem;">
+                Kelas ini tumbuh secara organik. Saat ini, <strong>Rilis #1 (Modul 0) telah tersedia</strong>. <br><br>Dengan berinvestasi pada rilis perdana ini, Anda mengunci harga paling dasar dan <strong>otomatis mendapatkan seluruh modul berikutnya tanpa tambahan biaya sepeser pun</strong>, bahkan saat harga kelas ini disesuaikan ke depan.
+            </p>
+            
+            <div class="release-list">
+                <div class="release-step highlight">
+                    <span>Rilis #1 → Persiapan Awal (Modul 0)</span>
+                    <span class="access-status">[ TERSEDIA - HARGA DASAR ]</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #2 → Mesin & Kode Pertama (Modul 1 & 2)</span>
+                    <span class="access-status">+ Gratis untuk Perintis</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #3 → Logika & Data (Modul 3 & 4)</span>
+                    <span class="access-status">+ Gratis untuk Perintis</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #4 → Fungsi & Array (Modul 5 & 6)</span>
+                    <span class="access-status">+ Gratis untuk Perintis</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #5 → Menguasai Pointer (Modul 7)</span>
+                    <span class="access-status">+ Gratis untuk Perintis</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #6 → Manajemen Memori (Modul 8 & 9)</span>
+                    <span class="access-status">+ Gratis untuk Perintis</span>
+                </div>
+                <div class="release-step">
+                    <span>Rilis #7 → Proyek Akhir (Modul 10)</span>
+                    <span class="access-status">[ Harga Penuh ]</span>
+                </div>
+            </div>
+        </article>
+
+        <section class="cta-section">
+            <hgroup style="margin-bottom: 2rem;">
+                <h2>Amankan Kursi Perintis Anda</h2>
+                <p>Harga akan langsung disesuaikan segera setelah Rilis #2 diluncurkan.<br>Kunci akses seumur hidup Anda hari ini.</p>
+            </hgroup>
+            
+            <a href="#link-pembayaran-anda" role="button" class="btn-primary">
+                [ BELI AKSES RILIS #1 SEKARANG ]
+            </a>
+            
+            <p style="margin-top: 1rem;"><small style="color: var(--pico-muted-color);">Pembayaran aman. Akses instan ke Modul 0.</small></p>
+        </section>
+
+    </main>
+
+</body>
+</html>
