@@ -1,4 +1,178 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-07T23:39:28+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Dua Sisi Teknologi</title><link href="http://localhost:4000/blog/dua-sisi-teknologi/" rel="alternate" type="text/html" title="Dua Sisi Teknologi" /><published>2026-05-04T00:08:52+07:00</published><updated>2026-05-04T00:08:52+07:00</updated><id>http://localhost:4000/blog/dua-sisi-teknologi</id><content type="html" xml:base="http://localhost:4000/blog/dua-sisi-teknologi/"><![CDATA[<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https://open.spotify.com/episode/0lzI9ISaoFf3C5E7sDo8nx?si=XYmMRK-BTve7mUTuumdR6As">Spotify</a> atau <a href="https://open.noice.id/content/392b124c-73b9-43b5-aa90-174ce1b1652a">Noice</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-08T01:35:42+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Revolusi yang Tidak Pernah Berhenti</title><link href="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/" rel="alternate" type="text/html" title="Revolusi yang Tidak Pernah Berhenti" /><published>2026-06-08T00:01:34+07:00</published><updated>2026-06-08T00:01:34+07:00</updated><id>http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti</id><content type="html" xml:base="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/"><![CDATA[<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https">Spotify</a> atau <a href="https">Noice</a>.</p>
+
+<p>Orang sering bilang kita hidup di era Industri 4.0. Kalimat itu selalu muncul di mana-mana, di presentasi perusahaan, di kurikulum sekolah, di iklan kursus online. Tapi kalau kita tanya apa artinya secara konkret, kebanyakan orang akan kesulitan menjawab.</p>
+
+<p>Dan itu masalah yang cukup serius. Karena kalau kita tidak paham di era mana kita berdiri, kita tidak akan tahu skill apa yang perlu kita bangun untuk tetap relevan di dalamnya.</p>
+
+<h2 id="inti-dari-setiap-sejarah-industri">Inti dari Setiap Sejarah Industri</h2>
+
+<p>Sebelum masuk ke masing-masing era, ada satu cara untuk memahami seluruh perjalanan ini dengan lebih mudah, setiap revolusi industri, pada intinya, adalah tentang satu pertanyaan <em>“apa yang sedang diotomasi kali ini?”</em></p>
+
+<p>Di setiap era, ada sesuatu yang sebelumnya dikerjakan oleh manusia, yang kemudian dipindahkan ke mesin. Dan setiap perpindahan itu mengubah cara dunia bekerja secara fundamental.</p>
+
+<h2 id="revolusi-industri-10">Revolusi Industri 1.0</h2>
+
+<p>Abad ke-18. Inggris. Seseorang menemukan bahwa uap yang dipanaskan bisa menggerakkan piston, dan piston bisa menggerakkan mesin.</p>
+
+<p>Sebelum ini, semua produksi bergantung pada tenaga manusia dan hewan. Sebuah pabrik tekstil butuh puluhan penenun untuk bekerja sepanjang hari. Perjalanan antar kota butuh kuda dan dalam waktu tempuh berminggu-minggu.</p>
+
+<p>Mesin uap yang disempurnakan James Watt mengubah semua itu.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> Pabrik bisa memproduksi lebih banyak dengan lebih sedikit tenaga manusia. Kereta api mempersingkat perjalanan dari berminggu-minggu menjadi hanya beberapa hari saja.</p>
+
+<p>Yang diotomasi di era ini adalah tenaga otot manusia.</p>
+
+<h2 id="revolusi-industri-20">Revolusi Industri 2.0</h2>
+
+<p>Akhir abad ke-19 hingga awal abad ke-20. Kelistrikan mulai masuk ke pabrik-pabrik. Dan dari sana, lahirlah sesuatu yang mengubah cara produksi selamanya, yaitu lini perakitan (<em>Assembly Line</em>).</p>
+
+<p>Henry Ford adalah nama yang paling sering disebut di era ini. Idenya sederhana tapi sangat revolusioner. Daripada satu orang merakit satu produk dari awal sampai selesai, dia memecah prosesnya menjadi tugas-tugas kecil yang berulang, dan membiarkan setiap orang mengerjakan satu tugas yang sama secara terus-menerus.<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p>
+
+<p>Hasilnya, jumlah produksi sangat meningkat. Harga turun. Barang yang sebelumnya hanya bisa dimiliki kalangan atas kini bisa dijangkau oleh lebih banyak orang.</p>
+
+<p>Yang diotomasi di era ini adalah skala dan kecepatan produksi.</p>
+
+<h2 id="revolusi-industri-30">Revolusi Industri 3.0</h2>
+
+<p>Pertengahan abad ke-20. Komputer mulai masuk ke dunia industri.</p>
+
+<p>Ini adalah momen ketika mesin tidak hanya menggerakkan benda fisik, tapi sudah mulai mengolah informasi. Data produksi bisa dicatat dan dianalisis secara otomatis. Proses yang sebelumnya butuh perhitungan manual berjam-jam bisa diselesaikan dalam hitungan detik.<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></p>
+
+<p>Dari era ini lahirlah otomasi berbasis program, sebuah mesin yang bisa diberi instruksi dan mengikutinya tanpa perlu diawasi terus-menerus. Pabrik mulai menggunakan robot yang bisa diprogram. Sistem komputer mulai mengelola inventaris, keuangan, dan logistik.</p>
+
+<p>Yang diotomasi di era ini adalah pengolahan dan pengelolaan informasi.</p>
+
+<h2 id="revolusi-industri-40">Revolusi Industri 4.0</h2>
+
+<p>Inilah era di mana kita sedang berdiri sekarang.</p>
+
+<p>Yang membedakan era ini dari era-era sebelumnya bukan hanya kecanggihan teknologinya, tapi apa yang sedang diotomasi. Di era sebelumnya, mesin mengikuti instruksi yang diberikan manusia. Di era ini, mesin mulai bisa mengambil keputusan sendiri berdasarkan data yang ia punya.</p>
+
+<p>Tiga teknologi utama yang menggerakkan era ini adalah kecerdasan buatan (AI), Internet of Things (IoT), dan big data. Ketiganya bekerja bersama. Sensor-sensor yang terhubung ke internet mengumpulkan data dalam jumlah masif, data itu diproses dan dianalisis, lalu sistem AI mengambil keputusan berdasarkan analisis tersebut, yang seringkali lebih cepat dan lebih akurat dari yang bisa dilakukan manusia.<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup></p>
+
+<p>Yang diotomasi era ini adalah keputusan.</p>
+
+<h2 id="revolusi-industri-50">Revolusi Industri 5.0</h2>
+
+<p>Kalau 4.0 mengotomasi keputusan, pertanyaan logis berikutnya adalah, <em>lalu siapa yang memutuskan apakah keputusan mesin itu benar?</em></p>
+
+<p>Itulah titik dari era yang sedang terbentuk sekarang.</p>
+
+<p>Industri 5.0 bukan revolusi dalam arti teknis. Tidak ada teknologi tunggal yang tiba-tiba mengubah segalanya seperti mesin uap atau komputer. Ia lebih tepat disebut sebagai koreksi arah. Sebuah pertanyaan balik kepada 4.0: <em>kita sudah bisa mengotomasi segalanya, tapi untuk siapa?</em></p>
+
+<p>Konsep ini pertama kali diformalkan oleh Europe Comission dalam sebuah <em>white paper</em> di tahun 2021.<sup id="fnref:5"><a href="#fn:5" class="footnote" rel="footnote" role="doc-noteref">5</a></sup> Dokumen itu bukan respons terhadap teknologi baru, melainkan respons terhadap konsekuensi dari teknologi yang sudah ada.</p>
+
+<p>Tiga pilar yang diusung era ini:</p>
+
+<p><strong>Human-centric</strong>, Teknologi harus dirancang untuk melayani manusia, bukan sebaliknya. Di era 4.0, efisiensi adalah tujuan utama dan manusia seringkali menjadi variabel yang perlu diminimalkan. Di era 5.0, posisi itu dibalik. Manusia, dengan kreativitas, empati, dan kemampuan pertimbangannya, kembali ditempatkan di pusat sistem.</p>
+
+<p><strong>Sustainable</strong>, Pertumbuhan industri tidak bisa terus diukur hanya dengan angka produksi. Era ini menuntut industri untuk menghitung dampak lingkungan sebagai bagian dari sistem, bukan eksternalitas yang diabaikan. Konsep <em>circular economy</em> dan produksi karbon-netral bukan lagi sekadar opsi, melainkan tuntutan.</p>
+
+<p><strong>Resilient</strong>, Pandemi COVID-19 mengekspos kelemahan mendasar dari sistem produksi global yang terlalu dioptimasi untuk efisiensi tapi rapuh menghadapi gangguan. Era 5.0 merespons ini dengan membangun sistem yang bisa beradaptasi dan pulih, bukan hanya sistem yang berjalan cepat dalam kondisi normal.</p>
+
+<p>Yang berbeda dari transisi sebelumnya: ini bukan tentang mengotomasi sesuatu yang baru. Ini tentang menentukan <em>batas</em> dari otomasi itu sendiri.</p>
+
+<p>Jika di era-era sebelumnya kita bertanya <em>“apa lagi yang bisa diotomasi?”</em>, di era 5.0 kita mulai bertanya <em>“apa yang seharusnya tidak diotomasi?”</em></p>
+
+<p>Dan pertanyaan itu, pada akhirnya, hanya bisa dijawab oleh manusia.</p>
+
+<p><strong>Perbandingan keempat era</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Era</th>
+      <th>Periode</th>
+      <th>Teknologi Utama</th>
+      <th>Yang Diotomasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0</td>
+      <td>Abad ke-18</td>
+      <td>Mesin uap</td>
+      <td>Tenaga otot</td>
+    </tr>
+    <tr>
+      <td>2.0</td>
+      <td>Akhir abad ke-19</td>
+      <td>Listrik, lini produksi</td>
+      <td>Skala produksi</td>
+    </tr>
+    <tr>
+      <td>3.0</td>
+      <td>Pertengahan abad ke-20</td>
+      <td>Komputer, elektronik</td>
+      <td>Pengolahan informasi</td>
+    </tr>
+    <tr>
+      <td>4.0</td>
+      <td>Sekarang</td>
+      <td>AI, IoT, big data</td>
+      <td>Keputusan</td>
+    </tr>
+    <tr>
+      <td>5.0</td>
+      <td>Sedang terbentuk</td>
+      <td>Kolaborasi manusia-mesin, robotika kolaboratif</td>
+      <td>Batas dari otomasi itu sendiri</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="pertanyaan-yang-harus-dijawab-dengan-jujur">Pertanyaan yang harus dijawab dengan jujur</h2>
+
+<p>Semakin berkembangnya revolusi industri, apakah manusia semakin tidak relevan?</p>
+
+<p>Ini bukan pertanyaan yang berlebihan. Tapi jawabannya bergeser seiring perjalanan era-era itu sendiri.</p>
+
+<p>Di era 4.0, pertanyaan itu terasa sangat mengancam. Kalau mesin sudah bisa mengambil keputusan, lalu apa yang tersisa untuk manusia?</p>
+
+<p>Di era 5.0, pertanyaan yang sama memiliki jawaban yang lebih jelas, justru karena mesin sudah bisa mengambil keputusan, peran manusia menjadi lebih kritis, bukan lebih kecil.</p>
+
+<p>Yang tidak bisa diotomasi bukan soal kecepatan atau kapasitas. Ia adalah soal pertimbangan:</p>
+
+<ul>
+  <li>Kemampuan memahami konteks yang kompleks dan ambigu.</li>
+  <li>Kemampuan mengajukan pertanyaan yang tepat.</li>
+  <li>Kemampuan menilai apakah keputusan sebuah sistem sudah benar atau tidak.</li>
+  <li>Kemampuan memutuskan batas, sampai mana mesin boleh mengambil alih, dan di mana manusia harus tetap memegang kendali.</li>
+</ul>
+
+<p>Kemampuan terakhir itu bahkan tidak ada di era-era sebelumnya. Dulu kita hanya perlu mengoperasikan teknologi. Sekarang kita perlu mengarahkannya dan itu butuh pemahaman yang jauh lebih dalam dari sekadar cara memakainya.</p>
+
+<h2 id="membangun-fondasi-bukan-mengikuti-tren">Membangun Fondasi, Bukan Mengikuti Tren</h2>
+
+<p>Kamu tidak harus jadi insinyur atau programmer untuk bertahan dan berkembang di era ini.</p>
+
+<p>Tapi kamu harus paham cara kerjanya. Kamu harus bisa membaca apa yang sedang terjadi, menilai teknologi mana yang relevan untuk masalah yang ada, dan tidak mudah terbawa arus <em>hype</em> yang pasti akan berganti setiap bulan.</p>
+
+<p>Pemahaman itu tidak datang dengan mengikuti tren. Ia datang dari fondasi yang dibangun dengan benar.</p>
+
+<hr />
+
+<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https">Spotify</a> atau <a href="https">Noice</a>.</p>
+
+<p>Referensi</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Thomas Earnshaw, “<em>Steam Power and the Industrial Revolution</em>”, Thomas Earnshaw, <a href="https://thomas-earnshaw.com/blogs/the-earnshaw-odyssey/steam-power-and-the-industrial-revolution-how-the-steam-engine-changed-the-world">https://thomas-earnshaw.com/blogs/the-earnshaw-odyssey/steam-power-and-the-industrial-revolution-how-the-steam-engine-changed-the-world</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Morris Tanenbaum, “<em>Mass Production</em>”, Encyclopedia Britannica, <a href="https://www.britannica.com/technology/mass-production">https://www.britannica.com/technology/mass-production</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Klaus Schwab, “<em>The Fourth Industrial Revolution: what it means, how to respond</em>”, World Economic Forum, <a href="https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/">https://www.weforum.org/agenda/2016/01/the-fourth-industrial-revolution-what-it-means-and-how-to-respond/</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>“<em>What is Industry 4.0?</em>”, IBM, <a href="https://www.ibm.com/topics/industry-4-0">https://www.ibm.com/topics/industry-4-0</a> <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>“<em>Industry 5.0 — Towards a sustainable, human-centric and resilient European industry</em>”, European Commission, <a href="https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/industry-50_en">https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/industry-50_en</a> <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Malik</name></author><category term="blog" /><category term="podcast" /><category term="belajar" /><category term="teknologi" /><category term="edukasi" /><category term="sebelum-ngoding" /><category term="episode-6" /><summary type="html"><![CDATA[Kita sering mendengar kata Industry 4.0. Tapi apa artinya, dari mana ia datang, dan kenapa kamu harus peduli?.]]></summary></entry><entry><title type="html">Dua Sisi Teknologi</title><link href="http://localhost:4000/blog/dua-sisi-teknologi/" rel="alternate" type="text/html" title="Dua Sisi Teknologi" /><published>2026-05-04T00:08:52+07:00</published><updated>2026-05-04T00:08:52+07:00</updated><id>http://localhost:4000/blog/dua-sisi-teknologi</id><content type="html" xml:base="http://localhost:4000/blog/dua-sisi-teknologi/"><![CDATA[<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https://open.spotify.com/episode/0lzI9ISaoFf3C5E7sDo8nx?si=XYmMRK-BTve7mUTuumdR6As">Spotify</a> atau <a href="https://open.noice.id/content/392b124c-73b9-43b5-aa90-174ce1b1652a">Noice</a>.</p>
 
 <p>Teknologi itu bukan perdebatan antara baik atau buruk. Yang menentukan adalah siapa yang memegangnya dan untuk apa ia smenggunakannya.</p>
 
@@ -753,75 +927,4 @@ Angka Biner:     | 1 | 1 | 0 | 1 |
 <ul>
   <li><strong>Menulis Kode yang Jauh Lebih Cepat &amp; Efisien:</strong> Kita tidak akan lagi asal-asalan dalam membuat solusi, tapi bisa memilih “resep” (algoritma) dan “lemari” (struktur data) terbaik untuk setiap masalah.</li>
   <li><strong>Memecahkan Masalah yang Lebih Rumit:</strong> Dengan pemahaman fundamental, masalah besar yang tadinya terlihat mustahil kini bisa kita pecah-pecah menjadi bagian yang lebih kecil dan lebih mudah dikelola.</li>
-</ul>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><summary type="html"><![CDATA[Setelah memahami logika pemrograman, saatnya kita mengenal 'mesin' di balik kode komputer itu sendiri. Artikel ini membahas dasar-dasar computer science, arsitektur komputer, dan bagaimana pengetahuan ini memperkuat kemampuan coding kita.]]></summary></entry><entry><title type="html">Tanpa Sadar, Kamu Sudah Jadi Programmer Sejak Bangun Tidur. Ini Buktinya!</title><link href="http://localhost:4000/blog/kamu-sudah-jadi-programmer-sejak-bangun-tidur/" rel="alternate" type="text/html" title="Tanpa Sadar, Kamu Sudah Jadi Programmer Sejak Bangun Tidur. Ini Buktinya!" /><published>2025-12-20T00:00:00+07:00</published><updated>2025-12-20T00:00:00+07:00</updated><id>http://localhost:4000/blog/kamu-sudah-jadi-programmer-sejak-bangun-tidur</id><content type="html" xml:base="http://localhost:4000/blog/kamu-sudah-jadi-programmer-sejak-bangun-tidur/"><![CDATA[<p>Apa yang ada di bayanganmu saat mendengar kata “<em>programmer</em>”? Seseorang yang jenius matematika? Hacker misterius dengan hoodie hitam yang mengetik kode di ruang kamar yang gelap?</p>
-
-<p>Mari kita luruskan. Faktanya, “<em>Programmer</em>” hanyalah sebutan keren untuk <strong>seseorang yang menyusun rencana penyelesaian masalah secara logis.</strong></p>
-
-<p>Kamu mungkin belum bisa menulis kode Python atau JavaScript, tapi secara <em>mindset</em>, kamu sudah mempraktikkan ilmu pemrograman sejak matamu terbuka pagi ini. Mari kita buktikan!</p>
-
-<h3 id="bukti-1-algoritma-alarm-input--output">Bukti #1: Algoritma Alarm (Input &amp; Output)</h3>
-
-<p><strong>Skenario:</strong> Suara alarm berbunyi pukul 04.45 pagi. Apa yang terjadi?</p>
-
-<ul>
-  <li><strong>Input:</strong> Telingamu menerima <strong>masukan</strong> berupa suara berisik.</li>
-  <li><strong>Proses:</strong> Otakmu langsung memproses <strong>logika</strong>: “Ini alarm. Mau bangun sekarang atau <em>snooze</em> 5 menit lagi?”</li>
-  <li><strong>Output:</strong> Tubuhmu menghasilkan <strong>keluaran</strong> dengan gerakan tangan meraih HP untuk mematikan alarm.</li>
-</ul>
-
-<p class="callout info"><strong>Kamu Baru Saja Menjalankan Program I/O</strong><br /><br />
-Dalam dunia coding, proses ini adalah dasar dari segalanya: <strong>Input/Output (I/O)</strong>.<br /><br />
-Sebuah program menerima data (input), mengolahnya, lalu menghasilkan sesuatu (output). Kamu sudah melakukannya secara otomatis bahkan sebelum sadar sepenuhnya dari tidur.</p>
-
-<h3 id="bukti-2-ritual-di-kamar-mandi-sequenceurutan">Bukti #2: Ritual di Kamar Mandi (<em>Sequence</em>/Urutan)</h3>
-
-<p><strong>Skenario:</strong> Kamu berjalan ke kamar mandi untuk sikat gigi dan mandi.</p>
-
-<p>Kamu tidak mungkin memakai baju dulu baru mandi, kan? Atau memakai sepatu dulu sebelum memakai celana. Tentu ada urutan yang harus diikuti agar semuanya berjalan lancar. Kalau algoritma mandimu salah, bisa-bisa kamu keluar kamar mandi dengan memakai baju yang basah, dan masih banyak busa shampo di rambut!</p>
-
-<p>Itu adalah bukti bahwa kamu secara alami memahami konsep <strong>“<em>Sequence</em>“</strong> atau urutan. Dalam coding, komputer akan menghasilkan <em>error</em> jika urutan perintahnya terbalik. Kamu sudah ahli dalam menata urutan agar hidupmu tidak “error”.</p>
-
-<h3 id="bukti-3-memilih-baju--rute-kerja-conditional-logic">Bukti #3: Memilih Baju &amp; Rute Kerja (Conditional Logic)</h3>
-
-<p><strong>Skenario:</strong> Kamu membuka tirai jendela dan melihat ke luar. Langit terlihat mendung.</p>
-
-<p>Secara instan, otakmu menjalankan sebuah program kompleks:</p>
-
-<pre><code>IF (Jika) langit mendung:
-  THEN (Maka) pakai jaket DAN bawa payung.
-  Mungkin lebih baik naik mobil daripada motor.
-
-ELSE (Jika tidak mendung):
-  THEN (Maka) cukup pakai kemeja.
-  Naik motor sepertinya lebih cepat.
-</code></pre>
-
-<p class="callout success"><strong>Kamu Adalah Mesin Logika If-Else</strong><br /><br />
-Ini adalah <strong>“If-Else Statement”</strong> (Logika Kondisional), jantung dari setiap program cerdas di dunia. Bahkan kecerdasan buatan (AI) yang canggih sekalipun berawal dari jutaan logika “Jika-Maka” seperti ini. Kamu melakukan puluhan, bahkan ratusan, keputusan “If-Else” setiap hari tanpa lelah.</p>
-
-<h3 id="bukti-4-mencari-kunci-motor-yang-hilang-debugging">Bukti #4: Mencari Kunci Motor yang Hilang (Debugging)</h3>
-
-<p><strong>Skenario:</strong> Kamu sudah siap berangkat, tapi kunci motor tidak ada di saku atau di tempat biasanya. Apa yang kamu lakukan? Panik dan menangis? Tentu tidak.</p>
-
-<p>Kamu mulai menelusuri langkah demi langkah ke belakang (<em>retrace steps</em>). “Oke, tadi aku dari kamar, lalu ke meja makan untuk sarapan, terus ke dapur ambil minum…” Kamu sedang mencari di mana letak kesalahan dalam alur kegiatanmu.</p>
-
-<p>Proses ini, di dunia developer, disebut denga <strong>“<em>Debugging</em>“</strong>. <em>Bug</em> adalah kesalahan dalam program, dan <em>debugging</em> adalah seni melacak dan memperbaiki kesalahan tersebut. Kamu adalah seorang <em>debugger</em> andal dalam kehidupanmu sendiri.</p>
-
-<h3 id="the-missing-link-kalau-aku-sudah-programmer-kenapa-belum-bisa-bikin-aplikasi">The Missing Link: Kalau Aku Sudah Programmer, Kenapa Belum Bisa Bikin Aplikasi?</h3>
-
-<p>Ini pertanyaan yang akan muncul sekarang. Jawabannya sederhana: ada satu bagian yang hilang.</p>
-
-<ul>
-  <li><strong>Logika (Software di Otakmu):</strong> Kamu SUDAH punya. Terbukti.</li>
-  <li><strong>Bahasa (Sintaks Pemrograman):</strong> Ini yang BELUM kamu punya.</li>
-</ul>
-
-<p>Bayangkan analogi ini: Kamu punya ide cerita yang sangat hebat di kepalamu. Tapi, kamu ingin cerita itu dimengerti oleh orang Jepang. Masalahnya, kamu belum bisa bahasa Jepang. Jadi kamu harus belajar bahasa Jepang dulu agar ceritamu bisa sampai ke pembaca yang kamu inginkan.</p>
-
-<p>Satu-satunya penghalang antara kamu dan kemampuan membuat aplikasi hanyalah soal <strong>“kosa kata”</strong> untuk berbicara dengan komputer, yaitu bahasa pemrograman.</p>
-
-<h3 id="bakatmu-sudah-ada-tinggal-belajar-bahasanya">Bakatmu Sudah Ada, Tinggal Belajar Bahasanya</h3>
-
-<p>Jadi, buang jauh-jauh pikiran “aku gaptek,” “aku nggak bakat coding,” atau “ini terlalu sulit buatku.” Logika pemrogramanmu sudah teruji dan terasah oleh tantangan kehidupan sehari-hari.</p>
-
-<p>Tugasmu sekarang tinggal satu: <strong>Belajar menerjemahkan logika ‘bangun tidur’ tadi ke dalam sebuah bahasa yang dimengerti komputer.</strong></p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="coding" /><category term="programming" /><summary type="html"><![CDATA[Kamu sudah menjadi programmer sejak bangun tidur. Artikel ini membuktikan bahwa logika pemrograman sudah terbentuk dalam kebiasaan sehari-hari.]]></summary></entry></feed>
+</ul>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><summary type="html"><![CDATA[Setelah memahami logika pemrograman, saatnya kita mengenal 'mesin' di balik kode komputer itu sendiri. Artikel ini membahas dasar-dasar computer science, arsitektur komputer, dan bagaimana pengetahuan ini memperkuat kemampuan coding kita.]]></summary></entry></feed>
