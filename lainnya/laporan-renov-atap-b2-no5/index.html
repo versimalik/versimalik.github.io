@@ -11,15 +11,15 @@
     <meta property="og:title" content="Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5">
     <meta property="og:description" content="Proyek masih berjalan. Update real-time: modal, belanja material, upah, dan saldo terkini. Lihat rincian transparan lewat tautan.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://versimalik.com/lainnya/laporan-renov-atap-b2-no5/"> <!-- GANTI DENGAN URL PUBLIK -->
-    <meta property="og:image" content="https://placehold.co/1200x630/F4F6F9/1F2937?text=Laporan%20Keuangan%0ARenovasi%20Atap%0ASekneg%20Blok%20B2%20No.5&font=Sans"> <!-- GANTI DENGAN LINK GAMBAR CUSTOM -->
+    <meta property="og:url" content="https://versimalik.com/lainnya/laporan-renov-atap-b2-no5/">
+    <meta property="og:image" content="https://placehold.co/1200x630/F4F6F9/1F2937?text=Laporan%20Keuangan%0ARenovasi%20Atap%0ASekneg%20Blok%20B2%20No.5&font=Sans">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Laporan Keuangan Renovasi Atap (Masih Berjalan)">
     <meta name="twitter:description" content="Lihat pemasukan & pengeluaran proyek renovasi atap. Data otomatis dari spreadsheet.">
     <meta name="twitter:image" content="https://placehold.co/1200x630/F4F6F9/1F2937?text=Laporan%20Keuangan%0ARenovasi%20Atap%0ASekneg%20Blok%20B2%20No.5&font=Sans">
-    <title>Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5</title>
+
     <!-- PicoCSS Lite -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <!-- Bootstrap Icons -->
@@ -97,7 +97,7 @@
             </div>
             <div class="refresh-status">
                 <span id="lastUpdate"><i class="bi bi-clock"></i> Terakhir diperbarui: --</span>
-                <span style="margin-left: 1rem;"><i class="bi bi-arrow-repeat"></i> Refresh otomatis tiap 30 detik</span>
+                <!-- teks refresh otomatis dihapus -->
             </div>
         </div>
     </main>
@@ -106,8 +106,6 @@
         const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSQ_6n0XaRlmdTk7oi9lECaaCvP9UNmz9qiWlQn-hUyULQX_h5xdgVB5dvA7t21YLaes4r6uVTgI9c3/pub?gid=0&single=true&output=csv";
         const EXPECTED_COLUMNS = ["No","Tanggal","Uraian","Ket.","Debet","Kredit","Saldo"];
         const COLUMN_COUNT = 7;
-
-        let autoRefreshInterval = null;
 
         async function fetchData() {
             try {
@@ -126,7 +124,7 @@
                         <td colspan="7" style="text-align: center; color: red;">
                             <i class="bi bi-exclamation-triangle-fill"></i> Gagal memuat data. Periksa URL CSV atau koneksi.<br>
                             <small>${error.message}</small>
-                         </td>
+                          </td>
                     </tr>
                 `;
             }
@@ -243,17 +241,13 @@
             document.getElementById("lastUpdate").innerHTML = `<i class="bi bi-clock"></i> Terakhir diperbarui: ${formatted}`;
         }
 
-        function init() {
-            fetchData();
-            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-            autoRefreshInterval = setInterval(fetchData, 30000);
-        }
+        // Inisialisasi: ambil data sekali saat halaman dimuat, tanpa auto-refresh
+        fetchData();
 
+        // Manual refresh via tombol
         document.getElementById("refreshBtn").addEventListener("click", () => {
             fetchData();
         });
-
-        init();
     </script>
 </body>
 </html>
