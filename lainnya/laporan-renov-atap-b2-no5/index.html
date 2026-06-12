@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Meta Title & Description untuk WhatsApp / Sosmed -->
+    <title>Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5 (Sedang Berjalan)</title>
+    <meta name="description" content="Rekap pemasukan & pengeluaran proyek renovasi atap rumah Bapak/Ibu di Sekneg Blok B2 No.5. Data real-time dari spreadsheet, selalu terbaru. Transparansi penuh untuk keluarga & tim.">
+
+    <!-- Open Graph (WhatsApp, Telegram, FB) -->
+    <meta property="og:title" content="Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5">
+    <meta property="og:description" content="Proyek masih berjalan. Update real-time: modal, belanja material, upah, dan saldo terkini. Lihat rincian transparan lewat tautan.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://versimalik.com/lainnya/laporan-renov-atap-b2-no5/"> <!-- GANTI DENGAN URL PUBLIK -->
+    <meta property="og:image" content="https://placehold.co/1200x630/F4F6F9/1F2937?text=Laporan%20Keuangan%0ARenovasi%20Atap%0ASekneg%20Blok%20B2%20No.5&font=Sans"> <!-- GANTI DENGAN LINK GAMBAR CUSTOM -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Laporan Keuangan Renovasi Atap (Masih Berjalan)">
+    <meta name="twitter:description" content="Lihat pemasukan & pengeluaran proyek renovasi atap. Data otomatis dari spreadsheet.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/F4F6F9/1F2937?text=Laporan%20Keuangan%0ARenovasi%20Atap%0ASekneg%20Blok%20B2%20No.5&font=Sans">
+    <title>Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5</title>
+    <!-- PicoCSS Lite -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        [role="table"] {
+            overflow-x: auto;
+        }
+        .refresh-status {
+            font-size: 0.8rem;
+            color: var(--pico-muted-color);
+            margin-top: 1rem;
+            text-align: right;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        /* rata kanan untuk kolom angka */
+        td:nth-child(5), td:nth-child(6), td:nth-child(7),
+        th:nth-child(5), th:nth-child(6), th:nth-child(7) {
+            text-align: right;
+        }
+        /* kolom tanggal rata kiri */
+        td:nth-child(2), th:nth-child(2) {
+            text-align: left;
+        }
+        /* gaya untuk link di kolom Ket. */
+        .ket-link {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .ket-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Laporan Keuangan Renovasi Atap Rumah Sekneg Blok B2 No.5</h1>
+                <button id="refreshBtn" class="secondary" role="button">
+                    <i class="bi bi-arrow-repeat"></i> Refresh sekarang
+                </button>
+            </div>
+            <hr>
+
+            <div role="table" aria-label="Laporan keuangan">
+                <table class="striped" id="financialTable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Uraian</th>
+                            <th>Ket.</th>
+                            <th>Debet</th>
+                            <th>Kredit</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center;">
+                                <i class="bi bi-hourglass-split"></i> Memuat data dari spreadsheet...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="refresh-status">
+                <span id="lastUpdate"><i class="bi bi-clock"></i> Terakhir diperbarui: --</span>
+                <span style="margin-left: 1rem;"><i class="bi bi-arrow-repeat"></i> Refresh otomatis tiap 30 detik</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSQ_6n0XaRlmdTk7oi9lECaaCvP9UNmz9qiWlQn-hUyULQX_h5xdgVB5dvA7t21YLaes4r6uVTgI9c3/pub?gid=0&single=true&output=csv";
+        const EXPECTED_COLUMNS = ["No","Tanggal","Uraian","Ket.","Debet","Kredit","Saldo"];
+        const COLUMN_COUNT = 7;
+
+        let autoRefreshInterval = null;
+
+        async function fetchData() {
+            try {
+                const response = await fetch(SPREADSHEET_CSV_URL, {
+                    cache: "no-store",
+                    headers: { "Cache-Control": "no-cache" }
+                });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const csvText = await response.text();
+                parseAndRender(csvText);
+                updateTimestamp();
+            } catch (error) {
+                console.error("Gagal mengambil data:", error);
+                document.getElementById("tableBody").innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: red;">
+                            <i class="bi bi-exclamation-triangle-fill"></i> Gagal memuat data. Periksa URL CSV atau koneksi.<br>
+                            <small>${error.message}</small>
+                         </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function parseCSV(csvText) {
+            const rows = [];
+            const regex = /(?:,|^)(?:"([^"]*(?:""[^"]*)*)"|([^",]*))/g;
+            const lines = csvText.split(/\r?\n/);
+            for (let line of lines) {
+                if (line.trim() === "") continue;
+                let row = [];
+                let match;
+                while ((match = regex.exec(line)) !== null) {
+                    let val = match[1] !== undefined ? match[1].replace(/""/g, '"') : (match[2] || "");
+                    row.push(val);
+                }
+                if (row.length) rows.push(row);
+                regex.lastIndex = 0;
+            }
+            return rows;
+        }
+
+        function isURL(str) {
+            if (!str) return false;
+            const urlPattern = /^(https?:\/\/[^\s]+)$/i;
+            return urlPattern.test(str.trim());
+        }
+
+        function renderKetCell(value) {
+            if (!value || value === "") return "";
+            const trimmed = value.trim();
+            if (isURL(trimmed)) {
+                let displayText = trimmed.length > 50 ? trimmed.substring(0, 47) + "..." : trimmed;
+                return `<a href="${escapeHtml(trimmed)}" target="_blank" rel="noopener noreferrer" class="ket-link">
+                            <i class="bi bi-box-arrow-up-right"></i> ${escapeHtml(displayText)}
+                        </a>`;
+            } else {
+                return escapeHtml(trimmed);
+            }
+        }
+
+        function parseAndRender(csvText) {
+            const rows = parseCSV(csvText);
+            if (!rows.length) {
+                document.getElementById("tableBody").innerHTML = '<tr><td colspan="7">⚠️ Spreadsheet kosong.</td></tr>';
+                return;
+            }
+
+            // Anggap baris pertama adalah header (lewatkan)
+            const dataRows = rows.slice(1);
+            if (dataRows.length === 0) {
+                document.getElementById("tableBody").innerHTML = '<tr><td colspan="7">📭 Tidak ada data transaksi.</td></tr>';
+                return;
+            }
+
+            let tbodyHtml = "";
+            for (let i = 0; i < dataRows.length; i++) {
+                const row = dataRows[i];
+                // Pastikan kolom cukup (7 kolom)
+                const cols = [...row];
+                while (cols.length < COLUMN_COUNT) cols.push("");
+                // Ambil per kolom
+                const no = escapeHtml(cols[0]);
+                const tanggal = escapeHtml(cols[1]);
+                const uraian = escapeHtml(cols[2]);
+                const ketRaw = cols[3];
+                const ketHtml = renderKetCell(ketRaw);
+                const debet = formatNumber(cols[4]);
+                const kredit = formatNumber(cols[5]);
+                const saldo = formatNumber(cols[6]);
+
+                tbodyHtml += `
+                    <tr>
+                        <td>${no}</td>
+                        <td>${tanggal}</td>
+                        <td>${uraian}</td>
+                        <td>${ketHtml}</td>
+                        <td style="text-align: right;">${debet}</td>
+                        <td style="text-align: right;">${kredit}</td>
+                        <td style="text-align: right;">${saldo}</td>
+                    </tr>
+                `;
+            }
+            document.getElementById("tableBody").innerHTML = tbodyHtml;
+        }
+
+        function escapeHtml(str) {
+            if (str === undefined || str === null) return "";
+            return String(str).replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function formatNumber(val) {
+            if (val === undefined || val === null || val === "") return "";
+            let str = String(val).trim();
+            // Bersihkan kemungkinan titik ribuan dan koma desimal
+            let num = parseFloat(str.replace(/\./g, '').replace(/,/g, '.'));
+            if (isNaN(num)) {
+                num = parseFloat(str.replace(/,/g, '.'));
+            }
+            if (isNaN(num)) return str;
+            // Format dengan pemisah ribuan (gaya Indonesia)
+            return num.toLocaleString("id-ID");
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            const formatted = now.toLocaleTimeString("id-ID") + " " + now.toLocaleDateString("id-ID");
+            document.getElementById("lastUpdate").innerHTML = `<i class="bi bi-clock"></i> Terakhir diperbarui: ${formatted}`;
+        }
+
+        function init() {
+            fetchData();
+            if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+            autoRefreshInterval = setInterval(fetchData, 30000);
+        }
+
+        document.getElementById("refreshBtn").addEventListener("click", () => {
+            fetchData();
+        });
+
+        init();
+    </script>
+</body>
+</html>
