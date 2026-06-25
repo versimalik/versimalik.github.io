@@ -56,15 +56,10 @@ body {
 .plain-link:visited,
 .plain-link:hover,
 .plain-link:active {
-    /* 1. Reset properti warna standar */
     color: inherit;
-    
-    /* 2. RESET CSS VARIABLES MILIK PICO (Kunci Utama) */
     --pico-color: inherit !important;
     --pico-primary: inherit !important;
     --pico-primary-hover: inherit !important;
-    
-    /* 3. Hapus styling link lainnya */
     text-decoration: none;
     background: transparent;
     font: inherit;
@@ -77,7 +72,7 @@ body {
 }
 
 .dropdown-list.is-open {
-    max-height: 300px; /* cukup untuk 2 item, sesuaikan jika nambah */
+    max-height: 300px;
 }
 
 #personal-podcast {
@@ -94,7 +89,7 @@ body {
 </style>
 
 <header id="profile" class="container" style="text-align: center;">
-	<img src="/assets/images/karakter-pose-steve-jobs.webp" alt="Avatar Versimalik" style="width: 120px; height: 120px; border-radius: 50%; border: 1px solid var(--pico-muted-border-color); object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+	<img src="/assets/images/foto-malik.webp" alt="Avatar Versimalik" style="width: 120px; height: 120px; border-radius: 50%; border: 1px solid var(--pico-muted-border-color); object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
 	<hgroup>
 		<h1>Malik</h1>
 		<p>@versimalik</p>		
@@ -103,6 +98,18 @@ body {
 </header>
 
 <main id="links" class="container">
+	<section>
+		<a href="https://versimalik.com/produk/ebook/stop-belajar-bahasa-pemrograman/" class="plain-link">
+			<article role="button" id="personal-blog" style="display: flex; justify-content: space-between; align-items: center; gap: .75rem;">
+				<div style="display:flex; align-items: center; gap: .75rem;">
+					<i class="bi bi-book"></i>
+					<p style="margin-bottom: auto;">Ebook - Stop Belajar Bahasa Pemrograman</p>
+				</div>				
+				<i class="bi bi-chevron-right"></i>
+			</article>
+		</a>
+	</section>
+
 	<section id="contents">
 		<p class="section-label">Konten & Blog</p>
 		<a href="https://versimalik.com" class="plain-link">
