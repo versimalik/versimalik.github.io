@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tokopaedi - Toko Buku Online Terlengkap & Terpercaya</title>
-    <meta name="description" content="Temukan koleksi buku fiksi, non-fiksi, pengembangan diri, komik, manga, dan buku anak terbaru di Tokopaedi. Harga murah, diskon hingga 50%, gratis ongkir, dan tersedia review pembaca. Belanja buku online aman dan nyaman di Tokopaedi.">
-    <meta name="keywords" content="toko buku online, beli buku, buku fiksi, buku non fiksi, buku pengembangan diri, komik, manga, buku anak, novel, buku murah, Tokopaedi">
-
-    <!-- Open Graph / Social -->
-    <meta property="og:title" content="Tokopaedi - Toko Buku Online Terlengkap">
-    <meta property="og:description" content="Toko buku online terpercaya. Temukan ribuan judul buku dengan harga terbaik, promo setiap hari, dan gratis ongkir.">
-    <meta property="og:url" content="https://tokopaedi.com">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Temukan koleksi buku fiksi, non-fiksi, pengembangan diri, komik, manga, dan buku anak terbaru di Tokopaedi. Harga murah, diskon hingga 50%, gratis ongkir, dan tersedia review pembaca. Belanja buku online aman dan nyaman di Tokopaedi." />
+    <meta name="keywords" content="toko buku online, beli buku, buku fiksi, buku non fiksi, buku pengembangan diri, komik, manga, buku anak, novel, buku murah, Tokopaedi" />
+    <meta property="og:title" content="Tokopaedi - Toko Buku Online Terlengkap" />
+    <meta property="og:description" content="Toko buku online terpercaya. Temukan ribuan judul buku dengan harga terbaik, promo setiap hari, dan gratis ongkir." />
+    <meta property="og:url" content="https://tokopaedi.com" />
+    <meta property="og:type" content="website" />
     <style>
-        /* CSS Reset & Variables */
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-green: #03AC0E;
             --bg-gray: #F3F4F5;
@@ -22,6 +23,9 @@
             --text-muted: #6D7588;
             --red-discount: #FF5C84;
             --border-light: #E5E7E9;
+            --card-radius: 12px;
+            --header-pad: 12px 16px;
+            --container-pad: 16px;
         }
 
         body {
@@ -30,14 +34,30 @@
             padding: 0;
             background-color: var(--bg-gray);
             color: var(--text-main);
+            line-height: 1.5;
         }
 
-        /* Header Style */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-pad);
+        }
+
+        /* ===== HEADER ===== */
         header {
-            background-color: #ffffff;
-            padding: 16px 32px;
+            background-color: #fff;
+            padding: var(--header-pad);
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 10px 16px;
             border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
@@ -46,50 +66,62 @@
 
         .logo {
             color: var(--primary-green);
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             text-decoration: none;
-            margin-right: 32px;
             letter-spacing: -0.5px;
+            flex-shrink: 0;
         }
 
         .search-bar {
-            flex-grow: 1;
+            flex: 1 1 200px;
             display: flex;
             border: 1px solid var(--border-light);
             border-radius: 8px;
             overflow: hidden;
+            min-width: 160px;
         }
 
         .search-bar input {
-            width: 100%;
-            padding: 10px 16px;
+            flex: 1;
+            padding: 8px 14px;
             border: none;
             outline: none;
             font-size: 14px;
+            min-width: 80px;
+            background: #fff;
         }
 
         .search-bar button {
             background-color: var(--bg-gray);
             border: none;
-            padding: 0 16px;
+            padding: 0 14px;
             cursor: pointer;
             color: var(--text-muted);
+            font-size: 14px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
-        /* Container & Navigation */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 16px;
-        }
-
+        /* ===== CATEGORY NAV ===== */
         .category-nav {
             display: flex;
-            gap: 24px;
-            margin-bottom: 24px;
+            gap: 16px 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--border-light);
-            padding-bottom: 12px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            flex-wrap: nowrap;
+        }
+
+        .category-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+        .category-nav::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 4px;
         }
 
         .category-nav a {
@@ -97,86 +129,97 @@
             color: var(--text-muted);
             font-weight: 600;
             font-size: 14px;
+            white-space: nowrap;
+            padding: 4px 2px 10px 2px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            flex-shrink: 0;
         }
 
         .category-nav a.active {
             color: var(--primary-green);
-            border-bottom: 2px solid var(--primary-green);
-            padding-bottom: 12px;
-            margin-bottom: -14px;
+            border-bottom-color: var(--primary-green);
         }
 
-        /* Product Grid */
+        .category-nav a:hover {
+            color: var(--primary-green);
+        }
+
+        /* ===== PRODUCT GRID ===== */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-            gap: 16px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
         }
 
-        /* Product Card */
+        /* ===== PRODUCT CARD ===== */
         .product-card {
-            background-color: #ffffff;
-            border-radius: 12px;
+            background-color: #fff;
+            border-radius: var(--card-radius);
             overflow: hidden;
-            box-shadow: 0 1px 6px 0 rgba(49,53,59,0.12);
+            box-shadow: 0 1px 6px 0 rgba(49, 53, 59, 0.10);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
+            height: 100%;
         }
 
         .product-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px 0 rgba(49,53,59,0.15);
+            box-shadow: 0 4px 14px 0 rgba(49, 53, 59, 0.15);
         }
 
         .product-image {
             width: 100%;
-            height: 190px;
+            aspect-ratio: 1 / 1;
             background-color: #e9ecef;
             object-fit: cover;
+            display: block;
         }
 
         .product-info {
-            padding: 12px;
+            padding: 10px 12px 12px;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            flex: 1;
         }
 
         .product-title {
-            font-size: 14px;
+            font-size: 13px;
             line-height: 1.4;
             color: var(--text-main);
-            margin: 0 0 8px 0;
+            margin: 0 0 6px 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-weight: 600;
         }
 
         .product-price {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .discount-wrapper {
             display: flex;
             align-items: center;
             gap: 6px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            min-height: 15px; /* Menjaga layout jika tidak ada diskon */
+            margin-bottom: 6px;
+            font-size: 11px;
+            min-height: 16px;
+            flex-wrap: wrap;
         }
 
         .discount-badge {
             background-color: #ffeaef;
             color: var(--red-discount);
             font-weight: bold;
-            padding: 2px 4px;
+            padding: 1px 6px;
             border-radius: 4px;
             font-size: 10px;
         }
@@ -184,75 +227,94 @@
         .original-price {
             color: var(--text-muted);
             text-decoration: line-through;
+            font-size: 11px;
         }
 
         .store-info {
             display: flex;
             align-items: center;
             gap: 4px;
-            margin-bottom: 8px;
-            font-size: 12px;
+            margin-bottom: 6px;
+            font-size: 11px;
             color: var(--text-muted);
+        }
+
+        .store-badge {
+            font-size: 12px;
+        }
+
+        .store-location {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .rating-sold {
             display: flex;
             align-items: center;
             gap: 4px;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-top: auto;
+            flex-wrap: wrap;
         }
 
         .star-icon {
             color: #FFC400;
         }
 
-        /* Load More Section */
+        .rating-score {
+            font-weight: 600;
+        }
+
+        /* ===== LOAD MORE ===== */
         .load-more-container {
             text-align: center;
-            margin: 40px 0;
+            margin: 28px 0 40px;
         }
 
         .btn-load-more {
-            background-color: #ffffff;
+            background-color: #fff;
             color: var(--primary-green);
             border: 1px solid var(--primary-green);
-            padding: 12px 64px;
+            padding: 12px 32px;
             border-radius: 8px;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             transition: background-color 0.2s;
+            width: 100%;
+            max-width: 360px;
         }
 
         .btn-load-more:hover {
             background-color: #f3fcf4;
         }
 
-        /* Footer Section */
+        /* ===== FOOTER ===== */
         footer {
-            background-color: #ffffff;
+            background-color: #fff;
             border-top: 1px solid var(--border-light);
-            padding: 40px 0 0 0;
+            padding: 32px 0 0 0;
             font-size: 13px;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
-            gap: 32px;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            padding-bottom: 12px;
         }
 
         .footer-col h4 {
             font-size: 14px;
             color: var(--text-main);
-            margin: 0 0 16px 0;
+            margin: 0 0 12px 0;
             font-weight: bold;
         }
 
         .footer-col.sub-section h4 {
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .footer-col ul {
@@ -262,184 +324,498 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .footer-col ul a {
             text-decoration: none;
             color: var(--text-muted);
+            transition: color 0.2s;
+            font-size: 13px;
         }
 
         .footer-col ul a:hover {
             color: var(--primary-green);
         }
 
-        /* Security Badges Placeholder */
-        .security-badges img {
-            height: 40px;
-            margin-bottom: 8px;
-            display: block;
-            background-color: #f0f0f0;
-            border-radius: 4px;
+        /* Security badges */
+        .security-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
         }
 
-        /* Social Icons */
+        .security-badges img {
+            height: 36px;
+            width: auto;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            object-fit: contain;
+            padding: 2px 6px;
+        }
+
+        /* Social icons */
         .social-icons {
             display: flex;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
         }
+
         .social-icon {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #fff;
             font-weight: bold;
             font-size: 16px;
+            flex-shrink: 0;
         }
-        .fb { background: #3b5998; }
-        .tw { background: #1da1f2; }
-        .pt { background: #bd081c; }
-        .ig { background: #e1306c; }
+        .fb {
+            background: #3b5998;
+        }
+        .tw {
+            background: #1da1f2;
+        }
+        .pt {
+            background: #bd081c;
+        }
+        .ig {
+            background: #e1306c;
+        }
 
-        /* App Download Section */
+        /* App promo */
         .app-promo-list {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--text-main);
         }
         .app-promo-list div {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 13px;
         }
         .app-promo-list span.icon {
             color: var(--primary-green);
             font-weight: bold;
+            font-size: 16px;
         }
 
         .download-apps {
             display: flex;
-            gap: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
             align-items: center;
+            margin-top: 4px;
         }
-        
+
         .qr-code {
-            width: 100px;
-            height: 100px;
-            background: url('https://via.placeholder.com/100?text=QR+Code') center/cover;
+            width: 80px;
+            height: 80px;
             border: 1px solid var(--border-light);
             border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #f8f9fa;
+        }
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .store-buttons {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .store-btn {
-            width: 120px;
-            height: 36px;
+            width: 110px;
+            height: 34px;
             background-color: #111;
-            color: white;
+            color: #fff;
             border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 10px;
             text-align: center;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
-        /* Footer Bottom */
+        .footer-col .app-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        /* Footer bottom */
         .footer-bottom {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 24px 0;
-            margin-top: 40px;
+            gap: 12px;
+            padding: 20px 0;
+            margin-top: 28px;
             border-top: 1px solid var(--border-light);
             color: var(--text-muted);
+            font-size: 12px;
+            text-align: center;
         }
 
         .lang-switch {
             display: flex;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             background-color: var(--bg-gray);
             font-size: 12px;
         }
 
         .lang-btn {
-            padding: 6px 16px;
+            padding: 5px 16px;
             cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
         }
         .lang-btn.active {
             background-color: var(--primary-green);
-            color: white;
+            color: #fff;
             font-weight: bold;
         }
 
-        /* Floating Chat Button */
+        /* ===== FLOATING CHAT ===== */
         .floating-chat {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background-color: #ffffff;
+            bottom: 20px;
+            right: 16px;
+            background-color: #fff;
             border: 1px solid var(--border-light);
             border-radius: 24px;
-            padding: 10px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 8px 16px 8px 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-weight: bold;
             color: var(--primary-green);
             cursor: pointer;
             z-index: 1000;
+            font-size: 13px;
         }
+
         .chat-badge {
             background-color: var(--red-discount);
-            color: white;
+            color: #fff;
             font-size: 10px;
-            padding: 2px 6px;
+            padding: 1px 6px;
             border-radius: 10px;
             position: absolute;
-            top: -5px;
+            top: -6px;
             left: 10px;
+            font-weight: bold;
+        }
+
+        /* ============================================
+                   RESPONSIVE BREAKPOINTS
+                   ============================================ */
+
+        /* ---- Tablet (≥ 600px) ---- */
+        @media (min-width: 600px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+
+            .floating-chat {
+                bottom: 24px;
+                right: 24px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* ---- Desktop (≥ 900px) ---- */
+        @media (min-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 18px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+                gap: 36px;
+            }
+
+            header {
+                padding: 16px 32px;
+                gap: 24px;
+            }
+
+            .logo {
+                font-size: 24px;
+                margin-right: 0;
+            }
+
+            .search-bar {
+                flex: 1 1 300px;
+            }
+
+            .search-bar input {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+
+            .search-bar button {
+                padding: 0 20px;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            .btn-load-more {
+                padding: 12px 64px;
+                width: auto;
+            }
+
+            .product-title {
+                font-size: 14px;
+            }
+            .product-price {
+                font-size: 16px;
+            }
+            .product-info {
+                padding: 12px 14px 14px;
+            }
+
+            .qr-code {
+                width: 100px;
+                height: 100px;
+            }
+            .store-btn {
+                width: 120px;
+                height: 36px;
+                font-size: 10px;
+            }
+        }
+
+        /* ---- Large Desktop (≥ 1200px) ---- */
+        @media (min-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+            }
+
+            .container {
+                padding: 0 32px;
+            }
+
+            header {
+                padding: 16px 40px;
+            }
+        }
+
+        /* ---- Very small screens (≤ 420px) ---- */
+        @media (max-width: 420px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .product-title {
+                font-size: 11px;
+            }
+            .product-price {
+                font-size: 13px;
+            }
+            .product-info {
+                padding: 8px 8px 10px;
+            }
+            .discount-wrapper {
+                font-size: 10px;
+                gap: 4px;
+            }
+            .store-info {
+                font-size: 10px;
+            }
+            .rating-sold {
+                font-size: 10px;
+            }
+            .store-location {
+                max-width: 70px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .store-badge {
+                font-size: 10px;
+            }
+
+            .category-nav {
+                gap: 12px;
+                padding-bottom: 8px;
+                margin-bottom: 14px;
+            }
+            .category-nav a {
+                font-size: 12px;
+                padding: 2px 2px 6px 2px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+            .search-bar input {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+            .search-bar button {
+                font-size: 12px;
+                padding: 0 10px;
+            }
+
+            .footer-col h4 {
+                font-size: 13px;
+            }
+            .footer-col ul a {
+                font-size: 12px;
+            }
+            .app-promo-list div {
+                font-size: 12px;
+            }
+
+            .floating-chat {
+                padding: 6px 12px 6px 10px;
+                font-size: 12px;
+                bottom: 14px;
+                right: 12px;
+            }
+            .chat-badge {
+                font-size: 9px;
+                padding: 0 5px;
+                top: -5px;
+                left: 8px;
+            }
+
+            .qr-code {
+                width: 64px;
+                height: 64px;
+            }
+            .store-btn {
+                width: 90px;
+                height: 30px;
+                font-size: 9px;
+            }
+
+            .btn-load-more {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
+        /* ---- Fix for very narrow screens ---- */
+        @media (max-width: 350px) {
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .product-title {
+                font-size: 10px;
+            }
+            .product-price {
+                font-size: 12px;
+            }
+            .product-info {
+                padding: 6px 6px 8px;
+            }
+            .store-location {
+                max-width: 50px;
+            }
+            .search-bar {
+                flex: 1 1 120px;
+                min-width: 100px;
+            }
+            .search-bar input {
+                padding: 5px 8px;
+                font-size: 11px;
+            }
+            .search-bar button {
+                padding: 0 8px;
+                font-size: 11px;
+            }
+            .logo {
+                font-size: 16px;
+            }
+            .category-nav a {
+                font-size: 11px;
+            }
+        }
+
+        /* Utility to hide scrollbar on category nav for cleaner look */
+        .category-nav {
+            scrollbar-width: thin;
+        }
+        .category-nav::-webkit-scrollbar {
+            height: 3px;
+        }
+        .category-nav::-webkit-scrollbar-thumb {
+            background: #d0d2d4;
+            border-radius: 6px;
+        }
+        .category-nav::-webkit-scrollbar-track {
+            background: transparent;
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== HEADER ===== -->
     <header>
         <a href="#" class="logo">tokopaedi</a>
         <div class="search-bar">
-            <input type="text" placeholder="Cari buku pengembangan diri, novel, atau komik...">
+            <input type="text" placeholder="Cari buku, novel, komik..." />
             <button>Cari</button>
         </div>
     </header>
 
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="container">
         <nav class="category-nav">
             <a href="#" class="active">Buku Fiksi</a>
             <a href="#">Non-Fiksi</a>
             <a href="#">Pengembangan Diri</a>
-            <a href="#">Komik & Manga</a>
+            <a href="#">Komik &amp; Manga</a>
             <a href="#">Buku Anak</a>
         </nav>
 
-        <!-- Container Scraping Target - Total 100 Produk -->
+        <!-- ===== PRODUCT GRID (100 item) ===== -->
         <div class="product-grid" id="scraping-target">
-            
-            <!-- Item 1 -->
+
+            <!-- 1 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Filosofi Teras" class="product-image">
+                <img src="https://picsum.photos/seed/1/400" alt="Filosofi Teras" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Filosofi Teras - Henry Manampiring (Buku Pengembangan Diri)</h3>
+                    <h3 class="product-title">Filosofi Teras – Henry Manampiring</h3>
                     <div class="product-price">Rp79.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">20%</span>
@@ -447,7 +823,7 @@
                     </div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
-                        <span class="store-location">Kota Jakarta Selatan</span>
+                        <span class="store-location">Jakarta Selatan</span>
                     </div>
                     <div class="rating-sold">
                         <span class="star-icon">⭐</span>
@@ -458,11 +834,11 @@
                 </div>
             </div>
 
-            <!-- Item 2 -->
+            <!-- 2 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Atomic Habits" class="product-image">
+                <img src="https://picsum.photos/seed/2/400" alt="Atomic Habits" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa - James Clear</h3>
+                    <h3 class="product-title">Atomic Habits – James Clear</h3>
                     <div class="product-price">Rp95.200</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -481,15 +857,13 @@
                 </div>
             </div>
 
-            <!-- Item 3 (Tanpa Diskon) -->
+            <!-- 3 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Bumi Manusia" class="product-image">
+                <img src="https://picsum.photos/seed/3/400" alt="Bumi Manusia" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Bumi Manusia (Buku 1 Tetralogi Buru) - Pramoedya Ananta Toer</h3>
+                    <h3 class="product-title">Bumi Manusia – Pramoedya Ananta Toer</h3>
                     <div class="product-price">Rp120.000</div>
-                    <div class="discount-wrapper">
-                        <!-- kosong, tidak ada diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kota Yogyakarta</span>
@@ -503,11 +877,11 @@
                 </div>
             </div>
 
-            <!-- Item 4 -->
+            <!-- 4 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Laut Bercerita" class="product-image">
+                <img src="https://picsum.photos/seed/4/400" alt="Laut Bercerita" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Laut Bercerita - Leila S. Chudori (Hardcover Edition)</h3>
+                    <h3 class="product-title">Laut Bercerita – Leila S. Chudori</h3>
                     <div class="product-price">Rp104.500</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">5%</span>
@@ -515,7 +889,7 @@
                     </div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
-                        <span class="store-location">Kota Jakarta Pusat</span>
+                        <span class="store-location">Jakarta Pusat</span>
                     </div>
                     <div class="rating-sold">
                         <span class="star-icon">⭐</span>
@@ -526,11 +900,11 @@
                 </div>
             </div>
 
-            <!-- Item 5 -->
+            <!-- 5 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Sapiens" class="product-image">
+                <img src="https://picsum.photos/seed/5/400" alt="Sapiens" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Sapiens: Riwayat Singkat Umat Manusia - Yuval Noah Harari</h3>
+                    <h3 class="product-title">Sapiens – Yuval Noah Harari</h3>
                     <div class="product-price">Rp115.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -549,11 +923,11 @@
                 </div>
             </div>
 
-            <!-- Item 6 -->
+            <!-- 6 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Python for Data Analysis" class="product-image">
+                <img src="https://picsum.photos/seed/6/400" alt="Python for Data Analysis" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython</h3>
+                    <h3 class="product-title">Python for Data Analysis – Wes McKinney</h3>
                     <div class="product-price">Rp250.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">30%</span>
@@ -572,12 +946,11 @@
                 </div>
             </div>
 
-            <!-- GENERATED ITEMS 7-100 -->
-            <!-- Item 7 -->
+            <!-- 7 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Rich Dad Poor Dad" class="product-image">
+                <img src="https://picsum.photos/seed/7/400" alt="Rich Dad Poor Dad" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Rich Dad Poor Dad - Robert T. Kiyosaki</h3>
+                    <h3 class="product-title">Rich Dad Poor Dad – Robert T. Kiyosaki</h3>
                     <div class="product-price">Rp68.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">25%</span>
@@ -595,11 +968,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 8 -->
+
+            <!-- 8 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Alchemist" class="product-image">
+                <img src="https://picsum.photos/seed/8/400" alt="The Alchemist" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Alchemist - Paulo Coelho</h3>
+                    <h3 class="product-title">The Alchemist – Paulo Coelho</h3>
                     <div class="product-price">Rp55.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -617,15 +991,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 9 -->
+
+            <!-- 9 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Laskar Pelangi" class="product-image">
+                <img src="https://picsum.photos/seed/9/400" alt="Laskar Pelangi" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Laskar Pelangi - Andrea Hirata</h3>
+                    <h3 class="product-title">Laskar Pelangi – Andrea Hirata</h3>
                     <div class="product-price">Rp72.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kab. Belitung</span>
@@ -638,11 +1011,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 10 -->
+
+            <!-- 10 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Thinking, Fast and Slow" class="product-image">
+                <img src="https://picsum.photos/seed/10/400" alt="Thinking, Fast and Slow" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Thinking, Fast and Slow - Daniel Kahneman</h3>
+                    <h3 class="product-title">Thinking, Fast and Slow – D. Kahneman</h3>
                     <div class="product-price">Rp142.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -660,11 +1034,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 11 -->
+
+            <!-- 11 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Dilan 1990" class="product-image">
+                <img src="https://picsum.photos/seed/11/400" alt="Dilan 1990" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Dilan: Dia adalah Dilanku Tahun 1990 - Pidi Baiq</h3>
+                    <h3 class="product-title">Dilan: Dia adalah Dilanku 1990 – Pidi Baiq</h3>
                     <div class="product-price">Rp45.500</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">30%</span>
@@ -682,11 +1057,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 12 -->
+
+            <!-- 12 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Power of Habit" class="product-image">
+                <img src="https://picsum.photos/seed/12/400" alt="The Power of Habit" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Power of Habit - Charles Duhigg</h3>
+                    <h3 class="product-title">The Power of Habit – Charles Duhigg</h3>
                     <div class="product-price">Rp89.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">20%</span>
@@ -694,7 +1070,7 @@
                     </div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
-                        <span class="store-location">Kota Jakarta Barat</span>
+                        <span class="store-location">Jakarta Barat</span>
                     </div>
                     <div class="rating-sold">
                         <span class="star-icon">⭐</span>
@@ -704,15 +1080,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 13 -->
+
+            <!-- 13 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="One Piece Vol 1" class="product-image">
+                <img src="https://picsum.photos/seed/13/400" alt="One Piece Vol 1" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">One Piece Vol. 1 - Eiichiro Oda</h3>
+                    <h3 class="product-title">One Piece Vol. 1 – Eiichiro Oda</h3>
                     <div class="product-price">Rp35.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kota Surakarta</span>
@@ -725,11 +1100,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 14 -->
+
+            <!-- 14 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Subtle Art" class="product-image">
+                <img src="https://picsum.photos/seed/14/400" alt="The Subtle Art" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Subtle Art of Not Giving a F*ck - Mark Manson</h3>
+                    <h3 class="product-title">The Subtle Art of Not Giving a F*ck – M. Manson</h3>
                     <div class="product-price">Rp82.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">12%</span>
@@ -747,11 +1123,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 15 -->
+
+            <!-- 15 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Hujan" class="product-image">
+                <img src="https://picsum.photos/seed/15/400" alt="Hujan" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Hujan - Tere Liye</h3>
+                    <h3 class="product-title">Hujan – Tere Liye</h3>
                     <div class="product-price">Rp65.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">5%</span>
@@ -769,11 +1146,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 16 -->
+
+            <!-- 16 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Mantappu Jiwa" class="product-image">
+                <img src="https://picsum.photos/seed/16/400" alt="Mantappu Jiwa" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Mantappu Jiwa - Jerome Polin</h3>
+                    <h3 class="product-title">Mantappu Jiwa – Jerome Polin</h3>
                     <div class="product-price">Rp75.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -781,7 +1159,7 @@
                     </div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
-                        <span class="store-location">Kota Jakarta Selatan</span>
+                        <span class="store-location">Jakarta Selatan</span>
                     </div>
                     <div class="rating-sold">
                         <span class="star-icon">⭐</span>
@@ -791,15 +1169,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 17 -->
+
+            <!-- 17 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Negeri 5 Menara" class="product-image">
+                <img src="https://picsum.photos/seed/17/400" alt="Negeri 5 Menara" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Negeri 5 Menara - A. Fuadi</h3>
+                    <h3 class="product-title">Negeri 5 Menara – A. Fuadi</h3>
                     <div class="product-price">Rp58.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kab. Agam</span>
@@ -812,11 +1189,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 18 -->
+
+            <!-- 18 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Supernova: Ksatria, Puteri dan Bintang Jatuh" class="product-image">
+                <img src="https://picsum.photos/seed/18/400" alt="Supernova" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Supernova: Ksatria, Puteri dan Bintang Jatuh - Dee Lestari</h3>
+                    <h3 class="product-title">Supernova – Dee Lestari</h3>
                     <div class="product-price">Rp88.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -834,15 +1212,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 19 -->
+
+            <!-- 19 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Detective Conan Vol 1" class="product-image">
+                <img src="https://picsum.photos/seed/19/400" alt="Detective Conan Vol 1" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Detective Conan Vol. 1 - Gosho Aoyama</h3>
+                    <h3 class="product-title">Detective Conan Vol. 1 – Gosho Aoyama</h3>
                     <div class="product-price">Rp32.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kota Pekanbaru</span>
@@ -855,11 +1232,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 20 -->
+
+            <!-- 20 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Harry Potter dan Batu Bertuah" class="product-image">
+                <img src="https://picsum.photos/seed/20/400" alt="Harry Potter" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Harry Potter dan Batu Bertuah - J.K. Rowling</h3>
+                    <h3 class="product-title">Harry Potter dan Batu Bertuah – J.K. Rowling</h3>
                     <div class="product-price">Rp110.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -867,7 +1245,7 @@
                     </div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
-                        <span class="store-location">Kota Jakarta Timur</span>
+                        <span class="store-location">Jakarta Timur</span>
                     </div>
                     <div class="rating-sold">
                         <span class="star-icon">⭐</span>
@@ -877,11 +1255,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 21 -->
+
+            <!-- 21 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Intelligent Investor" class="product-image">
+                <img src="https://picsum.photos/seed/21/400" alt="The Intelligent Investor" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Intelligent Investor - Benjamin Graham</h3>
+                    <h3 class="product-title">The Intelligent Investor – B. Graham</h3>
                     <div class="product-price">Rp195.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">25%</span>
@@ -899,15 +1278,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 22 -->
+
+            <!-- 22 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Pulang" class="product-image">
+                <img src="https://picsum.photos/seed/22/400" alt="Pulang" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Pulang - Tere Liye</h3>
+                    <h3 class="product-title">Pulang – Tere Liye</h3>
                     <div class="product-price">Rp69.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
                         <span class="store-location">Kab. Bekasi</span>
@@ -920,11 +1298,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 23 -->
+
+            <!-- 23 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Start with Why" class="product-image">
+                <img src="https://picsum.photos/seed/23/400" alt="Start with Why" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Start with Why - Simon Sinek</h3>
+                    <h3 class="product-title">Start with Why – Simon Sinek</h3>
                     <div class="product-price">Rp127.500</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -942,11 +1321,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 24 -->
+
+            <!-- 24 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Sherlock Holmes" class="product-image">
+                <img src="https://picsum.photos/seed/24/400" alt="Sherlock Holmes" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Sherlock Holmes: Koleksi Kasus - Sir Arthur Conan Doyle</h3>
+                    <h3 class="product-title">Sherlock Holmes – Sir A. Conan Doyle</h3>
                     <div class="product-price">Rp98.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">5%</span>
@@ -964,15 +1344,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 25 -->
+
+            <!-- 25 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Cantik Itu Luka" class="product-image">
+                <img src="https://picsum.photos/seed/25/400" alt="Cantik Itu Luka" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Cantik Itu Luka - Eka Kurniawan</h3>
+                    <h3 class="product-title">Cantik Itu Luka – Eka Kurniawan</h3>
                     <div class="product-price">Rp85.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kab. Tasikmalaya</span>
@@ -985,11 +1364,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 26 -->
+
+            <!-- 26 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Naruto Vol 1" class="product-image">
+                <img src="https://picsum.photos/seed/26/400" alt="Naruto Vol 1" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Naruto Vol. 1 - Masashi Kishimoto</h3>
+                    <h3 class="product-title">Naruto Vol. 1 – Masashi Kishimoto</h3>
                     <div class="product-price">Rp30.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -1007,11 +1387,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 27 -->
+
+            <!-- 27 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Ikigai" class="product-image">
+                <img src="https://picsum.photos/seed/27/400" alt="Ikigai" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Ikigai: The Japanese Secret to a Long and Happy Life</h3>
+                    <h3 class="product-title">Ikigai – The Japanese Secret to a Long Life</h3>
                     <div class="product-price">Rp72.500</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">20%</span>
@@ -1029,15 +1410,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 28 -->
+
+            <!-- 28 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Perahu Kertas" class="product-image">
+                <img src="https://picsum.photos/seed/28/400" alt="Perahu Kertas" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Perahu Kertas - Dee Lestari</h3>
+                    <h3 class="product-title">Perahu Kertas – Dee Lestari</h3>
                     <div class="product-price">Rp79.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
                         <span class="store-location">Kota Bandar Lampung</span>
@@ -1050,11 +1430,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 29 -->
+
+            <!-- 29 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Educated" class="product-image">
+                <img src="https://picsum.photos/seed/29/400" alt="Educated" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Educated - Tara Westover</h3>
+                    <h3 class="product-title">Educated – Tara Westover</h3>
                     <div class="product-price">Rp135.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -1072,11 +1453,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 30 -->
+
+            <!-- 30 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Origin" class="product-image">
+                <img src="https://picsum.photos/seed/30/400" alt="Origin" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Origin - Dan Brown</h3>
+                    <h3 class="product-title">Origin – Dan Brown</h3>
                     <div class="product-price">Rp105.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -1094,15 +1476,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 31 -->
+
+            <!-- 31 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Berani Tidak Disukai" class="product-image">
+                <img src="https://picsum.photos/seed/31/400" alt="Berani Tidak Disukai" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Berani Tidak Disukai - Ichiro Kishimi & Fumitake Koga</h3>
+                    <h3 class="product-title">Berani Tidak Disukai – Ichiro Kishimi</h3>
                     <div class="product-price">Rp59.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kota Samarinda</span>
@@ -1115,11 +1496,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 32 -->
+
+            <!-- 32 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Lean Startup" class="product-image">
+                <img src="https://picsum.photos/seed/32/400" alt="The Lean Startup" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Lean Startup - Eric Ries</h3>
+                    <h3 class="product-title">The Lean Startup – Eric Ries</h3>
                     <div class="product-price">Rp155.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">20%</span>
@@ -1137,11 +1519,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 33 -->
+
+            <!-- 33 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="A Man Called Ove" class="product-image">
+                <img src="https://picsum.photos/seed/33/400" alt="A Man Called Ove" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">A Man Called Ove - Fredrik Backman</h3>
+                    <h3 class="product-title">A Man Called Ove – Fredrik Backman</h3>
                     <div class="product-price">Rp91.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">5%</span>
@@ -1159,15 +1542,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 34 -->
+
+            <!-- 34 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Homo Deus" class="product-image">
+                <img src="https://picsum.photos/seed/34/400" alt="Homo Deus" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Homo Deus: A Brief History of Tomorrow - Yuval Noah Harari</h3>
+                    <h3 class="product-title">Homo Deus – Yuval Noah Harari</h3>
                     <div class="product-price">Rp130.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
                         <span class="store-location">Kab. Badung</span>
@@ -1180,11 +1562,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 35 -->
+
+            <!-- 35 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Attack on Titan Vol 1" class="product-image">
+                <img src="https://picsum.photos/seed/35/400" alt="Attack on Titan Vol 1" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Attack on Titan Vol. 1 - Hajime Isayama</h3>
+                    <h3 class="product-title">Attack on Titan Vol. 1 – Hajime Isayama</h3>
                     <div class="product-price">Rp38.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">15%</span>
@@ -1202,15 +1585,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 36 -->
+
+            <!-- 36 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Ronggeng Dukuh Paruk" class="product-image">
+                <img src="https://picsum.photos/seed/36/400" alt="Ronggeng Dukuh Paruk" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Ronggeng Dukuh Paruk - Ahmad Tohari</h3>
+                    <h3 class="product-title">Ronggeng Dukuh Paruk – Ahmad Tohari</h3>
                     <div class="product-price">Rp55.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">✓</span>
                         <span class="store-location">Kab. Banyumas</span>
@@ -1223,11 +1605,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 37 -->
+
+            <!-- 37 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Gone Girl" class="product-image">
+                <img src="https://picsum.photos/seed/37/400" alt="Gone Girl" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Gone Girl - Gillian Flynn</h3>
+                    <h3 class="product-title">Gone Girl – Gillian Flynn</h3>
                     <div class="product-price">Rp62.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">25%</span>
@@ -1245,11 +1628,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 38 -->
+
+            <!-- 38 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The 5 AM Club" class="product-image">
+                <img src="https://picsum.photos/seed/38/400" alt="The 5 AM Club" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The 5 AM Club - Robin Sharma</h3>
+                    <h3 class="product-title">The 5 AM Club – Robin Sharma</h3>
                     <div class="product-price">Rp88.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">10%</span>
@@ -1267,15 +1651,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 39 -->
+
+            <!-- 39 (no discount) -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="Keluarga Cemara" class="product-image">
+                <img src="https://picsum.photos/seed/39/400" alt="Keluarga Cemara" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">Keluarga Cemara - Arswendo Atmowiloto</h3>
+                    <h3 class="product-title">Keluarga Cemara – Arswendo Atmowiloto</h3>
                     <div class="product-price">Rp42.000</div>
-                    <div class="discount-wrapper">
-                        <!-- tanpa diskon -->
-                    </div>
+                    <div class="discount-wrapper"></div>
                     <div class="store-info">
                         <span class="store-badge">🛡️</span>
                         <span class="store-location">Kota Solo</span>
@@ -1288,11 +1671,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 40 -->
+
+            <!-- 40 -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/190" alt="The Da Vinci Code" class="product-image">
+                <img src="https://picsum.photos/seed/40/400" alt="The Da Vinci Code" class="product-image" />
                 <div class="product-info">
-                    <h3 class="product-title">The Da Vinci Code - Dan Brown</h3>
+                    <h3 class="product-title">The Da Vinci Code – Dan Brown</h3>
                     <div class="product-price">Rp78.000</div>
                     <div class="discount-wrapper">
                         <span class="discount-badge">20%</span>
@@ -1310,15 +1694,1310 @@
                     </div>
                 </div>
             </div>
-            <!-- Item 41-100 akan di-generate dengan pola serupa -->
-            <!-- Karena keterbatasan ruang, saya berikan 40 item dulu sebagai contoh. 
-                 Untuk mencapai 100 item, salin dan modifikasi pola di atas dengan variasi judul, harga, dll.
-                 Template ini sudah mewakili struktur yang konsisten untuk scraping. -->
+
+            <!-- ===== 41–100 (generated with pattern) ===== -->
+            <!-- 41 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/41/400" alt="The Art of War" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Art of War – Sun Tzu</h3>
+                    <div class="product-price">Rp49.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp54.444</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Mataram</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">6rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 42 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/42/400" alt="Sang Pemimpi" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Sang Pemimpi – Andrea Hirata</h3>
+                    <div class="product-price">Rp67.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">5%</span>
+                        <span class="original-price">Rp70.526</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Palu</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">4rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 43 (no discount) -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/43/400" alt="Bintang" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Bintang – Tere Liye</h3>
+                    <div class="product-price">Rp61.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Bengkulu</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 44 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/44/400" alt="The Psychology of Money" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Psychology of Money – Morgan Housel</h3>
+                    <div class="product-price">Rp89.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp104.706</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Kupang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">2.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 45 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/45/400" alt="The Hobbit" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Hobbit – J.R.R. Tolkien</h3>
+                    <div class="product-price">Rp115.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">20%</span>
+                        <span class="original-price">Rp143.750</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Banjarmasin</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">1.7rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 46 (no discount) -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/46/400" alt="Si Anak Pemberani" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Si Anak Pemberani – Tere Liye</h3>
+                    <div class="product-price">Rp55.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Jambi</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">2.8rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 47 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/47/400" alt="Outliers" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Outliers – Malcolm Gladwell</h3>
+                    <div class="product-price">Rp99.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp110.000</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Serang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">1.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 48 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/48/400" alt="Death Note Vol 1" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Death Note Vol. 1 – Tsugumi Ohba</h3>
+                    <div class="product-price">Rp34.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp40.000</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Gorontalo</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">12rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 49 (no discount) -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/49/400" alt="Lelaki Harimau" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Lelaki Harimau – Eka Kurniawan</h3>
+                    <div class="product-price">Rp75.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Kendari</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">900+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 50 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/50/400" alt="The 7 Habits" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The 7 Habits of Highly Effective People</h3>
+                    <div class="product-price">Rp112.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">25%</span>
+                        <span class="original-price">Rp149.333</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Banda Aceh</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">1.9rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 51–60: tambahan variasi -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/51/400" alt="The Catcher in the Rye" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Catcher in the Rye – J.D. Salinger</h3>
+                    <div class="product-price">Rp78.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">8%</span>
+                        <span class="original-price">Rp84.783</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Ternate</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.4</span>
+                        <span>|</span>
+                        <span class="sold-count">1.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/52/400" alt="Dunia Sophie" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Dunia Sophie – Jostein Gaarder</h3>
+                    <div class="product-price">Rp95.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp107.955</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Tanjung Pinang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">2.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/53/400" alt="Bumi" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Bumi – Tere Liye</h3>
+                    <div class="product-price">Rp62.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Pangkal Pinang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">8.5rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/54/400" alt="The Secret" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Secret – Rhonda Byrne</h3>
+                    <div class="product-price">Rp69.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">18%</span>
+                        <span class="original-price">Rp84.146</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Sorong</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">7.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/55/400" alt="Fullmetal Alchemist Vol 1" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Fullmetal Alchemist Vol. 1 – Hiromu Arakawa</h3>
+                    <div class="product-price">Rp33.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp36.667</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Manokwari</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">9.8rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 56 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/56/400" alt="The Four Agreements" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Four Agreements – Don Miguel Ruiz</h3>
+                    <div class="product-price">Rp82.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp96.471</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Merauke</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">1.4rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 57 (no discount) -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/57/400" alt="Rembulan Tenggelam di Wajahmu" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Rembulan Tenggelam di Wajahmu – Tere Liye</h3>
+                    <div class="product-price">Rp58.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Tarakan</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">3.4rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 58 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/58/400" alt="The Tipping Point" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Tipping Point – Malcolm Gladwell</h3>
+                    <div class="product-price">Rp108.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">20%</span>
+                        <span class="original-price">Rp135.000</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Dumai</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">850+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 59 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/59/400" alt="Norwegian Wood" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Norwegian Wood – Haruki Murakami</h3>
+                    <div class="product-price">Rp92.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">5%</span>
+                        <span class="original-price">Rp96.842</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Pematangsiantar</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">1.6rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 60 (no discount) -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/60/400" alt="5 cm" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">5 cm – Donny Dhirgantoro</h3>
+                    <div class="product-price">Rp65.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Probolinggo</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.4</span>
+                        <span>|</span>
+                        <span class="sold-count">6.5rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 61–70 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/61/400" alt="The 100-Year-Old Man" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The 100-Year-Old Man – J. Jonasson</h3>
+                    <div class="product-price">Rp84.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp95.455</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Cilegon</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">700+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/62/400" alt="The Fault in Our Stars" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Fault in Our Stars – John Green</h3>
+                    <div class="product-price">Rp71.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp78.889</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Madiun</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">4.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/63/400" alt="Biru" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Biru – Tere Liye</h3>
+                    <div class="product-price">Rp57.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Blitar</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">5.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/64/400" alt="The Power of Now" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Power of Now – Eckhart Tolle</h3>
+                    <div class="product-price">Rp99.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">18%</span>
+                        <span class="original-price">Rp120.732</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Mojokerto</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">1.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/65/400" alt="Bleach Vol 1" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Bleach Vol. 1 – Tite Kubo</h3>
+                    <div class="product-price">Rp31.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp34.444</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Salatiga</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">11.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/66/400" alt="The Road" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Road – Cormac McCarthy</h3>
+                    <div class="product-price">Rp88.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">5%</span>
+                        <span class="original-price">Rp92.632</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Magelang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">630+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/67/400" alt="Madre" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Madre – Dee Lestari</h3>
+                    <div class="product-price">Rp73.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Pekalongan</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">2.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/68/400" alt="The Soul of Money" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Soul of Money – L. Twist</h3>
+                    <div class="product-price">Rp102.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp120.000</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Tegal</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">520+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/69/400" alt="Fahrenheit 451" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Fahrenheit 451 – Ray Bradbury</h3>
+                    <div class="product-price">Rp76.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">8%</span>
+                        <span class="original-price">Rp82.609</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Sidoarjo</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">980+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/70/400" alt="Sepatu Dahlan" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Sepatu Dahlan – Khrisna Pabichara</h3>
+                    <div class="product-price">Rp50.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Pasuruan</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">2.7rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 71–80 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/71/400" alt="The Night Circus" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Night Circus – Erin Morgenstern</h3>
+                    <div class="product-price">Rp95.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp107.955</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Lubuklinggau</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">450+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/72/400" alt="The Book Thief" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Book Thief – Markus Zusak</h3>
+                    <div class="product-price">Rp88.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp97.778</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Batu</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">1.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/73/400" alt="Anak Semua Bangsa" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Anak Semua Bangsa – Pramoedya A. Toer</h3>
+                    <div class="product-price">Rp115.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Parepare</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">5.0</span>
+                        <span>|</span>
+                        <span class="sold-count">1.8rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/74/400" alt="The Giver" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Giver – Lois Lowry</h3>
+                    <div class="product-price">Rp64.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp75.294</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Rantau Prapat</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">780+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/75/400" alt="One Piece Vol 2" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">One Piece Vol. 2 – Eiichiro Oda</h3>
+                    <div class="product-price">Rp35.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">5%</span>
+                        <span class="original-price">Rp36.842</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Binjai</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">18.5rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/76/400" alt="Just Kids" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Just Kids – Patti Smith</h3>
+                    <div class="product-price">Rp109.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp121.111</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Sibolga</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">340+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/77/400" alt="Mata di Tanah Melus" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Mata di Tanah Melus – Okky Madasari</h3>
+                    <div class="product-price">Rp58.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Gunungsitoli</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">560+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/78/400" alt="The Little Prince" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Little Prince – Antoine de Saint-Exupéry</h3>
+                    <div class="product-price">Rp45.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">20%</span>
+                        <span class="original-price">Rp56.250</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Kisaran</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">9.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/79/400" alt="The Shining" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Shining – Stephen King</h3>
+                    <div class="product-price">Rp82.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp96.471</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Kotamobagu</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">1.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/80/400" alt="Nanti Kita Cerita Tentang Hari Ini" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Nanti Kita Cerita Tentang Hari Ini – Marchella FP</h3>
+                    <div class="product-price">Rp66.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Langsa</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">3.6rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 81–90 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/81/400" alt="Guns, Germs, and Steel" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Guns, Germs, and Steel – J. Diamond</h3>
+                    <div class="product-price">Rp138.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">18%</span>
+                        <span class="original-price">Rp168.293</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Lhokseumawe</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">920+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/82/400" alt="The Silent Patient" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Silent Patient – Alex Michaelides</h3>
+                    <div class="product-price">Rp78.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp86.667</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Padangsidimpuan</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">1.7rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/83/400" alt="Perempuan Berkalung Sorban" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Perempuan Berkalung Sorban – Abidah El Khalieqy</h3>
+                    <div class="product-price">Rp52.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Bukittinggi</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">2.2rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/84/400" alt="The Color Purple" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Color Purple – Alice Walker</h3>
+                    <div class="product-price">Rp72.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp81.818</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Payakumbuh</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">440+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/85/400" alt="Dragon Ball Vol 1" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Dragon Ball Vol. 1 – Akira Toriyama</h3>
+                    <div class="product-price">Rp33.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">8%</span>
+                        <span class="original-price">Rp35.870</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Sawahlunto</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">14.7rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/86/400" alt="The Handmaid's Tale" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Handmaid's Tale – Margaret Atwood</h3>
+                    <div class="product-price">Rp86.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp101.176</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Solok</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">620+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/87/400" alt="Kambing Jantan" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Kambing Jantan – Raditya Dika</h3>
+                    <div class="product-price">Rp48.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Padang Panjang</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">8.9rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/88/400" alt="The Alchemist (Hardcover)" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Alchemist (Hardcover) – Paulo Coelho</h3>
+                    <div class="product-price">Rp128.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp142.222</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Pariaman</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">390+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/89/400" alt="The Godfather" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Godfather – Mario Puzo</h3>
+                    <div class="product-price">Rp96.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">20%</span>
+                        <span class="original-price">Rp120.000</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Tanah Datar</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">820+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/90/400" alt="Buku Pintar Menjadi Ibu Hebat" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Buku Pintar Menjadi Ibu Hebat – Tim Bintang</h3>
+                    <div class="product-price">Rp54.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Batusangkar</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.4</span>
+                        <span>|</span>
+                        <span class="sold-count">1.9rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 91–100 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/91/400" alt="The Art of Racing in the Rain" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Art of Racing in the Rain – G. Stein</h3>
+                    <div class="product-price">Rp81.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp92.045</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Banda Aceh</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">410+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/92/400" alt="The Shining (Buku)" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Shining (Edisi Indonesia) – Stephen King</h3>
+                    <div class="product-price">Rp79.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp87.778</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Langsa</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">550+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/93/400" alt="Sepotong Hati di Kota Tua" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Sepotong Hati di Kota Tua – Fani M.</h3>
+                    <div class="product-price">Rp47.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Lhokseumawe</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span>|</span>
+                        <span class="sold-count">2.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/94/400" alt="The Glass Castle" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Glass Castle – Jeannette Walls</h3>
+                    <div class="product-price">Rp94.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">15%</span>
+                        <span class="original-price">Rp110.588</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Subulussalam</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">330+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/95/400" alt="Manga Death Note Vol 2" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Death Note Vol. 2 – Tsugumi Ohba</h3>
+                    <div class="product-price">Rp34.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">5%</span>
+                        <span class="original-price">Rp35.789</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Meulaboh</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">8.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/96/400" alt="The Hunger Games" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Hunger Games – Suzanne Collins</h3>
+                    <div class="product-price">Rp73.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp81.111</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Singkil</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">4.6rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/97/400" alt="The Kite Runner" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Kite Runner – Khaled Hosseini</h3>
+                    <div class="product-price">Rp87.000</div>
+                    <div class="discount-wrapper"></div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Tapaktuan</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span>|</span>
+                        <span class="sold-count">7.8rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/98/400" alt="The Help" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Help – Kathryn Stockett</h3>
+                    <div class="product-price">Rp76.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">12%</span>
+                        <span class="original-price">Rp86.364</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Sigli</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span>|</span>
+                        <span class="sold-count">510+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/99/400" alt="Bacaan Anak Hebat" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">Bacaan Anak Hebat – Tim Pustaka</h3>
+                    <div class="product-price">Rp39.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">20%</span>
+                        <span class="original-price">Rp48.750</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">🛡️</span>
+                        <span class="store-location">Kota Bireuen</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span>|</span>
+                        <span class="sold-count">6.3rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 100 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/seed/100/400" alt="The Midnight Library" class="product-image" />
+                <div class="product-info">
+                    <h3 class="product-title">The Midnight Library – Matt Haig</h3>
+                    <div class="product-price">Rp92.000</div>
+                    <div class="discount-wrapper">
+                        <span class="discount-badge">10%</span>
+                        <span class="original-price">Rp102.222</span>
+                    </div>
+                    <div class="store-info">
+                        <span class="store-badge">✓</span>
+                        <span class="store-location">Kota Lhokseumawe</span>
+                    </div>
+                    <div class="rating-sold">
+                        <span class="star-icon">⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span>|</span>
+                        <span class="sold-count">2.1rb+ terjual</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end 100 items -->
+        </div>
+
+        <!-- ===== LOAD MORE ===== -->
+        <div class="load-more-container">
+            <button class="btn-load-more">Muat lebih banyak</button>
         </div>
     </div>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container footer-grid">
-            
+
             <!-- Kolom 1 -->
             <div class="footer-col">
                 <h4>Tokopaedi</h4>
@@ -1342,7 +3021,7 @@
             <div class="footer-col">
                 <h4>Beli</h4>
                 <ul>
-                    <li><a href="#">Tagihan & Top Up</a></li>
+                    <li><a href="#">Tagihan &amp; Top Up</a></li>
                     <li><a href="#">Tokopaedi COD</a></li>
                     <li><a href="#">Bebas Ongkir</a></li>
                 </ul>
@@ -1367,11 +3046,11 @@
 
             <!-- Kolom 3 -->
             <div class="footer-col">
-                <h4>Keamanan & Privasi</h4>
+                <h4>Keamanan &amp; Privasi</h4>
                 <div class="security-badges">
-                    <img src="https://via.placeholder.com/120x40?text=PCI+DSS" alt="PCI DSS">
-                    <img src="https://via.placeholder.com/120x40?text=ISO+27001" alt="ISO 27001">
-                    <img src="https://via.placeholder.com/120x40?text=ISO+27701" alt="ISO 27701">
+                    <img src="https://via.placeholder.com/120x40?text=PCI+DSS" alt="PCI DSS" />
+                    <img src="https://via.placeholder.com/120x40?text=ISO+27001" alt="ISO 27001" />
+                    <img src="https://via.placeholder.com/120x40?text=ISO+27701" alt="ISO 27701" />
                 </div>
 
                 <div class="sub-section">
@@ -1393,22 +3072,25 @@
                     <div><span class="icon">%</span> Promo khusus aplikasi</div>
                     <div><span class="icon">🚚</span> Gratis Ongkir tiap hari</div>
                 </div>
-                
+
                 <p style="color: var(--text-muted); margin-bottom: 12px;">Buka aplikasi dengan scan QR atau klik tombol:</p>
                 <div class="download-apps">
-                    <div class="qr-code"><img height="100%" src="https://quickchart.io/qr?text=Test"></div>
+                    <div class="qr-code">
+                        <img src="https://quickchart.io/qr?text=Tokopaedi" alt="QR Code" />
+                    </div>
                     <div class="store-buttons">
                         <div class="store-btn">Google Play</div>
                         <div class="store-btn">App Store</div>
                         <div class="store-btn">AppGallery</div>
                     </div>
                 </div>
-                <a href="#" style="color: var(--primary-green); text-decoration: none; display: block; margin-top: 16px;">Pelajari Selengkapnya →</a>
+                <a href="#" class="app-link">Pelajari Selengkapnya →</a>
             </div>
         </div>
 
+        <!-- Footer Bottom -->
         <div class="container footer-bottom">
-            <div>© 2009 - 2026, PT. Tokopaedi. All Rights Reserved.</div>
+            <div>© 2009 – 2026, PT. Tokopaedi. All Rights Reserved.</div>
             <div class="lang-switch">
                 <div class="lang-btn active">Indonesia</div>
                 <div class="lang-btn">English</div>
@@ -1416,16 +3098,11 @@
         </div>
     </footer>
 
-    <!-- Floating Chat -->
+    <!-- ===== FLOATING CHAT ===== -->
     <div class="floating-chat">
         <span class="chat-badge">54</span>
         💬 Chat
     </div>
 
-    <script>
-  document.querySelectorAll('.product-image').forEach((img, index) => {
-    img.src = `https://picsum.photos/seed/${index + 3}/190`;
-  });
-</script>
 </body>
 </html>
