@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoeep - Situs Belanja Online Terlengkap</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --brand-orange: #ee4d2d;
+            --brand-orange-hover: #d73211;
+            --bg-gray: #f5f5f5;
+            --text-main: rgba(0,0,0,.8);
+            --text-muted: rgba(0,0,0,.54);
+            --border-color: rgba(0,0,0,.09);
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        .header-wrapper {
+            background: linear-gradient(-180deg,#f53d2d,#f63);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--white);
+        }
+
+        .header-top-nav span {
+            margin-right: 16px;
+            cursor: pointer;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            gap: 40px;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 32px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            background-color: var(--white);
+            color: var(--brand-orange);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-box {
+            display: flex;
+            background-color: var(--white);
+            border-radius: 2px;
+            padding: 4px;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .search-box input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding: 0 12px;
+            font-size: 14px;
+        }
+
+        .search-btn {
+            background-color: var(--brand-orange);
+            border: none;
+            color: var(--white);
+            padding: 0 24px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .search-tags {
+            display: flex;
+            gap: 12px;
+            margin-top: 6px;
+            font-size: 12px;
+            color: rgba(255,255,255,.9);
+        }
+        
+        .search-tags span { cursor: pointer; }
+
+        .cart-icon {
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+
+        .section-header {
+            background-color: var(--white);
+            padding: 16px 20px;
+            border-bottom: 4px solid var(--brand-orange);
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--brand-orange);
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .item-card {
+            background-color: var(--white);
+            border: 1px solid transparent;
+            border-radius: 2px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.1s, border 0.1s, box-shadow 0.1s;
+            position: relative;
+        }
+
+        .item-card:hover {
+            border: 1px solid var(--brand-orange);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,.05);
+            z-index: 1;
+        }
+
+        .item-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            background-color: #f0f0f0;
+        }
+
+        .item-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-mall {
+            position: absolute;
+            top: 4px;
+            left: -4px;
+            background-color: #d0011b;
+            color: white;
+            font-size: 10px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-weight: bold;
+            box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(255,212,36,.9);
+            color: var(--brand-orange);
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-discount .percent { font-size: 14px; }
+
+        .item-info {
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .item-title {
+            font-size: 12px;
+            line-height: 14px;
+            height: 28px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 4px;
+        }
+
+        .item-promo-tags {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 8px;
+            min-height: 14px;
+        }
+
+        .tag-cashback {
+            border: 1px solid var(--brand-orange);
+            color: var(--brand-orange);
+            font-size: 10px;
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+
+        .item-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .item-price {
+            color: var(--brand-orange);
+            font-size: 16px;
+        }
+        
+        .item-price-currency {
+            font-size: 12px;
+        }
+
+        .item-sold {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .btn-load-more {
+            display: block;
+            width: 390px;
+            margin: 0 auto 40px auto;
+            background-color: var(--white);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: center;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .btn-load-more:hover {
+            background-color: #fafafa;
+        }
+
+        .seo-text-area {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 16px;
+            border-top: 1px solid var(--brand-orange);
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+        .seo-text-area h1 {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        footer {
+            background-color: #fbfbfb;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 20px 0;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+        
+        .footer-col ul a:hover {
+            color: var(--brand-orange);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .payment-box {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+            padding: 4px;
+            text-align: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .qr-download-area {
+            display: flex;
+            gap: 12px;
+        }
+
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--border-color);
+            background: var(--white) url('https://via.placeholder.com/80?text=QR') center/cover;
+            border-radius: 2px;
+        }
+
+        .store-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .store-badge {
+            width: 70px;
+            height: 22px;
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            border-radius: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-wrapper">
+        <div class="header-top">
+            <div class="header-top-nav">
+                <span>Seller Centre</span>
+                <span>Mulai Jual</span>
+                <span>Download</span>
+                <span>Ikuti kami di Facebook</span>
+            </div>
+            <div class="header-top-nav">
+                <span>Notifikasi</span>
+                <span>Bantuan</span>
+                <span>Bahasa Indonesia</span>
+                <span>Daftar</span>
+                <span>Log In</span>
+            </div>
+        </div>
+        <div class="header-main">
+            <a href="#" class="logo">
+                <div class="logo-icon">S</div>
+                Shoeep
+            </a>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Cari Sepatu, Baju, atau Tas di sini...">
+                    <button class="search-btn">🔍</button>
+                </div>
+                <div class="search-tags">
+                    <span>Sepatu Pria</span>
+                    <span>Tas Selempang Wanita</span>
+                    <span>Kemeja Pria</span>
+                    <span>Jam Tangan</span>
+                    <span>Masker</span>
+                </div>
+            </div>
+            <div class="cart-icon">🛒</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">Rekomendasi</div>
+
+        <div class="product-grid" id="scraping-target">
+
+            <!-- Card 1 - Lengkap dengan diskon & badge -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Sepatu Sneakers Pria" class="item-img">
+                    <div class="badge-mall">Shoeep Mall</div>
+                    <div class="badge-discount">
+                        <span class="percent">50%</span>
+                        <span style="font-size:10px">OFF</span>
+                    </div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Sepatu Sneakers Pria Kasual Original 100% Import Anti Slip</div>
+                    <div class="item-promo-tags">
+                        <span class="tag-cashback">Cashback XTRA</span>
+                    </div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>125.000</div>
+                        <div class="item-sold">10RB+ Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2 - Tanpa diskon, tanpa tag cashback -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Kemeja Polos" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Kemeja Pria Lengan Panjang Polos Slimfit Bahan Katun Melar</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>55.500</div>
+                        <div class="item-sold">4,2RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 3 - Harga rentang (Range Price) -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Case HP" class="item-img">
+                    <div class="badge-discount">
+                        <span class="percent">20%</span>
+                        <span style="font-size:10px">OFF</span>
+                    </div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Softcase Casing HP Transparan Anti Crack Semua Tipe</div>
+                    <div class="item-promo-tags">
+                        <span class="tag-cashback">Grosir</span>
+                    </div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>5.000 - 12.000</div>
+                        <div class="item-sold">999+ Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Tas Wanita" class="item-img">
+                    <div class="badge-mall">Star+</div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Tas Selempang Wanita Mewah Elegan Tali Rantai Emas</div>
+                    <div class="item-promo-tags">
+                        <span class="tag-cashback">Gratis Ongkir</span>
+                    </div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>89.900</div>
+                        <div class="item-sold">750 Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Masker KF94" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Masker KF94 Korea 4 Ply Isi 10 Pcs Kualitas Premium Hitam Putih</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>9.500</div>
+                        <div class="item-sold">50RB+ Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Botol Minum" class="item-img">
+                    <div class="badge-discount">
+                        <span class="percent">15%</span>
+                        <span style="font-size:10px">OFF</span>
+                    </div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Botol Minum Motivasi 2 Liter Penanda Waktu BPA Free</div>
+                    <div class="item-promo-tags">
+                        <span class="tag-cashback">Cashback XTRA</span>
+                    </div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>24.000</div>
+                        <div class="item-sold">2,5RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ====== 94 PRODUK TAMBAHAN DIMULAI DI SINI ====== -->
+            <!-- Item 7 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Sepatu Lari" class="item-img">
+                    <div class="badge-discount"><span class="percent">30%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Sepatu Lari Pria Breathable Mesh Ringan Untuk Olahraga</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>199.000</div>
+                        <div class="item-sold">1,8RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 8 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Jaket Hoodie" class="item-img">
+                    <div class="badge-mall">Mall</div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Jaket Hoodie Pria Wanita Unisex Fleece Tebal Hangat</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>145.000</div>
+                        <div class="item-sold">3,2RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 9 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Jam Tangan Pria" class="item-img">
+                    <div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Jam Tangan Pria Analog Chronograph Stainless Steel Anti Air</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>275.000</div>
+                        <div class="item-sold">620 Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 10 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Celana Jeans" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Celana Jeans Pria Slim Fit Stretch Denim Biru Tua</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>89.000</div>
+                        <div class="item-sold">5,5RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 11 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Power Bank" class="item-img">
+                    <div class="badge-mall">Shoeep Mall</div>
+                    <div class="badge-discount"><span class="percent">40%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Power Bank 10000mAh Fast Charging LED Digital Slim</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>89.000</div>
+                        <div class="item-sold">12RB+ Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 12 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Kaos Kaki" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Kaos Kaki Olahraga Pria Wanita Menyerap Keringat Isi 5</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>18.500</div>
+                        <div class="item-sold">8,7RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 13 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Blouse Wanita" class="item-img">
+                    <div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Blouse Wanita Lengan Pendek Motif Bunga Bahan Katun</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>45.000</div>
+                        <div class="item-sold">2,1RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 14 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Dompet Kulit" class="item-img">
+                    <div class="badge-mall">Star+</div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Dompet Kulit Pria Asli Slim RFID Blocking Banyak Slot</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>65.000</div>
+                        <div class="item-sold">980 Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 15 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Kacamata Hitam" class="item-img">
+                    <div class="badge-discount"><span class="percent">35%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Kacamata Hitam Pria Wanita UV400 Anti Silau Frame Kekinian</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>35.000</div>
+                        <div class="item-sold">4,6RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 16 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Gelang Tangan" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Gelang Tangan Pria Titanium Anti Karat Simple Elegan</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>25.000</div>
+                        <div class="item-sold">1,3RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 17 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Earphone Bluetooth" class="item-img">
+                    <div class="badge-mall">Shoeep Mall</div>
+                    <div class="badge-discount"><span class="percent">45%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Earphone Bluetooth TWS True Wireless HD Sound Touch Control</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>120.000</div>
+                        <div class="item-sold">9,2RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 18 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Charger HP" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Charger HP Fast Charging 18W Type C USB Micro Original</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>15.000 - 25.000</div>
+                        <div class="item-sold">15RB+ Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 19 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Lampu LED" class="item-img">
+                    <div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div>
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Lampu LED 10 Watt Putih Terang Hemat Energi Garansi 1 Tahun</div>
+                    <div class="item-promo-tags"></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>12.500</div>
+                        <div class="item-sold">6,8RB Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 20 -->
+            <a href="#" class="item-card">
+                <div class="item-img-wrapper">
+                    <img src="https://via.placeholder.com/190" alt="Alat Masak" class="item-img">
+                </div>
+                <div class="item-info">
+                    <div class="item-title">Set Peralatan Masak Anti Lengket 7 Pcs Wajan Panci Spatula</div>
+                    <div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div>
+                    <div class="item-price-row">
+                        <div class="item-price"><span class="item-price-currency">Rp</span>299.000</div>
+                        <div class="item-sold">450 Terjual</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Item 21 - 100 akan diisi dengan variasi serupa. 
+                 Karena keterbatasan ruang, saya tuliskan representasi 80 produk berikutnya secara ringkas, 
+                 namun tetap valid HTML dan bisa di-scrape. 
+                 Produk 21-100 memiliki struktur identik dengan data yang bervariasi. -->
+
+            <!-- Produk 21-30 (contoh) -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://picsum.photos/seed/7/190" alt="Sepatu Boots" class="item-img"><div class="badge-mall">Mall</div></div><div class="item-info"><div class="item-title">Sepatu Boots Pria Kulit Asli Safety Toe Anti Air</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>350.000</div><div class="item-sold">210 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://picsum.photos/seed/2/190" alt="Kaos Kaki Wanita" class="item-img"><div class="badge-discount"><span class="percent">12%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Kaos Kaki Wanita Motif Lucu Katun Lembut Isi 3</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>12.000</div><div class="item-sold">4,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Rok Plisket" class="item-img"></div><div class="item-info"><div class="item-title">Rok Plisket Wanita Korean Style High Waist A-Line</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>55.000</div><div class="item-sold">3,7RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sweater Rajut" class="item-img"><div class="badge-discount"><span class="percent">18%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Sweater Rajut Wanita Oversize Hangat Warna Pastel</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>78.000</div><div class="item-sold">1,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Celana Pendek" class="item-img"></div><div class="item-info"><div class="item-title">Celana Pendek Pria Chino Casual Katun Nyaman</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>42.000</div><div class="item-sold">5,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Baju Renang" class="item-img"><div class="badge-mall">Star+</div><div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Baju Renang Wanita Muslimah Syar'i Bahan Lycra</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>99.000</div><div class="item-sold">1,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Treadmill" class="item-img"></div><div class="item-info"><div class="item-title">Treadmill Elektrik Lipat 2.5HP Motor Senyap Display LED</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>2.499.000</div><div class="item-sold">85 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Dumbbell" class="item-img"><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Dumbbell Set 20kg Barbel Rumahan Lapis Karet</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>175.000</div><div class="item-sold">340 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Yoga Mat" class="item-img"></div><div class="item-info"><div class="item-title">Yoga Mat Tebal 10mm Anti Slip TPE Eco Friendly</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>55.000</div><div class="item-sold">2,3RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Tumbler Stainless" class="item-img"><div class="badge-mall">Mall</div></div><div class="item-info"><div class="item-title">Tumbler Stainless Steel 750ml Insulated Panas Dingin 12 Jam</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>85.000</div><div class="item-sold">7,4RB Terjual</div></div></div></a>
+
+            <!-- Produk 31-40 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kotak Makan" class="item-img"><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Kotak Makan Bento 3 Sekat Microwave Safe BPA Free</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>22.000</div><div class="item-sold">11RB+ Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Panci" class="item-img"></div><div class="item-info"><div class="item-title">Panci Stainless Steel 24cm Tutup Kaca Food Grade</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>65.000</div><div class="item-sold">1,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Wajan" class="item-img"><div class="badge-mall">Star+</div><div class="badge-discount"><span class="percent">30%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Wajan Anti Lengket Marble Coating 28cm Gagang Kayu</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>49.000</div><div class="item-sold">2,8RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Setrika" class="item-img"></div><div class="item-info"><div class="item-title">Setrika Uap Philips 1800W Anti Lengket Kapasitas 300ml</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>275.000</div><div class="item-sold">920 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kipas Angin" class="item-img"><div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Kipas Angin Portable Rechargeable 3 Speed Mini Meja</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>39.900</div><div class="item-sold">5,6RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="AC Portable" class="item-img"></div><div class="item-info"><div class="item-title">AC Portable 1/2 PK Pendingin Ruangan Cepat Dingin</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>1.850.000</div><div class="item-sold">130 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="TV LED" class="item-img"><div class="badge-mall">Shoeep Mall</div><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">TV LED 32 Inch Digital DVB-T2 Slim Bezel HDMI USB</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>1.499.000</div><div class="item-sold">410 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Laptop" class="item-img"></div><div class="item-info"><div class="item-title">Laptop Core i5 8GB RAM 256GB SSD Layar 14" FHD</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>6.799.000</div><div class="item-sold">75 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Mouse Gaming" class="item-img"><div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Mouse Gaming 6 Tombol RGB 4800DPI USB</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>49.000</div><div class="item-sold">3,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Keyboard" class="item-img"><div class="badge-mall">Star+</div></div><div class="item-info"><div class="item-title">Keyboard Mechanical Gaming Blue Switch RGB Anti Ghosting</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>189.000</div><div class="item-sold">1,7RB Terjual</div></div></div></a>
+
+            <!-- Produk 41-50 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Headset Gaming" class="item-img"><div class="badge-discount"><span class="percent">35%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Headset Gaming Surround Sound 7.1 LED Mic Noise Cancelling</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>149.000</div><div class="item-sold">2,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kursi Kantor" class="item-img"></div><div class="item-info"><div class="item-title">Kursi Kantor Ergonomis Sandaran Tinggi Busa Rebonded</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>750.000</div><div class="item-sold">310 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Meja Belajar" class="item-img"><div class="badge-mall">Mall</div><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Meja Belajar Lipat Portable Kayu Minimalis Modern</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>125.000</div><div class="item-sold">1,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Rak Sepatu" class="item-img"></div><div class="item-info"><div class="item-title">Rak Sepatu Besi 4 Tingkat Minimalis Susun Rapi</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>85.000</div><div class="item-sold">2,6RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kaca Rias" class="item-img"><div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Kaca Rias LED Touch Screen Bulat Make Up Mirror</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>110.000</div><div class="item-sold">890 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Parfum" class="item-img"></div><div class="item-info"><div class="item-title">Parfum Pria Wanita Refill 50ml Wangi Tahan Lama Premium</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>30.000</div><div class="item-sold">7,8RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Bedak" class="item-img"><div class="badge-mall">Shoeep Mall</div><div class="badge-discount"><span class="percent">30%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Bedak Tabur Natural Oil Control SPF 30 PA+++</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>42.000</div><div class="item-sold">4,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Lipstik" class="item-img"></div><div class="item-info"><div class="item-title">Lipstik Matte Velvet Set 4 Warna Nude Tahan Lama</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>25.000</div><div class="item-sold">10RB+ Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Skincare" class="item-img"><div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Paket Skincare Korea 5 Pcs Whitening Glowing Aman BPOM</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>135.000</div><div class="item-sold">3,3RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sampo" class="item-img"></div><div class="item-info"><div class="item-title">Sampo Anti Ketombe 340ml Vitamin Pro-V Pria Wanita</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>21.500</div><div class="item-sold">20RB+ Terjual</div></div></div></a>
+
+            <!-- Produk 51-60 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sikat Gigi" class="item-img"><div class="badge-mall">Star+</div></div><div class="item-info"><div class="item-title">Sikat Gigi Elektrik Sonic IPX7 4 Mode Timer 2 Menit</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>89.000</div><div class="item-sold">1,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Handuk" class="item-img"><div class="badge-discount"><span class="percent">18%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Handuk Mandi 100% Katun Jepang Lembut Serap Air Cepat</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>35.000</div><div class="item-sold">6,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sprei" class="item-img"></div><div class="item-info"><div class="item-title">Sprei Katun Motif Bunga Ukuran 180x200 Premium</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>95.000</div><div class="item-sold">1,8RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Bantal" class="item-img"><div class="badge-mall">Mall</div><div class="badge-discount"><span class="percent">22%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Bantal Tidur Memory Foam Orthopedic Anti Leher Sakit</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>125.000</div><div class="item-sold">2,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Selimut" class="item-img"></div><div class="item-info"><div class="item-title">Selimut Bulu Microfiber 200x230 Tebal Lembut</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>75.000</div><div class="item-sold">3,4RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Karpet" class="item-img"><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Karpet Rumput Sintetis 1x2 Meter Taman Indoor Outdoor</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>45.000</div><div class="item-sold">1,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Tirai" class="item-img"></div><div class="item-info"><div class="item-title">Tirai Gulung Blinds Zebra Roller Screen 120x180</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>169.000</div><div class="item-sold">560 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Cermin" class="item-img"><div class="badge-mall">Shoeep Mall</div><div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Cermin Hias Dinding Minimalis 50x70 Bingkai Kayu</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>135.000</div><div class="item-sold">790 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Lukisan" class="item-img"></div><div class="item-info"><div class="item-title">Lukisan Abstrak Kanvas 100x150 Dekorasi Ruang Tamu</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>250.000</div><div class="item-sold">180 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Vas Bunga" class="item-img"><div class="badge-discount"><span class="percent">5%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Vas Bunga Kaca Model Unik Tinggi 30cm Hiasan Meja</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>38.000</div><div class="item-sold">1,4RB Terjual</div></div></div></a>
+
+            <!-- Produk 61-70 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Pot Tanaman" class="item-img"></div><div class="item-info"><div class="item-title">Pot Tanaman Plastik 20cm Lubang Drainase Warna-warni</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>8.000 - 15.000</div><div class="item-sold">2,7RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Pupuk" class="item-img"><div class="badge-mall">Mall</div></div><div class="item-info"><div class="item-title">Pupuk Organik Cair 500ml Penyubur Tanaman Buah Bunga</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>12.500</div><div class="item-sold">5,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Benih Tanaman" class="item-img"><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Benih Sayuran Hidroponik Paket 10 Macam Biji Berkualitas</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>18.000</div><div class="item-sold">3,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Alat Berkebun" class="item-img"></div><div class="item-info"><div class="item-title">Set Alat Berkebun Mini 3 Pcs Sekop Garpu Tanam</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>22.000</div><div class="item-sold">4,8RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Pompa Air" class="item-img"><div class="badge-mall">Shoeep Mall</div><div class="badge-discount"><span class="percent">12%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Pompa Air Submersible DC 12V Celup Aquarium Kolam</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>55.000</div><div class="item-sold">1,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Selang Air" class="item-img"></div><div class="item-info"><div class="item-title">Selang Air Transparan 1/2 Inch 25 Meter Anti Lumut</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>48.000</div><div class="item-sold">2,3RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Ember" class="item-img"><div class="badge-discount"><span class="percent">8%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Ember Plastik 40L Gagang Besi Bak Mandi Warna</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>16.000</div><div class="item-sold">6,6RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Gayung" class="item-img"></div><div class="item-info"><div class="item-title">Gayung Plastik 1.5L Mandi Warna Random</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>5.500</div><div class="item-sold">12RB+ Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sapu" class="item-img"><div class="badge-mall">Star+</div></div><div class="item-info"><div class="item-title">Sapu Lidi Ijuk Panjang 120cm Bersihkan Debu</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>9.900</div><div class="item-sold">7,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Pel" class="item-img"><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Pel Magnet Stainless 360 Derajat Kain Microfiber</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>28.000</div><div class="item-sold">3,8RB Terjual</div></div></div></a>
+
+            <!-- Produk 71-80 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Pengharum Ruangan" class="item-img"></div><div class="item-info"><div class="item-title">Pengharum Ruangan Botol 225ml Aroma Lavender / Lemon</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>8.500</div><div class="item-sold">9,3RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Lilin Aromaterapi" class="item-img"><div class="badge-mall">Mall</div><div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Lilin Aromaterapi Soya Wax 100ml Relaksasi Essential</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>32.000</div><div class="item-sold">1,6RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Diffuser" class="item-img"></div><div class="item-info"><div class="item-title">Diffuser Ultrasonic 300ml LED 7 Warna Timer Otomatis</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>69.000</div><div class="item-sold">2,4RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Essential Oil" class="item-img"><div class="badge-discount"><span class="percent">30%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Essential Oil Tea Tree 10ml Murni Tanpa Campuran</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>21.000</div><div class="item-sold">4,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Tas Belanja" class="item-img"></div><div class="item-info"><div class="item-title">Tas Belanja Lipat Foldable Grocery Bag Motif Lucu</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>14.500</div><div class="item-sold">8,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Payung" class="item-img"><div class="badge-mall">Star+</div><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Payung Lipat Anti UV Otomatis Kecil Ringan Travel</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>29.000</div><div class="item-sold">5,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Jas Hujan" class="item-img"></div><div class="item-info"><div class="item-title">Jas Hujan Ponco Motif Transparan Dewasa</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>25.000</div><div class="item-sold">2,8RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Tempat Makan" class="item-img"><div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Tempat Makan Set Stainless 4 Susun Portabel</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>45.000</div><div class="item-sold">1,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Botol Susu" class="item-img"></div><div class="item-info"><div class="item-title">Botol Susu Bayi Anti Kolik 150ml BPA Free Silicone</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>34.000</div><div class="item-sold">6,7RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Mainan Anak" class="item-img"><div class="badge-mall">Shoeep Mall</div></div><div class="item-info"><div class="item-title">Mainan Edukasi Anak 1 Tahun Balok Susun Kayu</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>59.000</div><div class="item-sold">3,2RB Terjual</div></div></div></a>
+
+            <!-- Produk 81-90 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Lego" class="item-img"><div class="badge-discount"><span class="percent">18%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Lego Block Brick 500 Pcs Kompatibel Banyak Warna</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>49.000</div><div class="item-sold">4,5RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Boneka" class="item-img"></div><div class="item-info"><div class="item-title">Boneka Teddy Bear 60cm Lembut Hadiah Ulang Tahun</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>50.000</div><div class="item-sold">2,1RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Puzzle" class="item-img"><div class="badge-mall">Mall</div><div class="badge-discount"><span class="percent">12%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Puzzle Kayu 1000 Pcs Pemandangan Alam Edukatif</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>38.000</div><div class="item-sold">1,3RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sepeda" class="item-img"></div><div class="item-info"><div class="item-title">Sepeda Gunung MTB 26 Inch 21 Speed Suspensi Dual</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>1.650.000</div><div class="item-sold">95 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Helm" class="item-img"><div class="badge-discount"><span class="percent">40%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Helm Half Face Kaca Double Visor SNI Helm Pria Wanita</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>99.000</div><div class="item-sold">3,6RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Sarung Tangan Motor" class="item-img"></div><div class="item-info"><div class="item-title">Sarung Tangan Motor Kulit Sintetis Proteksi Knuckle</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>35.000</div><div class="item-sold">4,4RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Jaket Motor" class="item-img"><div class="badge-mall">Star+</div><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Jaket Motor Hoodie Parasut Waterproof Resleting</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>165.000</div><div class="item-sold">1,4RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Cover Motor" class="item-img"></div><div class="item-info"><div class="item-title">Cover Motor Anti Air UV Protection Bahan Parasut</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>49.000</div><div class="item-sold">2,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kunci Pas" class="item-img"><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Kunci Pas Set 12 Pcs 6-32mm Baja Chrome Vanadium</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>85.000</div><div class="item-sold">1,7RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Obeng" class="item-img"></div><div class="item-info"><div class="item-title">Obeng Set Multifungsi 45 in 1 Magnetik Portable</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>37.500</div><div class="item-sold">5,1RB Terjual</div></div></div></a>
+
+            <!-- Produk 91-100 -->
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Mesin Cuci" class="item-img"><div class="badge-mall">Shoeep Mall</div><div class="badge-discount"><span class="percent">20%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Mesin Cuci 1 Tabung 8kg Aqua Magic Filter</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>1.899.000</div><div class="item-sold">230 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kulkas" class="item-img"></div><div class="item-info"><div class="item-title">Kulkas 2 Pintu 180L Frost Free Hemat Listrik</div><div class="item-promo-tags"><span class="tag-cashback">Cashback XTRA</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>2.999.000</div><div class="item-sold">110 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Microwave" class="item-img"><div class="badge-discount"><span class="percent">15%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Microwave 20L Grill Defrost Timer 30 Menit</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>850.000</div><div class="item-sold">175 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Dispenser" class="item-img"></div><div class="item-info"><div class="item-title">Dispenser Galon Bawah Hot & Cold Tampilan Suhu</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>450.000</div><div class="item-sold">320 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Rice Cooker" class="item-img"><div class="badge-mall">Mall</div></div><div class="item-info"><div class="item-title">Rice Cooker Digital 1.8L 10 Mode Masak Keep Warm</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>275.000</div><div class="item-sold">1,2RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Blender" class="item-img"><div class="badge-discount"><span class="percent">25%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Blender Bumbu Kaca 2 Liter Pisau 4 Tajam</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>130.000</div><div class="item-sold">2,9RB Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Mixer" class="item-img"></div><div class="item-info"><div class="item-title">Mixer Roti Planetary 5L 6 Speed Stainless Steel</div><div class="item-promo-tags"><span class="tag-cashback">Grosir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>650.000</div><div class="item-sold">190 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Toaster" class="item-img"><div class="badge-mall">Star+</div><div class="badge-discount"><span class="percent">10%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Toaster Roti 2 Slice Stainless 7 Level Browning</div><div class="item-promo-tags"></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>120.000</div><div class="item-sold">840 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Kompor Gas" class="item-img"></div><div class="item-info"><div class="item-title">Kompor Gas 2 Tungku Stainless Auto Ignition</div><div class="item-promo-tags"><span class="tag-cashback">Gratis Ongkir</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>380.000</div><div class="item-sold">410 Terjual</div></div></div></a>
+            <a href="#" class="item-card"><div class="item-img-wrapper"><img src="https://via.placeholder.com/190" alt="Regulator Gas" class="item-img"><div class="badge-discount"><span class="percent">5%</span><span>OFF</span></div></div><div class="item-info"><div class="item-title">Regulator Gas Tekanan Tinggi SNI Selang 1.5m</div><div class="item-promo-tags"><span class="tag-cashback">Cashback</span></div><div class="item-price-row"><div class="item-price"><span class="item-price-currency">Rp</span>42.000</div><div class="item-sold">6,9RB Terjual</div></div></div></a>
+
+        </div>
+
+        <button class="btn-load-more">Muat Lebih Banyak</button>
+    </div>
+
+    <div class="seo-text-area">
+        <h1>Shoeep Indonesia - Pusat Belanja Online Terpercaya</h1>
+        <p>Belanja online aman dan nyaman di Shoeep. Temukan berbagai macam produk mulai dari fashion, elektronik, kebutuhan rumah tangga, hingga otomotif dengan harga terbaik. Nikmati promo gratis ongkir, cashback, dan flash sale setiap harinya. Kami menjamin keamanan transaksi Anda dengan garansi Shoeep, uang kembali jika pesanan tidak sesuai.</p>
+        <p>Sebagai platform e-commerce pilihan, Shoeep menyediakan berbagai metode pembayaran mulai dari transfer bank, kartu kredit, hingga bayar di tempat (COD). Didukung oleh logistik terpercaya, pesanan Anda akan dikirimkan dengan cepat dan aman ke seluruh Indonesia.</p>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Layanan Pelanggan</h4>
+                <ul>
+                    <li><a href="#">Bantuan</a></li>
+                    <li><a href="#">Metode Pembayaran</a></li>
+                    <li><a href="#">ShoeepPay</a></li>
+                    <li><a href="#">Koin Shoeep</a></li>
+                    <li><a href="#">Lacak Pesanan Pembeli</a></li>
+                    <li><a href="#">Lacak Pengiriman Penjual</a></li>
+                    <li><a href="#">Gratis Ongkir</a></li>
+                    <li><a href="#">Pengembalian Barang & Dana</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Jelajahi Shoeep</h4>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Kebijakan Shoeep Mall</a></li>
+                    <li><a href="#">Hubungan Investor</a></li>
+                    <li><a href="#">Program Afiliasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Pembayaran</h4>
+                <div class="payment-grid">
+                    <div class="payment-box">BCA</div>
+                    <div class="payment-box">Mandiri</div>
+                    <div class="payment-box">BNI</div>
+                    <div class="payment-box">BRI</div>
+                    <div class="payment-box">Syariah</div>
+                    <div class="payment-box">Visa</div>
+                </div>
+                <h4>Pengiriman</h4>
+                <div class="payment-grid">
+                    <div class="payment-box">J&T</div>
+                    <div class="payment-box">JNE</div>
+                    <div class="payment-box">SiCepat</div>
+                    <div class="payment-box">Ninja</div>
+                    <div class="payment-box">Grab</div>
+                    <div class="payment-box">Gojek</div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Ikuti Kami</h4>
+                <ul>
+                    <li><a href="#">📘 Facebook</a></li>
+                    <li><a href="#">📸 Instagram</a></li>
+                    <li><a href="#">🐦 Twitter</a></li>
+                    <li><a href="#">🔗 LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Download Aplikasi Shoeep</h4>
+                <div class="qr-download-area">
+                    <div class="qr-code"><img height="100%" src="https://quickchart.io/qr?text=Test"></div>
+                    <div class="store-badges">
+                        <div class="store-badge">App Store</div>
+                        <div class="store-badge">Google Play</div>
+                        <div class="store-badge">AppGallery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+  document.querySelectorAll('.item-img').forEach((img, index) => {
+    // seed dimulai dari 1, bisa juga gunakan index langsung
+    img.src = `https://picsum.photos/seed/${index + 12}/190`;
+  });
+</script>
+</body>
+</html>
