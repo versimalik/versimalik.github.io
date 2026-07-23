@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Survey Implementasi Kurikulum Koding Progresif | Evaluasi Kurikulum</title>
+    <meta name="title" content="Survey Implementasi Kurikulum Koding Progresif">
+    <meta name="description" content="Survey evaluasi awal penerapan Kurikulum Koding Progresif di minggu pertama. Ditujukan untuk tutor coding di berbagai jenjang pendidikan. Berisi evaluasi tes diagnostik, kesesuaian roadmap, kondisi infrastruktur, dan rekomendasi penyesuaian kurikulum.">
+    <meta property="og:title" content="Survey Implementasi Kurikulum Koding Progresif">
+    <meta property="og:description" content="Evaluasi awal penerapan Kurikulum Koding Progresif. Survey ini bertujuan mengidentifikasi kendala teknis, pedagogis, dan infrastruktur dalam implementasi kurikulum baru di berbagai sekolah.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://versimalik.com/alhazen/survey/kurikulum-progresif/">
+    <meta property="og:image" content="https://i.imghippo.com/files/Yc4502qU.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="Koding Progresif - Survey Kurikulum">
+    <meta property="og:updated_time" content="2026-07-23T00:00:00+07:00">
+    <!-- Hanya PicoCSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.jade.min.css">
+    <style>
+        .container{
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        #formContainer {
+            /* Sesuaikan angka ini dengan tinggi navbar Anda (misal: 80px atau 100px) */
+            scroll-margin-top: 100px; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- iframe tersembunyi untuk submit -->
+    <iframe name="hiddenFrame" id="iframe" style="display:none;"></iframe>
+
+    <div class="container" id="formContainer">
+        <img style="width:50px; margin-bottom: 2rem;" src="https://lh3.googleusercontent.com/d/1Eh-pfDwHRmyPz1HQQJuCQjYk64vs4lNr">
+        <h1>Survey Implementasi Kurikulum Progresif - Alhazen Academy</h1>
+
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfVHtWOPAalKJMkUmtNtES8_q35PAkBFOS9d0TpEcixGarlew/formResponse" method="POST" target="hiddenFrame" onsubmit="return handleSubmit(event)">
+
+            <!-- ========== SECTION 0: DESKRIPSI ========== -->
+            <section id="section-0" class="form-section" style="display:block;">
+                <h2>Deskripsi Survey</h2>
+                <p>Survey ini disusun sebagai bagian dari evaluasi awal penerapan Kurikulum Koding Progresif di minggu pertama implementasi. Kurikulum baru ini dirancang dengan sistem berjenjang (progressive) di mana setiap level memiliki materi yang berjalan terus tanpa pengulangan, sehingga siswa diharapkan naik level secara bertahap sesuai kompetensinya.</p>
+                <p>Namun dalam pelaksanaan tes diagnostik pekan pertama, ditemukan beberapa catatan dan kendala di lapangan yang perlu segera ditindaklanjuti. Beberapa temuan awal antara lain:</p>
+                <ol>
+                    <li>Tidak semua jenjang siswa dimulai dari level bawah karena kemampuan dasar komputer dan coding siswa masih sangat bervariasi, baru sekitar 1 tahun belajar dan itu pun masih materi dasar.</li>
+                    <li>Banyak siswa yang kaget dan kesulitan menghadapi tes diagnostik karena belum terbiasa dengan format dan materi yang diujikan.</li>
+                    <li>Kondisi infrastruktur (komputer, internet, waktu akses lab) di masing-masing sekolah berbeda-beda sehingga berpotensi menimbulkan perbedaan standar antar sekolah.</li>
+                    <li>Kesenjangan kemampuan antar siswa dalam satu kelas sangat jauh, dari yang sudah cukup mahir hingga yang benar-benar belum bisa sama sekali.</li>
+                </ol>
+                <p><strong>Tujuan utama survey ini adalah:</strong></p>
+                <ol>
+                    <li>Mendapatkan data empiris dari lapangan tentang apa yang benar-benar terjadi saat tes diagnostik dan pembelajaran awal kurikulum baru.</li>
+                    <li>Mengidentifikasi secara akurat kendala-kendala yang dihadapi tutor maupun siswa, baik yang bersifat teknis, pedagogis, maupun infrastruktur.</li>
+                    <li>Memastikan kurikulum yang diterapkan seragam di seluruh sekolah dengan standar yang sama, tidak ada perbedaan implementasi antar sekolah.</li>
+                    <li>Menjadi dasar analisis untuk menentukan apakah kurikulum progresif ini perlu penyesuaian.</li>
+                    <li>Mengumpulkan rekomendasi konkret dari tutor yang langsung berhadapan dengan siswa di lapangan.</li>
+                </ol>
+                <div style="display:flex; justify-content:flex-end; margin-top:1.5rem;">
+                    <button type="button" class="" onclick="goStep(1)">Mulai Survey →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 1: INFORMASI UMUM TUTOR ========== -->
+            <section id="section-1" class="form-section" style="display:none;">
+                <h2>Informasi Umum Tutor</h2>
+                <p>1. Nama Tutor:</p>
+                <input type="text" name="entry.1603795409" required>
+
+                <p>2. Jenjang yang diampu (bisa pilih lebih dari 1):</p>
+                <input type="checkbox" class="jenjang" value="TK/RA"> TK/RA<br>
+                <input type="checkbox" class="jenjang" value="SD/MI"> SD/MI<br>
+                <input type="checkbox" class="jenjang" value="SMP/MTs"> SMP/MTs<br>
+                <input type="checkbox" class="jenjang" value="SMA/MA"> SMA/MA<br>
+                <input type="checkbox" class="jenjang" value="Mahasiswa/i"> Mahasiswa/i<br>
+                <input type="checkbox" class="jenjang" value="Umum"> Umum<br>
+                <input type="hidden" name="entry.1268055753" id="jenjangGabungan">
+                <br>
+
+                <p>3. Tempat Bertugas:</p>
+                <select id="tempatSelect">
+                    <option value="" disabled selected>-- Pilih Lembaga --</option>
+                    <option value="Ibnu Taimiyah Bogor">Ibnu Taimiyah Bogor</option>
+                    <option value="Minhaj Shahabah Bogor">Minhaj Shahabah Bogor</option>
+                    <option value="Mahadul Quran Boyolai">Mahadul Quran Boyolai</option>
+                    <option value="Asma Gatsu Cimahi">Asma Gatsu Cimahi</option>
+                    <option value="STAI Aisyah Binti Abu Bakar Bogor">STAI Aisyah Binti Abu Bakar Bogor</option>
+                    <option value="EMIISc Jakarta Timur">EMIISc Jakarta Timur</option>
+                    <option value="Bina Insan Mandiri Jakarta Barat">Bina Insan Mandiri Jakarta Barat</option>
+                    <option value="Global Nusantara Bogor">Global Nusantara Bogor</option>
+                    <option value="Perguruan Islam Darussalam Cikunir">Perguruan Islam Darussalam Cikunir</option>
+                    <option value="Perguruan Islam Darussalam Pekayon">Perguruan Islam Darussalam Pekayon</option>
+                    <option value="Tahfidz Nurul Ilmi Lilhuffadz Bogor">Tahfidz Nurul Ilmi Lilhuffadz Bogor</option>
+                    <option value="Pesantren Al Umm Bogor">Pesantren Al Umm Bogor</option>
+                    <option value="Al Hambra Bekasi">Al Hambra Bekasi</option>
+                    <option value="Assunnah Cirebon">Assunnah Cirebon</option>
+                    <option value="Rumah Quran Temi">Rumah Quran Temi</option>
+                    <option value="Imam Syafi'i Brebes">Imam Syafi'i Brebes</option>
+                    <option value="Imam Syafi'i Aceh">Imam Syafi'i Aceh</option>
+                    <option value="Irsyadurrahman Cirebon">Irsyadurrahman Cirebon</option>
+                    <option value="Rabbani Bandung">Rabbani Bandung</option>
+                    <option value="Al Azhar IIBS Solo">Al Azhar IIBS Solo</option>
+                    <option value="Al Muslim Aceh">Al Muslim Aceh</option>
+                    <option value="Dar Maryam Aceh">Dar Maryam Aceh</option>
+                    <option value="__other_option__">Lainnya</option>
+                </select>
+                <input type="text" id="tempatLainnya" style="display:none;" placeholder="Tulis lembaga lain">
+                <input type="hidden" name="entry.1641903268" id="tempatHidden">
+
+                <p>4. Ekstrakurikuler atau Kurikulum?</p>
+                <select name="entry.1956184173">
+                    <option value="" disabled selected>-- Pilih Jenis --</option>
+                    <option value="Ekstrakurikuler">Ekstrakurikuler</option>
+                    <option value="Kurikulum">Kurikulum</option>
+                </select>
+
+                <p>5. Total jumlah siswa yang diampu:</p>
+                <input type="number" name="entry.405328092">
+
+                <p>6. Berapa lama mengajar di coding school ini?</p>
+                <input type="text" name="entry.1633592719">
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(0)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(2)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 2: PELAKSANAAN TES DIAGNOSTIK ========== -->
+            <section id="section-2" class="form-section" style="display:none;">
+                <h2>Pelaksanaan Tes Diagnostik</h2>
+                <!-- ... semua pertanyaan 7–12 ... -->
+                <p>7. Apakah tes diagnostik kurikulum baru berhasil dijalankan di kelas Anda?</p>
+                <input type="radio" name="entry.1668793837" value="YA"> YA<br>
+                <input type="radio" name="entry.1668793837" value="TIDAK"> TIDAK<br>
+                <input type="radio" name="entry.1668793837" value="SEBAGIAN (hanya beberapa siswa)"> SEBAGIAN (hanya beberapa siswa)<br>
+                <br>
+                <p>8. Jika TIDAK atau SEBAGIAN, kendala apa saja yang dihadapi saat pelaksanaan tes diagnostik?</p>
+                <textarea name="entry.1351593015" rows="4" cols="50"></textarea>
+
+                <br><p>9. Bagaimana kondisi siswa saat menghadapi tes diagnostik?</p>
+                <input type="radio" name="entry.1551776999" value="Sangat antusias dan langsung mengerjakan"> Sangat antusias dan langsung mengerjakan<br>
+                <input type="radio" name="entry.1551776999" value="Antusias tapi bingung dengan soal-soalnya"> Antusias tapi bingung dengan soal-soalnya<br>
+                <input type="radio" name="entry.1551776999" value="Cenderung pasif dan tidak tahu harus mulai dari mana"> Cenderung pasif dan tidak tahu harus mulai dari mana<br>
+                <input type="radio" name="entry.1551776999" value="Banyak yang tidak bisa mengerjakan sama sekali"> Banyak yang tidak bisa mengerjakan sama sekali<br>
+                <input type="radio" name="entry.1551776999" value="__other_option__"> Lainnya: <input type="text" name="entry.1551776999.other_option_response"><br>
+
+                <br><p>10. Berapa lama waktu yang dibutuhkan siswa rata-rata untuk menyelesaikan tes diagnostik?</p>
+                <input type="radio" name="entry.1344906371" value="Kurang dari 15 menit"> Kurang dari 15 menit<br>
+                <input type="radio" name="entry.1344906371" value="15-30 menit"> 15-30 menit<br>
+                <input type="radio" name="entry.1344906371" value="30-60 menit"> 30-60 menit<br>
+                <input type="radio" name="entry.1344906371" value="Lebih dari 60 menit"> Lebih dari 60 menit<br>
+                <input type="radio" name="entry.1344906371" value="Banyak yang tidak selesai"> Banyak yang tidak selesai<br>
+
+                <br><p>11. Apakah ada siswa yang sudah menyelesaikan tes diagnostik sebelum waktu yang ditentukan habis?</p>
+                <input type="radio" name="entry.699673066" value="YA, lebih dari separuh kelas"> YA, lebih dari separuh kelas<br>
+                <input type="radio" name="entry.699673066" value="YA, tapi hanya beberapa siswa saja"> YA, tapi hanya beberapa siswa saja<br>
+                <input type="radio" name="entry.699673066" value="TIDAK, hampir semua siswa membutuhkan waktu penuh"> TIDAK, hampir semua siswa membutuhkan waktu penuh<br>
+                <input type="radio" name="entry.699673066" value="TIDAK, banyak yang tidak selesai sampai waktu habis"> TIDAK, banyak yang tidak selesai sampai waktu habis<br>
+
+                <br><p>12. Apakah siswa memahami instruksi/petunjuk pengerjaan tes diagnostik?</p>
+                <input type="radio" name="entry.336098850" value="Semua siswa memahami dengan baik"> Semua siswa memahami dengan baik<br>
+                <input type="radio" name="entry.336098850" value="Sebagian besar memahami, sebagian kecil perlu bimbingan tambahan"> Sebagian besar memahami, sebagian kecil perlu bimbingan tambahan<br>
+                <input type="radio" name="entry.336098850" value="Hanya sebagian kecil yang memahami"> Hanya sebagian kecil yang memahami<br>
+                <input type="radio" name="entry.336098850" value="Hampir tidak ada yang memahami petunjuknya"> Hampir tidak ada yang memahami petunjuknya<br>
+                <input type="radio" name="entry.336098850" value="__other_option__"> Lainnya: <input type="text" name="entry.336098850.other_option_response"><br>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(1)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(3)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 3: KESESUAIAN TES DIAGNOSTIK ========== -->
+            <section id="section-3" class="form-section" style="display:none;">
+                <h2>Kesesuaian Tes Diagnostik dengan Kondisi Lapangan</h2>
+                <!-- ... pertanyaan 13–16 ... -->
+                <br><p>13. Apakah tes diagnostik ini diberikan kepada siswa yang tahun lalu mengikuti kurikulum yang BERBEDA dari kurikulum baru ini?</p>
+                <input type="radio" name="entry.77603275" value="YA, semua siswa berasal dari kurikulum lama"> YA, semua siswa berasal dari kurikulum lama<br>
+                <input type="radio" name="entry.77603275" value="YA, sebagian dari kurikulum lama dan sebagian sudah ikut kurikulum baru"> YA, sebagian dari kurikulum lama dan sebagian sudah ikut kurikulum baru<br>
+                <input type="radio" name="entry.77603275" value="TIDAK, semua siswa sudah mengikuti kurikulum yang sama"> TIDAK, semua siswa sudah mengikuti kurikulum yang sama<br>
+                <input type="radio" name="entry.77603275" value="__other_option__"> Lainnya: <input type="text" name="entry.77603275.other_option_response"><br>
+
+                <br><p>14. Menurut Anda, apakah soal tes diagnostik kurikulum baru ini sudah tepat untuk siswa dengan latar belakang kurikulum berbeda?</p>
+                <input type="radio" name="entry.1074478075" value="Sudah tepat, soalnya mengukur kemampuan dasar dengan benar"> Sudah tepat, soalnya mengukur kemampuan dasar dengan benar<br>
+                <input type="radio" name="entry.1074478075" value="Belum tepat, soal terlalu sulit untuk siswa yang baru belajar 1 tahun"> Belum tepat, soal terlalu sulit untuk siswa yang baru belajar 1 tahun<br>
+                <input type="radio" name="entry.1074478075" value="Belum tepat, soal terlalu mudah untuk siswa yang sudah punya dasar"> Belum tepat, soal terlalu mudah untuk siswa yang sudah punya dasar<br>
+                <input type="radio" name="entry.1074478075" value="Belum tepat, ada beberapa materi yang belum pernah diajarkan di kurikulum lama"> Belum tepat, ada beberapa materi yang belum pernah diajarkan di kurikulum lama<br>
+                <input type="radio" name="entry.1074478075" value="Belum bisa menilai karena baru pertama kali menerapkan"> Belum bisa menilai karena baru pertama kali menerapkan<br>
+                <input type="radio" name="entry.1074478075" value="__other_option__"> Lainnya: <input type="text" name="entry.1074478075.other_option_response"><br>
+
+                <br><p>15. Jika ada materi yang belum pernah diajarkan di kurikulum lama namun ada dalam kurikulum progresif ini, sebutkan materi apa saja yang dimaksud:</p>
+                <textarea name="entry.1595240945" rows="4" cols="50"></textarea>
+
+                <br><p>16. Bagaimana kondisi pemahaman dasar komputer siswa saat ini?</p>
+                <input type="radio" name="entry.137547386" value="Sebagian besar sudah bisa mengoperasikan komputer dengan baik"> Sebagian besar sudah bisa mengoperasikan komputer dengan baik<br>
+                <input type="radio" name="entry.137547386" value="Sebagian besar masih perlu bimbingan untuk mengoperasikan komputer"> Sebagian besar masih perlu bimbingan untuk mengoperasikan komputer<br>
+                <input type="radio" name="entry.137547386" value="Sangat bervariasi, ada yang sudah mahir dan ada yang belum bisa sama sekali"> Sangat bervariasi, ada yang sudah mahir dan ada yang belum bisa sama sekali<br>
+                <input type="radio" name="entry.137547386" value="Hampir semua siswa belum bisa mengoperasikan komputer dengan baik"> Hampir semua siswa belum bisa mengoperasikan komputer dengan baik<br>
+                <input type="radio" name="entry.137547386" value="__other_option__"> Lainnya: <input type="text" name="entry.137547386.other_option_response"><br>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(2)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(4)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 4: KESESUAIAN ROADMAP ========== -->
+            <section id="section-4" class="form-section" style="display:none;">
+                <h2>Kesesuaian Roadmap Kurikulum Progresif</h2>
+                <!-- ... pertanyaan 17–22 ... -->
+                <p>17. Setelah membaca silabus/roadmap kurikulum baru, apakah roadmap materi ini cocok diterapkan secara progresif ke siswa Anda?</p>
+                <input type="radio" name="entry.1071913319" value="Sangat cocok, materi berjalan berjenjang dengan baik"> Sangat cocok, materi berjalan berjenjang dengan baik<br>
+                <input type="radio" name="entry.1071913319" value="Cukup cocok, tapi ada beberapa bagian yang perlu penyesuaian"> Cukup cocok, tapi ada beberapa bagian yang perlu penyesuaian<br>
+                <input type="radio" name="entry.1071913319" value="Kurang cocok, ada banyak lompatan materi yang terlalu jauh"> Kurang cocok, ada banyak lompatan materi yang terlalu jauh<br>
+                <input type="radio" name="entry.1071913319" value="Tidak cocok sama sekali, siswa dasar tidak akan bisa mengikuti"> Tidak cocok sama sekali, siswa dasar tidak akan bisa mengikuti<br>
+                <input type="radio" name="entry.1071913319" value="Belum bisa menilai karena baru tahap awal"> Belum bisa menilai karena baru tahap awal<br>
+                <input type="radio" name="entry.1071913319" value="__other_option__"> Lainnya: <input type="text" name="entry.1071913319.other_option_response"><br>
+
+                <br><p>18. Jika ada bagian yang perlu penyesuaian, bagian mana saja yang perlu diubah?</p>
+                <textarea name="entry.1867668530" rows="4" cols="50"></textarea>
+
+                <br><p>19. Mengingat sebagian besar siswa adalah PEMULA dan mata pelajaran bersifat teknis, bagaimana pendapat Anda tentang kedalaman materi di setiap level?</p>
+                <input type="radio" name="entry.1826282557" value="Terlalu dangkal, siswa perlu kedalaman materi yang lebih"> Terlalu dangkal, siswa perlu kedalaman materi yang lebih<br>
+                <input type="radio" name="entry.1826282557" value="Sesuai untuk pemula"> Sesuai untuk pemula<br>
+                <input type="radio" name="entry.1826282557" value="Terlalu dalam/berat untuk pemula, perlu diringkas"> Terlalu dalam/berat untuk pemula, perlu diringkas<br>
+                <input type="radio" name="entry.1826282557" value="Bervariasi, ada yang terlalu dangkal dan ada yang terlalu dalam"> Bervariasi, ada yang terlalu dangkal dan ada yang terlalu dalam<br>
+                <input type="radio" name="entry.1826282557" value="__other_option__"> Lainnya: <input type="text" name="entry.1826282557.other_option_response"><br>
+
+                <br><p>20. Apakah menurut Anda ada materi yang sebaiknya DITAMBAH di roadmap kurikulum baru?</p>
+                <input type="radio" name="entry.460405338" value="TIDAK, roadmap sudah lengkap"> TIDAK, roadmap sudah lengkap<br>
+                <input type="radio" name="entry.460405338" value="__other_option__"> YA (sebutkan materi apa): <input type="text" name="entry.460405338.other_option_response"><br>
+
+                <br><p>21. Apakah menurut Anda ada materi yang sebaiknya DIHAPUS atau DITUNDA dari roadmap kurikulum baru?</p>
+                <input type="radio" name="entry.1552918542" value="TIDAK, roadmap sudah sesuai"> TIDAK, roadmap sudah sesuai<br>
+                <input type="radio" name="entry.1552918542" value="__other_option__"> YA (sebutkan materi apa): <input type="text" name="entry.1552918542.other_option_response"><br>
+
+                <br><p>22. Bagaimana urutan/sequencing materi dalam roadmap?</p>
+                <input type="radio" name="entry.1725923159" value="Sudah logis dan berjenjang dengan baik"> Sudah logis dan berjenjang dengan baik<br>
+                <input type="radio" name="entry.1725923159" value="Ada beberapa urutan yang kurang logis"> Ada beberapa urutan yang kurang logis<br>
+                <input type="radio" name="entry.1725923159" value="Banyak urutan yang tidak berjenjang, langsung ke materi berat"> Banyak urutan yang tidak berjenjang, langsung ke materi berat<br>
+                <input type="radio" name="entry.1725923159" value="__other_option__"> Lainnya: <input type="text" name="entry.1725923159.other_option_response"><br>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(3)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(5)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 5: WAKTU DAN AKSES LAB ========== -->
+            <section id="section-5" class="form-section" style="display:none;">
+                <h2>Fakta di Lapangan - Waktu dan Akses Lab</h2>
+                <!-- ... pertanyaan 23–26 ... -->
+                <p>23. Dalam 1 semester (idealnya 16 pekan), berapa kali SISWA BENAR-BENAR masuk ke lab komputer?</p>
+                <input type="radio" name="entry.1839378845" value="16 kali (setiap pekan)"> 16 kali (setiap pekan)<br>
+                <input type="radio" name="entry.1839378845" value="12-15 kali"> 12-15 kali<br>
+                <input type="radio" name="entry.1839378845" value="8-11 kali"> 8-11 kali<br>
+                <input type="radio" name="entry.1839378845" value="4-7 kali"> 4-7 kali<br>
+                <input type="radio" name="entry.1839378845" value="Kurang dari 4 kali"> Kurang dari 4 kali<br>
+                <input type="radio" name="entry.1839378845" value="__other_option__"> Lainnya: <input type="text" name="entry.1839378845.other_option_response"><br>
+
+                <br><p>24. Jika kurang dari 16 kali, apa penyebab utamanya?</p>
+                <textarea name="entry.1830924989" rows="4" cols="50"></textarea>
+
+                <br><p>25. Berapa lama durasi per sesi/kegiatan di lab komputer?</p>
+                <input type="radio" name="entry.910069024" value="60 menit (1 jam)"> 60 menit (1 jam)<br>
+                <input type="radio" name="entry.910069024" value="90 menit (1,5 jam)"> 90 menit (1,5 jam)<br>
+                <input type="radio" name="entry.910069024" value="120 menit (2 jam)"> 120 menit (2 jam)<br>
+                <input type="radio" name="entry.910069024" value="Lebih dari 120 menit"> Lebih dari 120 menit<br>
+                <input type="radio" name="entry.910069024" value="Bervariasi/tidak tentu"> Bervariasi/tidak tentu<br>
+
+                <br><p>26. Apakah waktu yang tersedia di lab sudah cukup untuk menyelesaikan materi yang direncanakan dalam 1 pertemuan?</p>
+                <input type="radio" name="entry.384126295" value="Sangat cukup, bahkan masih ada sisa waktu"> Sangat cukup, bahkan masih ada sisa waktu<br>
+                <input type="radio" name="entry.384126295" value="Cukup, tapi harus tepat waktu"> Cukup, tapi harus tepat waktu<br>
+                <input type="radio" name="entry.384126295" value="Kurang, siswa sering tidak selesai mengerjakan"> Kurang, siswa sering tidak selesai mengerjakan<br>
+                <input type="radio" name="entry.384126295" value="Sangat kurang, materi banyak yang terbengkalai"> Sangat kurang, materi banyak yang terbengkalai<br>
+                <input type="radio" name="entry.384126295" value="__other_option__"> Lainnya: <input type="text" name="entry.384126295.other_option_response"><br>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(4)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(6)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 6: PERANGKAT KERAS ========== -->
+            <section id="section-6" class="form-section" style="display:none;">
+                <h2>Fakta di Lapangan - Kondisi Perangkat Keras</h2>
+                <!-- ... pertanyaan 27–31 ... -->
+                <p>27. Bagaimana kondisi/kelayakan komputer yang digunakan di lab untuk belajar menggunakan tools aplikasi coding online?</p>
+                <input type="radio" name="entry.1681229822" value="Sangat layak, semua komputer berfungsi baik dan specs memadai"> Sangat layak, semua komputer berfungsi baik dan specs memadai<br>
+                <input type="radio" name="entry.1681229822" value="Layak, sebagian besar komputer berfungsi baik"> Layak, sebagian besar komputer berfungsi baik<br>
+                <input type="radio" name="entry.1681229822" value="Kurang layak, banyak komputer yang lemot atau bermasalah"> Kurang layak, banyak komputer yang lemot atau bermasalah<br>
+                <input type="radio" name="entry.1681229822" value="Tidak layak, komputer sudah tua dan sering error"> Tidak layak, komputer sudah tua dan sering error<br>
+                <input type="radio" name="entry.1681229822" value="Belum bisa menilai"> Belum bisa menilai<br>
+                <input type="radio" name="entry.1681229822" value="__other_option__"> Lainnya: <input type="text" name="entry.1681229822.other_option_response"><br>
+
+                <br><p>28. Bagaimana kondisi/kelayakan komputer yang digunakan di lab untuk belajar menggunakan tools aplikasi coding offline?</p>
+                <input type="radio" name="entry.1688597805" value="Sangat layak, semua komputer bisa menginstal dan menjalankan aplikasi coding dengan baik"> Sangat layak, semua komputer bisa menginstal dan menjalankan aplikasi coding dengan baik<br>
+                <input type="radio" name="entry.1688597805" value="Layak, sebagian besar bisa menjalankan aplikasi coding"> Layak, sebagian besar bisa menjalankan aplikasi coding<br>
+                <input type="radio" name="entry.1688597805" value="Kurang layak, banyak yang tidak bisa menjalankan aplikasi coding karena spesifikasi rendah"> Kurang layak, banyak yang tidak bisa menjalankan aplikasi coding karena spesifikasi rendah<br>
+                <input type="radio" name="entry.1688597805" value="Tidak layak, komputer tidak bisa menginstal aplikasi coding yang dibutuhkan"> Tidak layak, komputer tidak bisa menginstal aplikasi coding yang dibutuhkan<br>
+                <input type="radio" name="entry.1688597805" value="Belum bisa menilai"> Belum bisa menilai<br>
+                <input type="radio" name="entry.1688597805" value="__other_option__"> Lainnya: <input type="text" name="entry.1688597805.other_option_response"><br>
+
+                <br><p>29. Berapa banyak komputer yang tersedia di lab?</p>
+                <input type="radio" name="entry.1286946001" value="Lebih dari 30 unit"> Lebih dari 30 unit<br>
+                <input type="radio" name="entry.1286946001" value="20-30 unit"> 20-30 unit<br>
+                <input type="radio" name="entry.1286946001" value="10-19 unit"> 10-19 unit<br>
+                <input type="radio" name="entry.1286946001" value="Kurang dari 10 unit"> Kurang dari 10 unit<br>
+                <input type="radio" name="entry.1286946001" value="__other_option__"> Lainnya: <input type="text" name="entry.1286946001.other_option_response"><br>
+
+                <br><p>30. Berapa rasio siswa terhadap 1 komputer dalam kelas Anda?</p>
+                <input type="radio" name="entry.1907885443" value="1:1 (1 siswa 1 komputer)"> 1:1 (1 siswa 1 komputer)<br>
+                <input type="radio" name="entry.1907885443" value="1:2 (2 siswa berbagi 1 komputer)"> 1:2 (2 siswa berbagi 1 komputer)<br>
+                <input type="radio" name="entry.1907885443" value="1:3 (3 siswa berbagi 1 komputer)"> 1:3 (3 siswa berbagi 1 komputer)<br>
+                <input type="radio" name="entry.1907885443" value="Lebih dari 1:3"> Lebih dari 1:3<br>
+                <input type="radio" name="entry.1907885443" value="__other_option__"> Lainnya: <input type="text" name="entry.1907885443.other_option_response"><br>
+
+                <br><p>31. Apakah komputer di lab sudah terinstal software/bahasa pemrograman yang dibutuhkan untuk kurikulum baru?</p>
+                <input type="radio" name="entry.82175961" value="YA, semua sudah terinstal"> YA, semua sudah terinstal<br>
+                <input type="radio" name="entry.82175961" value="YA, tapi hanya sebagian"> YA, tapi hanya sebagian<br>
+                <input type="radio" name="entry.82175961" value="TIDAK, belum ada yang terinstal"> TIDAK, belum ada yang terinstal<br>
+                <input type="radio" name="entry.82175961" value="TIDAK, dan komputer tidak memungkinkan untuk diinstal"> TIDAK, dan komputer tidak memungkinkan untuk diinstal<br>
+                <input type="radio" name="entry.82175961" value="__other_option__"> Lainnya: <input type="text" name="entry.82175961.other_option_response"><br>
+                
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(5)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(7)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 7: KONEKSI INTERNET ========== -->
+            <section id="section-7" class="form-section" style="display:none;">
+                <h2>Fakta di Lapangan - Koneksi Internet</h2>
+                <!-- ... pertanyaan 32–34 ... -->
+                <br><p>32. Bagaimana kondisi/kelayakan jaringan internet di lab komputer?</p>
+                <input type="radio" name="entry.1305831705" value="Sangat stabil dan cepat, tidak ada kendala"> Sangat stabil dan cepat, tidak ada kendala<br>
+                <input type="radio" name="entry.1305831705" value="Cukup stabil, sesekali ada gangguan ringan"> Cukup stabil, sesekali ada gangguan ringan<br>
+                <input type="radio" name="entry.1305831705" value="Kurang stabil, sering putus nyambung"> Kurang stabil, sering putus nyambung<br>
+                <input type="radio" name="entry.1305831705" value="Tidak stabil, hampir selalu bermasalah"> Tidak stabil, hampir selalu bermasalah<br>
+                <input type="radio" name="entry.1305831705" value="Tidak ada koneksi internet di lab"> Tidak ada koneksi internet di lab<br>
+                <input type="radio" name="entry.1305831705" value="__other_option__"> Lainnya: <input type="text" name="entry.1305831705.other_option_response"><br>
+
+                <br><p>33. Apakah koneksi internet di lab mendukung penggunaan platform/website coding online?</p>
+                <input type="radio" name="entry.1159207922" value="YA, sangat mendukung"> YA, sangat mendukung<br>
+                <input type="radio" name="entry.1159207922" value="YA, tapi sesekali ada gangguan"> YA, tapi sesekali ada gangguan<br>
+                <input type="radio" name="entry.1159207922" value="TIDAK, sering terputus saat digunakan"> TIDAK, sering terputus saat digunakan<br>
+                <input type="radio" name="entry.1159207922" value="TIDAK, koneksi tidak cukup untuk menjalankan platform online"> TIDAK, koneksi tidak cukup untuk menjalankan platform online<br>
+                <input type="radio" name="entry.1159207922" value="__other_option__"> Lainnya: <input type="text" name="entry.1159207922.other_option_response"><br>
+
+                <br><p>34. Jika internet bermasalah, bagaimana dampaknya terhadap proses belajar mengajar?</p>
+                <input type="radio" name="entry.1475450894" value="Tidak ada dampak signifikan, materi bisa dilanjutkan"> Tidak ada dampak signifikan, materi bisa dilanjutkan<br>
+                <input type="radio" name="entry.1475450894" value="Dampak ringan, hanya beberapa aktivitas yang terganggu"> Dampak ringan, hanya beberapa aktivitas yang terganggu<br>
+                <input type="radio" name="entry.1475450894" value="Dampak cukup besar, banyak materi yang tidak bisa diselesaikan"> Dampak cukup besar, banyak materi yang tidak bisa diselesaikan<br>
+                <input type="radio" name="entry.1475450894" value="Dampak sangat besar, kegiatan belajar mengajar terhambat"> Dampak sangat besar, kegiatan belajar mengajar terhambat<br>
+                <input type="radio" name="entry.1475450894" value="__other_option__"> Lainnya: <input type="text" name="entry.1475450894.other_option_response"><br>
+                
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(6)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(8)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 8: KESENJANGAN KEMAMPUAN ========== -->
+            <section id="section-8" class="form-section" style="display:none;">
+                <h2>Fakta di Lapangan - Kesenjangan Kemampuan Siswa</h2>
+                <!-- ... pertanyaan 35–39 ... -->
+                <p>35. Seberapa jauh kesenjangan yang ada antara siswa yang sudah mahir coding/komputer dengan siswa yang belum bisa sama sekali di kelas Anda?</p>
+                <input type="radio" name="entry.1583061155" value="Sangat jauh, ada siswa yang sudah bisa membuat program sederhana sementara ada yang belum bisa mengoperasikan komputer"> Sangat jauh, ada siswa yang sudah bisa membuat program sederhana sementara ada yang belum bisa mengoperasikan komputer<br>
+                <input type="radio" name="entry.1583061155" value="Cukup jauh, sebagian sudah bisa dasar-dasar coding dan sebagian masih perlu bantuan untuk hal dasar"> Cukup jauh, sebagian sudah bisa dasar-dasar coding dan sebagian masih perlu bantuan untuk hal dasar<br>
+                <input type="radio" name="entry.1583061155" value="Tidak terlalu jauh, hampir semua siswa di level yang kurang lebih sama"> Tidak terlalu jauh, hampir semua siswa di level yang kurang lebih sama<br>
+                <input type="radio" name="entry.1583061155" value="Tidak ada kesenjangan, semua siswa dalam kondisi yang sama"> Tidak ada kesenjangan, semua siswa dalam kondisi yang sama<br>
+                <input type="radio" name="entry.1583061155" value="__other_option__"> Lainnya: <input type="text" name="entry.1583061155.other_option_response"><br>
+
+                <br><p>36. Berapa persen kira-kira siswa yang sudah memiliki kemampuan dasar coding/komputer yang cukup baik di kelas Anda?</p>
+                <input type="radio" name="entry.1673633119" value="Lebih dari 75%"> Lebih dari 75%<br>
+                <input type="radio" name="entry.1673633119" value="50-75%"> 50-75%<br>
+                <input type="radio" name="entry.1673633119" value="25-50%"> 25-50%<br>
+                <input type="radio" name="entry.1673633119" value="Kurang dari 25%"> Kurang dari 25%<br>
+                <input type="radio" name="entry.1673633119" value="Hampir 0% (semua masih sangat dasar)"> Hampir 0% (semua masih sangat dasar)<br>
+                <input type="radio" name="entry.1673633119" value="__other_option__"> Lainnya: <input type="text" name="entry.1673633119.other_option_response"><br>
+
+                <br><p>37. Berapa persen kira-kira siswa yang benar-benar belum bisa sama sekali (zero knowledge) di kelas Anda?</p>
+                <input type="radio" name="entry.2041072994" value="Kurang dari 10%"> Kurang dari 10%<br>
+                <input type="radio" name="entry.2041072994" value="10-25%"> 10-25%<br>
+                <input type="radio" name="entry.2041072994" value="25-50%"> 25-50%<br>
+                <input type="radio" name="entry.2041072994" value="50-75%"> 50-75%<br>
+                <input type="radio" name="entry.2041072994" value="Lebih dari 75%"> Lebih dari 75%<br>
+                <input type="radio" name="entry.2041072994" value="__other_option__"> Lainnya: <input type="text" name="entry.2041072994.other_option_response"><br>
+
+                <br><p>38. Bagaimana dampak kesenjangan ini terhadap pengajaran di kelas?</p>
+                <input type="radio" name="entry.1795437914" value="Tidak ada dampak, bisa mengakomodasi semua level"> Tidak ada dampak, bisa mengakomodasi semua level<br>
+                <input type="radio" name="entry.1795437914" value="Dampak ringan, hanya perlu sedikit penyesuaian"> Dampak ringan, hanya perlu sedikit penyesuaian<br>
+                <input type="radio" name="entry.1795437914" value="Dampak cukup besar, harus membagi kelas atau memberikan bimbingan khusus"> Dampak cukup besar, harus membagi kelas atau memberikan bimbingan khusus<br>
+                <input type="radio" name="entry.1795437914" value="Dampak sangat besar, sulit mengajar karena perbedaan kemampuan yang sangat jauh"> Dampak sangat besar, sulit mengajar karena perbedaan kemampuan yang sangat jauh<br>
+                <input type="radio" name="entry.1795437914" value="__other_option__"> Lainnya: <input type="text" name="entry.1795437914.other_option_response"><br>
+
+                <p>39. Apakah ada strategi khusus yang Anda terapkan untuk mengatasi kesenjangan kemampuan siswa ini?</p>
+                <textarea name="entry.523041124" rows="4" cols="50"></textarea>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(7)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(9)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 9: REKOMENDASI ========== -->
+            <section id="section-9" class="form-section" style="display:none;">
+                <h2>Rekomendasi Penyesuaian Kurikulum</h2>
+                <!-- ... pertanyaan 40–43 ... -->
+                <p>40. Berdasarkan kondisi di lapangan, bagian dari roadmap kurikulum yang perlu DIUBAH adalah:</p>
+                <input type="radio" name="entry.1239031525" value="Kurikulum perlu diturunkan 1 level dari yang sekarang (agar semua mulai dari dasar)"> Kurikulum perlu diturunkan 1 level dari yang sekarang (agar semua mulai dari dasar)<br>
+                <input type="radio" name="entry.1239031525" value="Materi di setiap level perlu diringkas/disederhanakan"> Materi di setiap level perlu diringkas/disederhanakan<br>
+                <input type="radio" name="entry.1239031525" value="Urutan materi perlu dirombak"> Urutan materi perlu dirombak<br>
+                <input type="radio" name="entry.1239031525" value="Tes diagnostik perlu diganti/diubah soalnya"> Tes diagnostik perlu diganti/diubah soalnya<br>
+                <input type="radio" name="entry.1239031525" value="Semua bagian perlu diubah drastis"> Semua bagian perlu diubah drastis<br>
+                <input type="radio" name="entry.1239031525" value="Tidak ada yang perlu diubah"> Tidak ada yang perlu diubah<br>
+                <input type="radio" name="entry.1239031525" value="__other_option__"> Lainnya: <input type="text" name="entry.1239031525.other_option_response"><br>
+
+                <br><p>41. Berdasarkan kondisi di lapangan, bagian dari roadmap kurikulum yang sebaiknya DIPERTAHANKAN adalah:</p>
+                <input type="radio" name="entry.353518527" value="Struktur level berjenjang yang sudah ada"> Struktur level berjenjang yang sudah ada<br>
+                <input type="radio" name="entry.353518527" value="Jenis materi/coding yang diajarkan di setiap level"> Jenis materi/coding yang diajarkan di setiap level<br>
+                <input type="radio" name="entry.353518527" value="Metode penilaian (tes diagnostik)"> Metode penilaian (tes diagnostik)<br>
+                <input type="radio" name="entry.353518527" value="Waktu durasi belajar di setiap level"> Waktu durasi belajar di setiap level<br>
+                <input type="radio" name="entry.353518527" value="Semua bagian sudah baik dan perlu dipertahankan"> Semua bagian sudah baik dan perlu dipertahankan<br>
+                <input type="radio" name="entry.353518527" value="__other_option__"> Lainnya: <input type="text" name="entry.353518527.other_option_response"><br>
+
+                <br><p>42. Jika Anda harus memilih satu perubahan PALING KRITIS yang harus dilakukan terhadap kurikulum baru ini, apa itu?</p>
+                <textarea name="entry.1358158985" rows="4" cols="50"></textarea>
+
+                <p>43. Apakah Anda memiliki usulan tambahan yang belum tercakup dalam pertanyaan-pertanyaan di atas?</p>
+                <textarea name="entry.1622063090" rows="4" cols="50"></textarea>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(8)">← Sebelumnya</button>
+                    <button type="button" class="" onclick="goStep(10)">Selanjutnya →</button>
+                </div>
+            </section>
+
+            <!-- ========== SECTION 10 (akhir): CATATAN TAMBAHAN + SUBMIT ========== -->
+            <section id="section-10" class="form-section" style="display:none;">
+                <h2>Catatan Tambahan</h2>
+                <p>Jika ada informasi tambahan yang menurut Anda penting untuk analisis kesesuaian kurikulum, silakan tuliskan di sini:</p>
+                <textarea name="entry.746901222" rows="4" cols="50"></textarea>
+
+                <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+                    <button type="button" class="secondary outline" onclick="goStep(9)">← Sebelumnya</button>
+                    <button type="submit" style="width: auto;">Kirim</button>
+                </div>
+            </section>
+
+        </form>
+    </div>
+
+    <!-- Pesan terima kasih -->
+    <div id="thankYouMessage" style="display:none; max-width:800px; margin:2rem auto; padding:2rem; background:white; border-radius:1rem; text-align:center;">
+        <h1>TERIMA KASIH!</h1>
+        <p>Survey Anda telah berhasil dikirim.</p>
+        <p>Terima kasih atas partisipasi dan masukan Anda untuk pengembangan Kurikulum Koding Progresif.</p>
+        <p>Data dari survey ini akan segera dianalisis untuk perbaikan implementasi ke depan.</p>
+    </div>
+
+    <!-- ==================== JAVASCRIPT NAVIGASI ==================== -->
+    <script>
+        // Jumlah total section (0 sampai 10)
+        var totalSections = 11;
+        var currentSection = 0;
+
+        // Fungsi untuk pindah ke section tertentu
+        function goStep(index) {
+            if (index < 0 || index >= totalSections) return;
+            // Sembunyikan semua section
+            var sections = document.querySelectorAll('.form-section');
+            sections.forEach(function(sec) {
+                sec.style.display = 'none';
+            });
+            // Tampilkan section yang dipilih
+            var target = document.getElementById('section-' + (index === 10 ? 10 : index));
+            if (target) {
+                target.style.display = 'block';
+            }
+            currentSection = index;
+            // Scroll ke atas form
+            document.getElementById('formContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ========== LOGIKA UNTUK "LAINNYA" (tetap dipertahankan dari kode asli) ==========
+        // (sama seperti sebelumnya, hanya untuk validasi)
+        // kita salin ulang agar semua fungsi berjalan
+
+        // Event listener untuk "Tempat" lainnya
+        document.getElementById('tempatSelect').addEventListener('change', function() {
+            var otherInput = document.getElementById('tempatLainnya');
+            if (this.value === '__other_option__') {
+                otherInput.style.display = 'inline';
+                otherInput.focus();
+            } else {
+                otherInput.style.display = 'none';
+                otherInput.value = '';
+            }
+        });
+
+        // Mapping untuk opsi "Lainnya" pada radio
+        var otherMappings = [];
+        (function() {
+            var otherRadios = document.querySelectorAll('input[type="radio"][value="__other_option__"]');
+            otherRadios.forEach(function(radio) {
+                var textInputName = radio.name + '.other_option_response';
+                var textInput = document.querySelector('input[type="text"][name="' + textInputName + '"]');
+                if (!textInput) return;
+                otherMappings.push({ radio: radio, textInput: textInput });
+                // Sembunyikan dan hapus name
+                textInput.style.display = 'none';
+                textInput.removeAttribute('name');
+                textInput.value = '';
+
+                radio.addEventListener('change', function() {
+                    if (this.checked) {
+                        textInput.style.display = 'inline';
+                        textInput.focus();
+                        if (textInput.value.trim() !== '') {
+                            this.value = textInput.value.trim();
+                        } else {
+                            this.value = '__other_option__';
+                        }
+                    } else {
+                        textInput.style.display = 'none';
+                        textInput.value = '';
+                        this.value = '__other_option__';
+                    }
+                });
+
+                textInput.addEventListener('input', function() {
+                    if (radio.checked) {
+                        var val = this.value.trim();
+                        radio.value = val !== '' ? val : '__other_option__';
+                    }
+                });
+
+                var allRadiosInGroup = document.querySelectorAll('input[type="radio"][name="' + radio.name + '"]');
+                allRadiosInGroup.forEach(function(r) {
+                    if (r === radio) return;
+                    r.addEventListener('change', function() {
+                        if (this.checked) {
+                            textInput.style.display = 'none';
+                            textInput.value = '';
+                            radio.value = '__other_option__';
+                        }
+                    });
+                });
+            });
+        })();
+
+        // Fungsi handleSubmit (untuk validasi dan kirim)
+        window.handleSubmit = function(event) {
+            // Proses checkbox jenjang
+            var checked = [];
+            document.querySelectorAll('.jenjang:checked').forEach(function(cb) {
+                checked.push(cb.value);
+            });
+            document.getElementById('jenjangGabungan').value = checked.join(', ');
+
+            // Proses tempat
+            var select = document.getElementById('tempatSelect');
+            var otherText = document.getElementById('tempatLainnya');
+            var hiddenTempat = document.getElementById('tempatHidden');
+            if (select.value === '__other_option__') {
+                hiddenTempat.value = otherText.value.trim() || 'Lainnya (tidak diisi)';
+            } else {
+                hiddenTempat.value = select.value;
+            }
+
+            // Validasi opsi "Lainnya" yang dipilih
+            for (var i = 0; i < otherMappings.length; i++) {
+                var item = otherMappings[i];
+                if (item.radio.checked && item.textInput.value.trim() === '') {
+                    alert('Mohon isi teks untuk pilihan "Lainnya" pada pertanyaan terkait.');
+                    item.textInput.focus();
+                    event.preventDefault();
+                    return false;
+                }
+            }
+
+            // Tampilkan terima kasih
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            return true;
+        };
+
+        // Inisialisasi: tampilkan section 0
+        goStep(0);
+    </script>
+
+</body>
+</html>
