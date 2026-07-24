@@ -33,14 +33,14 @@
 </head>
 <body>
 
-    <!-- iframe tersembunyi untuk submit -->
+    <!-- iframe tersembunyi untuk fallback submit -->
     <iframe name="hiddenFrame" id="iframe" style="display:none;"></iframe>
 
     <div class="container" id="formContainer">
         <img style="width:50px; margin-bottom: 2rem;" src="https://lh3.googleusercontent.com/d/1Eh-pfDwHRmyPz1HQQJuCQjYk64vs4lNr">
         <h1>Survey Implementasi Kurikulum Progresif - Alhazen Academy</h1>
 
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfVHtWOPAalKJMkUmtNtES8_q35PAkBFOS9d0TpEcixGarlew/formResponse" method="POST" target="hiddenFrame" onsubmit="return handleSubmit(event)">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfVHtWOPAalKJMkUmtNtES8_q35PAkBFOS9d0TpEcixGarlew/formResponse" method="POST" target="hiddenFrame" id="surveyForm" onsubmit="return handleSubmit(event)">
 
             <!-- ========== SECTION 0: DESKRIPSI ========== -->
             <section id="section-0" class="form-section" style="display:block;">
@@ -73,12 +73,13 @@
                 <input type="text" name="entry.1603795409" required>
 
                 <p>2. Jenjang yang diampu (bisa pilih lebih dari 1):</p>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="TK/RA"> TK/RA<br>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SD/MI"> SD/MI<br>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SMP/MTs"> SMP/MTs<br>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SMA/MA"> SMA/MA<br>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="Mahasiswa/i"> Mahasiswa/i<br>
-                <input type="checkbox" class="jenjang" name="entry.1268055753" value="Umum"> Umum<br>
+                <input type="checkbox" class="jenjang" value="TK/RA"> TK/RA<br>
+                <input type="checkbox" class="jenjang" value="SD/MI"> SD/MI<br>
+                <input type="checkbox" class="jenjang" value="SMP/MTs"> SMP/MTs<br>
+                <input type="checkbox" class="jenjang" value="SMA/MA"> SMA/MA<br>
+                <input type="checkbox" class="jenjang" value="Mahasiswa/i"> Mahasiswa/i<br>
+                <input type="checkbox" class="jenjang" value="Umum"> Umum<br>
+                <input type="hidden" name="entry.1268055753" id="jenjangGabungan">
                 <br>
 
                 <p>3. Tempat Bertugas:</p>
@@ -557,8 +558,17 @@
             });
         })();
 
-        // Fungsi handleSubmit (untuk validasi dan kirim)
+        // Fungsi handleSubmit (untuk validasi dan kirim via fetch)
         window.handleSubmit = function(event) {
+            event.preventDefault();
+
+            // Proses checkbox jenjang
+            var checked = [];
+            document.querySelectorAll('.jenjang:checked').forEach(function(cb) {
+                checked.push(cb.value);
+            });
+            document.getElementById('jenjangGabungan').value = checked.join(', ');
+
             // Proses tempat
             var select = document.getElementById('tempatSelect');
             var otherText = document.getElementById('tempatLainnya');
@@ -569,21 +579,61 @@
                 hiddenTempat.value = select.value;
             }
 
+            // Validasi field wajib
+            var nama = document.querySelector('input[name="entry.1603795409"]');
+            if (!nama || nama.value.trim() === '') {
+                alert('Mohon isi Nama Tutor terlebih dahulu.');
+                if (nama) nama.focus();
+                goStep(1);
+                return false;
+            }
+            if (!hiddenTempat.value) {
+                alert('Mohon pilih Tempat Bertugas.');
+                goStep(1);
+                select.focus();
+                return false;
+            }
+
             // Validasi opsi "Lainnya" yang dipilih
             for (var i = 0; i < otherMappings.length; i++) {
                 var item = otherMappings[i];
                 if (item.radio.checked && item.textInput.value.trim() === '') {
                     alert('Mohon isi teks untuk pilihan "Lainnya" pada pertanyaan terkait.');
                     item.textInput.focus();
-                    event.preventDefault();
                     return false;
                 }
             }
 
-            // Tampilkan terima kasih
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('thankYouMessage').style.display = 'block';
-            return true;
+            // Kirim via fetch (lebih reliable dari iframe)
+            var form = document.getElementById('surveyForm');
+            var formData = new FormData(form);
+            var submitUrl = form.action;
+
+            // Tampilkan loading
+            document.getElementById('formContainer').innerHTML = '<div style="text-align:center; padding:3rem;"><h2>Mengirim data...</h2><p>Mohon tunggu sebentar.</p></div>';
+
+            fetch(submitUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(function(response) {
+                // mode:no-cors always returns opaque response, tapi jika fetch sukses berarti data terkirim
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+            }).catch(function(err) {
+                // Fallback: submit via iframe jika fetch gagal
+                console.warn('Fetch gagal, mencoba via iframe:', err);
+                var iframe = document.getElementById('iframe');
+                iframe.onload = function() {
+                    document.getElementById('formContainer').style.display = 'none';
+                    document.getElementById('thankYouMessage').style.display = 'block';
+                };
+                // Fallback: submit form biasa
+                form.target = 'hiddenFrame';
+                form.submit();
+            });
+
+            return false;
         };
 
         // Inisialisasi: tampilkan section 0
