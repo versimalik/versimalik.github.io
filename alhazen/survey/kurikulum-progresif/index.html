@@ -73,13 +73,12 @@
                 <input type="text" name="entry.1603795409" required>
 
                 <p>2. Jenjang yang diampu (bisa pilih lebih dari 1):</p>
-                <input type="checkbox" class="jenjang" value="TK/RA"> TK/RA<br>
-                <input type="checkbox" class="jenjang" value="SD/MI"> SD/MI<br>
-                <input type="checkbox" class="jenjang" value="SMP/MTs"> SMP/MTs<br>
-                <input type="checkbox" class="jenjang" value="SMA/MA"> SMA/MA<br>
-                <input type="checkbox" class="jenjang" value="Mahasiswa/i"> Mahasiswa/i<br>
-                <input type="checkbox" class="jenjang" value="Umum"> Umum<br>
-                <input type="hidden" name="entry.1268055753" id="jenjangGabungan">
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="TK/RA"> TK/RA<br>
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SD/MI"> SD/MI<br>
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SMP/MTs"> SMP/MTs<br>
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="SMA/MA"> SMA/MA<br>
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="Mahasiswa/i"> Mahasiswa/i<br>
+                <input type="checkbox" class="jenjang" name="entry.1268055753" value="Umum"> Umum<br>
                 <br>
 
                 <p>3. Tempat Bertugas:</p>
@@ -560,13 +559,6 @@
 
         // Fungsi handleSubmit (untuk validasi dan kirim)
         window.handleSubmit = function(event) {
-            // Proses checkbox jenjang
-            var checked = [];
-            document.querySelectorAll('.jenjang:checked').forEach(function(cb) {
-                checked.push(cb.value);
-            });
-            document.getElementById('jenjangGabungan').value = checked.join(', ');
-
             // Proses tempat
             var select = document.getElementById('tempatSelect');
             var otherText = document.getElementById('tempatLainnya');
