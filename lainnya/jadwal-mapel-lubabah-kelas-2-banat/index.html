@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ META DASAR ═══ -->
+  <title>Jadwal Pelajaran Kelas 2 SD Banat — SD Islam Al-Amanah</title>
+  <meta name="description" content="Jadwal pelajaran kelas 2 SD Banat (Aisyah Bintu Abu Bakar Ash Shiddiq) SD Islam Al-Amanah, semester ganjil 2026/2027. Lengkap dengan mata pelajaran dan guru pengajar.">
+  <meta name="theme-color" content="#1b2a4a">
+
+  <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, dll) ═══ -->
+  <meta property="og:title" content="Jadwal Pelajaran Kelas 2 SD Banat — SD Islam Al-Amanah">
+  <meta property="og:description" content="Jadwal pelajaran kelas 2 SD Banat semester ganjil 2026/2027, lengkap dengan jam, mata pelajaran, dan guru.">
+  <meta property="og:type" content="website">
+  <!-- isi og:url dengan URL halaman ini, contoh di bawah pakai JavaScript fallback -->
+  <meta property="og:url" content="https://versimalik.com/lainnya/jadwal-mapel-lubabah-kelas-2-banat/">
+  <!-- placeholder gambar, ganti dengan logo sekolah atau banner -->
+  <meta property="og:image" content="https://placehold.co/1200x630/EBF3FA/4A6B8A?text=Jadwal+Pelajaran+Kelas+2+Banat%0ASD+Islam+Al+Amanah">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jadwal Pelajaran Kelas 2 SD Banat — SD Islam Al-Amanah">
+  <meta name="twitter:description" content="Jadwal pelajaran kelas 2 SD Banat semester ganjil 2026/2027.">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/EBF3FA/4A6B8A?text=Jadwal+Pelajaran+Kelas+2+Banat%0ASD_Islam+Al+Amanah">
+
+  <!-- ═══ STYLESHEET ═══ -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+
+    <hgroup>
+      <h1>Jadwal Pelajaran</h1>
+      <p>SD Islam Al-Amanah</p>
+      <p>Kelas 2 SD Banat (Aisyah Bintu Abu Bakar Ash Shiddiq)</p>
+    </hgroup>
+    <p>Semester Ganjil Tahun Ajaran 2026/2027</p>
+
+    <nav>
+      <ul id="dayTabs"></ul>
+    </nav>
+
+    <table id="jadwalTable">
+      <thead>
+        <tr><th>Jam</th><th>Waktu</th><th>Mata Pelajaran</th><th>Guru</th></tr>
+      </thead>
+      <tbody id="jadwalBody"></tbody>
+    </table>
+
+    <footer>
+      <small>Sumber: Jadwal resmi SD Islam Al-Amanah, ditandatangani Jamaludin, S.Pd., 20 Juli 2026.</small><br><br>
+      <p><a href="https://drive.google.com/file/d/19mAAc6SbSa7rMhqxHz9BeiRTc4j27Jh3/view?usp=sharing" role="button" class="secondary" target="_blank">Download Jadwal Resmi</a></p>
+    </footer>
+
+  </main>
+
+  <script>
+    // (kode JavaScript DATA dan render tetap sama seperti sebelumnya)
+    const DATA = {
+      Senin: [
+        ["07.15","07.30","Hadits Pekanan", ""],
+        ["07.30","08.05","Apel Pagi", ""],
+        ["08.05","08.40","Al Qur'an", "Guru Halaqoh"],
+        ["08.40","09.15","Al Qur'an", "Guru Halaqoh"],
+        ["09.15","09.45","Istirahat", ""],
+        ["09.45","10.20","Matematika", "Bunda Aviva"],
+        ["10.20","10.55","Matematika", "Bunda Aviva"],
+        ["10.55","11.30","Bahasa Indonesia", "Bunda Sela"],
+        ["11.30","12.15","Sholat Dzuhur", ""],
+        ["12.15","12.30","Refleksi oleh Walas", ""]
+      ],
+      Selasa: [
+        ["07.15","07.30","Hiwar Shobah", ""],
+        ["07.30","08.05","Al Qur'an", "Guru Halaqoh"],
+        ["08.05","08.40","Al Qur'an", "Guru Halaqoh"],
+        ["08.40","09.10","Istirahat", ""],
+        ["09.10","09.45","Matematika", "Bunda Aviva"],
+        ["09.45","10.20","Matematika", "Bunda Aviva"],
+        ["10.20","10.55","Bahasa Arab", "Bunda Hanum"],
+        ["10.55","11.30","Bahasa Arab", "Bunda Hanum"],
+        ["11.30","12.15","Sholat Dzuhur", ""],
+        ["12.15","12.30","Refleksi oleh Walas", ""]
+      ],
+      Rabu: [
+        ["07.15","07.30","Sholat Dhuha", ""],
+        ["07.30","08.05","Fiqih", "Ustadz Fikri"],
+        ["08.05","08.40","Fiqih", "Ustadz Fikri"],
+        ["08.40","09.10","Istirahat", ""],
+        ["09.10","09.45","Al Qur'an", "Guru Halaqoh"],
+        ["09.45","10.20","Al Qur'an", "Guru Halaqoh"],
+        ["10.20","10.55","Bahasa Inggris", "Bunda Risma"],
+        ["10.55","11.30","Bahasa Inggris", "Bunda Risma"],
+        ["11.30","12.15","Sholat Dzuhur", ""],
+        ["12.15","12.30","Refleksi oleh Walas", ""]
+      ],
+      Kamis: [
+        ["07.15","07.30","Dzikir Pagi", ""],
+        ["07.30","08.05","Bahasa Indonesia", "Bunda Sela"],
+        ["08.05","08.40","PJOK", "Bunda Sela"],
+        ["08.40","09.10","Istirahat", ""],
+        ["09.10","09.45","Aqidah", "Bunda Hafshoh"],
+        ["09.45","10.20","Aqidah", "Bunda Hafshoh"],
+        ["10.20","10.55","Bahasa Arab", "Bunda Hanum"],
+        ["10.55","11.30","Bahasa Arab", "Bunda Hanum"],
+        ["11.30","12.15","Sholat Dzuhur", ""],
+        ["12.15","12.30","Refleksi oleh Walas", ""]
+      ],
+      "Jum'at": [
+        ["07.15","07.30","Surah Al Kahfi", ""],
+        ["07.30","08.05","Al Qur'an", "Guru Halaqoh"],
+        ["08.05","08.40","Al Qur'an", "Guru Halaqoh"],
+        ["08.40","09.10","Istirahat", ""],
+        ["09.10","09.45","Bahasa Indonesia", "Bunda Sela"],
+        ["09.45","10.20","Bahasa Indonesia", "Bunda Sela"],
+        ["10.20","10.35","Refleksi oleh Walas", ""]
+      ]
+    };
+
+    const DAY_ORDER = ["Senin","Selasa","Rabu","Kamis","Jum'at"];
+    const JS_DAY_TO_NAME = {1:"Senin",2:"Selasa",3:"Rabu",4:"Kamis",5:"Jum'at"};
+
+    let activeDay = JS_DAY_TO_NAME[new Date().getDay()] || "Senin";
+
+    function renderTabs() {
+      const ul = document.getElementById("dayTabs");
+      ul.innerHTML = "";
+      DAY_ORDER.forEach(day => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.setAttribute("role", "button");
+        a.href = "#";
+        a.textContent = day;
+        if (day === activeDay) {
+          a.setAttribute("aria-current", "true");
+        } else {
+          a.classList.add("outline");
+        }
+        a.addEventListener("click", (e) => { e.preventDefault(); activeDay = day; render(); });
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    }
+
+    function render() {
+      renderTabs();
+      const tbody = document.getElementById("jadwalBody");
+      tbody.innerHTML = "";
+      DATA[activeDay].forEach((row, i) => {
+        const [start, end, subject, teacher] = row;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${i+1}</td><td>${start}&ndash;${end}</td><td>${subject}</td><td>${teacher}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    render();
+
+    // (Opsional) Setel og:url secara dinamis dengan URL halaman saat ini
+    // Agar saat dishare, URL yang terdeteksi sesuai.
+    document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+  </script>
+</body>
+</html>
