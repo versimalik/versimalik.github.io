@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-07-30T09:00:56+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Revolusi yang Tidak Pernah Berhenti</title><link href="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/" rel="alternate" type="text/html" title="Revolusi yang Tidak Pernah Berhenti" /><published>2026-06-08T00:01:34+07:00</published><updated>2026-06-08T00:01:34+07:00</updated><id>http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti</id><content type="html" xml:base="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/"><![CDATA[<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https://open.spotify.com/show/0UMDPBF6mjX1oKekGyYQnK">Spotify</a> atau <a href="https://open.noice.id/content/92577a11-f003-4eea-91c5-d010c694c79e">Noice</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-08-11T13:08:26+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Siapa yang Salah Sebenarnya?</title><link href="http://localhost:4000/blog/siapa-yang-salah/" rel="alternate" type="text/html" title="Siapa yang Salah Sebenarnya?" /><published>2026-08-04T21:04:00+07:00</published><updated>2026-08-04T21:04:00+07:00</updated><id>http://localhost:4000/blog/siapa-yang-salah</id><content type="html" xml:base="http://localhost:4000/blog/siapa-yang-salah/"><![CDATA[<p><em>“Kok, passwordnya begini? Ini kan laboratirium . . .”</em></p>
+
+<p>Masih terekam jelas kalimatnya di ingatan saya, begini ceritanya . . .</p>
+
+<hr />
+
+<p>Waktu tepatnya sih sudah lupa, tapi kira kira ini terjadi di sekitar tahun 2019 atau 2020-an.</p>
+
+<p>Saya pernah bekerja sebagai guru di salah satu sekolah kejuruan di daerah Jakarta. Sekolah ini merupakan salah satu tempat dimana saya banyak belajar tentang dunia pendidikan. Sebagai guru di TKJ dan RPL, tidak jarang kami pun diperbantukan untuk menjadi staff IT di sekolah. Saya dan beberapa guru laki laki lain sering diminta untuk mengecek kesiapan komputer di labratorium komputer setiap kali masuk ke persiapan ujian. Ujian nasional maupun ujian sekolah.</p>
+
+<p>Beberapa hari sebelum hari H, saya kebetulan sedang konfigurasi router wifi di lab dan merubah SSID serta passwordnya.</p>
+
+<p>Singkat cerita, saat kami sedang melakukan pengecekan dan persiapan ujian di lab komputer, ada pengawas sekolah yang datang. Pengawas sekolah ini merupakan petugas yang memang bertugas dari dinas pendidikan untuk secara berkala melakukan pengecekan dan bimbingan atas sekolah sekolah di bawah tugasnya.</p>
+
+<p>Karena hanya saya yang tahu konfigurasinya, begitu pak pengawas bertanya <em>“Password wifi-nya apa ya?”</em>, teman teman di sana spontan tanya ke saya <em>“Passwordnya apa nih, pak?”</em>, saya jawab <em>“mieayamlantai3”</em>.</p>
+
+<p>Dengan wajah yang sangat keheranan, pak pengawas mengeluh, <em>“Loh? ini kan lab komputer lantai 3. Kenapa passwordnya kaya gitu?”</em>, sebenarnya kalimat panjang dan banyak sekali keluhan yang disampaikan hanya mengenai password <code>mieayamlantai3</code>.</p>
+
+<p>Saya adalah orang yang malas sekali berdebat. Dan kondisi saat itu saya simpulkan sebagai kondisi yang tidak harus saya balas dengan argumen teknis, dan saya sangat menghormati dan menjaga kehormatan beliau. Pak pengawas ini, menurut keyakinan saya, sejauh yang saya ketahui bukanlah seorang berlatar belakang IT yang memahami apa tujuan <em>password</em> itu dibuat.</p>
+
+<p>Kalo Bapak kebetulan lagi baca ini, izin saya sampaikan secara teknis apa itu <em>password</em> sebenarnya. Dan bagi temen temen yang baca, tolong bagikan blog ini ke bapak-bapak atau om om yang suka <em>kenapa-kenapain</em> banyak hal yang bukan urusannya.</p>
+
+<p>Sebenarnya ini mau saya tulis di kategori cerita, tapi sepertinya lebih tepat di <a href="/blog">blog</a>.</p>
+
+<h2 id="apa-itu-password">Apa itu password?</h2>
+
+<p><em>Password</em> adalah sebuah</p>
+
+<h2 id="kenapa-harus-password">Kenapa harus password?</h2>
+
+<p>##</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="belajar" /><category term="teknologi" /><category term="edukasi" /><category term="password" /><category term="cerita" /><category term="blog" /><summary type="html"><![CDATA[“Kok, passwordnya begini? Ini kan laboratirium . . .”]]></summary></entry><entry><title type="html">Revolusi yang Tidak Pernah Berhenti</title><link href="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/" rel="alternate" type="text/html" title="Revolusi yang Tidak Pernah Berhenti" /><published>2026-06-08T00:01:34+07:00</published><updated>2026-06-08T00:01:34+07:00</updated><id>http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti</id><content type="html" xml:base="http://localhost:4000/blog/revolusi-yang-tidak-pernah-berhenti/"><![CDATA[<p class="callout info"><strong>Catatan</strong> <i class="bi bi-info-circle-fill"></i><br />Tulisan ini merupakan versi teks dari episode podcast “Sebelum Ngoding” yang bisa didengarkan di platform <a href="https://open.spotify.com/show/0UMDPBF6mjX1oKekGyYQnK">Spotify</a> atau <a href="https://open.noice.id/content/92577a11-f003-4eea-91c5-d010c694c79e">Noice</a>.</p>
 
 <p>Orang sering bilang kita hidup di era Industri 4.0. Kalimat itu selalu muncul di mana-mana, di presentasi perusahaan, di kurikulum sekolah, di iklan kursus online. Tapi kalau kita tanya apa artinya secara konkret, kebanyakan orang akan kesulitan menjawab.</p>
 
@@ -868,63 +898,4 @@ Angka Biner:     | 1 | 1 | 0 | 1 |
 
 <p>Jadi, jangan takut salah ketik atau merasa <em>coding</em> itu sulit. Tugas kita bukanlah berbicara langsung dengan mesin. Tugas kita adalah menyampaikan logika kita kepada “Penerjemah” (Bahasa Pemrograman). Biarkan dia yang pusing mengubahnya menjadi jutaan 0 dan 1.</p>
 
-<p>Kita adalah sutradara, dan bahasa pemrograman adalah asisten setia yang memastikan para aktor (komponen mesin) melakukan tugasnya dengan benar.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><category term="biner" /><category term="bahasa mesin" /><category term="high-level language" /><summary type="html"><![CDATA[Pernahkah Anda bertanya-tanya mengapa komputer hanya mengerti 0 dan 1? Artikel ini menjelaskan konsep dasar bahasa mesin dan mengapa kita memerlukan bahasa pemrograman tingkat tinggi sebagai 'penerjemah' antara manusia dan mesin.]]></summary></entry><entry><title type="html">Kamu Sudah Paham Logikanya, Sekarang Pahami ‘Mesin’-nya. Selamat Datang di Dunia Computer Science</title><link href="http://localhost:4000/blog/selamat-datang-di-computer-science/" rel="alternate" type="text/html" title="Kamu Sudah Paham Logikanya, Sekarang Pahami ‘Mesin’-nya. Selamat Datang di Dunia Computer Science" /><published>2025-12-25T00:00:00+07:00</published><updated>2025-12-25T00:00:00+07:00</updated><id>http://localhost:4000/blog/selamat-datang-di-computer-science</id><content type="html" xml:base="http://localhost:4000/blog/selamat-datang-di-computer-science/"><![CDATA[<p>Memahami logika pemrograman itu ibarat menjadi seorang <strong>sopir</strong>. Kita tahu cara menyetir, kapan harus berbelok, dan bagaimana caranya agar selamat sampai ke tujuan.</p>
-
-<p>Tapi, pernahkah kita bertanya lebih jauh? Apa yang terjadi jika mobilnya terasa boros bensin? Atau bagaimana cara membuat mobil kita melaju lebih kencang untuk sebuah balapan? Untuk bisa menjawabnya, kita tidak bisa hanya menjadi seorang sopir saja, kita perlu menjadi <strong>montir</strong> juga, yang paham cara kerja mesinnya.</p>
-
-<p>Di dunia teknologi, menjadi ‘montir’ berarti memahami <strong>Ilmu Komputer</strong> atau <strong>Computer Science</strong>. Inilah ilmu yang membedah ‘mesin’ di balik setiap baris kode yang kita tulis.</p>
-
-<h2 id="kenapa-logika-saja-tidak-cukup-bahasa-vs-mesin">Kenapa Logika Saja Tidak Cukup? ‘Bahasa’ vs ‘Mesin’</h2>
-
-<p>Bahasa pemrograman seperti Python, JavaScript, atau Ruby adalah alat komunikasi kita. Itu adalah ‘bahasa’ yang kita gunakan untuk berbicara dan memberi perintah kepada komputer. Tapi, menguasai bahasa saja ternyata belum cukup.</p>
-
-<p>Pernahkah kita bertanya-tanya:</p>
-<ul>
-  <li>Mengapa sebuah aplikasi terasa lebih cepat dan responsif dari aplikasi lain, padahal fiturnya hampir sama?</li>
-  <li>Bagaimana bisa Google Maps menemukan rute tercepat di antara jutaan kemungkinan rute jalan hanya dalam sekejap mata?</li>
-  <li>Kenapa kode yang ditulis seorang <em>senior developer</em> bisa ratusan kali lebih efisien daripada kode seorang junior, meskipun output-nya benar-benar sama?</li>
-</ul>
-
-<p>Jawabannya tidak terletak pada ‘bahasa’ yang dipakai, melainkan pada pemahaman fundamental tentang cara kerja <strong>‘mesin’</strong> itu sendiri. Inilah kekuatan sejati dari Ilmu Komputer.</p>
-
-<p class="callout warning"><strong>Bahaya Kode yang “Asal Jalan”</strong><br /><br />Menulis kode yang benar secara logika tapi tidak efisien itu seperti menyuruh kurir mengantar paket dari Jakarta ke Bogor lewat Bandung. Paketnya memang sampai, tapi memakan waktu, tenaga, dan biaya yang jauh lebih besar. Dalam skala aplikasi besar, inefisiensi ini bisa menyebabkan server crash, biaya membengkak, dan pengalaman pengguna yang buruk.</p>
-
-<h2 id="membedah-mesin---tiga-pilar-ilmu-komputer-untuk-pemula">Membedah ‘Mesin’ - Tiga Pilar Ilmu Komputer untuk Pemula</h2>
-
-<p>Mari kita intip tiga pilar utama dari ‘ilmu permesinan’ ini dengan analogi yang lebih mudah dicerna.</p>
-
-<h3 id="pilar-1-struktur-data---lemari-penyimpanan-informasi-kita">Pilar #1: Struktur Data - Lemari Penyimpanan Informasi Kita</h3>
-
-<p>Bayangkan semua informasi di program kita adalah pakaian. <strong>Struktur Data</strong> adalah cara kita mengaturnya. Apakah kita akan menumpuk semua pakaian di lantai (sehingga susah dicari), atau kita akan menyimpannya dengan rapi di dalam lemari, laci, dan gantungan baju yang sudah diberi label?</p>
-
-<p>Tentu kita memilih cara kedua. Dengan pengaturan yang baik, menemukan kemeja biru atau kaus kaki akan menjadi sangat cepat dan mudah.</p>
-
-<p class="callout info">Daftar kontak di HP kita adalah contoh nyata dari struktur data yang baik. Nama-nama diurutkan berdasarkan abjad agar kita bisa cepat menemukan nomor yang kita cari, bukan dengan memeriksa satu per satu dari awal sampai akhir.</p>
-
-<h3 id="pilar-2-algoritma---resep-untuk-menyelesaikan-masalah">Pilar #2: Algoritma - Resep untuk Menyelesaikan Masalah</h3>
-
-<p>Jika data adalah bahan masakan, maka <strong>Algoritma</strong> adalah buku resepnya. Untuk membuat sebuah kue, mungkin ada resep yang hanya butuh 5 langkah singkat, dan ada juga resep lain yang butuh 20 langkah berbelit-belit. Keduanya mungkin menghasilkan kue yang sama enaknya, tapi resep mana yang akan kita pilih? Tentu yang paling efisien!</p>
-
-<p>Seorang programmer yang baik tidak hanya membuat program yang ‘jadi’, tapi juga merancang ‘resep’ yang paling hemat waktu dan tenaga.</p>
-
-<p class="callout info">Saat kita mencari “kucing lucu” di Instagram, algoritma-lah yang bekerja di balik layar, menyaring miliaran foto untuk menampilkan yang paling relevan dalam sepersekian detik. Itulah keajaiban algoritma yang efisien.</p>
-
-<h3 id="pilar-3-arsitektur-komputer---mengenal-koki-meja-dan-gudang-kita">Pilar #3: Arsitektur Komputer - Mengenal Koki, Meja, dan Gudang Kita</h3>
-
-<p>Mari kita sederhanakan cara kerja komputer dengan analogi dapur:</p>
-<ul>
-  <li><strong>CPU (Processor):</strong> Inilah sang <strong>Koki</strong>. Dia yang bekerja keras, memotong, memasak, dan mengolah semua perintah yang kita berikan.</li>
-  <li><strong>RAM (Memory):</strong> Ini adalah <strong>Meja Dapur</strong>. Tempat sang Koki meletakkan bahan-bahan masakan yang <em>sedang</em> ia gunakan. Semakin besar dan rapi mejanya, semakin lancar dan cepat Koki bisa bekerja.</li>
-  <li><strong>Penyimpanan (SSD/Hard Drive):</strong> Ini adalah <strong>Gudang/Kulkas</strong>. Tempat kita menyimpan <em>semua</em> bahan masakan untuk jangka panjang.</li>
-</ul>
-
-<p>Memahami hubungan ketiganya membantu kita sadar kenapa sebuah program berjalan lambat. Mungkin saja program kita terlalu banyak menaruh barang di ‘meja dapur’ (memakan banyak RAM) sehingga sang ‘koki’ (CPU) menjadi kewalahan.</p>
-
-<h2 id="apa-untungnya-buat-kita">Apa Untungnya Buat Kita?</h2>
-
-<p>Mempelajari pilar-pilar di atas bukan hanya sekadar teori. Ada manfaat praktis yang akan langsung kita rasakan:</p>
-
-<ul>
-  <li><strong>Menulis Kode yang Jauh Lebih Cepat &amp; Efisien:</strong> Kita tidak akan lagi asal-asalan dalam membuat solusi, tapi bisa memilih “resep” (algoritma) dan “lemari” (struktur data) terbaik untuk setiap masalah.</li>
-  <li><strong>Memecahkan Masalah yang Lebih Rumit:</strong> Dengan pemahaman fundamental, masalah besar yang tadinya terlihat mustahil kini bisa kita pecah-pecah menjadi bagian yang lebih kecil dan lebih mudah dikelola.</li>
-</ul>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><summary type="html"><![CDATA[Setelah memahami logika pemrograman, saatnya kita mengenal 'mesin' di balik kode komputer itu sendiri. Artikel ini membahas dasar-dasar computer science, arsitektur komputer, dan bagaimana pengetahuan ini memperkuat kemampuan coding kita.]]></summary></entry></feed>
+<p>Kita adalah sutradara, dan bahasa pemrograman adalah asisten setia yang memastikan para aktor (komponen mesin) melakukan tugasnya dengan benar.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><category term="biner" /><category term="bahasa mesin" /><category term="high-level language" /><summary type="html"><![CDATA[Pernahkah Anda bertanya-tanya mengapa komputer hanya mengerti 0 dan 1? Artikel ini menjelaskan konsep dasar bahasa mesin dan mengapa kita memerlukan bahasa pemrograman tingkat tinggi sebagai 'penerjemah' antara manusia dan mesin.]]></summary></entry></feed>
