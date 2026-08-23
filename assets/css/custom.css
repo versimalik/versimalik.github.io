@@ -3,6 +3,12 @@ html{
     scroll-padding: 135px;
 }
 
+/* Fallback karakter Arab (mis. U+FDFA ﷺ) yang tidak didukung font sistem.
+   Amiri diletakkan paling akhir agar hanya glyph yang hilang yang memakainya. */
+:root {
+    --pico-font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Amiri", serif;
+}
+
 main.container {
     /*max-width: 875px;*/
     padding-top: 1rem;
