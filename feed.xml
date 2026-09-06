@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-08-23T20:50:21+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Mendidik Anak Sesuai Fitrah: Catatan dari Sekolah Orang Tua</title><link href="http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah/" rel="alternate" type="text/html" title="Mendidik Anak Sesuai Fitrah: Catatan dari Sekolah Orang Tua" /><published>2026-08-23T08:31:00+07:00</published><updated>2026-08-23T08:31:00+07:00</updated><id>http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah</id><content type="html" xml:base="http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah/"><![CDATA[<p>Akhir pekan ini, saya berkesempatan hadir dalam acara “Sekolah Orang Tua” yang diselenggarakan oleh Sekolah Islam Al Amanah bersama Komite Sekolah di Masjid Abu Bakar Ashiddiq. Pematerinya adalah Ustadz Abdul Kholiq. Program ini dibuat dengan satu tujuan yang sangat esensial, yaitu menyelaraskan paradigma pendidikan antara pihak sekolah dan orang tua di rumah. Jika sekolah ke kanan dan rumah ke kiri, anak pasti akan bingung.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-09-06T22:43:05+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">versimalik</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Bagi Saya itu Cukup dan Itu Sudah Bagus</title><link href="http://localhost:4000/blog/cukup-css/" rel="alternate" type="text/html" title="Bagi Saya itu Cukup dan Itu Sudah Bagus" /><published>2026-08-31T04:00:00+07:00</published><updated>2026-08-31T04:00:00+07:00</updated><id>http://localhost:4000/blog/cukup-css</id><content type="html" xml:base="http://localhost:4000/blog/cukup-css/"><![CDATA[<blockquote>
+  <p><em>“Our task is to simplify things. But simplifying things is not that simple”</em></p>
+
+  <p>~ Pak Mul, CEO Icube.Inc</p>
+</blockquote>
+
+<p>Saya jadi teringat nasihat Pak Mul, owner salah satu perusahaan pengembang <em>web e-commerce</em> tempat saya bekerja dulu. Saat itu saya menganggapnya cuma <em>quote</em> motivasi biasa aja. Beberapa tahun setelah tidak lagi di sana, saya baru benar-benar merasakannya. Saya ternyata butuh sesuatu yang sederhana. Tapi untuk mendapatkannya, tidak sesederhana itu.</p>
+
+<p>Mencari sesuatu yang benar-benar cocok dengan keinginan saya, ternyata sangat menyiksa. Tidak semua yang kita inginkan tersedia, dan kalaupun ada, pasti akan butuh penyesuaian yang memakan energi banyak.</p>
+
+<p>Dengan naluri “ketidakpuasan” manusia, kita sering mencari banyak hal demi menemukan kecocokan yang pas dengan diri kita. Tanpa sadar, waktu kita habis untuk mencari daripada menikmati.</p>
+
+<h2 id="saya-hanya-butuh-yang-cukup">Saya hanya butuh yang cukup</h2>
+
+<p>Saya mantan <em>backend programmer</em>, saat ini aktif menjadi <em>tech educator</em> yang menulis dan berbagi tentang dasar-dasar pemrograman serta pemahaman umum tentang teknologi.</p>
+
+<p>Sebagai seorang <em>backend</em>, urusan tampilan bagi saya adalah nomor ke-sekian. Prioritas utama saya selalu dua hal, <strong>aplikasi bekerja normal</strong> dan <strong>hasilnya sesuai harapan</strong>. Dua hal itulah titik kepuasan saya sebagai programmer. Tampilan dan desain baru saya perhatikan setelah dua syarat itu terpenuhi.</p>
+
+<p>Saya sadar ini mungkin terdengar tidak profesional bagi sebagian orang. Tetapi dengan segala keterbatasan, saya hanya sanggup mengerjakan satu hal dalam satu waktu. Saya butuh ruang fokus yang besar sampai dua prioritas itu beres, baru bisa memikirkan yang lain. Meminjam ungkapan Linus Torvalds, <em>“Saya sedang tidak meminta untuk dimaklumi, tapi hanya sedang menjelaskan siapa saya.”</em> Memang beda konteks, tapi kalimat itu mewakili apa yang sulit saya ungkapkan.</p>
+
+<p>Awalnya, di tengah ramainya komunitas yang melahirkan karya dengan tampilan memukau, saya justru memilih Bootstrap untuk beberapa proyek. Banyak yang menyarankan, <em>“Pakai Tailwind saja, bro. Lebih modern dan keren.”</em> Namun, saya tidak tertarik untuk hanya sekadar mengejar kesan modern. Bagi saya, “bagus” dan “keren” itu soal selera dan perspektif. Prioritas saya sederhana, tampilan website rapi dulu, urusan lain belakangan.</p>
+
+<p>Belakangan, saya menemukan Pico CSS dan mulai memakainya di beberapa proyek terbaru, termasuk blog pribadi saya <a href="https://versimalik.com">versimalik.com</a>. Pico CSS menjawab kebutuhan “kesederhanaan” saya. Setelah mencoba beberapa <a href="https://github.com/troxler/awesome-css-frameworks#class-less"><em>classless framework</em></a> lainnya, saya rasa Pico CSS paling pas untuk saat ini.</p>
+
+<h2 id="namanya-juga-manusia">Namanya juga manusia</h2>
+
+<p>Meskipun Pico CSS sudah sangat membantu, masih ada kelemahan saya yang belum teratasi, yaitu <strong>memilih warna</strong>. Saya tidak paham bagaimana warna harus dipilih dan dipadukan. Saya bisa merasakan kalau sebuah tampilan warnanya tidak enak dilihat, tapi tidak tahu solusi alternatifnya. Sebaliknya, untuk website dengan warna yang bagus, saya juga tidak bisa menjelaskan kenapa bagusnya.</p>
+
+<p>Selain itu, Pico yang sederhana masih menyisakan satu kebutuhan yang belum terpenuhi: <strong>sistem grid</strong>. Pico sebenarnya punya grid bawaan, tetapi tidak sefleksibel yang saya inginkan untuk merapikan tata letak.</p>
+
+<h2 id="cukupcss">Cukup.css</h2>
+
+<p>Dari masalah-masalah itu, saya butuh solusi nyata yang setidaknya bisa saya pakai sendiri, tanpa pusing lagi mencari <em>framework</em> punya siapa yang cocok. Akhirnya saya mencoba menggabungkan kesederhanaan Pico CSS dengan <em>utility</em> Bootstrap yang saya butuhkan, salah satunya sistem grid.</p>
+
+<p>Berbekal kemampuan dasar CSS dan keinginan menyelesaikan masalah sendiri, saya minta AI membantu mengurai masalah itu dan menerjemahkannya ke <em>styling</em> CSS yang saya butuhkan.</p>
+
+<p>Saya beri nama Cukup.css. Jujur, saya bingung mau memberi nama apa. Saya juga sedang tidak mau sok kebarat-baratan soal penamaan produk, saya cuma ingin produk ini mudah dipahami, bukan sekadar terlihat keren. Tujuannya memang sederhana begini.</p>
+
+<p>Cukup.css lahir dari masalah yang saya alami sendiri, dari kelemahan yang saya miliki, dan untuk saya pakai sendiri. Sistem desain ini mengedepankan kesederhanaan dan <em>utility</em> yang biasa saya butuhkan untuk membangun tampilan website sederhana.</p>
+
+<p>Karena bagi saya, indah atau kerennya sebuah tampilan itu relatif, tapi tampilan yang rapi, bersih, dan konsisten itu absolut. Bagi saya itu cukup, dan itu sudah bagus.</p>
+
+<h2 id="ke-mana-setelah-ini">Ke mana setelah ini</h2>
+
+<p>Ke depannya, saya merencanakan beberapa fitur dan kelengkapan yang saya adaptasi dari framework lain, dengan melihat kebutuhan esensial sebuah tampilan website. Supaya tidak keluar dari filosofi <em>framework</em> ini, dan tidak keluar dari yang saya yakini, <em>Fundamental Over Hype</em>.</p>
+
+<p>Walaupun project ini untuk dipakai sendiri, teman-teman juga bisa mencobanya. Aksesnya di GitHub, <a href="https://github.com/versimalik/cukupcss">github.com/versimalik/cukupcss</a>. Untuk melihat contoh pemakaian dan referensi kelas-kelas yang tersedia, saya juga sedang menyiapkan halaman dokumentasi resmi di <a href="https://versimalik.com/produk/cukupcss/demo">versimalik.com/produk/cukupcss/demo</a>. Namun, sejujurnya halaman itu masih dalam proses pengerjaan. Saya memilih merilisnya secara bertahap karena saya tidak ingin terburu-buru menyajikan sesuatu yang belum benar-benar saya pakai dan uji sendiri.</p>
+
+<p>Saya tidak akan memaksa siapa pun untuk beralih ke Cukup.css, apalagi mengklaim ini lebih baik dari <em>framework</em> lain. Ini hanya alat yang saya buat agar saya bisa berhenti mencari-cari dan mulai menikmati proses membangun. Jika ada dari kalian yang merasakan kegalauan yang sama, lelah mengejar standar orang lain, dan hanya butuh sesuatu yang cukup, maka Cukup.css mungkin juga bisa menjadi teman perjalanan kalian.</p>
+
+<p>Saya juga sadar, Cukup.css tidak akan pernah sempurna. Dan mungkin itulah yang membuatnya tetap manusiawi. Sama seperti saya, yang masih terus belajar, masih sering bingung memilih warna, dan masih sering merasa tidak cukup di tengah lautan karya orang lain. Tapi selama saya masih bisa membangun sesuatu yang rapi, bersih, dan konsisten. Selama itu saya bisa menikmati prosesnya, maka bagi saya itu cukup.</p>
+
+<p>Dan itu sudah bagus.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="css" /><category term="framework" /><category term="cukupcss" /><category term="pemrograman" /><category term="desain" /><category term="blog" /><summary type="html"><![CDATA[Pengumuman Cukup.css, framework CSS sederhana yang saya buat — perpaduan kesederhanaan Pico CSS dan utility Bootstrap, yang lahir dari kebutuhan pribadi sebagai pengembang.]]></summary></entry><entry><title type="html">Mendidik Anak Sesuai Fitrah: Catatan dari Sekolah Orang Tua</title><link href="http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah/" rel="alternate" type="text/html" title="Mendidik Anak Sesuai Fitrah: Catatan dari Sekolah Orang Tua" /><published>2026-08-23T08:31:00+07:00</published><updated>2026-08-23T08:31:00+07:00</updated><id>http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah</id><content type="html" xml:base="http://localhost:4000/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah/"><![CDATA[<p>Akhir pekan ini, saya berkesempatan hadir dalam acara “Sekolah Orang Tua” yang diselenggarakan oleh Sekolah Islam Al Amanah bersama Komite Sekolah di Masjid Abu Bakar Ashiddiq. Pematerinya adalah Ustadz Abdul Kholiq. Program ini dibuat dengan satu tujuan yang sangat esensial, yaitu menyelaraskan paradigma pendidikan antara pihak sekolah dan orang tua di rumah. Jika sekolah ke kanan dan rumah ke kiri, anak pasti akan bingung.</p>
 
 <p><img src="/assets/images/poster-sekolah-orang-tua.webp" alt="Poster acara Sekolah Orang Tua yang diselenggarakan Sekolah Islam Al Amanah bersama Komite Sekolah di Masjid Abu Bakar Ashiddiq" /></p>
 
@@ -955,81 +1007,4 @@ Angka Biner:     | 1 | 1 | 0 | 1 |
 
 <p>Konsep inilah yang menjadi fondasi dari segalanya. Huruf <code>A</code> pada keyboard Kita bagi komputer hanyalah sebuah pola biner (<code>01000001</code>). Setiap warna yang Kita lihat di layar adalah kombinasi dari tiga angka biner. Setiap audio yang kita dengar dipecah menjadi ribuan angka biner per detiknya.</p>
 
-<p>Di balik semua keajaiban teknologi yang kita nikmati, pada dasarnya ada sebuah sistem logika yang luar biasa elegan dan sederhana, yang semuanya menari mengikuti irama dari dua angka saja: <strong>0 dan 1</strong>.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><category term="biner" /><category term="bahasa mesin" /><summary type="html"><![CDATA[Pernahkah Kita bertanya-tanya mengapa komputer hanya mengerti 0 dan 1? Artikel ini menjelaskan konsep dasar bahasa mesin dan mengapa kita memerlukan bahasa pemrograman tingkat tinggi sebagai 'penerjemah' antara manusia dan mesin.]]></summary></entry><entry><title type="html">Komputer Itu Cuma Ngerti 0 dan 1 - Kenapa Kita Butuh ‘Penerjemah’ untuk Memerintah Mesin?</title><link href="http://localhost:4000/blog/komputer-cuma-ngerti-0-dan-1/" rel="alternate" type="text/html" title="Komputer Itu Cuma Ngerti 0 dan 1 - Kenapa Kita Butuh ‘Penerjemah’ untuk Memerintah Mesin?" /><published>2026-01-02T23:00:00+07:00</published><updated>2026-01-02T23:00:00+07:00</updated><id>http://localhost:4000/blog/komputer-cuma-ngerti-0-dan-1</id><content type="html" xml:base="http://localhost:4000/blog/komputer-cuma-ngerti-0-dan-1/"><![CDATA[<p>Bayangkan kita punya asisten rumah tangga sebuah robot yang super canggih dan cepat. Tapi, dia punya satu kelemahan fatal: Dia tidak punya telinga dan tidak bisa membaca tulisan.</p>
-
-<p>Satu-satunya cara kita berkomunikasi dengannya adalah lewat sebuah <strong>Saklar Lampu</strong> di dinding.</p>
-<ul>
-  <li><strong>Saklar Atas = Nyala (1)</strong></li>
-  <li><strong>Saklar Bawah = Mati (0)</strong></li>
-</ul>
-
-<p>Sekarang, masalahnya: Kita ingin menyuruh robot itu, <em>“Tolong buatkan kopi.”</em></p>
-
-<p>Karena dia hanya mengerti saklar, kita harus menekan saklar itu dengan pola rumit: <em>Atas-Bawah-Atas-Atas-Bawah…</em> sebanyak ribuan kali hanya untuk satu perintah sederhana. Salah tekan satu kali saja, bisa disalah artinya oleh si robot, malah bisa jadi dia menyiram tanaman pakai air panas.</p>
-
-<p>Itulah gambaran <strong>Bahasa Mesin (<em>Machine Code</em>)</strong>. Komputer hanya mengerti arus listrik (Nyala/Mati, atau 1/0). Kalau kita harus <em>coding</em> dengan cara “memainkan saklar” seperti itu, tidak akan pernah ada aplikasi canggih seperti Gojek atau Instagram hari ini. Kita butuh cara yang lebih manusiawi.</p>
-
-<h2 id="realita-mesin-dunia-biner-yang-melelahkan">Realita Mesin: Dunia Biner yang Melelahkan</h2>
-
-<p>Perangkat komputer pada dasarnya adalah kumpulan miliaran saklar listrik kecil. Setiap perintah, data, dan segala aktiviitas yang ada di dalam komputer, semuanya diwakili oleh urutan 0 dan 1.</p>
-
-<p class="callout info"><strong>Tahukah Anda?</strong><br /><br />Huruf ‘A’ yang kita ketik, bagi komputer adalah serangkaian angka biner <code>01000001</code>. Bayangkan betapa panjang dan rumitnya jika kita menulis satu kalimat lengkap!</p>
-
-<p>Bayangkan kalau seorang programmer harus mengetik <code>01000001</code> jutaan kali hanya untuk membuat sebuah website sederhana. Ini tidak hanya melelahkan, tapi juga sangat rentan terhadap kesalahan.</p>
-
-<h2 id="solusi-sang-penerjemah-high-level-language">Solusi: “Sang Penerjemah” (High-Level Language)</h2>
-
-<p>Karena manusia tidak dirancang untuk menghafal jutaan angka biner, para ahli komputer menciptakan solusi brilian: <strong>Bahasa Pemrograman Tingkat Tinggi (High-Level Language)</strong>.</p>
-
-<p>Disebut “Tingkat Tinggi” karena levelnya lebih dekat dengan bahasa manusia (<em>High/Top</em>) dan jauh dari bahasa mesin yang rumit (<em>Low/Bottom</em>). Contohnya yang populer adalah Python, JavaScript, Ruby, dan PHP.</p>
-
-<p class="callout success"><strong>Poin Kunci:</strong><br /><br />Bahasa-bahasa ini bertindak sebagai <strong><em>Middleman</em></strong> atau perantara. Kita “bicara” ke Python, lalu Python-lah yang “bicara” ke mesin menggunakan bahasanya.</p>
-
-<h2 id="bagaimana-cara-kerjanya">Bagaimana Cara Kerjanya?</h2>
-
-<p>Prosesnya bisa kita sederhanakan dalam tiga langkah:</p>
-
-<ol>
-  <li><strong>Input (<em>Source Code</em>):</strong> Kita menulis perintah menggunakan bahasa Inggris sederhana, sesuai dengan aturan tata bahasa (sintaks) dari bahasa pemrograman yang kita pilih.
-    <ul>
-      <li>Contoh: <code>print("Halo Dunia")</code> atau <code>if (hujan) { bawa_payung() }</code>.</li>
-    </ul>
-  </li>
-  <li><strong>Proses (<em>Compiler/Interpreter</em>):</strong> Di dalam komputer, ada program khusus yang disebut <strong><em>compiler</em></strong> atau <strong><em>interpreter</em></strong>. Anggap saja ini adalah “<strong>Penerjemah</strong>” otomatis. Saat kita menjalankan kode, si penerjemah ini akan membaca tulisan kita, membukanya di “kamus” biner, lalu menerjemahkannya menjadi urutan <code>10101100...</code> yang bisa dimengerti oleh prosesor.</li>
-  <li><strong>Output (<em>Machine Code</em>):</strong> Setelah diterjemahkan, komputer akan menjalankan instruksi biner tersebut. Arus listrik <em>nyala-mati</em> sesuai pola 0 dan 1, dan program kita pun berjalan, menampilkan teks, menjalankan aplikasi, atau membuat robot kita akhirnya berhasil bikin kopi dengan benar.</li>
-</ol>
-
-<h2 id="mitos-coding-itu-bahasa-matematika">Mitos “Coding itu Bahasa Matematika”</h2>
-
-<p>Banyak pemula takut belajar coding karena berpikir isinya adalah rumus integral, kalkulus, atau matematika rumit lainnya.</p>
-
-<p class="callout warning"><strong>Kesalahpahaman Umum:</strong><br /><br />Coding bukanlah matematika tingkat tinggi. Fokus utama coding adalah <strong>logika</strong> dan <strong>pemecahan masalah</strong>, bukan perhitungan matematis yang kompleks.</p>
-
-<p><strong>Faktanya:</strong> Sebagian besar coding modern isinya adalah <strong>Bahasa Inggris</strong> dan <strong>Logika</strong>. Mari kita lihat buktinya:</p>
-
-<ul>
-  <li><code>if</code> = Jika</li>
-  <li><code>else</code> = Kalau tidak</li>
-  <li><code>while</code> = Selama</li>
-  <li><code>true</code>/<code>false</code> = Benar/Salah</li>
-</ul>
-
-<p>Kalau kita bisa memahami bahasa Inggris dasar (walaupun pasif), kita sebenarnya sudah menguasai lebih dari 50% sintaksis pemrograman. Sisanya adalah tentang melatih cara kita berpikir secara logis.</p>
-
-<h2 id="kenapa-ada-banyak-bahasa-python-vs-js-vs-php-dll">Kenapa Ada Banyak Bahasa? (Python vs JS vs PHP dll)</h2>
-
-<p>Jika tujuannya sama-sama menerjemahkan ke 0 dan 1, mengapa bahasanya harus berbeda-beda?</p>
-
-<p>Pikirkan ini seperti bahasa manusia. Tujuan utamanya sama, yaitu komunikasi. Tapi ada banyak bahasa di dunia:</p>
-<ul>
-  <li>Mau bicara puitis dan indah? Mungkin kita bisa pakai bahasa Prancis.</li>
-  <li>Mau bicara tegas dan kaku? Mungkin kita pakai bahasa Jerman.</li>
-</ul>
-
-<p>Intinya: Pilihlah bahasa sesuai kebutuhan, tapi <strong>logikanya tetap sama</strong>. Menguasai satu bahasa akan membuat belajar bahasa lainnya jauh lebih mudah.</p>
-
-<h2 id="kesimpulan">Kesimpulan</h2>
-
-<p>Jadi, jangan takut salah ketik atau merasa <em>coding</em> itu sulit. Tugas kita bukanlah berbicara langsung dengan mesin. Tugas kita adalah menyampaikan logika kita kepada “Penerjemah” (Bahasa Pemrograman). Biarkan dia yang pusing mengubahnya menjadi jutaan 0 dan 1.</p>
-
-<p>Kita adalah sutradara, dan bahasa pemrograman adalah asisten setia yang memastikan para aktor (komponen mesin) melakukan tugasnya dengan benar.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><category term="biner" /><category term="bahasa mesin" /><category term="high-level language" /><summary type="html"><![CDATA[Pernahkah Anda bertanya-tanya mengapa komputer hanya mengerti 0 dan 1? Artikel ini menjelaskan konsep dasar bahasa mesin dan mengapa kita memerlukan bahasa pemrograman tingkat tinggi sebagai 'penerjemah' antara manusia dan mesin.]]></summary></entry></feed>
+<p>Di balik semua keajaiban teknologi yang kita nikmati, pada dasarnya ada sebuah sistem logika yang luar biasa elegan dan sederhana, yang semuanya menari mengikuti irama dari dua angka saja: <strong>0 dan 1</strong>.</p>]]></content><author><name>Malik</name></author><category term="blog" /><category term="pemrograman" /><category term="belajar" /><category term="dasar" /><category term="computer" /><category term="science" /><category term="biner" /><category term="bahasa mesin" /><summary type="html"><![CDATA[Pernahkah Kita bertanya-tanya mengapa komputer hanya mengerti 0 dan 1? Artikel ini menjelaskan konsep dasar bahasa mesin dan mengapa kita memerlukan bahasa pemrograman tingkat tinggi sebagai 'penerjemah' antara manusia dan mesin.]]></summary></entry></feed>

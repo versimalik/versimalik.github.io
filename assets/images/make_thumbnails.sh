@@ -7,7 +7,7 @@
 # =============================================================
 
 # Folder gambar — sesuaikan dengan path proyekmu
-IMAGE_DIR="./assets/images"
+IMAGE_DIR="."
 
 WIDTH=600
 HEIGHT=315
