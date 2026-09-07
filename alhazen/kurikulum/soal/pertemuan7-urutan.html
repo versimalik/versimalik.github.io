@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Pertemuan 7 - Mengenal Urutan Kejadian</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --deep:      #007979;
+    --teal:      #24B1B1;
+    --cream:     #FFE2AF;
+    --orange:    #E37434;
+    --bg:        #FFFFFF;
+    --card:      #FFFFFF;
+    --border:    #E8E3D9;
+    --text:      #1F3333;
+    --text-light:#5A6B6B;
+    --shadow:    0 2px 8px rgba(0,70,70,0.06);
+  }
+
+  html, body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── Progress Bar ─── */
+  .progress-wrap {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #FFFFFF;
+    padding: 12px 16px 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .progress-info {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px; font-size: 12px; font-weight: 700;
+  }
+  .progress-info .label { color: var(--text-light); }
+  .progress-info .label i { font-size: 11px; margin-right: 4px; }
+  .progress-info .counter { color: var(--orange); }
+  .progress-bar {
+    height: 10px; background: #EDE5D6; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--teal);
+    transition: width 0.4s ease;
+  }
+
+  /* ─── Slides Container ───
+     Vertical scroll enabled per slide: each slide is a full-width column
+     that scrolls inside the viewport, so content is never clipped on mobile. */
+  .slides-viewport {
+    position: fixed;
+    top: 62px; bottom: 0; left: 0; right: 0;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .slides-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+    will-change: transform;
+  }
+  .slides-track.dragging { transition: none; }
+
+  .slide {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px 16px 120px;
+    display: block;
+  }
+
+  /* ─── Cards ─── */
+  .card {
+    background: var(--bg, #fff);
+    border: 2px solid var(--bg, var(--border));
+    color: var(--fg, var(--text));
+    --muted: var(--text-light);
+    padding: 24px 22px;
+    width: 100%; max-width: 480px;
+    margin: 0 auto 20px;
+    animation: fadeInUp 0.4s ease both;
+  }
+  .card.c-cream  { --bg: var(--cream);  --fg: var(--deep);            --muted: #4E6D64; }
+  .card.c-teal   { --bg: var(--teal);   --fg: #FFFFFF;                 --muted: rgba(255,255,255,0.9); }
+  .card.c-deep   { --bg: var(--deep);   --fg: #FFFFFF;                 --muted: rgba(255,255,255,0.9); }
+  .card.c-orange { --bg: var(--orange); --fg: #FFFFFF;                 --muted: rgba(255,255,255,0.92); }
+  .card h1, .card h2, .card h3 { color: var(--fg); }
+  .card p, .card .desc { color: var(--muted); }
+  .card p strong { color: var(--fg); }
+  .photo {
+    display: block; width: 100%; max-width: 200px; height: auto;
+    margin: 12px auto 0;
+    border: 4px solid #fff;
+  }
+  .step-thumb {
+    flex: none; width: 100px; height: 100px;
+    object-fit: cover;
+    border: 2px solid var(--deep);
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card.delay-1 { animation-delay: 0.1s; }
+  .card.delay-2 { animation-delay: 0.2s; }
+
+  /* ─── Typography ─── */
+  .logo {
+    display: block;
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 14px;
+  }
+  h1 { font-size: 24px; font-weight: 900; text-align: center; margin-bottom: 6px; line-height: 1.3; }
+  h2 { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 10px; line-height: 1.3; }
+  h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+  p, .desc { font-size: 15px; line-height: 1.7; color: var(--text-light); text-align: center; }
+  p strong { color: var(--text); }
+
+  .badge {
+    display: table; margin: 0 auto 14px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    color: #fff;
+  }
+  .badge i { margin-right: 5px; }
+  .badge-welcome { background: var(--cream); border: 2px solid var(--cream); color: var(--deep); }
+  .badge-materi { background: var(--teal); border: 2px solid var(--teal); }
+  .badge-soal { background: var(--orange); border: 2px solid var(--orange); }
+
+  /* ─── Flow (contoh urutan) ─── */
+  .flow {
+    display: flex; align-items: center; flex-wrap: wrap;
+    justify-content: center; gap: 8px; margin-top: 12px;
+  }
+  .flow-item {
+    background: var(--deep); border: 2px solid var(--deep);
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 14px; font-weight: 700;
+  }
+  .flow-arrow { font-size: 18px; color: var(--deep); }
+
+  /* ─── Steps List ─── */
+  .steps { list-style: none; width: 100%; max-width: 480px; margin: 0 auto 18px; }
+  .steps li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px; margin-bottom: 10px;
+    background: var(--step-bg, #fff); border: 2px solid var(--step-bg, var(--border));
+    color: var(--step-fg, var(--text));
+    font-size: 15px; font-weight: 700;
+    animation: fadeInUp 0.4s ease both;
+  }
+  .steps li:nth-child(1) { --step-bg: var(--teal); --step-fg: #fff; }
+  .steps li:nth-child(2) { --step-bg: var(--deep); --step-fg: #fff; }
+  .steps li:nth-child(3) { --step-bg: var(--orange); --step-fg: #fff; }
+  .steps li:nth-child(4) { --step-bg: var(--cream); --step-fg: var(--deep); }
+  .steps li:nth-child(5) { --step-bg: var(--deep); --step-fg: #fff; }
+  .steps li:nth-child(1) { animation-delay: 0.1s; }
+  .steps li:nth-child(2) { animation-delay: 0.16s; }
+  .steps li:nth-child(3) { animation-delay: 0.22s; }
+  .steps li:nth-child(4) { animation-delay: 0.28s; }
+  .steps li:nth-child(5) { animation-delay: 0.34s; }
+
+  .step-num {
+    flex-shrink: 0; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900;
+    background: #fff;
+  }
+  .step-num.n1 { color: var(--teal); }
+  .step-num.n2 { color: var(--deep); }
+  .step-num.n3 { color: var(--orange); }
+  .step-num.n4 { color: var(--deep); }
+  .step-num.n5 { color: var(--deep); }
+
+  .step-content { flex: 1; }
+  .kata-urutan {
+    display: inline-block; font-size: 11px; font-weight: 800;
+    padding: 2px 8px; margin-bottom: 2px;
+    text-transform: uppercase;
+    background: #fff; color: var(--deep);
+  }
+
+  /* ─── Kata Urutan Grid ─── */
+  .kata-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    width: 100%; max-width: 480px; margin: 0 auto 16px;
+  }
+  .kata-item {
+    text-align: center; padding: 16px 10px;
+    background: var(--item-bg, #fff);
+    border: 2px solid var(--item-bg, var(--border));
+    color: var(--item-fg, var(--text));
+    font-weight: 800; font-size: 16px;
+    animation: popIn 0.3s cubic-bezier(.175,.885,.32,1.275) both;
+  }
+  .kata-item:nth-child(1) { --item-bg: var(--teal);   --item-fg: #fff;          animation-delay: 0.08s; }
+  .kata-item:nth-child(2) { --item-bg: var(--deep);   --item-fg: #fff;          animation-delay: 0.14s; }
+  .kata-item:nth-child(3) { --item-bg: var(--orange); --item-fg: #fff;          animation-delay: 0.2s; }
+  .kata-item:nth-child(4) { --item-bg: var(--cream);  --item-fg: var(--deep);   animation-delay: 0.26s; }
+  .kata-item:nth-child(5) { --item-bg: var(--teal);   --item-fg: #fff;          animation-delay: 0.32s; grid-column: span 2; }
+  .kata-item .kata-label { display: block; margin-bottom: 4px; font-weight: 900; color: var(--item-fg, var(--text)); }
+  .kata-item .kata-label i { margin-right: 4px; }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* ─── Soal Styles ─── */
+  .question-area {
+    width: 100%; max-width: 480px; margin: 0 auto;
+  }
+  .question-area .q-desc {
+    font-size: 15px; font-weight: 600; color: var(--text-light);
+    margin-bottom: 16px; text-align: center;
+  }
+
+  .num-picker {
+    display: flex; justify-content: center; gap: 8px;
+    margin: 14px 0 12px; flex-wrap: wrap;
+  }
+  .num-btn {
+    width: 46px; height: 46px;
+    border: 3px solid var(--border);
+    background: #fff;
+    font-size: 18px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: var(--text);
+  }
+  .num-btn:active { transform: scale(0.94); }
+  .num-btn.active {
+    background: var(--orange); border-color: var(--orange); color: #fff;
+    transform: scale(1.06);
+  }
+  .num-btn.used {
+    background: #EDEBE6; color: #BDB8B2;
+    border-color: #E0DCD6; pointer-events: none;
+  }
+
+  .sortable-list {
+    list-style: none; width: 100%;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .sortable-item {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--card);
+    border: 3px solid var(--border);
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all 0.15s ease;
+  }
+  .sortable-item:active { transform: scale(0.98); }
+  .sortable-item.selected {
+    border-color: var(--orange);
+    background: var(--card);
+  }
+  .sortable-item.correct {
+    border-color: var(--teal);
+    background: var(--card);
+  }
+  .sortable-item.wrong {
+    border-color: var(--orange);
+    background: var(--card);
+  }
+
+  .sortable-item .item-text {
+    flex: 1; font-size: 16px; font-weight: 700;
+  }
+
+  .num-slot {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: #F1ECE1; border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 900; color: var(--text-light);
+  }
+  .num-slot.filled { background: var(--cream); border-color: var(--cream); color: var(--text); }
+  .num-slot.correct-num { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .num-slot.wrong-num { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+  /* ─── Buttons ─── */
+  .question-actions {
+    display: flex; gap: 10px;
+    width: 100%; max-width: 480px; margin: 16px auto 0;
+  }
+  .btn-check {
+    flex: 1.4;
+    border: none;
+    background: var(--deep);
+    color: #fff; font-family: 'Nunito', sans-serif;
+    font-size: 15px; font-weight: 900;
+    padding: 14px 12px;
+    cursor: pointer;
+  }
+  .btn-check i { margin-right: 6px; }
+  .btn-check:active { opacity: 0.85; }
+  .btn-check:disabled { background: #E0DCD6; cursor: default; }
+
+  .btn-reset {
+    flex: 1;
+    border: 3px solid var(--deep);
+    background: #fff;
+    color: var(--deep); font-family: 'Nunito', sans-serif;
+    font-size: 15px; font-weight: 800;
+    padding: 14px 12px;
+    cursor: pointer;
+  }
+  .btn-reset i { margin-right: 6px; }
+  .btn-reset:active { opacity: 0.85; }
+
+  .btn-tts {
+    display: block; width: 100%; max-width: 480px;
+    margin: 0 auto 14px;
+    padding: 12px;
+    border: 3px solid var(--teal);
+    background: var(--card);
+    color: var(--deep); font-family: 'Nunito', sans-serif;
+    font-size: 14px; font-weight: 800;
+    cursor: pointer;
+  }
+  .btn-tts i { margin-right: 6px; }
+  .btn-tts:active { opacity: 0.85; }
+  .btn-tts.speaking { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+  /* ─── Feedback ─── */
+  .feedback {
+    text-align: center; margin-top: 14px;
+    padding: 14px;
+    font-weight: 800; font-size: 15px;
+    animation: fadeInUp 0.3s ease;
+  }
+  .feedback i { margin-right: 6px; }
+  .feedback.correct { background: var(--teal); border: 2px solid var(--teal); color: #fff; }
+  .feedback.wrong { background: var(--orange); border: 2px solid var(--orange); color: #fff; }
+
+  /* ─── Completion ─── */
+  .completion {
+    text-align: center; max-width: 480px; margin: 20px auto; padding: 30px 20px;
+    background: var(--deep); border: 2px solid var(--deep); color: #fff;
+  }
+  .completion .trophy { font-size: 56px; display: block; color: var(--cream); margin-bottom: 10px; }
+  .completion h1 { color: #fff; margin-bottom: 10px; }
+  .completion p { color: rgba(255,255,255,0.88); }
+  .completion p strong { color: #fff; }
+
+  /* ─── Form Nama & Kelas ─── */
+  .field {
+    display: block; margin-top: 14px;
+    text-align: left; font-weight: 800;
+    color: var(--fg, var(--text));
+  }
+  .field input {
+    display: block; width: 100%; margin-top: 4px; padding: 12px;
+    background: #fff; border: 3px solid var(--deep);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px; outline: none;
+  }
+  .field input:focus { border-color: var(--orange); }
+
+  .btn-submit {
+    display: block; width: 100%; margin-top: 18px; padding: 14px;
+    border: none;
+    background: var(--orange); color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px; font-weight: 900; cursor: pointer;
+  }
+  .btn-submit i { margin-right: 6px; }
+  .btn-submit:active { opacity: 0.85; }
+  .btn-submit:disabled { background: #C9C2B4; cursor: default; }
+
+  .submit-status {
+    margin-top: 12px; font-size: 14px; font-weight: 800;
+    min-height: 20px;
+    color: var(--fg, var(--text));
+  }
+  .completion .score-box {
+    display: inline-block;
+    padding: 14px 32px; margin: 16px 0;
+    background: var(--cream); border: 2px solid var(--cream);
+  }
+  .completion .score-box .score-num {
+    font-size: 44px; font-weight: 900; color: var(--deep);
+  }
+  .completion .score-box .score-label {
+    font-size: 14px; color: var(--deep); font-weight: 700; opacity: 0.75;
+  }
+
+  /* ─── Bottom Nav ─── */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #FFFFFF;
+    padding: 12px 16px;
+    display: flex; gap: 10px; justify-content: center;
+    border-top: 2px solid var(--border);
+    z-index: 100;
+  }
+  .nav-btn {
+    flex: 1; max-width: 200px;
+    padding: 14px 20px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px; font-weight: 800;
+    cursor: pointer;
+  }
+  .nav-btn i { margin: 0 6px; }
+  .nav-btn:active { opacity: 0.85; }
+  .nav-btn.prev { background: #EDE5D6; color: var(--text-light); }
+  .nav-btn.next { background: var(--teal); color: #fff; }
+  .nav-btn.finish { background: var(--deep); color: #fff; }
+  .nav-btn:disabled { opacity: 0.45; pointer-events: none; }
+
+  #confetti-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 999;
+  }
+
+  @media (max-width: 360px) {
+    .slide { padding: 20px 12px 120px; }
+    .card { padding: 20px 16px; }
+    h1 { font-size: 21px; }
+    h2 { font-size: 18px; }
+    .steps li { padding: 12px 12px; font-size: 14px; }
+    .num-btn { width: 40px; height: 40px; font-size: 16px; }
+    .step-thumb { width: 56px; height: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span class="label" id="progressLabel"><i class="bi bi-hand-thumbs-up"></i> Selamat Datang</span>
+    <span class="counter" id="progressCounter">1 / 10</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:10%"></div>
+  </div>
+</div>
+
+<div class="slides-viewport" id="slidesViewport">
+  <div class="slides-track" id="slidesTrack">
+
+    <!-- SLIDE 0: Selamat Datang -->
+    <div class="slide">
+      <span class="badge badge-welcome"><i class="bi bi-stars"></i>Selamat Datang</span>
+      <button class="btn-tts" onclick="speakSlide(0, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan</span></button>
+      <div class="card c-deep">
+        <img class="logo" src="https://lh3.googleusercontent.com/d/1_g1o1KBK2dGI9hIJVm0vJx7COTdlDuUC" alt="Logo Alhazen Academy">
+        <h1>Selamat Datang di<br>Kelas Coding Alhazen Academy!</h1>
+        <p style="margin-top:10px">Halo teman-teman! Senang sekali bisa bertemu kalian hari ini!</p>
+      </div>
+      <div class="card delay-1 c-teal">
+        <h2>Tetap Semangat Ya!</h2>
+        <p>Walaupun sekarang kita belajar dari rumah (PJJ), kita tetap harus <strong>semangat belajar</strong> ya!</p>
+        <p style="margin-top:8px; font-weight:700;">Sedikit-sedikit belajar, makin lama jadi makin bisa!</p>
+      </div>
+      <div class="card delay-2 c-orange">
+        <h2>Mari Berdoa Bersama</h2>
+        <p>Sebelum belajar, yuk kita berdoa bersama.</p>
+        <p style="margin-top:8px; background:#FFF; padding:12px; font-weight:700; color:var(--deep);">
+          "Semoga bencana yang sedang terjadi di Indonesia bisa segera berakhir. Dan kita bisa sama-sama bertemu lagi di sekolah ya. Aamiin."
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 1: Apa itu Urutan? -->
+    <div class="slide">
+      <span class="badge badge-materi"><i class="bi bi-book-fill"></i>Materi 1</span>
+      <button class="btn-tts" onclick="speakSlide(1, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan</span></button>
+      <div class="card c-teal">
+        <h1>Apa itu Urutan?</h1>
+        <p style="margin-top:8px">Setiap hari kita melakukan banyak hal. Nah, setiap kegiatan punya <strong>urutan</strong> lho!</p>
+      </div>
+      <div class="card delay-1 c-cream">
+        <h3>Contohnya begini...</h3>
+        <p>Kalau mau <strong>gosok gigi</strong>, ada langkah-langkahnya:</p>
+        <div class="flow">
+          <div class="flow-item">Ambil sikat</div>
+          <span class="flow-arrow"><i class="bi bi-arrow-right"></i></span>
+          <div class="flow-item">Kasih odol</div>
+          <span class="flow-arrow"><i class="bi bi-arrow-right"></i></span>
+          <div class="flow-item">Gosok gigi</div>
+          <span class="flow-arrow"><i class="bi bi-arrow-right"></i></span>
+          <div class="flow-item">Bilas</div>
+        </div>
+      </div>
+      <div class="card delay-2 c-orange">
+        <p><strong>Urutan</strong> = langkah yang dilakukan dari <strong>awal</strong> sampai <strong>selesai</strong>, satu per satu, tidak boleh terbalik!</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Resep Susu Coklat -->
+    <div class="slide">
+      <span class="badge badge-materi"><i class="bi bi-book-fill"></i>Materi 2</span>
+      <button class="btn-tts" onclick="speakSlide(2, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan</span></button>
+      <div class="card c-orange">
+        <h1>Resep Susu Coklat</h1>
+        <p>Ini dia langkah-langkah membuat <strong>susu coklat</strong> yang enak!</p>
+        <img class="photo" src="https://lh3.googleusercontent.com/d/1BEhnuoXg4snkxEeImn4JKtk8v-D2ubgq" alt="Segelas susu cokelat">
+      </div>
+      <ul class="steps">
+        <li>
+          <span class="step-num n1">1</span>
+          <div class="step-content">
+            <span class="kata-urutan pertama">Pertama</span><br>
+            Siapkan gelas dan bahan-bahan.
+          </div>
+        </li>
+        <li>
+          <span class="step-num n2">2</span>
+          <div class="step-content">
+            <span class="kata-urutan kedua">Kedua</span><br>
+            Tuangkan bubuk coklat ke dalam gelas.
+          </div>
+        </li>
+        <li>
+          <span class="step-num n3">3</span>
+          <div class="step-content">
+            <span class="kata-urutan ketiga">Ketiga</span><br>
+            Tambahkan air hangat sedikit saja.
+          </div>
+        </li>
+        <li>
+          <span class="step-num n4">4</span>
+          <div class="step-content">
+            <span class="kata-urutan keempat">Keempat</span><br>
+            Aduk sampai larut.
+          </div>
+        </li>
+        <li>
+          <span class="step-num n5">5</span>
+          <div class="step-content">
+            <span class="kata-urutan terakhir">Terakhir</span><br>
+            Tambahkan susu dan aduk lagi. Selesai!
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SLIDE 3: Kata-kata Urutan -->
+    <div class="slide">
+      <span class="badge badge-materi"><i class="bi bi-book-fill"></i>Materi 3</span>
+      <button class="btn-tts" onclick="speakSlide(3, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan</span></button>
+      <div class="card c-deep">
+        <h1>Kata-kata Urutan</h1>
+        <p>Kita bisa pakai kata-kata ini untuk menjelaskan urutan:</p>
+      </div>
+      <div class="kata-grid">
+        <div class="kata-item"><span class="kata-label"><i class="bi bi-1-square-fill"></i>1</span>Pertama</div>
+        <div class="kata-item"><span class="kata-label"><i class="bi bi-2-square-fill"></i>2</span>Kedua</div>
+        <div class="kata-item"><span class="kata-label"><i class="bi bi-3-square-fill"></i>3</span>Ketiga</div>
+        <div class="kata-item"><span class="kata-label"><i class="bi bi-4-square-fill"></i>4</span>Keempat</div>
+        <div class="kata-item"><span class="kata-label"><i class="bi bi-flag-fill"></i>5</span>Terakhir</div>
+      </div>
+      <div class="card delay-1 c-cream">
+        <p><strong>Contoh kalimat:</strong></p>
+        <p style="margin-top:6px; color:var(--deep); font-weight:700;">"<strong>Pertama</strong>, saya bangun tidur. <strong>Lalu</strong>, saya gosok gigi. <strong>Terakhir</strong>, saya sarapan."</p>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Soal 1 -->
+    <div class="slide">
+      <span class="badge badge-soal"><i class="bi bi-puzzle-fill"></i>Soal 1</span>
+      <button class="btn-tts" onclick="speakSlide(4, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan Soal</span></button>
+      <div class="card c-teal">
+        <h2>Urutkan Langkah Gosok Gigi!</h2>
+        <p>Klik angka dulu, lalu klik langkah yang sesuai.</p>
+      </div>
+      <div class="question-area" data-question="0">
+        <div class="num-picker" data-qpicker="0">
+          <div class="num-btn" data-num="1">1</div>
+          <div class="num-btn" data-num="2">2</div>
+          <div class="num-btn" data-num="3">3</div>
+        </div>
+        <ul class="sortable-list" data-qlist="0">
+          <li class="sortable-item" data-qi="0" data-answer="2">
+            <div class="num-slot" data-qslot="0">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1OEqqGZts1gn2Kp2YOp-gTd23jK_u1cBF" alt="Anak meletakkan pasta gigi di sikat gigi">
+            <div class="item-text">Kasih odol di sikat gigi</div>
+          </li>
+          <li class="sortable-item" data-qi="1" data-answer="3">
+            <div class="num-slot" data-qslot="1">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1whzj3I0uLZWlc_ncYQ92wwk_B71B0Gk-" alt="Anak sedang menggosok gigi">
+            <div class="item-text">Gosok gigi lalu bilas mulut</div>
+          </li>
+          <li class="sortable-item" data-qi="2" data-answer="1">
+            <div class="num-slot" data-qslot="2">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/14iZf2AttG6qsmBDLPno5BvBfXzMAyddC" alt="Anak sedang membasahi sikat gigi dengan air">
+            <div class="item-text">Basahi sikat gigi dengan air</div>
+          </li>
+        </ul>
+        <div class="question-actions">
+          <button class="btn-reset" onclick="resetQuestion(0)"><i class="bi bi-arrow-counterclockwise"></i>Ulangi</button>
+          <button class="btn-check" data-check="0" onclick="checkAnswer(0)"><i class="bi bi-check-circle-fill"></i>Cek Jawaban</button>
+        </div>
+        <div class="feedback" data-fb="0" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Soal 2 -->
+    <div class="slide">
+      <span class="badge badge-soal"><i class="bi bi-puzzle-fill"></i>Soal 2</span>
+      <button class="btn-tts" onclick="speakSlide(5, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan Soal</span></button>
+      <div class="card c-orange">
+        <h2>Urutkan Merapikan Tempat Tidur!</h2>
+        <p>Klik angka dulu, lalu klik langkah yang sesuai.</p>
+      </div>
+      <div class="question-area" data-question="1">
+        <div class="num-picker" data-qpicker="1">
+          <div class="num-btn" data-num="1">1</div>
+          <div class="num-btn" data-num="2">2</div>
+          <div class="num-btn" data-num="3">3</div>
+        </div>
+        <ul class="sortable-list" data-qlist="1">
+          <li class="sortable-item" data-qi="0" data-answer="3">
+            <div class="num-slot" data-qslot="0">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1y2It-2qm_sbJVb9uyib38VfO0CcGWgPF" alt="Anak menaruh selimut yang sudah dilipat di atas kasur">
+            <div class="item-text">Letakkan selimut yang sudah dilipat di atas kasur</div>
+          </li>
+          <li class="sortable-item" data-qi="1" data-answer="2">
+            <div class="num-slot" data-qslot="1">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1q4gmayaggDH5ul3NjrypcSLlDjsHbAHc" alt="Anak melipat selimut">
+            <div class="item-text">Lipat selimut</div>
+          </li>
+          <li class="sortable-item" data-qi="2" data-answer="1">
+            <div class="num-slot" data-qslot="2">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1JsBSGAALlZxEfPO7z-NR1f9jZvuxk3dD" alt="Anak merapikan bantal">
+            <div class="item-text">Rapikan bantal</div>
+          </li>
+        </ul>
+        <div class="question-actions">
+          <button class="btn-reset" onclick="resetQuestion(1)"><i class="bi bi-arrow-counterclockwise"></i>Ulangi</button>
+          <button class="btn-check" data-check="1" onclick="checkAnswer(1)"><i class="bi bi-check-circle-fill"></i>Cek Jawaban</button>
+        </div>
+        <div class="feedback" data-fb="1" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Soal 3 -->
+    <div class="slide">
+      <span class="badge badge-soal"><i class="bi bi-puzzle-fill"></i>Soal 3</span>
+      <button class="btn-tts" onclick="speakSlide(6, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan Soal</span></button>
+      <div class="card c-deep">
+        <h2>Urutkan Pagi Hari!</h2>
+        <p>Apa yang kamu lakukan setelah bangun tidur?</p>
+      </div>
+      <div class="question-area" data-question="2">
+        <div class="num-picker" data-qpicker="2">
+          <div class="num-btn" data-num="1">1</div>
+          <div class="num-btn" data-num="2">2</div>
+          <div class="num-btn" data-num="3">3</div>
+        </div>
+        <ul class="sortable-list" data-qlist="2">
+          <li class="sortable-item" data-qi="0" data-answer="3">
+            <div class="num-slot" data-qslot="0">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1VZDF2xJHwGMZz6-2UZyYhrXk_cn797Zp" alt="Anak sedang sarapan pagi">
+            <div class="item-text">Sarapan pagi</div>
+          </li>
+          <li class="sortable-item" data-qi="1" data-answer="1">
+            <div class="num-slot" data-qslot="1">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/16S3okrqqnyY2EEbTORozjIgTy7i-x-kE" alt="Anak baru bangun tidur">
+            <div class="item-text">Bangun tidur</div>
+          </li>
+          <li class="sortable-item" data-qi="2" data-answer="2">
+            <div class="num-slot" data-qslot="2">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/10ZV1gPAxtGql29XTrda2_gOCgp8xSiUp" alt="Anak menggosok gigi dan mencuci muka">
+            <div class="item-text">Gosok gigi dan cuci muka</div>
+          </li>
+        </ul>
+        <div class="question-actions">
+          <button class="btn-reset" onclick="resetQuestion(2)"><i class="bi bi-arrow-counterclockwise"></i>Ulangi</button>
+          <button class="btn-check" data-check="2" onclick="checkAnswer(2)"><i class="bi bi-check-circle-fill"></i>Cek Jawaban</button>
+        </div>
+        <div class="feedback" data-fb="2" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Soal 4 -->
+    <div class="slide">
+      <span class="badge badge-soal"><i class="bi bi-puzzle-fill"></i>Soal 4</span>
+      <button class="btn-tts" onclick="speakSlide(7, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan Soal</span></button>
+      <div class="card c-teal">
+        <h2>Urutkan Cuci Tangan!</h2>
+        <p>Urutan mencuci tangan yang benar.</p>
+      </div>
+      <div class="question-area" data-question="3">
+        <div class="num-picker" data-qpicker="3">
+          <div class="num-btn" data-num="1">1</div>
+          <div class="num-btn" data-num="2">2</div>
+          <div class="num-btn" data-num="3">3</div>
+        </div>
+        <ul class="sortable-list" data-qlist="3">
+          <li class="sortable-item" data-qi="0" data-answer="2">
+            <div class="num-slot" data-qslot="0">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1xNmUKAOLqKByv-dTd0lwuIUw6J7xsbSu" alt="Anak menggosok tangan dengan sabun">
+            <div class="item-text">Gosok dengan sabun</div>
+          </li>
+          <li class="sortable-item" data-qi="1" data-answer="3">
+            <div class="num-slot" data-qslot="1">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1Bj74BHM1egxuQO1buAnrCmehrW9ETM32" alt="Anak membilas dan mengeringkan tangan">
+            <div class="item-text">Bilas dan keringkan dengan lap</div>
+          </li>
+          <li class="sortable-item" data-qi="2" data-answer="1">
+            <div class="num-slot" data-qslot="2">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1JT2zyOGpdrxh3WtCLrFdfeHaRdhLEyAo" alt="Anak membasahi tangan dengan air">
+            <div class="item-text">Basahi tangan dengan air</div>
+          </li>
+        </ul>
+        <div class="question-actions">
+          <button class="btn-reset" onclick="resetQuestion(3)"><i class="bi bi-arrow-counterclockwise"></i>Ulangi</button>
+          <button class="btn-check" data-check="3" onclick="checkAnswer(3)"><i class="bi bi-check-circle-fill"></i>Cek Jawaban</button>
+        </div>
+        <div class="feedback" data-fb="3" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Soal 5 -->
+    <div class="slide">
+      <span class="badge badge-soal"><i class="bi bi-puzzle-fill"></i>Soal 5</span>
+      <button class="btn-tts" onclick="speakSlide(8, this)"><i class="bi bi-volume-up-fill tts-icon"></i><span class="tts-label">Dengarkan Soal</span></button>
+      <div class="card c-orange">
+        <h2>Urutkan Makan Jajanan!</h2>
+        <p>Urutan makan jajanan dari bungkus sampai habis.</p>
+      </div>
+      <div class="question-area" data-question="4">
+        <div class="num-picker" data-qpicker="4">
+          <div class="num-btn" data-num="1">1</div>
+          <div class="num-btn" data-num="2">2</div>
+          <div class="num-btn" data-num="3">3</div>
+        </div>
+        <ul class="sortable-list" data-qlist="4">
+          <li class="sortable-item" data-qi="0" data-answer="3">
+            <div class="num-slot" data-qslot="0">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1n12NMr4Ocyv9ku3PJcqJ_v15YAUYIm8v" alt="Anak sedang makan jajanan">
+            <div class="item-text">Makan sampai habis</div>
+          </li>
+          <li class="sortable-item" data-qi="1" data-answer="1">
+            <div class="num-slot" data-qslot="1">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/14PBMHyzg0-CnL4qaDkfiAR5aW-h_ONIm" alt="Anak sedang memilih jajanan">
+            <div class="item-text">Pilih jajanan yang mau dibeli</div>
+          </li>
+          <li class="sortable-item" data-qi="2" data-answer="2">
+            <div class="num-slot" data-qslot="2">-</div>
+            <img class="step-thumb" src="https://lh3.googleusercontent.com/d/1sv73VEd2gHiVrxtHMnbac7hxa3sNfLjt" alt="Anak sedang membayar jajanan">
+            <div class="item-text">Bayar ke penjual</div>
+          </li>
+        </ul>
+        <div class="question-actions">
+          <button class="btn-reset" onclick="resetQuestion(4)"><i class="bi bi-arrow-counterclockwise"></i>Ulangi</button>
+          <button class="btn-check" data-check="4" onclick="checkAnswer(4)"><i class="bi bi-check-circle-fill"></i>Cek Jawaban</button>
+        </div>
+        <div class="feedback" data-fb="4" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Selesai -->
+    <div class="slide">
+      <div class="completion">
+        <i class="bi bi-trophy-fill trophy"></i>
+        <h1>Hebat Sekali!</h1>
+        <p>Kamu sudah menyelesaikan semua soal tentang <strong>Urutan Kejadian</strong>!</p>
+        <div class="score-box">
+          <div class="score-num" id="finalScore">0/5</div>
+          <div class="score-label">Soal Benar</div>
+        </div>
+        <p id="finalMsg" style="margin-top:12px; font-weight:700;"></p>
+      </div>
+      <div class="card c-teal">
+        <h2>Kirim Nilaimu ke Gurumu</h2>
+        <p>Tulis nama dan kelasmu, lalu tekan tombol kirim.</p>
+        <label class="field">Nama
+          <input id="stuName" type="text" placeholder="Tulis namamu" autocomplete="off">
+        </label>
+        <label class="field">Kelas
+          <input id="stuClass" type="text" placeholder="Contoh: 1 A" autocomplete="off">
+        </label>
+        <button class="btn-submit" id="btnSubmit" onclick="submitScore()"><i class="bi bi-send-fill"></i>Kirim Nilai</button>
+        <div class="submit-status" id="submitStatus"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-btn prev" id="btnPrev" onclick="navigate(-1)"><i class="bi bi-arrow-left"></i>Kembali</button>
+  <button class="nav-btn next" id="btnNext" onclick="navigate(1)">Lanjut<i class="bi bi-arrow-right"></i></button>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+  const TOTAL_SLIDES = 10;
+  let currentSlide = 0;
+  let scores = [false, false, false, false, false];
+  let selectedNum = {};
+
+  const track = document.getElementById('slidesTrack');
+  const viewport = document.getElementById('slidesViewport');
+  const progressFill = document.getElementById('progressFill');
+  const progressCounter = document.getElementById('progressCounter');
+  const progressLabel = document.getElementById('progressLabel');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  const slides = track.querySelectorAll('.slide');
+
+  function updateUI() {
+    track.style.transform = 'translateX(' + (-currentSlide * 100) + 'vw)';
+    const pct = ((currentSlide + 1) / TOTAL_SLIDES) * 100;
+    progressFill.style.width = pct + '%';
+    progressCounter.textContent = (currentSlide + 1) + ' / ' + TOTAL_SLIDES;
+
+    if (currentSlide === 0) {
+      progressLabel.innerHTML = '<i class="bi bi-hand-thumbs-up"></i>Selamat Datang';
+    } else if (currentSlide < 4) {
+      progressLabel.innerHTML = '<i class="bi bi-book-fill"></i>Materi ' + currentSlide + ' dari 3';
+    } else if (currentSlide < 9) {
+      progressLabel.innerHTML = '<i class="bi bi-puzzle-fill"></i>Soal ' + (currentSlide - 3) + ' dari 5';
+    } else {
+      progressLabel.innerHTML = '<i class="bi bi-trophy-fill"></i>Selesai';
+    }
+
+    btnPrev.disabled = currentSlide === 0;
+
+    if (currentSlide === TOTAL_SLIDES - 1) {
+      btnNext.style.display = 'none';
+    } else {
+      btnNext.style.display = '';
+      if (currentSlide >= 8) {
+        btnNext.className = 'nav-btn finish';
+        btnNext.innerHTML = 'Selesai<i class="bi bi-flag-fill"></i>';
+      } else {
+        btnNext.className = 'nav-btn next';
+        btnNext.innerHTML = 'Lanjut<i class="bi bi-arrow-right"></i>';
+      }
+    }
+  }
+
+  function navigate(dir) {
+    if (dir === 1 && currentSlide === TOTAL_SLIDES - 1) return;
+    const next = currentSlide + dir;
+    if (next < 0 || next >= TOTAL_SLIDES) return;
+    stopSpeech();
+    currentSlide = next;
+    updateUI();
+    slides[currentSlide].scrollTop = 0;
+  }
+
+  // Swipe
+  let touchStartX = 0;
+  let touchDelta = 0;
+  let isDragging = false;
+
+  viewport.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    isDragging = true;
+    track.classList.add('dragging');
+  }, { passive: true });
+
+  viewport.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    touchDelta = e.touches[0].clientX - touchStartX;
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', () => {
+    isDragging = false;
+    track.classList.remove('dragging');
+    if (Math.abs(touchDelta) > 50) {
+      navigate(touchDelta < 0 ? 1 : -1);
+    } else {
+      updateUI();
+    }
+    touchDelta = 0;
+  });
+
+  // Number picker & item selection
+  document.querySelectorAll('.num-picker').forEach(picker => {
+    const qIdx = picker.dataset.qpicker;
+    selectedNum[qIdx] = null;
+
+    picker.querySelectorAll('.num-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const num = parseInt(btn.dataset.num, 10);
+        if (btn.classList.contains('used')) return;
+        picker.querySelectorAll('.num-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedNum[qIdx] = num;
+      });
+    });
+  });
+
+  document.querySelectorAll('.sortable-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const textEl = item.querySelector('.item-text');
+      if (textEl) speakText(textEl.textContent.trim());
+
+      const list = item.closest('.sortable-list');
+      const qIdx = list.dataset.qlist;
+      if (selectedNum[qIdx] === null || selectedNum[qIdx] === undefined) return;
+
+      const num = selectedNum[qIdx];
+      const slot = item.querySelector('.num-slot');
+
+      list.querySelectorAll('.sortable-item').forEach(otherItem => {
+        const otherSlot = otherItem.querySelector('.num-slot');
+        if (otherSlot.textContent == num) {
+          otherSlot.textContent = '-';
+          otherSlot.classList.remove('filled');
+          otherItem.classList.remove('selected');
+        }
+      });
+
+      slot.textContent = num;
+      slot.classList.add('filled');
+      item.classList.add('selected');
+
+      const picker = document.querySelector('[data-qpicker="' + qIdx + '"]');
+      picker.querySelectorAll('.num-btn').forEach(b => {
+        b.classList.remove('active');
+        if (parseInt(b.dataset.num, 10) === num) b.classList.add('used');
+      });
+      selectedNum[qIdx] = null;
+    });
+  });
+
+  function checkAnswer(qIdx) {
+    const list = document.querySelector('[data-qlist="' + qIdx + '"]');
+    const fb = document.querySelector('[data-fb="' + qIdx + '"]');
+    const items = list.querySelectorAll('.sortable-item');
+    let allCorrect = true;
+    let allFilled = true;
+
+    items.forEach(item => {
+      const slot = item.querySelector('.num-slot');
+      const answer = parseInt(item.dataset.answer, 10);
+      const userAnswer = parseInt(slot.textContent, 10);
+
+      if (isNaN(userAnswer)) { allFilled = false; return; }
+
+      if (userAnswer === answer) {
+        item.classList.add('correct');
+        item.classList.remove('wrong', 'selected');
+        slot.classList.add('correct-num');
+        slot.classList.remove('wrong-num');
+      } else {
+        item.classList.add('wrong');
+        item.classList.remove('correct', 'selected');
+        slot.classList.add('wrong-num');
+        slot.classList.remove('correct-num');
+        allCorrect = false;
+      }
+    });
+
+    if (!allFilled) {
+      fb.style.display = 'block';
+      fb.className = 'feedback wrong';
+      fb.innerHTML = '<i class="bi bi-exclamation-triangle-fill"></i>Semua langkah harus diurutkan dulu ya!';
+      return;
+    }
+
+    fb.style.display = 'block';
+    if (allCorrect) {
+      fb.className = 'feedback correct';
+      fb.innerHTML = '<i class="bi bi-check-circle-fill"></i>Hebat! Jawaban kamu benar semua!';
+      scores[qIdx] = true;
+    } else {
+      fb.className = 'feedback wrong';
+      fb.innerHTML = '<i class="bi bi-x-circle-fill"></i>Ada yang masih salah nih. Coba perhatikan lagi urutannya ya!';
+      scores[qIdx] = false;
+    }
+
+    if (allCorrect) {
+      const picker = document.querySelector('[data-qpicker="' + qIdx + '"]');
+      picker.querySelectorAll('.num-btn').forEach(b => b.style.pointerEvents = 'none');
+      document.querySelector('[data-check="' + qIdx + '"]').disabled = true;
+    }
+  }
+
+  const observer = new MutationObserver(() => {
+    if (currentSlide === TOTAL_SLIDES - 1) {
+      const correctCount = scores.filter(Boolean).length;
+      document.getElementById('finalScore').textContent = correctCount + '/5';
+      const msgs = [
+        'Belum semua benar, tapi tidak apa-apa! Tetap semangat ya!',
+        'Bagus! Masih ada yang salah, coba pelajari lagi ya.',
+        'Lumayan! Hampir benar semua, semangat!',
+        'Hebat! Hampir sempurna!',
+        'Sangat bagus! Hampir semua benar!',
+        'LUAR BIASA! Semua benar! Kamu juara!'
+      ];
+      document.getElementById('finalMsg').textContent = msgs[correctCount];
+      if (correctCount >= 4) launchConfetti();
+    }
+  });
+  observer.observe(track, { attributes: true, attributeFilter: ['style'] });
+
+  function launchConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.display = 'block';
+
+    const colors = ['#007979','#24B1B1','#FFE2AF','#E37434','#E6C488'];
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: Math.random() * 10 + 6,
+        h: Math.random() * 6 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vy: Math.random() * 3 + 2,
+        vx: (Math.random() - 0.5) * 2,
+        rot: Math.random() * 360,
+        vr: (Math.random() - 0.5) * 8
+      });
+    }
+
+    let frame = 0;
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx;
+        p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      frame++;
+      if (frame < 160) requestAnimationFrame(animate);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    animate();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') navigate(1);
+    if (e.key === 'ArrowLeft') navigate(-1);
+  });
+
+  // Text-to-Speech
+  // Atur tone suara di sini:
+  //   rate  = kecepatan bicara (0.5 lambat - 2 cepat)
+  //   pitch = nada suara (0 rendah - 2 tinggi; lebih dari 1 terdengar ceria)
+  //   volume= 0 senyap - 1 penuh
+  const TTS_RATE = 0.9;
+  const TTS_PITCH = 1.25;
+  const TTS_VOLUME = 1;
+
+  let currentUtterance = null;
+  let currentTtsBtn = null;
+
+  // Pilih suara: minta suara Google Bahasa Indonesia dulu (paling natural),
+  // kalau tidak ada, pakai suara id-ID apa pun.
+  function pickIdVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    const idVoices = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('id'));
+    if (!idVoices.length) return null;
+    const google = idVoices.find(v => v.name.toLowerCase().indexOf('google') !== -1);
+    return google || idVoices[0];
+  }
+
+  // Membacakan teks singkat (dipakai saat kartu jawaban diklik), tanpa mengubah
+  // tombol Dengarkan yang sedang aktif.
+  function speakText(text) {
+    if (!('speechSynthesis' in window) || !text) return;
+    window.speechSynthesis.cancel();
+    if (currentTtsBtn) setTtsButton(currentTtsBtn);
+    currentUtterance = null;
+    currentTtsBtn = null;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'id-ID';
+    utterance.rate = TTS_RATE;
+    utterance.pitch = TTS_PITCH;
+    utterance.volume = TTS_VOLUME;
+
+    const voice = pickIdVoice();
+    if (voice) utterance.voice = voice;
+
+    currentUtterance = utterance;
+    utterance.onend = () => { currentUtterance = null; };
+    utterance.onerror = () => { currentUtterance = null; };
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function setTtsButton(btn) {
+    const icon = btn.querySelector('.tts-icon');
+    const label = btn.querySelector('.tts-label');
+    if (!btn.dataset.origLabel) btn.dataset.origLabel = label.textContent;
+
+    if (btn.classList.contains('speaking')) {
+      btn.classList.remove('speaking');
+      icon.className = 'bi bi-volume-up-fill tts-icon';
+      label.textContent = btn.dataset.origLabel;
+    } else {
+      btn.classList.add('speaking');
+      icon.className = 'bi bi-stop-fill tts-icon';
+      label.textContent = 'Berhenti';
+    }
+  }
+
+  const slideTexts = [
+    "Selamat datang di Kelas Coding Alhazen Academy! Halo teman-teman, senang sekali bisa bertemu kalian hari ini. Walaupun sekarang kita belajar dari rumah, atau PJJ, kita tetap harus semangat belajar ya! Sedikit-sedikit belajar, makin lama jadi makin bisa. Sebelum belajar, yuk kita berdoa bersama. Semoga bencana yang sedang terjadi di Indonesia bisa segera berakhir. Dan kita bisa sama-sama bertemu lagi di sekolah ya. Aamiin.",
+
+    "Apa itu Urutan? Setiap hari kita melakukan banyak hal. Nah, setiap kegiatan punya urutan lho! Contohnya begini. Kalau mau gosok gigi, ada langkah langkahnya. Pertama, ambil sikat. Kedua, kasih odol. Ketiga, gosok gigi. Keempat, bilas. Urutan artinya langkah yang dilakukan dari awal sampai selesai, satu per satu, tidak boleh terbalik!",
+
+    "Resep Susu Coklat. Ini dia langkah langkah membuat susu coklat yang enak! Pertama, siapkan gelas dan bahan bahan. Kedua, tuangkan bubuk coklat ke dalam gelas. Ketiga, tambahkan air hangat sedikit saja. Keempat, aduk sampai larut. Terakhir, tambahkan susu dan aduk lagi. Selesai!",
+
+    "Kata kata Urutan. Kita bisa pakai kata kata ini untuk menjelaskan urutan. Pertama. Kedua. Ketiga. Keempat. Terakhir. Contoh kalimat: Pertama, saya bangun tidur. Lalu, saya gosok gigi. Terakhir, saya sarapan.",
+
+    "Soal satu. Urutkan langkah gosok gigi! Klik angka dulu, lalu klik langkah yang sesuai. Angka satu, basahi sikat gigi dengan air. Angka dua, kasih odol di sikat gigi. Angka tiga, gosok gigi lalu bilas mulut.",
+
+    "Soal dua. Urutkan merapikan tempat tidur! Klik angka dulu, lalu klik langkah yang sesuai. Angka satu, rapikan bantal. Angka dua, lipat selimut. Angka tiga, letakkan selimut yang sudah dilipat di atas kasur.",
+
+    "Soal tiga. Urutkan pagi hari! Apa yang kamu lakukan setelah bangun tidur? Klik angka dulu, lalu klik langkah yang sesuai. Angka satu, bangun tidur. Angka dua, gosok gigi dan cuci muka. Angka tiga, sarapan pagi.",
+
+    "Soal empat. Urutkan cuci tangan! Urutan mencuci tangan yang benar. Klik angka dulu, lalu klik langkah yang sesuai. Angka satu, basahi tangan dengan air. Angka dua, gosok dengan sabun. Angka tiga, bilas dan keringkan dengan lap.",
+
+    "Soal lima. Urutkan makan jajanan! Klik angka dulu, lalu klik langkah yang sesuai. Angka satu, pilih jajanan yang mau dibeli. Angka dua, bayar ke penjual. Angka tiga, makan sampai habis."
+  ];
+
+  function speakSlide(idx, btn) {
+    if (currentUtterance && currentTtsBtn === btn) {
+      window.speechSynthesis.cancel();
+      setTtsButton(btn);
+      currentUtterance = null;
+      currentTtsBtn = null;
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    if (currentTtsBtn) setTtsButton(currentTtsBtn);
+
+    if (!('speechSynthesis' in window)) {
+      alert('Browser kamu belum mendukung fitur suara. Coba pakai Chrome ya!');
+      return;
+    }
+
+    const text = slideTexts[idx];
+    if (!text) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'id-ID';
+    utterance.rate = TTS_RATE;
+    utterance.pitch = TTS_PITCH;
+    utterance.volume = TTS_VOLUME;
+
+    const voice = pickIdVoice();
+    if (voice) utterance.voice = voice;
+
+    setTtsButton(btn);
+    currentUtterance = utterance;
+    currentTtsBtn = btn;
+
+    utterance.onend = () => {
+      setTtsButton(btn);
+      currentUtterance = null;
+      currentTtsBtn = null;
+    };
+
+    utterance.onerror = () => {
+      setTtsButton(btn);
+      currentUtterance = null;
+      currentTtsBtn = null;
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  }
+
+  function stopSpeech() {
+    if (currentUtterance) {
+      window.speechSynthesis.cancel();
+      if (currentTtsBtn) setTtsButton(currentTtsBtn);
+      currentUtterance = null;
+      currentTtsBtn = null;
+    }
+  }
+
+  // ─── Kirim nilai ke Google Sheets ───
+  // Ganti URL di bawah dengan Web App URL dari Google Apps Script Ibu/Bapak.
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzswrLUQ2FogvqxVa6W-62XhPs6HekbMZCLQ_rA6jW8cLiuajyT8IIwWyEB1ntxbqLZAw/exec';
+
+  function resetQuestion(qIdx) {
+    const list = document.querySelector('[data-qlist="' + qIdx + '"]');
+    const fb = document.querySelector('[data-fb="' + qIdx + '"]');
+    const picker = document.querySelector('[data-qpicker="' + qIdx + '"]');
+    const checkBtn = document.querySelector('[data-check="' + qIdx + '"]');
+
+    list.querySelectorAll('.sortable-item').forEach(item => {
+      item.classList.remove('correct', 'wrong', 'selected');
+      const slot = item.querySelector('.num-slot');
+      slot.textContent = '-';
+      slot.classList.remove('filled', 'correct-num', 'wrong-num');
+    });
+
+    picker.querySelectorAll('.num-btn').forEach(b => {
+      b.classList.remove('active', 'used');
+      b.style.pointerEvents = '';
+    });
+
+    if (fb) {
+      fb.style.display = 'none';
+      fb.className = 'feedback';
+    }
+    if (checkBtn) checkBtn.disabled = false;
+
+    scores[qIdx] = false;
+    selectedNum[qIdx] = null;
+  }
+
+  function submitScore() {
+    const nameEl = document.getElementById('stuName');
+    const clsEl = document.getElementById('stuClass');
+    const btn = document.getElementById('btnSubmit');
+    const statusEl = document.getElementById('submitStatus');
+
+    const name = nameEl.value.trim();
+    const cls = clsEl.value.trim();
+
+    if (!name || !cls) {
+      statusEl.textContent = 'Isi nama dan kelas dulu ya!';
+      statusEl.style.color = '#FFE2AF';
+      return;
+    }
+
+    const correctCount = scores.filter(Boolean).length;
+    const detail = scores.map((s, i) => 'Soal ' + (i + 1) + ': ' + (s ? 'Benar' : 'Salah')).join(', ');
+
+    const data = {
+      waktu: new Date().toLocaleString('id-ID'),
+      nama: name,
+      kelas: cls,
+      benar: correctCount,
+      total: 5,
+      detail: detail
+    };
+
+    btn.disabled = true;
+    statusEl.textContent = 'Mengirim...';
+    statusEl.style.color = '#FFFFFF';
+
+    fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      redirect: 'follow',
+      body: JSON.stringify(data)
+    })
+      .then(r => r.text())
+      .then(() => {
+        statusEl.textContent = 'Terkirim! Terima kasih ya!';
+        statusEl.style.color = '#FFFFFF';
+        btn.disabled = false;
+      })
+      .catch(() => {
+        statusEl.textContent = 'Gagal terkirim. Cek koneksi lalu coba lagi.';
+        statusEl.style.color = '#FFE2AF';
+        btn.disabled = false;
+      });
+  }
+
+  updateUI();
+</script>
+</body>
+</html>
