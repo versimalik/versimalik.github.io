@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Tengah Semester - Kelas 4 - Alhazen Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    main.container { max-width: 860px; margin-inline: auto; }
+    .card-head { text-align: center; }
+    .logo { max-width: 110px; height: auto; margin-inline: auto; display: block; }
+    .logo-kecil { height: 36px; object-fit: contain; }
+    .opsi-btn { width: 100%; margin-block: .3rem; text-align: left; }
+    .opsi-btn.terpilih,
+    .opsi-btn.terpilih:hover,
+    .opsi-btn.terpilih:focus { background: var(--pico-primary-background); border-color: var(--pico-primary-border); color: var(--pico-primary-inverse); }
+    .soal { margin-bottom: .75rem; }
+    .grade { display: inline-block; font-weight: 700; font-size: .9rem; color: var(--pico-primary); margin-right: .4rem; }
+    .soal-gambar { max-width: 100%; height: auto; margin-block: .5rem; border-radius: var(--pico-border-radius); }
+    .topbar { position: sticky; top: 0; z-index: 20; background: var(--pico-background-color); border-bottom: 1px solid var(--pico-muted-border-color); padding: .55rem 0; }
+    .topbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+    .kiri { display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; font-size: .95rem; }
+    .hilang { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <!-- ===================== LAYAR DATA DIRI ===================== -->
+    <section id="layar-pembuka">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1 style="margin-bottom:.2rem;">Ujian Tengah Semester</h1>
+        <p style="margin:0;"><strong>STEM / Coding - Kelas 4</strong></p>
+      </article>
+      <article>
+        <h2>Identitas Peserta</h2>
+        <form id="form-pembuka">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" required placeholder="Contoh: Ahmad Fauzi">
+
+          <label for="kelas">Kelas</label>
+          <input type="text" id="kelas" name="kelas" required value="4" placeholder="Kelas">
+
+          <label for="sekolah">Asal Sekolah</label>
+          <input type="text" id="sekolah" name="sekolah" required placeholder="Contoh: SD Alhazen">
+
+          <button type="submit" style="margin-top:.6rem;">Mulai Ujian</button>
+        </form>
+        <p style="margin-bottom:0;"><small>Jumlah soal: 30 Pilihan Ganda.</small></p>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR UJIAN ===================== -->
+    <section id="layar-ujian" class="hilang">
+      <div class="topbar">
+        <div class="topbar-inner" style="max-width:860px;margin-inline:auto;padding-inline:1rem;">
+          <div class="kiri" style="align-items:center;">
+            <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo-kecil">
+            <span id="bar-nama"></span>
+            <span id="bar-kelas"></span>
+            <span id="bar-sekolah"></span>
+            <span id="bar-progress">Terjawab: 0/30</span>
+          </div>
+          <div class="kanan">
+            <button id="btn-edit-data" type="button" class="outline" style="margin:0;width:auto;padding:.35rem .8rem;">Edit Data</button>
+          </div>
+        </div>
+      </div>
+
+      <article class="card-head" style="margin-top:1.2rem;">
+        <h1 style="font-size:1.5rem;margin-bottom:0;">Soal Ujian</h1>
+      </article>
+      <div id="daftar-soal"></div>
+
+      <article style="text-align:center;">
+        <p><small>Pastikan semua jawaban sudah diperiksa sebelum dikirim.</small></p>
+        <button id="btn-kumpul" class="contrast">Kumpulkan Jawaban</button>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR HASIL ===================== -->
+    <section id="layar-hasil" class="hilang">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1>Ujian Selesai</h1>
+        <p id="hasil-nama" style="margin:0;"></p>
+      </article>
+      <article>
+        <div id="hasil-status"></div>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    const KONFIGURASI = {
+      APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwgTc7t7PalgsxPurQS8UdkInf9AuqjWH20Dp1L_Fls-NkhSMibkPHlTBp4Kzs16NPaeA/exec',
+      JUDUL_UJIAN: 'Ujian Tengah Semester - Kelas 4',
+      KELAS: '4',
+      JUMLAH_SOAL: 30
+    };
+
+    const SOAL = [
+  {
+    "t": "Scratch adalah platform pemrograman visual yang digunakan untuk ....",
+    "g": "",
+    "opsi": [
+      "menulis dokumen surat",
+      "membuat program, animasi, dan permainan",
+      "menghitung uang saja",
+      "mencetak gambar di kertas"
+    ]
+  },
+  {
+    "t": "Tempat tampilan hasil program Scratch disebut ....",
+    "g": "",
+    "opsi": [
+      "Sound",
+      "Motion",
+      "Stage (panggung)",
+      "Costume"
+    ]
+  },
+  {
+    "t": "Karakter yang digerakkan dalam program Scratch disebut ....",
+    "g": "",
+    "opsi": [
+      "Sprite",
+      "Sound",
+      "Stage",
+      "Loop"
+    ]
+  },
+  {
+    "t": "Blok \"gerak 10 langkah\" termasuk kategori blok ....",
+    "g": "",
+    "opsi": [
+      "Looks",
+      "Sound",
+      "Events",
+      "Motion"
+    ]
+  },
+  {
+    "t": "Perintah yang mengubah tampilan sprite, misalnya berkata atau tampil, termasuk kategori blok ....",
+    "g": "",
+    "opsi": [
+      "Motion",
+      "Looks",
+      "Control",
+      "Sensing"
+    ]
+  },
+  {
+    "t": "Untuk menambahkan suara ke dalam program Scratch, kategori blok yang digunakan adalah ....",
+    "g": "",
+    "opsi": [
+      "Sound",
+      "Events",
+      "Operators",
+      "Variables"
+    ]
+  },
+  {
+    "t": "Blok \"ketika bendera hijau diklik\" termasuk kategori ....",
+    "g": "",
+    "opsi": [
+      "Motion",
+      "Looks",
+      "Events",
+      "Sound"
+    ]
+  },
+  {
+    "t": "Untuk menjalankan program Scratch dari awal, tombol yang diklik adalah ....",
+    "g": "",
+    "opsi": [
+      "ikon tengah merah",
+      "bendera hijau",
+      "tombol berhenti",
+      "tombol zoom"
+    ]
+  },
+  {
+    "t": "Bagian yang berisi kumpulan blok siap pakai di Scratch disebut ....",
+    "g": "",
+    "opsi": [
+      "Stage",
+      "Sprite Pane",
+      "Sound",
+      "Block Palette (palet blok)"
+    ]
+  },
+  {
+    "t": "Blok di Scratch disusun seperti ....",
+    "g": "",
+    "opsi": [
+      "potongan puzzle yang saling menempel",
+      "teks panjang",
+      "huruf acak",
+      "pecahan kaca"
+    ]
+  },
+  {
+    "t": "Sprite dapat digerakkan secara berulang menggunakan blok dari kategori ....",
+    "g": "",
+    "opsi": [
+      "Sound",
+      "Variables",
+      "Repeat (Control)",
+      "Events"
+    ]
+  },
+  {
+    "t": "Untuk mengganti penampilan sprite menjadi kostum lain, kategori blok yang dipakai adalah .... ### B. Variable (soal 13-21)",
+    "g": "",
+    "opsi": [
+      "Motion",
+      "Looks",
+      "Events",
+      "Control"
+    ]
+  },
+  {
+    "t": "Variabel pada Scratch adalah ....",
+    "g": "",
+    "opsi": [
+      "jenis suara baru",
+      "nama sprite",
+      "gambar latar",
+      "tempat menyimpan nilai atau informasi yang bisa diubah"
+    ]
+  },
+  {
+    "t": "Langkah membuat variabel baru di Scratch adalah ....",
+    "g": "",
+    "opsi": [
+      "klik kategori Variables lalu klik Make a Variable",
+      "menyeret sprite ke tengah panggung",
+      "menambah kostum baru",
+      "menekan tombol bendera hijau"
+    ]
+  },
+  {
+    "t": "Agar nilai variabel terlihat di layar, kita harus ....",
+    "g": "",
+    "opsi": [
+      "menghapus sprite",
+      "mencentang kotak tampilkan di samping variabel",
+      "mengubah latar belakang",
+      "menekan tombol berhenti"
+    ]
+  },
+  {
+    "t": "Untuk menyembunyikan variabel dari layar, kita ....",
+    "g": "",
+    "opsi": [
+      "mengubah nama variabel",
+      "menghapus tombol bendera",
+      "mengganti sprite",
+      "menghilangkan centang tampilkan variabel"
+    ]
+  },
+  {
+    "t": "Blok \"Set skor = 0\" pada Scratch digunakan untuk ....",
+    "g": "",
+    "opsi": [
+      "menambah nilai skor",
+      "menghapus skor",
+      "memberikan nilai awal pada variabel skor",
+      "menampilkan skor"
+    ]
+  },
+  {
+    "t": "Blok \"Change skor by 1\" artinya ....",
+    "g": "",
+    "opsi": [
+      "nilai skor ditambah 1",
+      "nilai skor dikurangi 1",
+      "nilai skor menjadi 1",
+      "nilai skor dihapus"
+    ]
+  },
+  {
+    "t": "Jika variabel \"nyawa\" bernilai 5 lalu dijalankan \"Change nyawa by -1\", nilai nyawa menjadi ....",
+    "g": "",
+    "opsi": [
+      "5",
+      "4",
+      "6",
+      "-1"
+    ]
+  },
+  {
+    "t": "Kegunaan variabel pada permainan skor adalah ....",
+    "g": "",
+    "opsi": [
+      "mempercepat komputer",
+      "menambah sprite",
+      "mencatat jumlah skor pemain",
+      "menghentikan suara"
+    ]
+  },
+  {
+    "t": "Jika variabel \"skor\" bernilai 3 lalu \"Set skor = 10\", nilai skor menjadi .... ### C. Cloning (soal 22-30)",
+    "g": "",
+    "opsi": [
+      "3",
+      "13",
+      "7",
+      "10"
+    ]
+  },
+  {
+    "t": "Cloning pada Scratch adalah fitur untuk ....",
+    "g": "",
+    "opsi": [
+      "membuat salinan sprite secara otomatis saat program berjalan",
+      "menghapus sprite",
+      "mengganti warna sprite",
+      "memperbesar stage"
+    ]
+  },
+  {
+    "t": "Blok untuk membuat salinan sprite adalah ....",
+    "g": "",
+    "opsi": [
+      "delete this clone",
+      "create clone of myself",
+      "change color by 10",
+      "move 10 steps"
+    ]
+  },
+  {
+    "t": "Perintah \"when I start as a clone\" berfungsi untuk ....",
+    "g": "",
+    "opsi": [
+      "menghapus sprite asli",
+      "mengganti kostum sprite asli",
+      "menjalankan perintah pada clone yang baru dibuat",
+      "menghentikan program"
+    ]
+  },
+  {
+    "t": "Untuk menghapus sebuah clone, blok yang digunakan adalah ....",
+    "g": "",
+    "opsi": [
+      "create clone of myself",
+      "go to x, y",
+      "say \"Halo\"",
+      "delete this clone"
+    ]
+  },
+  {
+    "t": "Perbedaan sprite asli dan clone adalah ....",
+    "g": "",
+    "opsi": [
+      "sprite asli dibuat oleh pembuat program, clone dibuat otomatis oleh program",
+      "clone lebih mahal daripada sprite asli",
+      "sprite asli tidak bisa bergerak",
+      "clone tidak bisa diberi warna"
+    ]
+  },
+  {
+    "t": "Clone yang dibuat dari sprite kucing akan ....",
+    "g": "",
+    "opsi": [
+      "berubah menjadi sprite yang lain",
+      "terlihat seperti sprite kucing juga",
+      "menghilang selamanya",
+      "mengubah stage menjadi gelap"
+    ]
+  },
+  {
+    "t": "Kegunaan clone dalam permainan adalah ....",
+    "g": "",
+    "opsi": [
+      "menghapus semua objek",
+      "menghentikan permainan",
+      "membuat banyak objek tanpa menyalin sprite satu per satu secara manual",
+      "mengganti suara"
+    ]
+  },
+  {
+    "t": "Urutan yang benar saat membuat banyak keping salju adalah ....",
+    "g": "",
+    "opsi": [
+      "hapus sprite, lalu buat clone",
+      "hapus semua blok, lalu letakkan kembali",
+      "matikan suara, lalu jalankan",
+      "buat clone, lalu jalankan perintah saat clone mulai"
+    ]
+  },
+  {
+    "t": "Jika clone terus dibuat tanpa dihapus, akibatnya ....",
+    "g": "",
+    "opsi": [
+      "jumlah clone menjadi sangat banyak dan bisa memperlambat program",
+      "program menjadi lebih cepat",
+      "sprite asli hilang",
+      "tidak ada perubahan"
+    ]
+  }
+];
+
+    const HURUF = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+    const $ = (s, e = document) => e.querySelector(s);
+
+    let state = { jawaban: {} };
+
+    const KUNCI_SAVE = 'alhazen-ujian-sesi-' + KONFIGURASI.KELAS;
+
+    function simpanState() {
+      try {
+        localStorage.setItem(KUNCI_SAVE, JSON.stringify(state));
+      } catch (e) { /* penyimpanan tidak tersedia, diabaikan */ }
+    }
+
+    function muatState() {
+      try {
+        const s = localStorage.getItem(KUNCI_SAVE);
+        return s ? JSON.parse(s) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function hancurkanState() {
+      try {
+        localStorage.removeItem(KUNCI_SAVE);
+      } catch (e) { /* diabaikan */ }
+    }
+
+
+    function el(tag, attrs = {}, children = []) {
+      const n = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') n.className = v;
+        else if (k === 'html') n.innerHTML = v;
+        else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+        else n.setAttribute(k, v);
+      }
+      for (const c of children) n.append(typeof c === 'string' ? document.createTextNode(c) : c);
+      return n;
+    }
+
+    function renderSemuaSoal() {
+      const wadah = $('#daftar-soal');
+      wadah.innerHTML = '';
+      SOAL.forEach((q, idx) => {
+        const card = el('article', { class: 'soal' });
+        card.append(el('div', { class: 'grade' }, [(idx + 1) + '.']));
+        card.append(el('span', {}, [q.t]));
+
+        if (q.g) {
+          card.append(el('img', { src: q.g, alt: 'Gambar pendukung soal ' + (idx + 1), class: 'soal-gambar', loading: 'lazy' }));
+        }
+
+        q.opsi.forEach((o, i) => {
+          const h = HURUF[i];
+          const teks = h + '. ' + o;
+          const btn = el('button', { type: 'button', class: 'opsi-btn outline', 'data-idx': idx, 'data-h': h });
+          btn.append(el('span', {}, [teks]));
+          if (state.jawaban[idx] === h) {
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+          }
+          btn.addEventListener('click', () => {
+            card.querySelectorAll('.opsi-btn').forEach(b => {
+              b.classList.remove('terpilih');
+              b.classList.add('outline');
+            });
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+            state.jawaban[idx] = h;
+            simpanState();
+            perbaruiProgress();
+          });
+          card.append(btn);
+        });
+
+        wadah.append(card);
+      });
+      perbaruiProgress();
+    }
+
+    function perbaruiProgress() {
+      const sudah = SOAL.filter((q, i) => state.jawaban[i]).length;
+      $('#bar-progress').textContent = 'Terjawab: ' + sudah + '/' + SOAL.length;
+    }
+
+    ['nama', 'kelas', 'sekolah'].forEach(id => {
+      $('#' + id).addEventListener('input', () => {
+        state.nama = $('#nama').value.trim();
+        state.kelas = $('#kelas').value.trim();
+        state.sekolah = $('#sekolah').value.trim();
+        simpanState();
+      });
+    });
+
+    $('#form-pembuka').addEventListener('submit', e => {
+      e.preventDefault();
+      state.nama = $('#nama').value.trim();
+      state.kelas = $('#kelas').value.trim();
+      state.sekolah = $('#sekolah').value.trim();
+      simpanState();
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + (state.sekolah || '');
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    });
+
+    async function kirimKeSpreadsheet(payload) {
+      const res = await fetch(KONFIGURASI.APPS_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Server merespons kode ' + res.status);
+      const json = await res.json().catch(() => null);
+      if (json && json.success === false) throw new Error(json.error || 'Server menolak data.');
+      return json;
+    }
+
+    function kumpulkan() {
+      const belum = SOAL.filter((q, i) => !state.jawaban[i]).length;
+      if (belum > 0) {
+        const ok = confirm('Masih ada ' + belum + ' soal yang belum dijawab. Tetap kumpulkan?');
+        if (!ok) return;
+      }
+
+      const jawaban = SOAL.map((q, i) => state.jawaban[i] || '');
+      const payload = {
+        nama: state.nama,
+        kelas: state.kelas,
+        asalSekolah: state.sekolah || '',
+        jawaban: jawaban
+      };
+
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.remove('hilang');
+      $('#hasil-nama').textContent = state.nama + ' - Kelas ' + state.kelas + ' - ' + (state.sekolah || '');
+
+      const st = $('#hasil-status');
+      st.innerHTML = '<p>Mengirim data ke server...</p>';
+      const kirim = async () => {
+        try {
+          const r = await kirimKeSpreadsheet(payload);
+          st.innerHTML = '<p style="color:var(--pico-ins-color);"><strong>Jawaban berhasil dikirim dan disimpan.</strong></p>';
+          hancurkanState();
+        } catch (err) {
+          st.innerHTML = '<p style="color:var(--pico-del-color);"><strong>Gagal mengirim: ' + err.message + '</strong><br><small>Klik "Kirim Ulang" untuk mencoba lagi.</small></p>';
+          const btn = el('button', { id: 'btn-kirimulang' }, ['Kirim Ulang']);
+          btn.addEventListener('click', kirim);
+          st.append(btn);
+        }
+      };
+      kirim();
+    }
+
+    (function pulihkanSesi() {
+      const s = muatState();
+      if (!s || !s.nama) return;
+      state.nama = s.nama;
+      state.kelas = s.kelas || KONFIGURASI.KELAS;
+      state.sekolah = s.sekolah || '';
+      state.jawaban = (s.jawaban && typeof s.jawaban === 'object') ? s.jawaban : {};
+      $('#nama').value = state.nama;
+      $('#kelas').value = state.kelas;
+      $('#sekolah').value = state.sekolah;
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + state.sekolah;
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    })();
+
+    $('#btn-kumpul').addEventListener('click', () => kumpulkan());
+    $('#btn-edit-data').addEventListener('click', () => {
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-pembuka').classList.remove('hilang');
+    });
+
+
+  </script>
+</body>
+</html>

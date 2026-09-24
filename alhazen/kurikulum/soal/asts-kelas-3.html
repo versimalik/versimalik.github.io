@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Tengah Semester - Kelas 3 - Alhazen Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    main.container { max-width: 860px; margin-inline: auto; }
+    .card-head { text-align: center; }
+    .logo { max-width: 110px; height: auto; margin-inline: auto; display: block; }
+    .logo-kecil { height: 36px; object-fit: contain; }
+    .opsi-btn { width: 100%; margin-block: .3rem; text-align: left; }
+    .opsi-btn.terpilih,
+    .opsi-btn.terpilih:hover,
+    .opsi-btn.terpilih:focus { background: var(--pico-primary-background); border-color: var(--pico-primary-border); color: var(--pico-primary-inverse); }
+    .soal { margin-bottom: .75rem; }
+    .grade { display: inline-block; font-weight: 700; font-size: .9rem; color: var(--pico-primary); margin-right: .4rem; }
+    .soal-gambar { max-width: 100%; height: auto; margin-block: .5rem; border-radius: var(--pico-border-radius); }
+    .topbar { position: sticky; top: 0; z-index: 20; background: var(--pico-background-color); border-bottom: 1px solid var(--pico-muted-border-color); padding: .55rem 0; }
+    .topbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+    .kiri { display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; font-size: .95rem; }
+    .hilang { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <!-- ===================== LAYAR DATA DIRI ===================== -->
+    <section id="layar-pembuka">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1 style="margin-bottom:.2rem;">Ujian Tengah Semester</h1>
+        <p style="margin:0;"><strong>STEM / Coding - Kelas 3</strong></p>
+      </article>
+      <article>
+        <h2>Identitas Peserta</h2>
+        <form id="form-pembuka">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" required placeholder="Contoh: Ahmad Fauzi">
+
+          <label for="kelas">Kelas</label>
+          <input type="text" id="kelas" name="kelas" required value="3" placeholder="Kelas">
+
+          <label for="sekolah">Asal Sekolah</label>
+          <input type="text" id="sekolah" name="sekolah" required placeholder="Contoh: SD Alhazen">
+
+          <button type="submit" style="margin-top:.6rem;">Mulai Ujian</button>
+        </form>
+        <p style="margin-bottom:0;"><small>Jumlah soal: 30 Pilihan Ganda.</small></p>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR UJIAN ===================== -->
+    <section id="layar-ujian" class="hilang">
+      <div class="topbar">
+        <div class="topbar-inner" style="max-width:860px;margin-inline:auto;padding-inline:1rem;">
+          <div class="kiri" style="align-items:center;">
+            <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo-kecil">
+            <span id="bar-nama"></span>
+            <span id="bar-kelas"></span>
+            <span id="bar-sekolah"></span>
+            <span id="bar-progress">Terjawab: 0/30</span>
+          </div>
+          <div class="kanan">
+            <button id="btn-edit-data" type="button" class="outline" style="margin:0;width:auto;padding:.35rem .8rem;">Edit Data</button>
+          </div>
+        </div>
+      </div>
+
+      <article class="card-head" style="margin-top:1.2rem;">
+        <h1 style="font-size:1.5rem;margin-bottom:0;">Soal Ujian</h1>
+      </article>
+      <div id="daftar-soal"></div>
+
+      <article style="text-align:center;">
+        <p><small>Pastikan semua jawaban sudah diperiksa sebelum dikirim.</small></p>
+        <button id="btn-kumpul" class="contrast">Kumpulkan Jawaban</button>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR HASIL ===================== -->
+    <section id="layar-hasil" class="hilang">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1>Ujian Selesai</h1>
+        <p id="hasil-nama" style="margin:0;"></p>
+      </article>
+      <article>
+        <div id="hasil-status"></div>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    const KONFIGURASI = {
+      APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwgTc7t7PalgsxPurQS8UdkInf9AuqjWH20Dp1L_Fls-NkhSMibkPHlTBp4Kzs16NPaeA/exec',
+      JUDUL_UJIAN: 'Ujian Tengah Semester - Kelas 3',
+      KELAS: '3',
+      JUMLAH_SOAL: 30
+    };
+
+    const SOAL = [
+  {
+    "t": "Komputer menjalankan instruksi menurut ....",
+    "g": "",
+    "opsi": [
+      "keinginan pengguna saat itu",
+      "urutan yang tertulis pada program",
+      "secara acak tanpa aturan"
+    ]
+  },
+  {
+    "t": "Pada program \"ambil pensil, buka buku, catat\", instruksi pertama yang dijalankan komputer adalah ....",
+    "g": "",
+    "opsi": [
+      "buka buku",
+      "catat",
+      "ambil pensil"
+    ]
+  },
+  {
+    "t": "Program \"bergerak maju, berbelok ke kanan, berhenti\" memiliki urutan instruksi ....",
+    "g": "",
+    "opsi": [
+      "maju, berbelok, lalu berhenti",
+      "berhenti lalu berbelok lalu maju",
+      "berbelok lalu maju lalu berhenti"
+    ]
+  },
+  {
+    "t": "Jika urutan instruksi program salah, maka ....",
+    "g": "",
+    "opsi": [
+      "program tetap berjalan benar",
+      "program tidak berjalan sesuai tujuan",
+      "program dapat mendeteksi sendiri"
+    ]
+  },
+  {
+    "t": "Perhatikan urutan menyiram tanaman: \"isi gayung, siram tanaman, ....\" Langkah terakhir yang tepat adalah ....",
+    "g": "",
+    "opsi": [
+      "menutup keran air",
+      "membuka keran air",
+      "menyimpan kembali gayung"
+    ]
+  },
+  {
+    "t": "Saat membuat roti, urutan yang benar adalah ....",
+    "g": "",
+    "opsi": [
+      "menggiling tepung lalu mencampur adonan",
+      "mencampur adonan lalu menggiling tepung",
+      "memanggang lalu menggiling tepung"
+    ]
+  },
+  {
+    "t": "Agar komputer dapat menyelesaikan tugas, instruksi harus disusun ....",
+    "g": "",
+    "opsi": [
+      "secara acak yang penting ada instruksinya",
+      "dengan urutan yang benar dari awal sampai akhir",
+      "hanya mengambil langkah terakhir saja"
+    ]
+  },
+  {
+    "t": "Urutan \"nonton film, pasang colokan, tekan tombol on\" seharusnya ....",
+    "g": "",
+    "opsi": [
+      "nonton film, lalu tekan tombol on, lalu pasang colokan",
+      "tekan tombol on, lalu pasang colokan, lalu nonton",
+      "pasang colokan, tekan tombol on, lalu nonton"
+    ]
+  },
+  {
+    "t": "Langkah yang dilakukan paling pertama saat mengerjakan tugas di Code.org adalah ....",
+    "g": "",
+    "opsi": [
+      "melihat tujuan yang harus dicapai",
+      "langsung menekan tombol selesai",
+      "memilih blok secara acak"
+    ]
+  },
+  {
+    "t": "Urutan kegiatan \"mandi, sarapan, ....\" yang benar selanjutnya adalah .... ### B. Debugging (soal 11-20)",
+    "g": "",
+    "opsi": [
+      "tidur kembali",
+      "berangkat sekolah",
+      "makan malam"
+    ]
+  },
+  {
+    "t": "Saat program tidak berjalan benar, kita harus ....",
+    "g": "",
+    "opsi": [
+      "membiarkannya",
+      "mengganti komputer",
+      "mencari dan memperbaiki kesalahan"
+    ]
+  },
+  {
+    "t": "Kesalahan pada program disebut ....",
+    "g": "",
+    "opsi": [
+      "bug",
+      "blok",
+      "sprite"
+    ]
+  },
+  {
+    "t": "Program \"geser 2 kali, geser 3 kali\" ternyata terlalu jauh. Banyaknya perintah geser yang seharusnya diperbaiki adalah ....",
+    "g": "",
+    "opsi": [
+      "menambah jumlah geser",
+      "mengurangi jumlah geser agar sesuai",
+      "tidak perlu diubah"
+    ]
+  },
+  {
+    "t": "Fitur yang membantu menemukan kesalahan pada Code.org adalah ....",
+    "g": "",
+    "opsi": [
+      "menghapus semua blok",
+      "mengandalkan ingatan saja",
+      "tombol run lalu melihat hasil"
+    ]
+  },
+  {
+    "t": "Langkah perbaikan yang benar setelah menemukan bug adalah ....",
+    "g": "",
+    "opsi": [
+      "memperbaiki instruksi yang salah",
+      "menutup komputer",
+      "mengulang tanpa mengubah apa pun"
+    ]
+  },
+  {
+    "t": "Jika karakter berjalan menabrak piringan di Code.org, perbaikan yang tepat adalah ....",
+    "g": "",
+    "opsi": [
+      "menambah langkah berjalan sebanyak-banyaknya",
+      "mengganti instruksi langkah yang salah",
+      "menghapus semua blok lalu menyerah"
+    ]
+  },
+  {
+    "t": "Setelah program diperbaiki, yang harus dilakukan adalah ....",
+    "g": "",
+    "opsi": [
+      "langsung menganggap selesai",
+      "membuang program",
+      "mencoba kembali program tersebut"
+    ]
+  },
+  {
+    "t": "Kesalahan \"berjalan maju tetapi justru mundur\" diperbaiki dengan ....",
+    "g": "",
+    "opsi": [
+      "mengganti arah langkah pada blok",
+      "menambah banyak blok diam",
+      "menutup halaman"
+    ]
+  },
+  {
+    "t": "Urutan debugging yang benar adalah ....",
+    "g": "",
+    "opsi": [
+      "perbaiki dulu, lalu cari kesalahan, lalu coba",
+      "cari kesalahan, perbaiki, lalu coba lagi",
+      "coba, perbaiki, lalu cari kesalahan"
+    ]
+  },
+  {
+    "t": "Setelah memperbaiki satu bug, kita harus memeriksa .... ### C. Loop (soal 21-30)",
+    "g": "",
+    "opsi": [
+      "hanya bagian yang diperbaiki",
+      "langsung berhenti tanpa memeriksa",
+      "apakah seluruh program sudah berjalan benar"
+    ]
+  },
+  {
+    "t": "Perintah yang membuat beberapa langkah dijalankan berulang kali disebut ....",
+    "g": "",
+    "opsi": [
+      "loop",
+      "bug",
+      "sequencing"
+    ]
+  },
+  {
+    "t": "Untuk mengulang perintah \"maju\" sebanyak 3 kali, yang paling tepat adalah ....",
+    "g": "",
+    "opsi": [
+      "menulis maju satu kali saja",
+      "menulis maju 3 kali dengan blok repeat",
+      "menulis maju lalu diam"
+    ]
+  },
+  {
+    "t": "Manfaat utama loop adalah ....",
+    "g": "",
+    "opsi": [
+      "membuat program lebih panjang",
+      "membuat komputer mati",
+      "instruksi yang sama tidak perlu ditulis berulang kali"
+    ]
+  },
+  {
+    "t": "Blok repeat dengan jumlah pengulangan 4 akan menjalankan perintah di dalamnya sebanyak ....",
+    "g": "",
+    "opsi": [
+      "empat kali",
+      "tiga kali",
+      "satu kali"
+    ]
+  },
+  {
+    "t": "Jika hanya sebagian kecil pola yang berulang, cara terbaik adalah ....",
+    "g": "",
+    "opsi": [
+      "menulis semua langkah secara manual",
+      "menggunakan loop hanya pada bagian yang berulang",
+      "menghapus bagian yang berulang"
+    ]
+  },
+  {
+    "t": "Program \"repeat 2 kali: maju lalu kiri\" artinya urutan \"maju lalu kiri\" dijalankan sebanyak ....",
+    "g": "",
+    "opsi": [
+      "satu kali",
+      "tiga kali",
+      "dua kali"
+    ]
+  },
+  {
+    "t": "Perhatikan pola langkah: maju, maju, maju, maju, kiri. Agar ringkas, perintah maju bisa ditulis dengan ....",
+    "g": "",
+    "opsi": [
+      "repeat 4 kali maju, lalu kiri",
+      "repeat 2 kali maju, lalu kiri",
+      "maju satu kali, lalu kiri"
+    ]
+  },
+  {
+    "t": "Saat jumlah pengulangan pada blok repeat terlalu banyak, yang terjadi adalah ....",
+    "g": "",
+    "opsi": [
+      "karakter berhenti",
+      "karakter berjalan sesuai jumlah itu",
+      "program rusak"
+    ]
+  },
+  {
+    "t": "Loop membantu mengurangi ....",
+    "g": "",
+    "opsi": [
+      "jumlah makanan",
+      "jumlah layar",
+      "jumlah penulisan instruksi yang sama berulang"
+    ]
+  },
+  {
+    "t": "Bila suatu perintah perlu diulang 5 kali dan langkahnya sama, penggunaan yang benar adalah ....",
+    "g": "",
+    "opsi": [
+      "menulis perintah dengan blok repeat 5 kali",
+      "menghapus perintah itu",
+      "menulis perintah yang berbeda-beda"
+    ]
+  }
+];
+
+    const HURUF = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+    const $ = (s, e = document) => e.querySelector(s);
+
+    let state = { jawaban: {} };
+
+    const KUNCI_SAVE = 'alhazen-ujian-sesi-' + KONFIGURASI.KELAS;
+
+    function simpanState() {
+      try {
+        localStorage.setItem(KUNCI_SAVE, JSON.stringify(state));
+      } catch (e) { /* penyimpanan tidak tersedia, diabaikan */ }
+    }
+
+    function muatState() {
+      try {
+        const s = localStorage.getItem(KUNCI_SAVE);
+        return s ? JSON.parse(s) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function hancurkanState() {
+      try {
+        localStorage.removeItem(KUNCI_SAVE);
+      } catch (e) { /* diabaikan */ }
+    }
+
+
+    function el(tag, attrs = {}, children = []) {
+      const n = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') n.className = v;
+        else if (k === 'html') n.innerHTML = v;
+        else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+        else n.setAttribute(k, v);
+      }
+      for (const c of children) n.append(typeof c === 'string' ? document.createTextNode(c) : c);
+      return n;
+    }
+
+    function renderSemuaSoal() {
+      const wadah = $('#daftar-soal');
+      wadah.innerHTML = '';
+      SOAL.forEach((q, idx) => {
+        const card = el('article', { class: 'soal' });
+        card.append(el('div', { class: 'grade' }, [(idx + 1) + '.']));
+        card.append(el('span', {}, [q.t]));
+
+        if (q.g) {
+          card.append(el('img', { src: q.g, alt: 'Gambar pendukung soal ' + (idx + 1), class: 'soal-gambar', loading: 'lazy' }));
+        }
+
+        q.opsi.forEach((o, i) => {
+          const h = HURUF[i];
+          const teks = h + '. ' + o;
+          const btn = el('button', { type: 'button', class: 'opsi-btn outline', 'data-idx': idx, 'data-h': h });
+          btn.append(el('span', {}, [teks]));
+          if (state.jawaban[idx] === h) {
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+          }
+          btn.addEventListener('click', () => {
+            card.querySelectorAll('.opsi-btn').forEach(b => {
+              b.classList.remove('terpilih');
+              b.classList.add('outline');
+            });
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+            state.jawaban[idx] = h;
+            simpanState();
+            perbaruiProgress();
+          });
+          card.append(btn);
+        });
+
+        wadah.append(card);
+      });
+      perbaruiProgress();
+    }
+
+    function perbaruiProgress() {
+      const sudah = SOAL.filter((q, i) => state.jawaban[i]).length;
+      $('#bar-progress').textContent = 'Terjawab: ' + sudah + '/' + SOAL.length;
+    }
+
+    ['nama', 'kelas', 'sekolah'].forEach(id => {
+      $('#' + id).addEventListener('input', () => {
+        state.nama = $('#nama').value.trim();
+        state.kelas = $('#kelas').value.trim();
+        state.sekolah = $('#sekolah').value.trim();
+        simpanState();
+      });
+    });
+
+    $('#form-pembuka').addEventListener('submit', e => {
+      e.preventDefault();
+      state.nama = $('#nama').value.trim();
+      state.kelas = $('#kelas').value.trim();
+      state.sekolah = $('#sekolah').value.trim();
+      simpanState();
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + (state.sekolah || '');
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    });
+
+    async function kirimKeSpreadsheet(payload) {
+      const res = await fetch(KONFIGURASI.APPS_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Server merespons kode ' + res.status);
+      const json = await res.json().catch(() => null);
+      if (json && json.success === false) throw new Error(json.error || 'Server menolak data.');
+      return json;
+    }
+
+    function kumpulkan() {
+      const belum = SOAL.filter((q, i) => !state.jawaban[i]).length;
+      if (belum > 0) {
+        const ok = confirm('Masih ada ' + belum + ' soal yang belum dijawab. Tetap kumpulkan?');
+        if (!ok) return;
+      }
+
+      const jawaban = SOAL.map((q, i) => state.jawaban[i] || '');
+      const payload = {
+        nama: state.nama,
+        kelas: state.kelas,
+        asalSekolah: state.sekolah || '',
+        jawaban: jawaban
+      };
+
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.remove('hilang');
+      $('#hasil-nama').textContent = state.nama + ' - Kelas ' + state.kelas + ' - ' + (state.sekolah || '');
+
+      const st = $('#hasil-status');
+      st.innerHTML = '<p>Mengirim data ke server...</p>';
+      const kirim = async () => {
+        try {
+          const r = await kirimKeSpreadsheet(payload);
+          st.innerHTML = '<p style="color:var(--pico-ins-color);"><strong>Jawaban berhasil dikirim dan disimpan.</strong></p>';
+          hancurkanState();
+        } catch (err) {
+          st.innerHTML = '<p style="color:var(--pico-del-color);"><strong>Gagal mengirim: ' + err.message + '</strong><br><small>Klik "Kirim Ulang" untuk mencoba lagi.</small></p>';
+          const btn = el('button', { id: 'btn-kirimulang' }, ['Kirim Ulang']);
+          btn.addEventListener('click', kirim);
+          st.append(btn);
+        }
+      };
+      kirim();
+    }
+
+    (function pulihkanSesi() {
+      const s = muatState();
+      if (!s || !s.nama) return;
+      state.nama = s.nama;
+      state.kelas = s.kelas || KONFIGURASI.KELAS;
+      state.sekolah = s.sekolah || '';
+      state.jawaban = (s.jawaban && typeof s.jawaban === 'object') ? s.jawaban : {};
+      $('#nama').value = state.nama;
+      $('#kelas').value = state.kelas;
+      $('#sekolah').value = state.sekolah;
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + state.sekolah;
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    })();
+
+    $('#btn-kumpul').addEventListener('click', () => kumpulkan());
+    $('#btn-edit-data').addEventListener('click', () => {
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-pembuka').classList.remove('hilang');
+    });
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Tengah Semester - Kelas 6 - Alhazen Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    main.container { max-width: 860px; margin-inline: auto; }
+    .card-head { text-align: center; }
+    .logo { max-width: 110px; height: auto; margin-inline: auto; display: block; }
+    .logo-kecil { height: 36px; object-fit: contain; }
+    .opsi-btn { width: 100%; margin-block: .3rem; text-align: left; }
+    .opsi-btn.terpilih,
+    .opsi-btn.terpilih:hover,
+    .opsi-btn.terpilih:focus { background: var(--pico-primary-background); border-color: var(--pico-primary-border); color: var(--pico-primary-inverse); }
+    .soal { margin-bottom: .75rem; }
+    .grade { display: inline-block; font-weight: 700; font-size: .9rem; color: var(--pico-primary); margin-right: .4rem; }
+    .soal-gambar { max-width: 100%; height: auto; margin-block: .5rem; border-radius: var(--pico-border-radius); }
+    .topbar { position: sticky; top: 0; z-index: 20; background: var(--pico-background-color); border-bottom: 1px solid var(--pico-muted-border-color); padding: .55rem 0; }
+    .topbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+    .kiri { display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; font-size: .95rem; }
+    .hilang { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <!-- ===================== LAYAR DATA DIRI ===================== -->
+    <section id="layar-pembuka">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1 style="margin-bottom:.2rem;">Ujian Tengah Semester</h1>
+        <p style="margin:0;"><strong>STEM / Coding - Kelas 6</strong></p>
+      </article>
+      <article>
+        <h2>Identitas Peserta</h2>
+        <form id="form-pembuka">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" name="nama" required placeholder="Contoh: Ahmad Fauzi">
+
+          <label for="kelas">Kelas</label>
+          <input type="text" id="kelas" name="kelas" required value="6" placeholder="Kelas">
+
+          <label for="sekolah">Asal Sekolah</label>
+          <input type="text" id="sekolah" name="sekolah" required placeholder="Contoh: SD Alhazen">
+
+          <button type="submit" style="margin-top:.6rem;">Mulai Ujian</button>
+        </form>
+        <p style="margin-bottom:0;"><small>Jumlah soal: 30 Pilihan Ganda.</small></p>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR UJIAN ===================== -->
+    <section id="layar-ujian" class="hilang">
+      <div class="topbar">
+        <div class="topbar-inner" style="max-width:860px;margin-inline:auto;padding-inline:1rem;">
+          <div class="kiri" style="align-items:center;">
+            <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo-kecil">
+            <span id="bar-nama"></span>
+            <span id="bar-kelas"></span>
+            <span id="bar-sekolah"></span>
+            <span id="bar-progress">Terjawab: 0/30</span>
+          </div>
+          <div class="kanan">
+            <button id="btn-edit-data" type="button" class="outline" style="margin:0;width:auto;padding:.35rem .8rem;">Edit Data</button>
+          </div>
+        </div>
+      </div>
+
+      <article class="card-head" style="margin-top:1.2rem;">
+        <h1 style="font-size:1.5rem;margin-bottom:0;">Soal Ujian</h1>
+      </article>
+      <div id="daftar-soal"></div>
+
+      <article style="text-align:center;">
+        <p><small>Pastikan semua jawaban sudah diperiksa sebelum dikirim.</small></p>
+        <button id="btn-kumpul" class="contrast">Kumpulkan Jawaban</button>
+      </article>
+    </section>
+
+    <!-- ===================== LAYAR HASIL ===================== -->
+    <section id="layar-hasil" class="hilang">
+      <article class="card-head">
+        <img src="https://lh3.googleusercontent.com/d/1-SohDYI3-WX1he2MFoAyv1kRNpubQPKd" alt="Logo Alhazen Academy" class="logo">
+        <h1>Ujian Selesai</h1>
+        <p id="hasil-nama" style="margin:0;"></p>
+      </article>
+      <article>
+        <div id="hasil-status"></div>
+      </article>
+    </section>
+
+  </main>
+
+  <script>
+    const KONFIGURASI = {
+      APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwgTc7t7PalgsxPurQS8UdkInf9AuqjWH20Dp1L_Fls-NkhSMibkPHlTBp4Kzs16NPaeA/exec',
+      JUDUL_UJIAN: 'Ujian Tengah Semester - Kelas 6',
+      KELAS: '6',
+      JUMLAH_SOAL: 30
+    };
+
+    const SOAL = [
+  {
+    "t": "Tinkercad adalah platform yang digunakan untuk ....",
+    "g": "",
+    "opsi": [
+      "membuat dan mensimulasikan rangkaian elektronik secara virtual",
+      "menyusun lagu",
+      "menulis cerita",
+      "menggambar bebas tanpa elektronik"
+    ]
+  },
+  {
+    "t": "Keuntungan utama Tinkercad Circuits adalah ....",
+    "g": "",
+    "opsi": [
+      "tidak perlu koneksi internet",
+      "mencoba rangkaian elektronik tanpa komponen fisik",
+      "komponen selalu rusak",
+      "hanya bisa dipakai tanpa listrik"
+    ]
+  },
+  {
+    "t": "Area tempat meletakkan dan merangkai komponen di Tinkercad Circuits disebut ....",
+    "g": "",
+    "opsi": [
+      "papan tulis",
+      "lemari",
+      "workspace (area kerja)",
+      "jendela"
+    ]
+  },
+  {
+    "t": "Untuk menghubungkan komponen pada rangkaian, kita menggunakan ....",
+    "g": "",
+    "opsi": [
+      "lem",
+      "gunting",
+      "karet",
+      "kabel"
+    ]
+  },
+  {
+    "t": "Setelah rangkaian selesai disusun, langkah untuk melihat hasilnya adalah ....",
+    "g": "",
+    "opsi": [
+      "menjalankan simulasi rangkaian",
+      "menutup halaman",
+      "menghapus komponen",
+      "mematikan komputer"
+    ]
+  },
+  {
+    "t": "Dalam simulasi Tinkercad, kesalahan sederhana pada rangkaian dapat ....",
+    "g": "",
+    "opsi": [
+      "tidak pernah terlihat",
+      "dikenali lewat hasil simulasi",
+      "langsung diperbaiki otomatis oleh komputer",
+      "diabaikan"
+    ]
+  },
+  {
+    "t": "Arduino adalah ....",
+    "g": "https://lh3.googleusercontent.com/d/1sRLvU5D1k4Ld9eXsDm_2n2SzjuPk6ykM",
+    "opsi": [
+      "nama makanan",
+      "jenis kabel",
+      "papan elektronik yang dapat diprogram untuk mengontrol komponen",
+      "aplikasi menggambar"
+    ]
+  },
+  {
+    "t": "Bagian Arduino yang berfungsi sebagai jalur masuk/keluar sinyal listrik disebut ....",
+    "g": "https://lh3.googleusercontent.com/d/1IL9E0r3kh8j4SrnKv7JsU6BUe-GanB-I",
+    "opsi": [
+      "USB",
+      "LED",
+      "Resistor",
+      "Digital Pin"
+    ]
+  },
+  {
+    "t": "Pada Arduino, kondisi sinyal hidup/menyala dinyatakan dengan nilai ....",
+    "g": "",
+    "opsi": [
+      "HIGH",
+      "OFF",
+      "STOP",
+      "LOW"
+    ]
+  },
+  {
+    "t": "Nilai LOW pada Arduino menunjukkan kondisi ....",
+    "g": "",
+    "opsi": [
+      "menyala terang",
+      "mati/rendah",
+      "panas",
+      "cepat"
+    ]
+  },
+  {
+    "t": "Program Arduino dapat diuji tanpa komponen fisik dengan cara ....",
+    "g": "",
+    "opsi": [
+      "menulis di buku tulis",
+      "mencetak di kertas",
+      "menjalankan simulasi di Tinkercad",
+      "menggambar di papan tulis"
+    ]
+  },
+  {
+    "t": "Arduino digunakan untuk ....",
+    "g": "",
+    "opsi": [
+      "memasak makanan",
+      "menanam tanaman",
+      "bertanya jawab",
+      "mengontrol komponen sederhana seperti LED dan tombol"
+    ]
+  },
+  {
+    "t": "LED (Light Emitting Diode) adalah komponen yang ....",
+    "g": "https://lh3.googleusercontent.com/d/1IESK2w_4I-L-vZyT1NZQoldIdprBwyNC",
+    "opsi": [
+      "mengeluarkan cahaya ketika dialiri listrik dengan arah yang benar",
+      "mengeluarkan suara",
+      "menghisap udara",
+      "menyimpan air"
+    ]
+  },
+  {
+    "t": "Bagian LED yang disebut Anode (+) berfungsi sebagai ....",
+    "g": "https://lh3.googleusercontent.com/d/1CJMIWQVfIablDQBPI1rcpjK-Rv8vMtte",
+    "opsi": [
+      "kaki negatif/massa",
+      "kaki positif yang menerima arus",
+      "badan LED",
+      "kabel penghubung"
+    ]
+  },
+  {
+    "t": "Bagian LED yang disebut Cathode (-) adalah ....",
+    "g": "https://lh3.googleusercontent.com/d/1XAfhuu1ZLhj0gNbYGbC1UFaQpxifzRvs",
+    "opsi": [
+      "kaki positif",
+      "lampu kecil",
+      "kaki negatif/massa",
+      "resistor"
+    ]
+  },
+  {
+    "t": "Arah pemasangan LED yang benar adalah ....",
+    "g": "https://lh3.googleusercontent.com/d/1e9TuR4_BK4jBbncMBxX2a4AK2-bytxaG",
+    "opsi": [
+      "kaki Anode ke kutub negatif dan Cathode ke kutub positif",
+      "kedua kaki tidak perlu arah",
+      "kaki bebas dipasang ke mana saja",
+      "kaki Anode ke kutub positif dan Cathode ke kutub negatif"
+    ]
+  },
+  {
+    "t": "Untuk menyalakan dan mematikan LED dari Arduino, kita menggunakan ....",
+    "g": "",
+    "opsi": [
+      "program sederhana dengan perintah HIGH/LOW",
+      "gerakan tangan",
+      "magnet besar",
+      "suhu ruangan"
+    ]
+  },
+  {
+    "t": "Jika LED dipasang terbalik, yang terjadi adalah ....",
+    "g": "https://lh3.googleusercontent.com/d/1pb5Gp_lV-E5ogbTi1c7DCJXXUe39L56z",
+    "opsi": [
+      "LED tetap menyala sama saja",
+      "LED tidak menyala karena arus tidak mengalir dengan benar",
+      "LED meledak besar",
+      "LED berubah warna"
+    ]
+  },
+  {
+    "t": "Resistor adalah komponen yang berfungsi untuk ....",
+    "g": "https://lh3.googleusercontent.com/d/1s2hWab8PLoNZ-Wdr2NrhKwPx7xgHdzoi",
+    "opsi": [
+      "menghasilkan cahaya",
+      "menambah tegangan",
+      "membatasi jumlah arus listrik yang mengalir",
+      "mengeluarkan suara"
+    ]
+  },
+  {
+    "t": "Peran utama resistor pada rangkaian LED adalah ....",
+    "g": "",
+    "opsi": [
+      "membuat LED lebih terang",
+      "mengganti LED",
+      "menghubungkan ke internet",
+      "melindungi LED dari arus berlebih"
+    ]
+  },
+  {
+    "t": "Nilai resistansi resistor ditandai dengan ....",
+    "g": "",
+    "opsi": [
+      "garis-garis warna pada badan resistor",
+      "bentuk kaki",
+      "ukuran resistor",
+      "nama resistor"
+    ]
+  },
+  {
+    "t": "Tanpa resistor, LED yang dialiri arus terlalu besar dapat ....",
+    "g": "https://lh3.googleusercontent.com/d/1loP4PpwIeh6eyq9ce4YI-kyPaMCzW0eZ",
+    "opsi": [
+      "menyala lebih terang",
+      "rusak atau terbakar",
+      "tidak berpengaruh",
+      "berubah warna"
+    ]
+  },
+  {
+    "t": "Pada rangkaian sederhana, resistor biasanya dipasang ....",
+    "g": "https://lh3.googleusercontent.com/d/1NxthAwwEgemHeLuRmNmc0AnB0X6MWOlW",
+    "opsi": [
+      "paralel menutup LED",
+      "menjauh dari rangkaian",
+      "seri dengan LED",
+      "di dalam kabel"
+    ]
+  },
+  {
+    "t": "Nilai resistor yang dipakai pada rangkaian LED sederhana biasanya ditentukan agar ....",
+    "g": "",
+    "opsi": [
+      "LED gelap",
+      "arus berhenti total",
+      "resistor panas",
+      "arus tidak melebihi batas aman LED"
+    ]
+  },
+  {
+    "t": "Push Button adalah komponen yang digunakan sebagai ....",
+    "g": "https://lh3.googleusercontent.com/d/1H093ozAj7BQjZJrXQ-9BY4cScYQVvVXd",
+    "opsi": [
+      "tombol untuk memberikan input saat ditekan",
+      "sumber listrik",
+      "penghasil cahaya",
+      "pengatur suara"
+    ]
+  },
+  {
+    "t": "Cara kerja Push Button secara sederhana adalah ....",
+    "g": "https://lh3.googleusercontent.com/d/1Vk4k_i5jVp_zSndsRMOESECsnuzy46-B",
+    "opsi": [
+      "selalu menyala terus",
+      "rangkaian terhubung saat tombol ditekan",
+      "rangkaian terputus saat ditekan",
+      "tombol tidak berpengaruh"
+    ]
+  },
+  {
+    "t": "Push Button pada Arduino berperan sebagai ....",
+    "g": "",
+    "opsi": [
+      "output",
+      "sumber daya",
+      "input",
+      "resistor"
+    ]
+  },
+  {
+    "t": "Untuk menggunakan Push Button mengendalikan LED, hubungan yang benar adalah ....",
+    "g": "",
+    "opsi": [
+      "LED mengontrol Push Button",
+      "keduanya tidak terhubung",
+      "Push Button menggantikan Arduino",
+      "input dari Push Button mengontrol output berupa LED"
+    ]
+  },
+  {
+    "t": "Rangkaian sederhana menggunakan Push Button biasanya dibuat agar ....",
+    "g": "",
+    "opsi": [
+      "LED menyala saat tombol ditekan dan padam saat dilepas (atau dapat diatur)",
+      "LED tidak pernah menyala",
+      "tombol mengeluarkan cahaya",
+      "Arduino mati"
+    ]
+  },
+  {
+    "t": "Saat tombol ditekan dan LED menyala, artinya ....",
+    "g": "https://lh3.googleusercontent.com/d/1KnlQoeiGZPlLUoighUrtjqWQBFlCLGUp",
+    "opsi": [
+      "tidak ada arus mengalir",
+      "sambungan input Push Button berhasil mengontrol output LED",
+      "program salah",
+      "resistor rusak"
+    ]
+  }
+];
+
+    const HURUF = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+    const $ = (s, e = document) => e.querySelector(s);
+
+    let state = { jawaban: {} };
+
+    const KUNCI_SAVE = 'alhazen-ujian-sesi-' + KONFIGURASI.KELAS;
+
+    function simpanState() {
+      try {
+        localStorage.setItem(KUNCI_SAVE, JSON.stringify(state));
+      } catch (e) { /* penyimpanan tidak tersedia, diabaikan */ }
+    }
+
+    function muatState() {
+      try {
+        const s = localStorage.getItem(KUNCI_SAVE);
+        return s ? JSON.parse(s) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function hancurkanState() {
+      try {
+        localStorage.removeItem(KUNCI_SAVE);
+      } catch (e) { /* diabaikan */ }
+    }
+
+
+    function el(tag, attrs = {}, children = []) {
+      const n = document.createElement(tag);
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') n.className = v;
+        else if (k === 'html') n.innerHTML = v;
+        else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+        else n.setAttribute(k, v);
+      }
+      for (const c of children) n.append(typeof c === 'string' ? document.createTextNode(c) : c);
+      return n;
+    }
+
+    function renderSemuaSoal() {
+      const wadah = $('#daftar-soal');
+      wadah.innerHTML = '';
+      SOAL.forEach((q, idx) => {
+        const card = el('article', { class: 'soal' });
+        card.append(el('div', { class: 'grade' }, [(idx + 1) + '.']));
+        card.append(el('span', {}, [q.t]));
+
+        if (q.g) {
+          card.append(el('img', { src: q.g, alt: 'Gambar pendukung soal ' + (idx + 1), class: 'soal-gambar', loading: 'lazy' }));
+        }
+
+        q.opsi.forEach((o, i) => {
+          const h = HURUF[i];
+          const teks = h + '. ' + o;
+          const btn = el('button', { type: 'button', class: 'opsi-btn outline', 'data-idx': idx, 'data-h': h });
+          btn.append(el('span', {}, [teks]));
+          if (state.jawaban[idx] === h) {
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+          }
+          btn.addEventListener('click', () => {
+            card.querySelectorAll('.opsi-btn').forEach(b => {
+              b.classList.remove('terpilih');
+              b.classList.add('outline');
+            });
+            btn.classList.add('terpilih');
+            btn.classList.remove('outline');
+            state.jawaban[idx] = h;
+            simpanState();
+            perbaruiProgress();
+          });
+          card.append(btn);
+        });
+
+        wadah.append(card);
+      });
+      perbaruiProgress();
+    }
+
+    function perbaruiProgress() {
+      const sudah = SOAL.filter((q, i) => state.jawaban[i]).length;
+      $('#bar-progress').textContent = 'Terjawab: ' + sudah + '/' + SOAL.length;
+    }
+
+    ['nama', 'kelas', 'sekolah'].forEach(id => {
+      $('#' + id).addEventListener('input', () => {
+        state.nama = $('#nama').value.trim();
+        state.kelas = $('#kelas').value.trim();
+        state.sekolah = $('#sekolah').value.trim();
+        simpanState();
+      });
+    });
+
+    $('#form-pembuka').addEventListener('submit', e => {
+      e.preventDefault();
+      state.nama = $('#nama').value.trim();
+      state.kelas = $('#kelas').value.trim();
+      state.sekolah = $('#sekolah').value.trim();
+      simpanState();
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + (state.sekolah || '');
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    });
+
+    async function kirimKeSpreadsheet(payload) {
+      const res = await fetch(KONFIGURASI.APPS_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Server merespons kode ' + res.status);
+      const json = await res.json().catch(() => null);
+      if (json && json.success === false) throw new Error(json.error || 'Server menolak data.');
+      return json;
+    }
+
+    function kumpulkan() {
+      const belum = SOAL.filter((q, i) => !state.jawaban[i]).length;
+      if (belum > 0) {
+        const ok = confirm('Masih ada ' + belum + ' soal yang belum dijawab. Tetap kumpulkan?');
+        if (!ok) return;
+      }
+
+      const jawaban = SOAL.map((q, i) => state.jawaban[i] || '');
+      const payload = {
+        nama: state.nama,
+        kelas: state.kelas,
+        asalSekolah: state.sekolah || '',
+        jawaban: jawaban
+      };
+
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.remove('hilang');
+      $('#hasil-nama').textContent = state.nama + ' - Kelas ' + state.kelas + ' - ' + (state.sekolah || '');
+
+      const st = $('#hasil-status');
+      st.innerHTML = '<p>Mengirim data ke server...</p>';
+      const kirim = async () => {
+        try {
+          const r = await kirimKeSpreadsheet(payload);
+          st.innerHTML = '<p style="color:var(--pico-ins-color);"><strong>Jawaban berhasil dikirim dan disimpan.</strong></p>';
+          hancurkanState();
+        } catch (err) {
+          st.innerHTML = '<p style="color:var(--pico-del-color);"><strong>Gagal mengirim: ' + err.message + '</strong><br><small>Klik "Kirim Ulang" untuk mencoba lagi.</small></p>';
+          const btn = el('button', { id: 'btn-kirimulang' }, ['Kirim Ulang']);
+          btn.addEventListener('click', kirim);
+          st.append(btn);
+        }
+      };
+      kirim();
+    }
+
+    (function pulihkanSesi() {
+      const s = muatState();
+      if (!s || !s.nama) return;
+      state.nama = s.nama;
+      state.kelas = s.kelas || KONFIGURASI.KELAS;
+      state.sekolah = s.sekolah || '';
+      state.jawaban = (s.jawaban && typeof s.jawaban === 'object') ? s.jawaban : {};
+      $('#nama').value = state.nama;
+      $('#kelas').value = state.kelas;
+      $('#sekolah').value = state.sekolah;
+      $('#bar-nama').textContent = 'Nama: ' + state.nama;
+      $('#bar-kelas').textContent = 'Kelas: ' + state.kelas;
+      $('#bar-sekolah').textContent = 'Sekolah: ' + state.sekolah;
+      $('#layar-pembuka').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-ujian').classList.remove('hilang');
+      renderSemuaSoal();
+    })();
+
+    $('#btn-kumpul').addEventListener('click', () => kumpulkan());
+    $('#btn-edit-data').addEventListener('click', () => {
+      $('#layar-ujian').classList.add('hilang');
+      $('#layar-hasil').classList.add('hilang');
+      $('#layar-pembuka').classList.remove('hilang');
+    });
+
+
+  </script>
+</body>
+</html>
