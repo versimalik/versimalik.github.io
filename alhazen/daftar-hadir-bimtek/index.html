@@ -172,10 +172,15 @@
       setLoading(true);
 
       try {
+        /* Data dikirim sebagai application/x-www-form-urlencoded (bukan
+           application/json). Alasannya: tipe "simple" ini tidak memicu
+           preflight OPTIONS, sedangkan Apps Script tidak menjawab OPTIONS
+           sehingga permintaan JSON akan ditolak oleh CORS.
+           Header Content-Type sengaja tidak ditulis: fetch akan
+           mengisinya otomatis dari URLSearchParams. */
         const response = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: new URLSearchParams(payload)
         });
 
         if (!response.ok) {
