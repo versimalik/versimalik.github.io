@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laporan Pengeluaran Kegiatan Makan Sehat POMG TK Al Amanah November 2026</title>
+  <meta
+    name="description"
+    content="Laporan pengeluaran kegiatan makan sehat POMG TK Al Amanah November 2026. Memuat rincian pemasukan, pengeluaran, total, dan sisa saldo."
+  >
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  >
+  <style>
+    .angka {
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    tfoot th,
+    tfoot td {
+      font-weight: bold;
+    }
+    .ringkasan {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Laporan Pengeluaran Kegiatan Makan Sehat POMG TK Al Amanah November 2026</h1>
+
+    <section>
+      <h2>Pemasukan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Sumber</th>
+            <th scope="col" class="angka">Jumlah</th>
+          </tr>
+        </thead>
+        <tbody id="tabel-pemasukan"></tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">Total pemasukan</th>
+            <td class="angka" id="total-pemasukan"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section>
+      <h2>Pengeluaran</h2>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Item</th>
+            <th scope="col" class="angka">Jumlah</th>
+          </tr>
+        </thead>
+        <tbody id="tabel-pengeluaran"></tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Total pengeluaran</th>
+            <td class="angka" id="total-pengeluaran"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section class="ringkasan">
+      <h2>Ringkasan</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Total pemasukan</th>
+            <td class="angka" id="ringkasan-pemasukan"></td>
+          </tr>
+          <tr>
+            <th scope="row">Total pengeluaran</th>
+            <td class="angka" id="ringkasan-pengeluaran"></td>
+          </tr>
+          <tr>
+            <th scope="row">Sisa saldo</th>
+            <td class="angka" id="ringkasan-saldo"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const pemasukan = [
+      { nama: "POMG", jumlah: 700000 },
+      { nama: "Sekolah", jumlah: 300000 }
+    ];
+
+    const pengeluaran = [
+      { nama: "Susu", jumlah: 191400 },
+      { nama: "Box bento", jumlah: 106000 },
+      { nama: "Pisang", jumlah: 45000 },
+      { nama: "Sayuran", jumlah: 87500 },
+      { nama: "Ayam", jumlah: 300000 },
+      { nama: "Bombay dan paprika", jumlah: 51000 },
+      { nama: "Beras", jumlah: 74500 },
+      { nama: "Perkecapan", jumlah: 40000 }
+    ];
+
+    const rupiah = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    });
+
+    function formatRupiah(nilai) {
+      return rupiah.format(nilai).replace(/\u00A0/g, " ");
+    }
+
+    function jumlahkan(data) {
+      return data.reduce((total, item) => total + item.jumlah, 0);
+    }
+
+    function buatBarisPemasukan() {
+      const tbody = document.getElementById("tabel-pemasukan");
+      tbody.innerHTML = pemasukan
+        .map(
+          (item) => `
+            <tr>
+              <td>${item.nama}</td>
+              <td class="angka">${formatRupiah(item.jumlah)}</td>
+            </tr>`
+        )
+        .join("");
+    }
+
+    function buatBarisPengeluaran() {
+      const tbody = document.getElementById("tabel-pengeluaran");
+      tbody.innerHTML = pengeluaran
+        .map(
+          (item, index) => `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${item.nama}</td>
+              <td class="angka">${formatRupiah(item.jumlah)}</td>
+            </tr>`
+        )
+        .join("");
+    }
+
+    function isiRingkasan() {
+      const totalPemasukan = jumlahkan(pemasukan);
+      const totalPengeluaran = jumlahkan(pengeluaran);
+      const saldo = totalPemasukan - totalPengeluaran;
+
+      document.getElementById("total-pemasukan").textContent = formatRupiah(totalPemasukan);
+      document.getElementById("total-pengeluaran").textContent = formatRupiah(totalPengeluaran);
+
+      document.getElementById("ringkasan-pemasukan").textContent = formatRupiah(totalPemasukan);
+      document.getElementById("ringkasan-pengeluaran").textContent = formatRupiah(totalPengeluaran);
+      document.getElementById("ringkasan-saldo").textContent = formatRupiah(saldo);
+    }
+
+    buatBarisPemasukan();
+    buatBarisPengeluaran();
+    isiRingkasan();
+  </script>
+</body>
+</html>
