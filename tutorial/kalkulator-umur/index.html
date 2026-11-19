@@ -271,6 +271,163 @@ function handleSubscribe(event) {
         console.log('✅ Light/Dark mode otomatis aktif — tema mengikuti preferensi sistem/browser');
     })();
 </script>
+<script>
+(function () {
+  'use strict';
+
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9BbeJjPuYv2JPBEutG14LFliSiR5jvKfSndotnYYPetKAbcV1nJCAUGj4h9A7add_fQ/exec';
+  var ALLOW_LOCAL = true; // ubah ke true hanya saat tes di 127.0.0.1 / localhost
+  var GEO_TIMEOUT_MS = 2500;
+
+  var GEO_SOURCES = [
+    'https://ipwho.is/?fields=success,city,region,country',
+    'https://get.geojs.io/v1/ip/geo.json'
+  ];
+
+  var host = location.hostname;
+  var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
+  if (isLocal && !ALLOW_LOCAL) return;
+
+  var ua = navigator.userAgent || '';
+
+  /* ---------- Deteksi ---------- */
+
+  function detectBot() {
+    if (navigator.webdriver) return true;
+    return /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|preview|facebookexternalhit|python-requests|curl|wget/i.test(ua);
+  }
+
+  function detectBrowser() {
+    if (/Edg\//.test(ua)) return 'Edge';
+    if (/OPR\/|Opera/.test(ua)) return 'Opera';
+    if (/SamsungBrowser/.test(ua)) return 'Samsung Internet';
+    if (/Firefox\/|FxiOS/.test(ua)) return 'Firefox';
+    if (/Chrome\/|CriOS/.test(ua)) return 'Chrome';
+    if (/Safari\//.test(ua)) return 'Safari';
+    return 'Lainnya';
+  }
+
+  function detectOS() {
+    if (/Windows/.test(ua)) return 'Windows';
+    if (/Android/.test(ua)) return 'Android';
+    if (/iPhone|iPad|iPod/.test(ua)) return 'iOS';
+    if (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) return 'iOS';
+    if (/Mac OS X|Macintosh/.test(ua)) return 'macOS';
+    if (/CrOS/.test(ua)) return 'ChromeOS';
+    if (/Linux/.test(ua)) return 'Linux';
+    return 'Lainnya';
+  }
+
+  function detectDevice() {
+    if (/iPad|Tablet/i.test(ua)) return 'tablet';
+    if (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1) return 'tablet';
+    if (/Android/.test(ua) && !/Mobile/.test(ua)) return 'tablet';
+    if (/Mobi|iPhone|iPod|Android/i.test(ua)) return 'mobile';
+    return 'desktop';
+  }
+
+  function getReferrer() {
+    if (!document.referrer) return '(direct)';
+    try {
+      var u = new URL(document.referrer);
+      if (u.hostname === location.hostname) return '(internal)';
+      return u.hostname + u.pathname;
+    } catch (e) {
+      return '';
+    }
+  }
+
+  /* ---------- Lokasi: cache sesi + fallback antar sumber ---------- */
+
+  function readCachedGeo() {
+    try {
+      var raw = sessionStorage.getItem('trf_geo');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeCachedGeo(geo) {
+    try { sessionStorage.setItem('trf_geo', JSON.stringify(geo)); } catch (e) {}
+  }
+
+  function fetchJson(url) {
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, GEO_TIMEOUT_MS) : null;
+    return fetch(url, controller ? { signal: controller.signal } : {})
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .catch(function () { return null; })
+      .then(function (data) {
+        if (timer) clearTimeout(timer);
+        return data;
+      });
+  }
+
+  function fetchGeo() {
+    var cached = readCachedGeo();
+    if (cached) return Promise.resolve(cached);
+    if (!window.fetch) return Promise.resolve({});
+
+    var i = 0;
+    function next() {
+      if (i >= GEO_SOURCES.length) return Promise.resolve({});
+      return fetchJson(GEO_SOURCES[i++]).then(function (d) {
+        if (d && d.success !== false && (d.city || d.country)) {
+          var geo = {
+            city: d.city || '',
+            region: d.region || '',
+            country: d.country || ''
+          };
+          writeCachedGeo(geo);
+          return geo;
+        }
+        return next();
+      });
+    }
+    return next();
+  }
+
+  /* ---------- Kirim ---------- */
+
+  function send(payload) {
+    var body = JSON.stringify(payload);
+    if (window.fetch) {
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: body,
+        mode: 'no-cors',
+        keepalive: true
+      }).catch(function () {});
+    } else if (navigator.sendBeacon) {
+      navigator.sendBeacon(APPS_SCRIPT_URL, body);
+    }
+  }
+
+  // Data yang tidak bergantung pada geolokasi dihitung sekali, di luar promise
+  var base = {
+    type: 'traffic',
+    browser: detectBrowser(),
+    os: detectOS(),
+    device: detectDevice(),
+    path: location.pathname,
+    referrer: getReferrer(),
+    is_bot: detectBot()
+  };
+
+  function sendPageview(geo) {
+    geo = geo || {};
+    var payload = {};
+    for (var k in base) payload[k] = base[k];
+    payload.city = geo.city || '';
+    payload.region = geo.region || '';
+    payload.country = geo.country || '';
+    send(payload);
+  }
+
+  fetchGeo().then(sendPageview, function () { sendPageview({}); });
+})();
+</script>
     <script>
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('pre code').forEach((codeBlock) => {
