@@ -1,0 +1,267 @@
+[
+  
+  
+  {
+    "url": "/blog/siapa-yang-salah/",
+    "title": "Siapa yang Salah Sebenarnya?",
+    "category": "blog",
+    "tags": ["belajar","teknologi","edukasi","password","cerita","blog"],
+    "thumb": "/assets/images/siapa-yang-salah_thumb.webp",
+    "alt": "Ilustrasi pak pengawas yang keheranan dan guru yang bingung saat mengetahui password Wi-Fi di laboratorium komputer.",
+    "date": "17 November 2026"
+  },
+  
+  
+  {
+    "url": "/cerita/menanamkan-tauhid-pada-anak-catatan-sekolah-orang-tua-sd-al-amanah/",
+    "title": "Menanamkan Tauhid pada Anak: Catatan dari Sekolah Orang Tua SD Al Amanah",
+    "category": "cerita",
+    "tags": ["parenting","edukasi","cerita","keluarga","belajar","tauhid"],
+    "thumb": "/assets/images/menanamkan-tauhid-pada-anak_thumb.webp",
+    "alt": "Ilustrasi orang tua mengenalkan tauhid kepada anak dalam kehidupan sehari-hari",
+    "date": "30 Oktober 2026"
+  },
+  
+  
+  {
+    "url": "/cerita/rumah-madrasah-pertama-anak-catatan-sekolah-orang-tua-sd-al-amanah/",
+    "title": "Rumah Madrasah Pertama Anak: Catatan dari Sekolah Orang Tua SD Al Amanah",
+    "category": "cerita",
+    "tags": ["parenting","edukasi","cerita","keluarga","belajar"],
+    "thumb": "/assets/images/rumah-madrasah-pertama-anak_thumb.webp",
+    "alt": "Ilustrasi sebuah rumah sebagai madrasah pertama anak, seorang ayah dan ibu bersama anaknya belajar di ruang keluarga yang hangat",
+    "date": "25 September 2026"
+  },
+  
+  
+  {
+    "url": "/blog/cukup-css/",
+    "title": "Bagi Saya itu Cukup dan Itu Sudah Bagus",
+    "category": "blog",
+    "tags": ["css","framework","cukupcss","pemrograman","desain","blog"],
+    "thumb": "/assets/images/merakit-dua-panel-menjadi-satu_thumb.webp",
+    "alt": "Ilustrasi seseorang yang dengan tenang merakit dua panel berbeda menjadi satu tampilan yang rapi di atas meja kerjanya.",
+    "date": "31 Agustus 2026"
+  },
+  
+  
+  {
+    "url": "/cerita/sekolah-orang-tua-mendidikan-anak-sesuai-fitrah/",
+    "title": "Mendidik Anak Sesuai Fitrah: Catatan dari Sekolah Orang Tua",
+    "category": "cerita",
+    "tags": ["parenting","edukasi","cerita","keluarga","belajar"],
+    "thumb": "/assets/images/berbahasa-hati-kepada-anak_thumb.webp",
+    "alt": "Ilustrasi seorang ayah berlutut sambil mengelus kepala anaknya dengan penuh kelembutan, menggambarkan pengasuhan dengan bahasa hati",
+    "date": "23 Agustus 2026"
+  },
+  
+  
+  {
+    "url": "/blog/revolusi-yang-tidak-pernah-berhenti/",
+    "title": "Revolusi yang Tidak Pernah Berhenti",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi","sebelum-ngoding","episode-6"],
+    "thumb": "/assets/images/manusia-mengendalikan-teknologi-robot_thumb.webp",
+    "alt": "Ilustrasi seseorang berkacamata yang berdiri tenang sambil mengarahkan sebuah robot besar yang menunduk patuh — menggambarkan bahwa di era kecerdasan buatan, manusia tetap memegang kendali.",
+    "date": "8 Juni 2026"
+  },
+  
+  
+  {
+    "url": "/blog/dua-sisi-teknologi/",
+    "title": "Dua Sisi Teknologi",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi","sebelum-ngoding","episode-5"],
+    "thumb": "/assets/images/dua-sisi-teknologi_thumb.webp",
+    "alt": "Ilustrasi seseorang yang berdiri di tengah, memegang laptop dengan ekspresi penuh pertimbangan. Di sisi kirinya terpancar suasana hangat dengan ikon-ikon positif seperti buku, cahaya, dan koneksi antar manusia, sementara di sisi kanannya tergambar suasana muram dengan notifikasi berlebihan dan kesenjangan sosial — menggambarkan bahwa teknologi bisa menjadi berkah sekaligus beban,  tergantung siapa yang menggunakannya dan untuk apa.",
+    "date": "4 Mei 2026"
+  },
+  
+  
+  {
+    "url": "/blog/teknologi-tidak-lahir-dari-cuma-iseng/",
+    "title": "Teknologi Tidak Lahir dari Iseng",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi","sebelum-ngoding","episode-4"],
+    "thumb": "/assets/images/lelah-menyalin-buku-pakai-tulis-tangan_thumb.webp",
+    "alt": "Ilustrasi seseorang yang kelelahan menyalin buku secara manual dengan pena bulu, dikelilingi tumpukan buku yang belum selesai, sambil membayangkan sebuah mesin cetak yang secara otomatis memperbanyak buku dalam jumlah besar, menggambarkan bagaimana rasa sakit dan keterbatasan manusia melahirkan ide-ide besar.",
+    "date": "2 Mei 2026"
+  },
+  
+  
+  {
+    "url": "/blog/dari-batu-ke-komputer-saku/",
+    "title": "Dari Batu ke Komputer Saku",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi","sebelum-noding","episode-3"],
+    "thumb": "/assets/images/berjalan-melintasi-perkembangan-teknologi_thumb.webp",
+    "alt": "Ilustrasi seseorang yang berjalan melewati empat era teknologi dari zaman prasejarah dengan batu runcing dan api, era pertanian dengan bajak dan roda air, era industri dengan mesin uap, hingga era digital dengan laptop dan jaringan - menggambarkan perjalanan panjang teknologi yang terus berkembang sepanjang sejarah manusia.",
+    "date": "1 Mei 2026"
+  },
+  
+  
+  {
+    "url": "/blog/teknologi-itu-bukan-gadget/",
+    "title": "Teknologi Itu Bukan Gadget",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi sebelum-ngoding","episode-2"],
+    "thumb": "/assets/images/membayangkan-timeline-teknologi_thumb.webp",
+    "alt": "Ilustrasi seseorang dengan ekspresi takjub dan penasaran, dikelilingi oleh teknologi dari berbagai zaman menggambarkan bahwa teknologi telah hadir jauh sebelum era digital.",
+    "date": "29 April 2026"
+  },
+  
+  
+  {
+    "url": "/blog/sebelum-ngoding/",
+    "title": "Sebelum Ngoding",
+    "category": "blog",
+    "tags": ["podcast","belajar","teknologi","edukasi","sebelum-ngoding","episode-1"],
+    "thumb": "/assets/images/belajar-sebelum-ngoding_thumb.webp",
+    "alt": "Ilustrasi seseorang berkacamata yang duduk di lantai di tengah ruangan penuh buku berserakan, kertas-kertas kusut, papan catatan penuh coretan, dan laptop yang menyala, dengan ekspresi lelah namun penuh tekad, menggambarkan perjalananpanjang penuh percobaan dan kegagalan dalam membangun kurikulum belajar yang bisa dipahami semua orang.",
+    "date": "27 April 2026"
+  },
+  
+  
+  {
+    "url": "/tutorial/menerapkan-validasi-form/",
+    "title": "Validasi Formulir Kalkulator Umur",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-6"],
+    "thumb": "/assets/images/validasi-proses-aplikasi-kalkulator_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang melakukan pengecekan alur kerja aplikasi kalkulator di papan tulis.",
+    "date": "14 Januari 2026"
+  },
+  
+  
+  {
+    "url": "/blog/cara-komputer-berhitung/",
+    "title": "Bagaimana Komputer Berhitung Hanya dengan Angka 0 dan 1?",
+    "category": "blog",
+    "tags": ["pemrograman","belajar","dasar","computer","science","biner","bahasa mesin"],
+    "thumb": "/assets/images/bingung-terjemahkan-biner_thumb.webp",
+    "alt": "Ilustrasi robot bingung melihat kode isyarat lampu yang nyala-mati",
+    "date": "10 Januari 2026"
+  },
+  
+  
+  {
+    "url": "/blog/komputer-cuma-ngerti-0-dan-1/",
+    "title": "Komputer Itu Cuma Ngerti 0 dan 1 - Kenapa Kita Butuh 'Penerjemah' untuk Memerintah Mesin?",
+    "category": "blog",
+    "tags": ["pemrograman","belajar","dasar","computer","science","biner","bahasa mesin","high-level language"],
+    "thumb": "/assets/images/mengajarkan-robot-cara-bikin-kopi_thumb.webp",
+    "alt": "Ilustrasi robot bingung melihat kode isyarat lampu yang nyala-mati",
+    "date": "2 Januari 2026"
+  },
+  
+  
+  {
+    "url": "/blog/selamat-datang-di-computer-science/",
+    "title": "Kamu Sudah Paham Logikanya, Sekarang Pahami 'Mesin'-nya. Selamat Datang di Dunia Computer Science",
+    "category": "blog",
+    "tags": ["pemrograman","belajar","dasar","computer","science"],
+    "thumb": "/assets/images/montir-mobil_thumb.webp",
+    "alt": "Ilustrasi seorang mekanik yang sedang memperbaiki masalah pada mesin mobil di bengkel yang penuh peralatan, mengenakan kacamata pelindung dan sarung tangan.",
+    "date": "25 Desember 2025"
+  },
+  
+  
+  {
+    "url": "/blog/kamu-sudah-jadi-programmer-sejak-bangun-tidur/",
+    "title": "Tanpa Sadar, Kamu Sudah Jadi Programmer Sejak Bangun Tidur. Ini Buktinya!",
+    "category": "blog",
+    "tags": ["pemrograman","belajar","dasar","coding","programming"],
+    "thumb": "/assets/images/snooze-alarm_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang mematikan alarm di ponsel dengan ekspresi mengantuk di pagi hari",
+    "date": "20 Desember 2025"
+  },
+  
+  
+  {
+    "url": "/blog/pahami-dulu-apa-itu-programming/",
+    "title": "Bingung Mulai dari Mana? Pahami Dulu Apa Itu Programming Sebelum Belajar Ngoding!",
+    "category": "blog",
+    "tags": ["pemrograman","belajar","dasar","coding","programming"],
+    "thumb": "/assets/images/lagi-ngoding_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang belajar coding di depan komputer dengan visualisasi baris kode dan elemen digital di sekitarnya",
+    "date": "13 Desember 2025"
+  },
+  
+  
+  {
+    "url": "/tutorial/menerapkan-rumus-kalkulator-umur/",
+    "title": "Rumus Menghitung Umur dari Tanggal Lahir dengan JavaScript",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-5"],
+    "thumb": "/assets/images/membuat-rumus-kalkulator-umur_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang membuat rumus perhitungan kalkulator umur di papan tulis.",
+    "date": "1 Januari 2025"
+  },
+  
+  
+  {
+    "url": "/tutorial/memahami-alur-kerja-aplikasi-kalkulator-umur/",
+    "title": "Alur Kerja Aplikasi Kalkulator Umur",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-4"],
+    "thumb": "/assets/images/memahami-alur-kerja-kalkulator_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang memahami alur kerja aplikasi kalkulator di papan tulis.",
+    "date": "31 Desember 2024"
+  },
+  
+  
+  {
+    "url": "/tutorial/menerapkan-mode-gelap-terang-kalkulator-umur/",
+    "title": "Menerapkan Mode Gelap dan Terang pada Kalkulator Umur",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-3"],
+    "thumb": "/assets/images/membuat-tampilan-gelap-dan-terang_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang merancang tampilan gelap dan terang pada kalkulator di meja kerjanya.",
+    "date": "27 Desember 2024"
+  },
+  
+  
+  {
+    "url": "/tutorial/buat-tampilan-kalkulator-umur/",
+    "title": "Membuat Tampilan Kalkulator Umur dengan HTML dan CSS",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-2"],
+    "thumb": "/assets/images/menyusun-bentuk-kalkulator_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang menyusun tampilan kalkulator di layar meja kerjanya.",
+    "date": "26 Desember 2024"
+  },
+  
+  
+  {
+    "url": "/tutorial/persiapan-kalkulator-umur/",
+    "title": "Persiapan Membuat Kalkulator Umur",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","tahap-1"],
+    "thumb": "/assets/images/menyiapkan-kebutuhan-kalkulator_thumb.webp",
+    "alt": "Ilustrasi seseorang sedang menyiapkan kebutuhkan untuk membuat kalkulator di meja kerjanya.",
+    "date": "25 Desember 2024"
+  },
+  
+  
+  {
+    "url": "/tutorial/kalkulator-umur/",
+    "title": "Membuat Kalkulator Umur dengan HTML, CSS, dan JavaScript",
+    "category": "tutorial",
+    "tags": ["pemrograman","belajar","dasar","kalkulator-umur","tutorial","pendahuluan"],
+    "thumb": "/assets/images/merancang-aplikasi-kalkulator-umur_thumb.webp",
+    "alt": "Ilustrasi seorang sedang merancang aplikasi kalkulator umur di papan tulis dengan berbagai catatan dan diagram di sekitarnya.",
+    "date": "25 Desember 2024"
+  },
+  
+  
+  {
+    "url": "/cerita/puluribu/",
+    "title": "Puluribu",
+    "category": "cerita",
+    "tags": ["cerita","inspirasi","keseharian","KRL"],
+    "thumb": "/assets/images/puluribu_thumb.webp",
+    "alt": "Interaksi ramah antara pemuda yang memegang helm dengan pria tua bermasker di area pintu masuk stasiun kereta api",
+    "date": "11 Februari 2024"
+  }
+  
+]
